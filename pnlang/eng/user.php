@@ -38,6 +38,20 @@ define('_CONTACTLISTBUDDYSUSPENDED',	'The connection to this buddy was suspended
 define('_CONTACTLISTBUDDIESAMOUNT',		'Number of comfirmed contacts');
 define('_CONTACTLISTBIRTHDAY',			'Birthday');
 
+// ignore
+define('_CONTACTLISTIGNORELISTMANAGEMENT','Ignore-list management');
+define('_CONTACTLISTIGNOREUNAME',		'User you want to ignore');
+define('_CONTACTLISTIGNOREEXPLAIN',		'You can add users here you want to ignore. Ignoring means protection from emails etc.');
+define('_CONTACTLISTADDUSER',			'Add user');
+define('_CONTACTLISTUSERNOTFOUND',		'User could not be found');
+define('_CONTACTLISTDONOTIGNOREYOURSELF','I know, some people do not like themself - but you really cannot ignore you own username :-)');
+define('_CONTACTLISTIGNOREDUSERADDED',	'User was set to your ignore list successfully');
+define('_CONTACTLISTNOIGNOREDUSERS',	'You do not have any ignored users on your ignore list');
+define('_CONTACTLISTIGNORELIST',		'The following users are ignored actually');
+define('_CONTACTLISTREMOVEIGNOREDUSER',	'Remove from ignore list');
+define('_CONTACTLISTUSERUPDATEERROR',	'Updating user information failed');
+define('_CONTACTLISTUSERNOLONGERIGNORED','User removed from ignore list');
+
 // create
 define('_CONTACTLISTCONFIRMREQU',		'After submitting this form a buddy request will be send to the new buddy. He then can accept or reject your request. You can send some text with the request for the new buddy');
 define('_CONTACTLISTREQUESTTEXT',		'Reason for buddy request');
@@ -76,5 +90,4 @@ define('_CONTACTLISTTABTITLE',			'User\'s buddies');
 define('_CONTACTLISTMYBUDDIES',			'User\'s buddy list');
 define('_CONTACTLISTTHEUSERHAS',		'The user has');
 define('_CONTACTLISTBUDDIES',			'buddies');
-
 ?>

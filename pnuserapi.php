@@ -261,32 +261,95 @@ function ContactList_userapi_confirm($args) {
  */
 function ContactList_userapi_isBuddy($args) {
   	$buddies = pnModAPIFunc('ContactList','user','getall',array(
-	  	'uid' => (int)$args['uid1'], 
-		'bid' => (int)$args['uid2'],
-		'state => 1')					);
+	  	'uid' 	=> (int)$args['uid1'], 
+		'bid' 	=> (int)$args['uid2'],
+		'state'	=> '1')					);
   	if (count($buddies) > 0) return true;
   	else return false;
 }
 
 /**
- * This function checks if one user is ignored by another user
- * It returns a boolean value (true or false)
- * To be used from other module developers!
+ * ignore another user
  *
- * @param	$args['uid1']	int
- * @param	$args['uid2']	int
- * @return	boolean			
+ * @param	$args['uid']	int
+ * @param	$args['iuid']	int
+ * @return	boolean
  */
-function ContactList_userapi_isIgnoredBy($args) {
-  	// if ignoring is disabled by the admin no check is needed
+function ContactList_userapi_ignoreUser($args) {
+  	$uid 	= (int)$args['uid'];
+  	$iuid 	= (int)$args['iuid'];
+  	if ($uid == $iuid) return false;
+  	if (!($uid>0) || !($iuid>0)) return false;
+  	$obj = array (
+  		'uid'	=> $uid,
+  		'iuid'	=> $iuid
+	  );	
+	if (ContactList_userapi_isIgnored($args)) return false;
+  	if (DBUtil::insertObject($obj,'contactlist_ignorelist')) return true;
+	else return false;
+}
+
+/**
+ * get all user that are ignored by another user all users that ignore another user
+ *
+ * @param	$args['uid']	int			user id
+ * @param	$args['iuid']	int			ignored user id
+ * @return 	boolean
+ */
+function ContactList_userapi_getallignorelist($args) {
+  	// return false if ignore list functionallity is disabled by the admin
   	if (!pnModGetVar('ContactList','useignore')) return false;
-  	// otherwise we'll do a check
-  	$buddies = pnModAPIFunc('ContactList','user','getall',array(
-	  	'uid' => (int)$args['uid1'], 
-		'bid' => (int)$args['uid2'],
-		'state => -1')					);
-  	if (count($buddies) > 0) return true;
-  	else return false;
+  	// otherwise do some checks
+  	$uid 	= (int)$args['uid'];
+  	$iuid 	= (int)$args['iuid'];
+  	if (($uid > 0) && ($iuid > 0)) $where = 'iuid = '.$iuid.' and uid = '.$uid;
+  	else if ($uid > 0) $where = 'uid = '.$uid;
+  	else if ($iuid > 0) $where = 'iuid = '.$iuid;
+  	// get database result
+	$res = DBUtil::selectObjectArray('contactlist_ignorelist',$where);
+	foreach ($res as $item) {
+	  	$item['uname'] 	= pnUserGetVar('uname',$item['uid']);
+	  	$item['iuname']	= pnUserGetVar('uname',$item['iuid']);
+	  	$ignorelist[] = $item;
+	}
+	return $ignorelist;
+}
+
+/**
+ * check if a user is ignored by another user
+ * To be used from other module developers
+ *
+ * @param	$args['uid']	int			user id
+ * @param	$args['iuid']	int			ignored user id
+ * @return 	boolean
+ */
+function ContactList_userapi_isIgnored($args) {
+  	// return false if ignore list functionallity is disabled by the admin
+  	if (!pnModGetVar('ContactList','useignore')) return false;
+  	// otherwise do some checks
+  	$uid 	= (int)$args['uid'];
+  	$iuid 	= (int)$args['iuid'];
+  	if ($uid == $iuid) return false;
+  	if (!($uid>0) || !($iuid>0)) return false;
+  	$where = 'uid = '.$uid.' and iuid = '.$iuid;
+	$res = DBUtil::selectObjectArray('contactlist_ignorelist',$where);
+	if (count($res)>0) return true;
+	else return false;	
+}
+
+/**
+ * delete a user from the users ignore list
+ *
+ * @param	$args['iuid']	int
+ * @return	boolean
+ */
+function ContactList_userapi_deleteIgnoredUser($args) {
+  	$iuid = (int) $args['iuid'];
+  	$uid = pnUserGetVar('uid');
+  	if (!isset($iuid) || (!($iuid > 0))) return false;
+  	// get ignore link
+  	$objects = ContactList_userapi_getallignorelist(array('uid' => $uid, 'iuid' => $iuid));
+	return DBUtil::deleteObject($objects[0],'contactlist_ignorelist');
 }
 
 /**
@@ -299,8 +362,8 @@ function ContactList_userapi_isIgnoredBy($args) {
  */
 function ContactList_userapi_getBuddyList($args) {
   	$buddies = pnModAPIFunc('ContactList','user','getall',array(
-	  	'uid' => (int)$args['uid'], 
-		'state => 1')					);
+	  	'uid' 		=> (int)$args['uid'], 
+		'state'		=> '1')					);
 	if (count($buddies)==0) return false;
 	foreach ($buddies as $buddy) $res[] = array('uid' => $buddy['bid'], 'uname' => pnUserGetVar('uname',$buddy['bid']));
   	return $res;

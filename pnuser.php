@@ -85,6 +85,36 @@ function ContactList_user_edit()
 }
 
 /**
+ * edit additional information for a buddy
+ *
+ * @param	$args['id']		int		buddy id
+ * @return	output
+ */
+function ContactList_user_ignore()
+{
+	// Security check 
+	if (!SecurityUtil::checkPermission('ContactList::', '::', ACCESS_COMMENT)) return LogUtil::registerPermissionError();
+
+	// Create output
+	$render = FormUtil :: newpnForm('ContactList');
+	$render->assign('ignorelist',pnModAPIFunc('ContactList','user','getallignorelist',array('uid' => pnUserGetVar('uid'))));
+  	$render->assign('authid',SecurityUtil::generateAuthKey());
+  	
+  	// check for action
+  	$action = FormUtil::getPassedValue('action');
+  	if (isset($action) && (strtolower($action) == 'delete')) {
+	    if (!SecurityUtil::confirmAuthKey()) return LogUtil::registerAuthIDError();
+	    $iuid = (int)FormUtil::getPassedValue('iuid');
+	    if (pnModAPIFunc('ContactList','user','deleteIgnoredUser',array('iuid' => $iuid))) LogUtil::registerStatus(_CONTACTLISTUSERNOLONGERIGNORED);
+	    else LogUtil::registerError(_CONTACTLISTUSERUPDATEERROR);
+	    return pnRedirect(pnModURL('ContactList','user','ignore'));
+	}
+
+	// return output
+	return $render->pnFormExecute('contactlist_user_ignore.htm', new contactlist_user_ignoreHandler());
+}
+
+/**
  * create buddy request
  * 
  * @return       output
@@ -105,6 +135,39 @@ function ContactList_user_create()
 
 /* ********************************************** classes ********************************************** */
 
+class contactlist_user_ignoreHandler {
+	function initialize(& $render) {
+	  	$uname = FormUtil::getPassedValue('uname');
+	  	if (isset($uname) && (pnUserGetIDFromName($uname) > 0)) $render->assign('uname',$uname);
+	  	return true;
+	}
+	function handleCommand(& $render, & $args) {
+		if ($args['commandName'] == 'update') {
+			if (!$render->pnFormIsValid()) return false;
+			// get data
+			$data = $render->pnFormGetValues();
+			$iuid = pnUserGetIDFromName($data['uname']);
+			$uid = pnUserGetVar('uid');
+			// validation check
+			if ($uid == $iuid) {
+			  	LogUtil::registerError(_CONTACTLISTDONOTIGNOREYOURSELF);
+			  	return false;
+			}
+			// does the user exist?
+			if (!($iuid > 0)) {
+			  	LogUtil::registerError(_CONTACTLISTUSERNOTFOUND);
+			  	return false;
+			}
+			// ToDo: check if user is already ignored
+
+			// ignore the user from now on...
+			if (pnModAPIFunc('ContactList','user','ignoreUser',array('uid' => $uid, 'iuid' => $iuid))) LogUtil::registerStatus(_CONTACTLISTIGNOREDUSERADDED);
+			else return false;
+			return pnRedirect(pnModURL('ContactList','user','ignore'));
+		}
+		return true;
+	}
+}
 class contactlist_user_editHandler {
 	function initialize(& $render) {
 	  	// get buddy object
@@ -184,6 +247,5 @@ class contactlist_user_createHandler {
 		return true;
 	}
 }
-
 
 ?>
