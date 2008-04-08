@@ -1,0 +1,5 @@
+<!--[foreach from=$buddies item="buddy"]-->
+<li><!--[$buddy.uname|userprofilelink]-->: <!--[$buddy.birthday|date_format:"%d.%m."]-->: <!--[if $buddy.daystonextbirthday eq 0]--><strong>TODAY!</strong><!--[else]--><!--[$buddy.daystonextbirthday]--> <!--[pnml name="_CONTACTLISTDAYS"]--><!--[/if]--></li>
+<!--[/foreach]-->
+
+<!--[pndebug output="html"]-->

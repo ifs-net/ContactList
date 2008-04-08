@@ -1,5 +1,4 @@
 <?php
-Loader::requireOnce('modules/ContactList/common.php');
 
 /**
  * get all buddys
@@ -41,6 +40,13 @@ function ContactList_userapi_getall($args) {
 				    $data = pnModAPIFunc('MyProfile','user','getUserVars',array('name' => $myprofilebirthday, 'uid' => $item['bid']));
 			     	$item['birthday'] = $data['value'];
 			      	$item['nextbirthday'] = $item['birthday'][5].$item['birthday'][6].$item['birthday'][8].$item['birthday'][9];
+			      	// calculate days to next birthday
+			      	$birth_array = explode("-",$item['birthday']);
+					$now = mktime(23, 59, 59, date("m",time()), date("d",time()), date("Y",time()));
+					$year = date("Y",$now);
+			      	$act_birthday = mktime(23, 59, 59, $birth_array[1], $birth_array[2], $year);
+			      	if ($act_birthday < $now) $act_birthday = mktime(23, 59, 59, $birth_array[1], $birth_array[2], ($year+1));
+			      	$item['daystonextbirthday'] = round(($act_birthday-$now)/60/60/24);
 				  	$r[] = $item;
 				}
 				$result = $r;
@@ -52,6 +58,13 @@ function ContactList_userapi_getall($args) {
 			    foreach ($res as $item) {
 			      	$item['birthday'] = pnUserGetVar($profilebirthday);
 			      	$item['nextbirthday'] = $item['birthday'][5].$item['birthday'][6].$item['birthday'][8].$item['birthday'][9];
+			      	// calculate days to next birthday
+			      	$birth_array = explode("-",$item['birthday']);
+					$now = mktime(23, 59, 59, date("m",time()), date("d",time()), date("Y",time()));
+					$year = date("Y",$now);
+			      	$act_birthday = mktime(23, 59, 59, $birth_array[1], $birth_array[2], $year);
+			      	if ($act_birthday < $now) $act_birthday = mktime(23, 59, 59, $birth_array[1], $birth_array[2], ($year+1));
+			      	$item['daystonextbirthday'] = round(($act_birthday-$now)/60/60/24);
 				  	$r[] = $item;
 				}
 				$result = $r;
@@ -65,7 +78,8 @@ function ContactList_userapi_getall($args) {
 	if (isset($args['sort'])) {		// Apply an "order by"?
 		foreach ($result as $key => $row) {
 		    if ($args['sort'] == 'birthday') $sort[$key]  = $row['birthday'];
-		    if ($args['sort'] == 'nextbirthday') $sort[$key]  = $row['nextbirthday'];
+		    else if ($args['sort'] == 'nextbirthday') $sort[$key]  = $row['nextbirthday'];
+		    else if ($args['sort'] == 'daystonextbirthday') $sort[$key]  = $row['daystonextbirthday'];
 		}	
 		array_multisort($sort, SORT_ASC, $result);
 	}
