@@ -1,0 +1,14 @@
+<!--[pnml name="_CONTACTLISTDEARUSER"]--> <!--[pnusergetvar uid=$bid name="uname"]-->,
+
+<!--[pnml name="_CONTACTLISTTHEUSER"]--> <!--[pnusergetvar uid=$uid name="uname"]--> <!--[pnml name="_CONTACTLISTWANTSTOADDYOUAT"]--> <!--[sitename]-->
+
+<!--[pnml name="_CONTACTLISTREJECTORACCEPT"]-->
+
+<!--[if $request_text ne ""]--><!--[pnml name="_CONTACTLISTREQUESTTEXT"]-->: <!--[$request_text]-->
+<!--[/if]-->
+
+<!--[pnml name="_CONTACTBUDDYMANAGEMENT"]-->
+<!--[pngetbaseurl]--><!--[pnmodurl modname="ContactList" type="user" func="main"]-->
+
+---------------------------------------------------------------------
+<!--[pnml name="_CONTACTLISTDONOTREPLY"]-->

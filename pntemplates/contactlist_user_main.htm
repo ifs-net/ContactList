@@ -1,0 +1,78 @@
+<!--[include file="contactlist_user_header.htm"]-->
+
+<!--[if $buddies_unconfirmed gt 0]-->
+<h3><!--[pnml name="_CONTACTLISTTOCONFIRM"]--></h3>
+<ul>
+<!--[foreach from=$buddies_unconfirmed item="buddy"]-->
+	<li>
+		<!--[pnusergetvar uid=$buddy.bid name="uname" assign="uname"]-->
+		<!--[$uname|userprofilelink]-->
+		<!--[pnml name="_CONTACTLISTREQUESTDATE"]-->: <!--[$buddy.date|pndate_format:"%d.%m.%Y"]-->
+		<!--[if $buddy.request_text ne ""]-->
+			<br /><em><!--[$buddy.request_text|pnvarprepfordisplay|pnmodcallhooks]--></em>
+		<!--[else]-->
+			<!--[pnml name="_CONTACTLISTNOREQUTEXT"]-->
+		<!--[/if]-->
+		<br /> [
+		<a href="<!--[pnmodurl modname="ContactList" type="user" func="main" authid=$authid action="decline" id=$buddy.id"]-->"><!--[pnml name="_CONTACTLISTDECLINE"]--></a> |
+		<a href="<!--[pnmodurl modname="ContactList" type="user" func="main" authid=$authid action="confirm" id=$buddy.id"]-->"><!--[pnml name="_CONTACTLISTCONFIRM"]--></a> ]	</li>
+<!--[/foreach]-->
+</ul>
+<br /><br />
+<!--[/if]-->
+
+
+
+
+<h3><!--[pnml name="_CONTACTLISTYOURBUDDIES"]--></h3>
+
+<!--[pnml name="_CONTACTLISTBUDDIESAMOUNT"]-->: <!--[$contacts]-->.<br /><br />
+<!--[if $contacts gt 0]-->
+	<table>
+		<tr>
+		<th><!--[pnml name="_CONTACTLISTUNAME"]--></th>
+		<th><!--[pnml name="_CONTACTLISTCOMMENTS"]--></th>
+		<th><!--[pnml name="_CONTACTLISTSTATE"]--></th>
+		<th><!--[pnml name="_CONTACTLISTACTIONS"]--></th>
+		</tr>
+	<!--[foreach from=$buddies item="buddy"]-->
+		<!--[pnusergetvar uid=$buddy.bid name="uname" assign="uname"]-->
+		<tr><td>
+			<!--[$uname|userprofilelink]-->
+			<!--[* integrate the user's birthday date if configured *]-->
+			<!--[if $buddy.birthday ne ""]--> 
+				<br />
+				<!--[pnml name="_CONTACTLISTBIRTHDAY"]-->:<br />
+				<!--[$buddy.birthday|date_format:"$dateformat"]-->
+			<!--[/if]-->
+			<!--[* /integrate the user's birthday date if configured *]-->
+		</td><td>
+			<em><!--[$buddy.prv_comment]--></em><br/>
+			<!--[if $nopubliccomment ne 1 and $buddy.pub_comment ne ""]--><br />
+				<!--[pnml name="_CONTACTLISTPUBCOMMENT"]-->:<br />
+				<!--[$buddy.pub_comment]-->
+			<!--[/if]-->
+		</td><td>
+			<!--[if $buddy.state eq 0]-->
+				<!--[pnml name="_CONTACTLISTNOTCONFIRMED"]-->
+			<!--[/if]-->
+			<!--[if $buddy.state eq 1]-->
+				<!--[pnml name="_CONTACTLISTCONFIRMED"]-->
+			<!--[/if]-->
+			<!--[if $buddy.state eq 2]-->
+				<!--[pnml name="_CONTACTLISTREJECTED"]-->
+			<!--[/if]-->
+			<!--[if $buddy.state eq 3]-->
+				<!--[pnml name="_CONTACTLISTSUSPENDED"]-->
+			<!--[/if]-->
+		</td><td>
+			<!--[if $buddy.state eq 1]--><a href="<!--[pnmodurl modname="ContactList" type="user" func="edit" id=$buddy.id]-->"><!--[pnml name="_CONTACTLISTEDIT"]--></a><br /><!--[/if]-->
+			<!--[if $buddy.state ne 0 and $buddy.state ne 3]--><a href="<!--[pnmodurl modname="ContactList" type="user" func="main" action="suspend" authid=$authid id=$buddy.id]-->" onclick="return confirm('<!--[pnml name="_CONTACTLISTREALLYSUSPEND"]-->')"><!--[pnml name="_CONTACTLISTSUSPEND"]--></a><br /><!--[/if]-->
+			<!--[if $buddy.state eq 3]--><a href="<!--[pnmodurl modname="ContactList" type="user" func="main" action="suspend" authid=$authid id=$buddy.id ne="1"]-->"><!--[pnml name="_CONTACTLISTDELETE"]--></a><br /><!--[/if]-->		
+		</td></tr>
+	<!--[/foreach]-->
+	</table>
+<!--[/if]-->
+
+<!--[include file="contactlist_user_footer.htm"]-->
+<!--[pndebug output="html"]-->

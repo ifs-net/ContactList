@@ -1,0 +1,8 @@
+<!--[pngetstatusmsg]-->
+<!--[pnmodgetvar module="ContactList" name="useignore" assign="ignore"]-->
+[
+<a href="<!--[pnmodurl modname="ContactList" type="user" func="main"]-->"><!--[pnml name="_CONTACTLISTSHOWBUDDIES"]--></a> |
+<a href="<!--[pnmodurl modname="ContactList" type="user" func="create"]-->"><!--[pnml name="_CONTACTLISTCREATEBUDDY"]--></a>
+<!--[if $ignore eq 1]--> | <a href="<!--[pnmodurl modname="ContactList" type="user" func="ignore"]-->"><!--[pnml name="_CONTACTLISTSHOWIGNORELIST"]--></a><!--[/if]-->
+]
+<br /><br />

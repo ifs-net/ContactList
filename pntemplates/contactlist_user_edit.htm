@@ -1,0 +1,19 @@
+<!--[include file="contactlist_user_header.htm"]-->
+
+<h3><!--[pnml name="_CONTACTLISTEDITINFO"]--></h3>
+<!--[pnform]-->
+	<!--[pnformvalidationsummary]-->
+	<!--[if $nopubliccomment eq 0]-->
+		<br /><br />
+		<!--[pnformlabel for="pub_comment" text="_CONTACTLISTPUBCOMMENT" ]-->:<br />
+		<!--[pnformtextinput id="pub_comment" textMode=multiline]-->
+	<!--[/if]-->
+	<br /><br />
+	<!--[pnformlabel for=prv_comment text="_CONTACTLISTPRVCOMMENT"]-->:<br />
+	<!--[pnformtextinput id=prv_comment textMode=multiline]-->
+	<br /><br />
+	<!--[pnformbutton commandName="update" text=_CONTACTLISTUPDATEINFO]-->
+<!--[/pnform]-->
+<!--[pndebug output="html"]-->
+
+<!--[include file="contactlist_user_footer.htm"]-->

@@ -1,0 +1,69 @@
+<!--[ admincategorymenu xhtml=1 ]-->
+<div class="pn-admincontainer">
+    <div>
+	<!--[pngetstatusmsg]-->
+
+	<h1><!--[pnml name=_CONTACTLISTBACKEND]--></h1>
+	<!--[pnformvalidationsummary]-->
+	
+	<fieldset>
+	<legend><!--[pnml name="_CONTACTLISTCONFIG"]--></legend>
+	<!--[pnform]-->
+		<fieldset>
+		<legend><!--[pnml name="_CONTACTLISTMAINCONFIG"]--></legend>
+
+		    <!--[pnformcheckbox id="useignore" checked="0"]--><!--[pnformlabel for="useignore" text="_CONTACTLISTUSEIGNORE"]--><br />
+		    <!--[pnformcheckbox id="noconfirm" checked="0"]--><!--[pnformlabel for="noconfirm" text="_CONTACTLISTNOCONFIRM"]--><br />
+		    <!--[pnformcheckbox id="nopubliccomment" checked="0"]--><!--[pnformlabel for="nopubliccomment" text="_CONTACTLISTNOPUBLICCOMMENTS"]--><br />
+
+		</fieldset>
+		<fieldset>
+		<legend><!--[pnml name="_CONTACTLISTCONFIGBIRTHDAYPLUGIN"]--></legend>
+
+		    <!--[pnml name="_CONTACTLISTGEBDATECONF"]--><br /><br />
+		    <!--[if $myprofile eq 1 and $items_myprofile|@count gt 0]-->
+			    <!--[pnformcheckbox id="usemyprofilebirthday" checked="0"]--><!--[pnformlabel for="usemyprofilebirthday" text="_CONTACTLISTMYPROFILEFIELD"]--> 
+			    <!--[pnformdropdownlist id="myprofilebirthday" items=$items_myprofile]--><br />
+		    <!--[/if]-->
+	
+			<!--[if $profile eq 1 and $myprofile eq 1]--><!--[pnml name="_CONTACTLISTOR"]-->...<br /><!--[/if]-->
+			
+		    <!--[if $profile eq 1]-->
+			    <!--[pnformcheckbox id="useprofilebirthday" checked="0"]--><!--[pnformlabel for="useprofilebirthday" text="_CONTACTLISTPROFILEFIELD"]-->: 
+			    <!--[pnformtextinput id="profilebirthday" maxLength="80"]--><br />
+		    <!--[/if]-->
+			<br />
+			<!--[pnformlabel for="dateformat" text="_CONTACTLISTDATEFORMAT"]--><br />
+		    <!--[pnformtextinput id="dateformat" maxLength="20"]--><br />		
+	
+		</fieldset>
+		<br />
+		<!--[pnformbutton commandName="update" text="_CONTACTLISTUPDATECONFIG"]-->
+	<!--[/pnform]-->
+	</fieldset>
+	
+	<fieldset>
+	<legend><!--[pnml name="_CONTACTLISTSUPPORTCONTACTLIST"]--></legend>
+	<!--[pnml name="_CONTACTLISTDONATE"]-->
+	<form name="_xclick" action="https://www.paypal.com/de/cgi-bin/webscr" method="post">
+	<input type="hidden" name="cmd" value="_xclick" />
+	<input type="hidden" name="business" value="florian.schiessl@ifs-net.de" />
+	<input type="hidden" name="item_name" value="Donation for the CONTACTLISTs module" />
+	<select name="amount">
+	<option value="5">5&nbsp;</option>
+	<option value="10" selected="selected">10&nbsp;</option>
+	<option value="15">15&nbsp;</option>
+	<option value="20">20&nbsp;</option>
+	<option value="25">25&nbsp;</option>
+	</select>
+	<select name="currency_code">
+	<option value="USD" selected="selected">USD&nbsp;</option>
+	<option value="EUR">EUR&nbsp;</option>
+	</select>
+	<input type="submit" name="submit" value="<!--[pnml name="_CONTACTLISTDONATETHIS"]-->"/>
+	</form>
+	</fieldset>
+	<br />
+
+	</div>
+</div>

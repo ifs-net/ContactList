@@ -1,0 +1,11 @@
+<h3><!--[pnml name="_CONTACTLISTMYBUDDIES"]--></h3>
+<!--[pnml name="_CONTACTLISTTHEUSERHAS"]--> <!--[$buddies|@count]--> <!--[pnml name="_CONTACTLISTBUDDIES"]-->
+<div>
+<!--[foreach from=$buddies item="buddy"]-->
+	<div class="contactlist_tab_buddy">
+	<!--[pnusergetvar name="uname" uid=$buddy.bid assign="uname"]-->
+	<!--[$uname|userprofilelink]--><br />
+	<!--[if $nopubliccomment eq 0 and $buddy.pub_comment ne ""]-->ddd<!--[$buddy.pub_comment]--><!--[/if]-->
+	</div>
+<!--[/foreach]-->
+</div>
