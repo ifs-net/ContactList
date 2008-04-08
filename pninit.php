@@ -7,8 +7,8 @@
 function ContactList_init()
 {
 
-    if (!DBUtil::createTable('contactlist_ignorelist')) return false;
-    if (!DBUtil::createTable('contactlist_buddylist')) return false;
+    if (!DBUtil::createTable('ContactList_ignorelist')) return false;
+    if (!DBUtil::createTable('ContactList_buddylist')) return false;
 
 	// Set some default values for module variables
 	pnModSetVar('usemyprofilebirthday','usemyprofilebirthday','');
@@ -18,7 +18,7 @@ function ContactList_init()
 	pnModSetVar('ContactList','useignore',1);
 	pnModSetVar('ContactList','noconfirm',0);
 	pnModSetVar('ContactList','nopubliccomment',0);
-    pnModSetVar('ContactList','dateformat','%d.%m.%Y'));	
+  pnModSetVar('ContactList','dateformat','%d.%m.%Y');	
 
 
     // Initialisation successful
@@ -33,8 +33,8 @@ function ContactList_init()
 function ContactList_delete()
 {
     // Delete the table
-    if (!DBUtil::dropTable('contactlist_ignorelist')) return false;
-    if (!DBUtil::dropTable('contactlist_buddylist')) return false;
+    if (!DBUtil::dropTable('ContactList_ignorelist')) return false;
+    if (!DBUtil::dropTable('ContactList_buddylist')) return false;
 
 	// Delete all module variables
 	pnModDelVar('ContactList');

@@ -111,7 +111,7 @@ class contactlist_user_editHandler {
 	  	$this->id = (int)FormUtil::getPassedValue('id');
 	  	if (!($this->id > 0)) return false;
 		if ($this->id > 0) {
-			$data = DBUtil::selectObjectByID('contactlist_buddylist', $this->id);
+			$data = DBUtil::selectObjectByID('ContactList_buddylist', $this->id);
 			if ($data['uid'] != pnUserGetVar('uid')) {
 			  	LogUtil::registerError(_CONTACTLISTFOREIGNBUDDY);  
 			  	return pnRedirect(pnModURL('ContactList','user','main'));
@@ -129,14 +129,14 @@ class contactlist_user_editHandler {
 			if (!$render->pnFormIsValid()) return false;
 			$data = $render->pnFormGetValues();
 			// get "original" object
-			$obj = DBUtil::selectObjectByID('contactlist_buddylist',$this->id);
+			$obj = DBUtil::selectObjectByID('ContactList_buddylist',$this->id);
 			if ($obj['uid'] != pnUserGetVar('uid')) {
 			  	LogUtil::registerError(_CONTACTLISTFOREIGNBUDDY);  
 			  	return pnRedirect(pnModURL('ContactList','user','main'));
 			}
 			$obj['prv_comment'] = $data['prv_comment'];
 			$obj['pub_comment'] = $data['pub_comment'];
-			if (DBUtil::updateObject($obj,'contactlist_buddylist')) LogUtil::registerStatus(_CONTACTLISTBUDDYUPDATED);
+			if (DBUtil::updateObject($obj,'ContactList_buddylist')) LogUtil::registerStatus(_CONTACTLISTBUDDYUPDATED);
 			else LogUtil::registerStatus(_CONTACTLISTBUDDYUPDATEFAILED);
 			return pnRedirect(pnModURL('ContactList','user','main'));
 		}
@@ -175,8 +175,8 @@ class contactlist_user_createHandler {
 			if (pnModAPIFunc('ContactList','user','create',array(	
 						'uid'			=> $uid,
 						'bid'			=> $bid,
-						'prvcomment'	=> $data['prvcomment'],
-						'pubcomment'	=> $data['pubcomment'],
+						'prv_comment'	=> $data['prv_comment'],
+						'pub_comment'	=> $data['pub_comment'],
 						'request_text'	=> $data['request_text']
 						))) return pnRedirect(pnModURL('ContactList', 'user', 'main'));		
 			else return false;
