@@ -1,4 +1,6 @@
 <?php
+Loader::requireOnce('modules/ContactList/common.php');
+
 /**
  * get all buddys
  * 
@@ -38,8 +40,10 @@ function ContactList_userapi_getall($args) {
 			    foreach ($res as $item) {
 				    $data = pnModAPIFunc('MyProfile','user','getUserVars',array('name' => $myprofilebirthday, 'uid' => $item['bid']));
 			     	$item['birthday'] = $data['value'];
+			      	$item['nextbirthday'] = $item['birthday'][5].$item['birthday'][6].$item['birthday'][8].$item['birthday'][9];
 				  	$r[] = $item;
 				}
+				$result = $r;
 			}
 
 			else if ($profile) {				// otherwise we'll use the regular profile plugin
@@ -47,16 +51,25 @@ function ContactList_userapi_getall($args) {
 			    $profilebirthday = pnModGetVar('ContactList','profilebirthday');
 			    foreach ($res as $item) {
 			      	$item['birthday'] = pnUserGetVar($profilebirthday);
+			      	$item['nextbirthday'] = $item['birthday'][5].$item['birthday'][6].$item['birthday'][8].$item['birthday'][9];
 				  	$r[] = $item;
 				}
+				$result = $r;
 			}
-
-			else return $res;					// no MyProfile or Profile but a birthday request...
-			return $r;							// return result including the birthday date
+			else $result = $res;					// no MyProfile or Profile but a birthday request...
 		}
-		else return $res;
+		else $result = $res;
 	}
 	else return;
+	// shoud we apply an "order by"?
+	if (isset($args['sort'])) {		// Apply an "order by"?
+		foreach ($result as $key => $row) {
+		    if ($args['sort'] == 'birthday') $sort[$key]  = $row['birthday'];
+		    if ($args['sort'] == 'nextbirthday') $sort[$key]  = $row['nextbirthday'];
+		}	
+		array_multisort($sort, SORT_ASC, $result);
+	}
+	return $result;
 }
 
 /**
@@ -294,9 +307,11 @@ function ContactList_userapi_ignoreUser($args) {
  *
  * @param	$args['uid']	int			user id
  * @param	$args['iuid']	int			ignored user id
+ * @param	$args['sort']	string		identifier value to sort the list for (iuname,uname)
  * @return 	boolean
  */
 function ContactList_userapi_getallignorelist($args) {
+  
   	// return false if ignore list functionallity is disabled by the admin
   	if (!pnModGetVar('ContactList','useignore')) return false;
   	// otherwise do some checks
@@ -311,6 +326,14 @@ function ContactList_userapi_getallignorelist($args) {
 	  	$item['uname'] 	= pnUserGetVar('uname',$item['uid']);
 	  	$item['iuname']	= pnUserGetVar('uname',$item['iuid']);
 	  	$ignorelist[] = $item;
+	}
+
+	if (isset($args['sort'])) {		// Apply an "order by"?
+		foreach ($ignorelist as $key => $row) {
+		    if ($args['sort'] == 'iuname') $sort[$key]  = $row['iuname'];
+		    else if ($args['sort'] == 'uname') $sort[$key]  = $row['uname'];
+		}	
+		array_multisort(	$sort, SORT_ASC, $ignorelist);
 	}
 	return $ignorelist;
 }
@@ -366,6 +389,7 @@ function ContactList_userapi_getBuddyList($args) {
 		'state'		=> '1')					);
 	if (count($buddies)==0) return false;
 	foreach ($buddies as $buddy) $res[] = array('uid' => $buddy['bid'], 'uname' => pnUserGetVar('uname',$buddy['bid']));
+	
   	return $res;
 }
 ?>

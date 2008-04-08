@@ -35,22 +35,23 @@ function ContactList_user_main()
 	$uid = pnUserGetVar('uid');
 	$render->assign('dateformat',pnModGetVar('ContactList','dateformat'));
 	$render->assign('buddies_unconfirmed',pnModAPIFunc('ContactList','user','getall',
-									array(	'bid'	=> $uid,
-											'state'	=> 0 ) ));
+									array(	'bid'		=> $uid,
+											'state'		=> 0 ) ));
 	$buddies_pending = pnModAPIFunc('ContactList','user','getall',
-									array(	'uid'	=> $uid,
-											'state'	=> 0 ) );
+									array(	'uid'		=> $uid,
+											'state'		=> 0 ) );
 	$buddies_confirmed = pnModAPIFunc('ContactList','user','getall',
-									array(	'uid'	=> $uid,
-											'state'	=> 1,
-											'birthday' => true
+									array(	'uid'		=> $uid,
+											'state'		=> 1,
+											'birthday'	=> true,
+//											'sort'		=> 'nextbirthday'
 											) );
 	$buddies_rejected = pnModAPIFunc('ContactList','user','getall',
-									array(	'uid'	=> $uid,
-											'state'	=> 2 ) );
+									array(	'uid'		=> $uid,
+											'state'		=> 2 ) );
 	$buddies_suspended = pnModAPIFunc('ContactList','user','getall',
-									array(	'uid'	=> $uid,
-											'state'	=> 3 ) );
+									array(	'uid'		=> $uid,
+											'state'		=> 3 ) );
 	foreach ($buddies_pending   as $buddy) $buddies[]=$buddy;
 	foreach ($buddies_confirmed as $buddy) $buddies[]=$buddy;
 	foreach ($buddies_suspended as $buddy) $buddies[]=$buddy;
@@ -97,7 +98,7 @@ function ContactList_user_ignore()
 
 	// Create output
 	$render = FormUtil :: newpnForm('ContactList');
-	$render->assign('ignorelist',pnModAPIFunc('ContactList','user','getallignorelist',array('uid' => pnUserGetVar('uid'))));
+	$render->assign('ignorelist',pnModAPIFunc('ContactList','user','getallignorelist',array('uid' => pnUserGetVar('uid'), 'sort' => 'iuname')));
   	$render->assign('authid',SecurityUtil::generateAuthKey());
   	
   	// check for action
