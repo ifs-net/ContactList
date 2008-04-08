@@ -138,7 +138,7 @@ function ContactList_user_create()
 class contactlist_user_ignoreHandler {
 	function initialize(& $render) {
 	  	$uname = FormUtil::getPassedValue('uname');
-	  	if (isset($uname) && (pnUserGetIDFromName($uname) > 0)) $render->assign('uname',$uname);
+	  	if (isset($uname) && (pnUserGetIDFromName($uname) > 1)) $render->assign('uname',$uname);
 	  	return true;
 	}
 	function handleCommand(& $render, & $args) {
@@ -154,7 +154,7 @@ class contactlist_user_ignoreHandler {
 			  	return false;
 			}
 			// does the user exist?
-			if (!($iuid > 0)) {
+			if (!($iuid > 1)) {
 			  	LogUtil::registerError(_CONTACTLISTUSERNOTFOUND);
 			  	return false;
 			}
@@ -172,8 +172,8 @@ class contactlist_user_editHandler {
 	function initialize(& $render) {
 	  	// get buddy object
 	  	$this->id = (int)FormUtil::getPassedValue('id');
-	  	if (!($this->id > 0)) return false;
-		if ($this->id > 0) {
+	  	if (!($this->id > 1)) return false;
+		if ($this->id > 1) {
 			$data = DBUtil::selectObjectByID('ContactList_buddylist', $this->id);
 			if ($data['uid'] != pnUserGetVar('uid')) {
 			  	LogUtil::registerError(_CONTACTLISTFOREIGNBUDDY);  
@@ -209,7 +209,7 @@ class contactlist_user_editHandler {
 class contactlist_user_createHandler {
 	function initialize(& $render) {
 	  	$uname = FormUtil::getPassedValue('uname');
-	  	if (isset($uname) && (pnUserGetIDFromName($uname) > 0)) $render->assign('uname',$uname);
+	  	if (isset($uname) && (pnUserGetIDFromName($uname) > 1)) $render->assign('uname',$uname);
 	  	return true;
 	}
 	function handleCommand(& $render, & $args) {
@@ -225,7 +225,7 @@ class contactlist_user_createHandler {
 			  	return false;
 			}
 			// valid user name?
-			if (!($bid > 0)) {
+			if (!($bid > 1)) {
 			  	LogUtil::registerError(_CONTACTLISTUNAMEINVALID);
 			  	return false;
 			}

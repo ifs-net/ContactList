@@ -76,7 +76,7 @@ function ContactList_userapi_create($args) {
   	$prv_comment 	= $args['prv_comment'];
   	$pub_comment 	= $args['pub_comment'];
   	$request_text 	= $args['request_text'];
-  	if (!($uid > 0) || !($bid > 0)) return false;
+  	if (!($uid > 1) || !($bid > 1)) return false;
   	// now add or create the request
 	$noconfirm = pnModGetVar('ContactList','noconfirm');
 	if ($noconfirm) {
@@ -279,7 +279,7 @@ function ContactList_userapi_ignoreUser($args) {
   	$uid 	= (int)$args['uid'];
   	$iuid 	= (int)$args['iuid'];
   	if ($uid == $iuid) return false;
-  	if (!($uid>0) || !($iuid>0)) return false;
+  	if (!($uid > 1) || !($iuid > 1)) return false;
   	$obj = array (
   		'uid'	=> $uid,
   		'iuid'	=> $iuid
@@ -302,9 +302,9 @@ function ContactList_userapi_getallignorelist($args) {
   	// otherwise do some checks
   	$uid 	= (int)$args['uid'];
   	$iuid 	= (int)$args['iuid'];
-  	if (($uid > 0) && ($iuid > 0)) $where = 'iuid = '.$iuid.' and uid = '.$uid;
-  	else if ($uid > 0) $where = 'uid = '.$uid;
-  	else if ($iuid > 0) $where = 'iuid = '.$iuid;
+  	if (($uid > 1) && ($iuid > 1)) $where = 'iuid = '.$iuid.' and uid = '.$uid;
+  	else if ($uid > 1) $where = 'uid = '.$uid;
+  	else if ($iuid > 1) $where = 'iuid = '.$iuid;
   	// get database result
 	$res = DBUtil::selectObjectArray('contactlist_ignorelist',$where);
 	foreach ($res as $item) {
@@ -330,7 +330,7 @@ function ContactList_userapi_isIgnored($args) {
   	$uid 	= (int)$args['uid'];
   	$iuid 	= (int)$args['iuid'];
   	if ($uid == $iuid) return false;
-  	if (!($uid>0) || !($iuid>0)) return false;
+  	if (!($uid > 1) || !($iuid > 1)) return false;
   	$where = 'uid = '.$uid.' and iuid = '.$iuid;
 	$res = DBUtil::selectObjectArray('contactlist_ignorelist',$where);
 	if (count($res)>0) return true;
@@ -346,7 +346,7 @@ function ContactList_userapi_isIgnored($args) {
 function ContactList_userapi_deleteIgnoredUser($args) {
   	$iuid = (int) $args['iuid'];
   	$uid = pnUserGetVar('uid');
-  	if (!isset($iuid) || (!($iuid > 0))) return false;
+  	if (!isset($iuid) || (!($iuid > 1))) return false;
   	// get ignore link
   	$objects = ContactList_userapi_getallignorelist(array('uid' => $uid, 'iuid' => $iuid));
 	return DBUtil::deleteObject($objects[0],'contactlist_ignorelist');
