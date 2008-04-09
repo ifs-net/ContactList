@@ -55,6 +55,8 @@ function ContactList_NextBirthdaysblock_display($blockinfo)
 		}
 	  	if ($c==$vars['numitems']) break;
 	}
+	// return if no buddy is out there
+	if ($c==0) return false;
     $render->assign('buddies',$res);
 
     $blockinfo['content'] = $render->fetch('contactlist_block_nextbirthdays.htm');
