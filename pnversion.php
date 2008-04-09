@@ -2,9 +2,9 @@
 
 // The following information is used by the Modules module 
 // for display and upgrade purposes
-$modversion['name']           = _CONTACTLIST_NAME;
-$modversion['description']    = _CONTACTLIST_DESCRIPTION; 
-$modversion['displayname']    = _CONTACTLIST_DISPLAYNAME;
+$modversion['name']           = 'ContactList';
+$modversion['description']    = _CONTACTLISTDESCRIPTION; 
+$modversion['displayname']    = _CONTACTLISTDISPLAYNAME;
 // the version string must not exceed 10 characters!
 $modversion['version']        = '1.0';
 
@@ -24,4 +24,4 @@ $modversion['admin']          = 1;
 
 // This one adds the info to the DB, so that users can click on the 
 // headings in the permission module
-$modversion['securityschema'] = array('ContactList::' => 'UID::');
+$modversion['securityschema'] = array('ContactList::' => 'uid::');
