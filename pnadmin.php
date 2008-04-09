@@ -23,6 +23,7 @@ class ContactList_admin_editConfigHandler
 		$render->assign('noconfirm',pnModGetVar('ContactList','noconfirm'));
 		$render->assign('useignore',pnModGetVar('ContactList','useignore'));
 		$render->assign('dateformat',pnModGetVar('ContactList','dateformat'));
+		$render->assign('nopublicbuddylist',pnModGetVar('ContactList','nopublicbuddylist'));
 		$render->assign('myprofilebirthday',pnModGetVar('ContactList','myprofilebirthday'));
 		$render->assign('usemyprofilebirthday',pnModGetVar('ContactList','usemyprofilebirthday'));
 		$render->assign('profilebirthday',pnModGetVar('ContactList','profilebirthday'));
@@ -57,6 +58,7 @@ class ContactList_admin_editConfigHandler
 		    pnModSetVar('ContactList','noconfirm',$obj['noconfirm']);
 		    pnModSetVar('ContactList','useignore',$obj['useignore']);
 		    pnModSetVar('ContactList','dateformat',$obj['dateformat']);
+		    pnModSetVar('ContactList','nopublicbuddylist',$obj['nopublicbuddylist']);
 		    pnModSetVar('ContactList','myprofilebirthday',$obj['myprofilebirthday']);
 		    pnModSetVar('ContactList','usemyprofilebirthday',$obj['usemyprofilebirthday']);
 		    pnModSetVar('ContactList','profilebirthday',$obj['profilebirthday']);

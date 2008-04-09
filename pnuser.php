@@ -71,6 +71,8 @@ function ContactList_user_main()
  */
 function ContactList_user_display($args)
 {
+  	// check if buddy list is public
+  	if (pnModGetVar('ContactList','nopublicbuddylist')) return LogUtil::registerPermissionError();
 	$uid = (int) FormUtil::getPassedValue('uid', (isset($args['uid'])) ? $args['uid'] : null, 'GET');
 	unset($args);
 	if (!$uid) return LogUtil::registerError(_GETFAILED);
