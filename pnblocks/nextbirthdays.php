@@ -49,8 +49,10 @@ function ContactList_NextBirthdaysblock_display($blockinfo)
 	$c=0;
 	foreach ($buddies as $buddy) {
 	  	$buddy['uname'] = pnUserGetVar('uname',$buddy['bid']);
-	  	$res[] = $buddy;
-	  	$c++;
+	  	if ($buddy['daystonextbirthday'] >= 0) {
+		  	$res[] = $buddy;
+		  	$c++;
+		}
 	  	if ($c==$vars['numitems']) break;
 	}
     $render->assign('buddies',$res);

@@ -34,6 +34,10 @@ function ContactList_userapi_getall($args) {
 		  	$myprofile = (pnModGetVar('ContactList','usemyprofilebirthday') && pnModAvailable('MyProfile'));
 		  	$profile = (pnModGetVar('ContactList','useprofilebirthday') && pnModAvailable('Profile'));
 
+			// some preparations for the birthday days calculation
+			$now = mktime(23, 59, 59, date("m",time()), date("d",time()), date("Y",time()));
+			$year = date("Y",$now);
+
 		  	if ($myprofile)	{					// if myprofile is activated and used as birthday date provider continue ;-)
 			    $myprofilebirthday = pnModGetVar('ContactList','myprofilebirthday');
 			    foreach ($res as $item) {
@@ -41,12 +45,13 @@ function ContactList_userapi_getall($args) {
 			     	$item['birthday'] = $data['value'];
 			      	$item['nextbirthday'] = $item['birthday'][5].$item['birthday'][6].$item['birthday'][8].$item['birthday'][9];
 			      	// calculate days to next birthday
-			      	$birth_array = explode("-",$item['birthday']);
-					$now = mktime(23, 59, 59, date("m",time()), date("d",time()), date("Y",time()));
-					$year = date("Y",$now);
-			      	$act_birthday = mktime(23, 59, 59, $birth_array[1], $birth_array[2], $year);
-			      	if ($act_birthday < $now) $act_birthday = mktime(23, 59, 59, $birth_array[1], $birth_array[2], ($year+1));
-			      	$item['daystonextbirthday'] = round(($act_birthday-$now)/60/60/24);
+			      	if ($item['birthday'] != '') {
+				      	$birth_array = explode("-",$item['birthday']);
+				      	$act_birthday = mktime(23, 59, 59, $birth_array[1], $birth_array[2], $year);
+				      	if ($act_birthday < $now) $act_birthday = mktime(23, 59, 59, $birth_array[1], $birth_array[2], ($year+1));
+				      	$item['daystonextbirthday'] = round(($act_birthday-$now)/60/60/24);
+				    }
+				    else $item['daystonextbirthday'] = -1;
 				  	$r[] = $item;
 				}
 				$result = $r;
@@ -59,12 +64,13 @@ function ContactList_userapi_getall($args) {
 			      	
 			      	$item['nextbirthday'] = $item['birthday'][5].$item['birthday'][6].$item['birthday'][8].$item['birthday'][9];
 			      	// calculate days to next birthday
-			      	$birth_array = explode("-",$item['birthday']);
-					$now = mktime(23, 59, 59, date("m",time()), date("d",time()), date("Y",time()));
-					$year = date("Y",$now);
-			      	$act_birthday = mktime(23, 59, 59, $birth_array[1], $birth_array[2], $year);
-			      	if ($act_birthday < $now) $act_birthday = mktime(23, 59, 59, $birth_array[1], $birth_array[2], ($year+1));
-			      	$item['daystonextbirthday'] = round(($act_birthday-$now)/60/60/24);
+			      	if ($item['birthday'] != '') {
+				      	$birth_array = explode("-",$item['birthday']);
+				      	$act_birthday = mktime(23, 59, 59, $birth_array[1], $birth_array[2], $year);
+				      	if ($act_birthday < $now) $act_birthday = mktime(23, 59, 59, $birth_array[1], $birth_array[2], ($year+1));
+				      	$item['daystonextbirthday'] = round(($act_birthday-$now)/60/60/24);
+				    }
+				    else $item['daystonextbirthday'] = -1;
 				  	$r[] = $item;
 				}
 				$result = $r;
