@@ -118,11 +118,11 @@ function ContactList_userapi_create($args) {
   	if (count($result) == 1) {
   	  	$conn = $result[0];
   	  	// now set the state to 0 or 1 and do not overwrite comments etc.
-  	  	if ($noconfirm)	{
-			$conn['state'] = 1; 
-			DBUtil::updateObject($conn,'contactlist_buddylist');
-	  	  	$nocounterconnection = true;
-			}
+  	  	// even if confirmation is set to true we will not ask for confirmation
+  	  	// because the connection is wanted from both sides now...
+		$conn['state'] = 1; 
+		DBUtil::updateObject($conn,'contactlist_buddylist');
+  	  	$nocounterconnection = true;
 	}
   	
   	// now add or create the request
@@ -167,6 +167,8 @@ function ContactList_userapi_create($args) {
 	  		'pub_comment'	=> $pub_comment,
 	  		'request_text'	=> $request_text
 		  	);
+		// update an old rejected connection if needed
+	  	if ($nocounterconnection) $obj['state']=1;
 		if (DBUtil::insertObject($obj,'contactlist_buddylist')) {
 		  	LogUtil::registerStatus(_CONTACTLISTREQUESTSENT);
 		  	// send email
