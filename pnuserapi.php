@@ -82,6 +82,18 @@ function ContactList_userapi_getall($args) {
 	}
 	else return;
 
+	// get all online users to include the user's online status into the result list
+	// also assign usernames
+  	$online_list = _cl_getOnline();
+	foreach ($result as $res) {
+	  	// online status
+	  	$res['online'] = in_array($res['bid'],$online_list);
+	  	// user name
+	  	if (isset($args['bid'])) $res['uname'] = pnUserGetVar('uname',$res['uid']);
+	  	if (isset($args['uid'])) $res['uname'] = pnUserGetVar('uname',$res['bid']);
+	  	$result_online[] = $res;
+	}
+
 	// shoud we apply an "order by"?
 	if (isset($args['sort'])) {		// Apply an "order by"?
 		foreach ($result as $key => $row) {
@@ -89,15 +101,9 @@ function ContactList_userapi_getall($args) {
 		    else if ($args['sort'] == 'nextbirthday') $sort[$key]  = $row['nextbirthday'];
 		    else if ($args['sort'] == 'daystonextbirthday') $sort[$key]  = $row['daystonextbirthday'];
 		    else if ($args['sort'] == 'state') $sort[$key]  = $row['state'];
+		    else if ($args['sort'] == 'uname') $sort[$key]  = $row['uname'];
 		}	
 		array_multisort($sort, SORT_ASC, $result);
-	}
-
-	//get all online users to include the user's online status into the result list
-  	$online_list = _cl_getOnline();
-	foreach ($result as $res) {
-	  	$res['online'] = in_array($res['bid'],$online_list);
-	  	$result_online[] = $res;
 	}
 
 	// return result;
