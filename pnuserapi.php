@@ -1,4 +1,5 @@
 <?php
+Loader::requireOnce('modules/ContactList/common.php');
 
 /**
  * get all buddys
@@ -80,6 +81,7 @@ function ContactList_userapi_getall($args) {
 		else $result = $res;
 	}
 	else return;
+
 	// shoud we apply an "order by"?
 	if (isset($args['sort'])) {		// Apply an "order by"?
 		foreach ($result as $key => $row) {
@@ -89,7 +91,16 @@ function ContactList_userapi_getall($args) {
 		}	
 		array_multisort($sort, SORT_ASC, $result);
 	}
-	return $result;
+
+	//get all online users to include the user's online status into the result list
+  	$online_list = _cl_getOnline();
+	foreach ($result as $res) {
+	  	$res['online'] = in_array($res['bid'],$online_list);
+	  	$result_online[] = $res;
+	}
+
+	// return result;
+	return $result_online;
 }
 
 /**
