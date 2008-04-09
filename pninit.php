@@ -18,8 +18,8 @@ function ContactList_init()
 	pnModSetVar('ContactList','useignore',1);
 	pnModSetVar('ContactList','noconfirm',0);
 	pnModSetVar('ContactList','nopubliccomment',0);
-  pnModSetVar('ContactList','dateformat','%d.%m.%Y');	
-
+	pnModSetVar('ContactList','dateformat','%d.%m.%Y');	
+	pnModSetVar('ContactList','nopublicbuddylist',0);
 
     // Initialisation successful
     return true;
