@@ -49,7 +49,7 @@ function ContactList_user_main()
 											'sort'		=> 'uname'
 											) );
 	}
-	else {	// assign all we have ;-)
+	else {	// assign and fetch all data all we have otherwise
 		$buddies_pending = pnModAPIFunc('ContactList','user','getall',
 										array(	'uid'		=> $uid,
 												'sort'		=> 'uname',
