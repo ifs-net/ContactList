@@ -47,6 +47,7 @@ function ContactList_NextBirthdaysblock_display($blockinfo)
 											'birthday'	=> true,
 											'sort'		=> 'daystonextbirthday') );
 	$c=0;
+	if (!(count($buddies)>0)) return false;
 	foreach ($buddies as $buddy) {
 	  	$buddy['uname'] = pnUserGetVar('uname',$buddy['bid']);
 	  	if ($buddy['daystonextbirthday'] >= 0) {
@@ -62,7 +63,6 @@ function ContactList_NextBirthdaysblock_display($blockinfo)
     $blockinfo['content'] = $render->fetch('contactlist_block_nextbirthdays.htm');
     return themesideblock($blockinfo);
 }
-
 
 /**
  * modify block settings
