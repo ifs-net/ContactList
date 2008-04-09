@@ -64,26 +64,26 @@ function ContactList_user_main()
 	return $render->fetch('contactlist_user_main.htm');
 }
 
+/**
+ * display a user's buddy list
+ * 
+ * @return       output
+ */
 function ContactList_user_display($args)
 {
-
-  $uid = (int) FormUtil::getPassedValue('uid', (isset($args['uid'])) ? $args['uid'] : null, 'GET');
-  unset($args);
-
-  if (!$uid) {
-      return LogUtil::registerError(_GETFAILED);
-  }
+	$uid = (int) FormUtil::getPassedValue('uid', (isset($args['uid'])) ? $args['uid'] : null, 'GET');
+	unset($args);
+	if (!$uid) return LogUtil::registerError(_GETFAILED);
 
 	// Security check 
 	if (!SecurityUtil::checkPermission('ContactList::', '::', ACCESS_READ)) return LogUtil::registerPermissionError();
 	
-   	// generate output
+   	// generate and return output
  	$render = pnRender::getInstance('ContactList');
  	$render->assign('uid',$uid);
 	$buddies = pnModAPIFunc('ContactList','user','getall', array('uid' => $uid, 'state' => 1 ) );
  	$render->assign('buddies',$buddies);
  	$render->assign('nopubliccomment',(int)pnModGetVar('ContactList','nopubliccomment'));
-	// return output
 	return $render->fetch('contactlist_user_display.htm');
 }
 

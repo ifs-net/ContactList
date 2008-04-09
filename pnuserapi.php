@@ -97,6 +97,8 @@ function ContactList_userapi_getall($args) {
  * @return	boolean
  */
 function ContactList_userapi_create($args) {
+  	// ToDo: BUG BUG BUG: A lehnt B sienen Antrag ab. A hat zu B eine beziehung, umgekehrt nicht.
+  	// dann fragt B A an => es entstehen zwei versch. beziehungen von A zu B dadurch. Update der alten beziehung notwendig!
   	// some checks
   	$uid 			= $args['uid'];
   	$bid 			= $args['bid'];
