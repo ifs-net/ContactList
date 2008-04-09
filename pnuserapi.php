@@ -111,7 +111,7 @@ function ContactList_userapi_create($args) {
 	  		'bid'			=> $bid,
 	  		'uid'			=> $uid,
 	  		'state'			=> 1,
-	  		'date'			=> date("Y-m-d"),
+	  		'date'			=> date("Y-m-d H:i:s"),
 	  		'prv_comment'	=> $prv_comment,
 	  		'pub_comment'	=> $pub_comment,
 		  	);
@@ -119,7 +119,7 @@ function ContactList_userapi_create($args) {
 	  		'bid'			=> $uid,
 	  		'uid'			=> $bid,
 	  		'state'			=> 1,
-	  		'date'			=> date("Y-m-d"),
+	  		'date'			=> date("Y-m-d H:i:s"),
 	  		'prv_comment'	=> $prv_comment,
 	  		'pub_comment'	=> $pub_comment,
 		  	);
@@ -141,7 +141,7 @@ function ContactList_userapi_create($args) {
 	  		'bid'			=> $bid,
 	  		'uid'			=> $uid,
 	  		'state'			=> 0,
-	  		'date'			=> date("Y-m-d"),
+	  		'date'			=> date("Y-m-d H:i:s"),
 	  		'prv_comment'	=> $prv_comment,
 	  		'pub_comment'	=> $pub_comment,
 	  		'request_text'	=> $request_text
@@ -263,7 +263,7 @@ function ContactList_userapi_confirm($args) {
 	// create counterpart
 	$counterobj = array	(	'uid'	=>	$obj['bid'],
 							'bid'	=>	$obj['uid'],
-							'date'	=>	date("d.m.Y",time()),
+							'date'	=>	date("Y-m-d H:i:s"),
 							'state'	=>	1);
   	DBUtil::insertObject($counterobj,'contactlist_buddylist');
 

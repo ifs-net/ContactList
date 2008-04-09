@@ -48,7 +48,7 @@ function ContactList_pntables()
 						'prv_comment'	=>	"XL NOTNULL DEFAULT ''",
 						'pub_comment'	=>	"XL NOTNULL DEFAULT ''",
 						'request_text'	=>	"XL NOTNULL DEFAULT ''",
-						'date'			=>	"D",
+						'date'			=>	"T",
 						'state'			=>	"I(1) NOTNULL DEFAULT 0"
 						);
 
