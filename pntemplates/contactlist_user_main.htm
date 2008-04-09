@@ -27,7 +27,7 @@
 <h3><!--[pnml name="_CONTACTLISTYOURBUDDIES"]--></h3>
 
 <!--[pnml name="_CONTACTLISTBUDDIESAMOUNT"]-->: <!--[$contacts]-->.<br /><br />
-<!--[if $contacts gt 0]-->
+<!--[if $contacts_all gt 0]-->
 	<table>
 		<tr>
 		<th><!--[pnml name="_CONTACTLISTUNAME"]--></th>
@@ -68,7 +68,7 @@
 		</td><td>
 			<!--[if $buddy.state eq 1]--><a href="<!--[pnmodurl modname="ContactList" type="user" func="edit" id=$buddy.id]-->"><!--[pnml name="_CONTACTLISTEDIT"]--></a><br /><!--[/if]-->
 			<!--[if $buddy.state ne 0 and $buddy.state ne 3]--><a href="<!--[pnmodurl modname="ContactList" type="user" func="main" action="suspend" authid=$authid id=$buddy.id]-->" onclick="return confirm('<!--[pnml name="_CONTACTLISTREALLYSUSPEND"]-->')"><!--[pnml name="_CONTACTLISTSUSPEND"]--></a><br /><!--[/if]-->
-			<!--[if $buddy.state eq 3]--><a href="<!--[pnmodurl modname="ContactList" type="user" func="main" action="suspend" authid=$authid id=$buddy.id ne="1"]-->"><!--[pnml name="_CONTACTLISTDELETE"]--></a><br /><!--[/if]-->		
+			<!--[if $buddy.state eq 3]--><a href="<!--[pnmodurl modname="ContactList" type="user" func="main" action="suspend" authid=$authid id=$buddy.id ne="1"]-->"><!--[pnml name="_CONTACTLISTDELETE"]--></a><br /><!--[/if]-->
 		</td></tr>
 	<!--[/foreach]-->
 	</table>

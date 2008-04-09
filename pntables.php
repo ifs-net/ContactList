@@ -35,10 +35,10 @@ function ContactList_pntables()
 						'pub_comment'	=> 'pub_comment',
 						'request_text'	=> 'request_text',
 						'date'			=> 'date',
-						'state'			=> 'state'		// 0 = unconfirmed
-														// 1 = confirmed
-														// 2 = rejected
-														// 3 = suspended
+						'state'			=> 'state'		// 0 = unconfirmed 	(one way!)
+														// 1 = confirmed	(both directions!)
+														// 2 = rejected		(one way!)
+														// 3 = suspended	(one way!)
 						);
 
     $pntable['contactlist_buddylist_column_def'] = array (

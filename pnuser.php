@@ -11,7 +11,7 @@ function ContactList_user_main()
 
 	// check for action
 	$action = FormUtil::getPassedValue('action');
-//	if (isset($action) && !(SecurityUtil::confirmAuthKey())) return Logutil::registerAuthIDError();
+	if (isset($action) && !(SecurityUtil::confirmAuthKey())) return Logutil::registerAuthIDError();
 	if ($action == "decline") {
 	  	if (pnModAPIFunc('ContactList','user','decline',array('id'=>(int)FormUtil::getPassedValue('id')))) LogUtil::registerStatus(_CONTACTLISTREQUESTDECLINED);
 	  	else LogUtil::registerError(_CONTACTLISTREQUESTDECLINEERR);
@@ -56,7 +56,9 @@ function ContactList_user_main()
 	foreach ($buddies_confirmed as $buddy) $buddies[]=$buddy;
 	foreach ($buddies_suspended as $buddy) $buddies[]=$buddy;
 	foreach ($buddies_rejected  as $buddy) $buddies[]=$buddy;
+	$render->assign('contacts_all',count($buddies));
 	$render->assign('buddies',$buddies);
+	$render->assign('buddies_pending',$buddies_pending);
 	$render->assign('contacts',count($buddies_confirmed));
 	$render->assign('nopubliccomment',(int)pnModGetVar('ContactList','nopubliccomment'));
 	$render->assign('authid',SecurityUtil::generateAuthKey());
