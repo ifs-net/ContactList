@@ -112,6 +112,19 @@ function ContactList_userapi_create($args) {
   	$pub_comment 	= $args['pub_comment'];
   	$request_text 	= $args['request_text'];
   	if (!($uid > 1) || !($bid > 1)) return false;
+  	
+  	// is there an old rejected or suspended connection?
+  	$result = ContactList_userapi_getall(array('uid' => $bid, 'bid' => $uid));
+  	if (count($result) == 1) {
+  	  	$conn = $result[0];
+  	  	// now set the state to 0 or 1 and do not overwrite comments etc.
+  	  	if ($noconfirm)	{
+			$conn['state'] = 1; 
+			DBUtil::updateObject($conn,'contactlist_buddylist');
+	  	  	$nocounterconnection = true;
+			}
+	}
+  	
   	// now add or create the request
 	$noconfirm = pnModGetVar('ContactList','noconfirm');
 	if ($noconfirm) {
@@ -123,7 +136,7 @@ function ContactList_userapi_create($args) {
 	  		'prv_comment'	=> $prv_comment,
 	  		'pub_comment'	=> $pub_comment,
 		  	);
-	  	$obj[] = array (
+		if (!$nocounterconnection) 	$obj[] = array (
 	  		'bid'			=> $uid,
 	  		'uid'			=> $bid,
 	  		'state'			=> 1,
