@@ -21,5 +21,3 @@ define('_CONTACTLISTOR',					'or');
 define('_CONTACTLISTSUPPORTCONTACTLIST',	'Support the ContactList module');
 define('_CONTACTLISTDONATETHIS',			'Donate with PayPal!');
 define('_CONTACTLISTDONATE',				'You like this module and it is usefull for you? Thank you for some little donation for the programmer! OK - I like programming very much and this module is free and open source - but if you spend some money I\'ll go out for a nice candlelight dinner with my girlfriend and it will be much easier next time to get free time for programming ;-)');
-
-?>

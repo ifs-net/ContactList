@@ -53,10 +53,10 @@ function ContactList_userapi_getall($args) {
 			}
 
 			else if ($profile) {				// otherwise we'll use the regular profile plugin
-				die("profil standard module");
 			    $profilebirthday = pnModGetVar('ContactList','profilebirthday');
 			    foreach ($res as $item) {
-			      	$item['birthday'] = pnUserGetVar($profilebirthday);
+			      	$item['birthday'] = pnUserGetVar($profilebirthday,$item['bid']);			      	
+			      	
 			      	$item['nextbirthday'] = $item['birthday'][5].$item['birthday'][6].$item['birthday'][8].$item['birthday'][9];
 			      	// calculate days to next birthday
 			      	$birth_array = explode("-",$item['birthday']);

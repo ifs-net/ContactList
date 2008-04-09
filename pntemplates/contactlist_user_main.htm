@@ -5,7 +5,7 @@
 <ul>
 <!--[foreach from=$buddies_unconfirmed item="buddy"]-->
 	<li>
-		<!--[pnusergetvar uid=$buddy.bid name="uname" assign="uname"]-->
+		<!--[pnusergetvar uid=$buddy.uid name="uname" assign="uname"]-->
 		<!--[$uname|userprofilelink]-->
 		<!--[pnml name="_CONTACTLISTREQUESTDATE"]-->: <!--[$buddy.date|pndate_format:"%d.%m.%Y"]-->
 		<!--[if $buddy.request_text ne ""]-->
@@ -14,8 +14,8 @@
 			<!--[pnml name="_CONTACTLISTNOREQUTEXT"]-->
 		<!--[/if]-->
 		<br /> [
-		<a href="<!--[pnmodurl modname="ContactList" type="user" func="main" authid=$authid action="decline" id=$buddy.id"]-->"><!--[pnml name="_CONTACTLISTDECLINE"]--></a> |
-		<a href="<!--[pnmodurl modname="ContactList" type="user" func="main" authid=$authid action="confirm" id=$buddy.id"]-->"><!--[pnml name="_CONTACTLISTCONFIRM"]--></a> ]	</li>
+		<a href="<!--[pnmodurl modname="ContactList" type="user" func="main" authid=$authid action="confirm" id=$buddy.id"]-->"><!--[pnml name="_CONTACTLISTCONFIRM"]--></a> |
+		<a href="<!--[pnmodurl modname="ContactList" type="user" func="main" authid=$authid action="decline" id=$buddy.id"]-->"><!--[pnml name="_CONTACTLISTDECLINE"]--></a> ]	</li>
 <!--[/foreach]-->
 </ul>
 <br /><br />
@@ -47,7 +47,7 @@
 			<!--[/if]-->
 			<!--[* /integrate the user's birthday date if configured *]-->
 		</td><td>
-			<em><!--[$buddy.prv_comment]--></em><br/>
+			<em><!--[$buddy.prv_comment]--></em><br />
 			<!--[if $nopubliccomment ne 1 and $buddy.pub_comment ne ""]--><br />
 				<!--[pnml name="_CONTACTLISTPUBCOMMENT"]-->:<br />
 				<!--[$buddy.pub_comment]-->

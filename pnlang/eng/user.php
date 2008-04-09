@@ -90,4 +90,3 @@ define('_CONTACTLISTTABTITLE',			'User\'s buddies');
 define('_CONTACTLISTMYBUDDIES',			'User\'s buddy list');
 define('_CONTACTLISTTHEUSERHAS',		'The user has');
 define('_CONTACTLISTBUDDIES',			'buddies');
-?>
