@@ -14,7 +14,7 @@ Loader::requireOnce('modules/ContactList/common.php');
  * @param	$args['birthday']	boolean		default: false; include birthday in result
  * @param	$args['uname']		boolean		default: false; include username in result
  * @param	$args['sort']		string		default: no sort order.
- *												options: birthday, uname
+ *												options: birthday, nextbirthday, daystonextbirthday, state
  * @return	array
  */
 function ContactList_userapi_getall($args) {
@@ -88,6 +88,7 @@ function ContactList_userapi_getall($args) {
 		    if ($args['sort'] == 'birthday') $sort[$key]  = $row['birthday'];
 		    else if ($args['sort'] == 'nextbirthday') $sort[$key]  = $row['nextbirthday'];
 		    else if ($args['sort'] == 'daystonextbirthday') $sort[$key]  = $row['daystonextbirthday'];
+		    else if ($args['sort'] == 'state') $sort[$key]  = $row['state'];
 		}	
 		array_multisort($sort, SORT_ASC, $result);
 	}
