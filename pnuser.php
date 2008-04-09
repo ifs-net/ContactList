@@ -46,23 +46,27 @@ function ContactList_user_main()
 									array(	'uid'		=> $uid,
 											'state'		=> $state,
 											'birthday'	=> true,
-											'sort'		=> 'uame'
+											'sort'		=> 'uname'
 											) );
 	}
 	else {	// assign all we have ;-)
 		$buddies_pending = pnModAPIFunc('ContactList','user','getall',
 										array(	'uid'		=> $uid,
+												'sort'		=> 'uname',
 												'state'		=> 0 ) );
 		$buddies_confirmed = pnModAPIFunc('ContactList','user','getall',
 										array(	'uid'		=> $uid,
 												'state'		=> 1,
+												'sort'		=> 'uname',
 												'birthday'	=> true,
 												) );
 		$buddies_rejected = pnModAPIFunc('ContactList','user','getall',
 										array(	'uid'		=> $uid,
+												'sort'		=> 'uname',
 												'state'		=> 2 ) );
 		$buddies_suspended = pnModAPIFunc('ContactList','user','getall',
 										array(	'uid'		=> $uid,
+												'sort'		=> 'uname',
 												'state'		=> 3 ) );
 		foreach ($buddies_pending   as $buddy) $buddies[]=$buddy;
 		foreach ($buddies_confirmed as $buddy) $buddies[]=$buddy;
