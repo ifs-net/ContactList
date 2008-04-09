@@ -35,7 +35,7 @@ define('_CONTACTLISTDELETE',			'delete');
 define('_CONTACTLISTREALLYSUSPEND',		'Should the connection between you and this buddy really be suspended? Please note: the buddy will be informed about this.');
 define('_CONTACTLISTSUSPENDERROR',		'An error occurred while trying to suspend the buddy');
 define('_CONTACTLISTBUDDYSUSPENDED',	'The connection to this buddy was suspended successfully');
-define('_CONTACTLISTBUDDIESAMOUNT',		'Number of comfirmed contacts');
+define('_CONTACTLISTBUDDIESAMOUNT',		'Number of confirmed contacts');
 define('_CONTACTLISTBIRTHDAY',			'Birthday');
 
 // ignore

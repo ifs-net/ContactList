@@ -38,3 +38,118 @@ div.autocomplete_user ul li {
 	overflow:none;
 }
  
+ 
+#cl_main ul.navigation {
+  text-align: center;
+  font-weight: bold;
+  text-align: center;
+  padding: 0 0 0.5em 0;
+}
+#cl_main ul.navigation li {
+  display: inline;
+  font-weight: bold;
+  margin: 0 1em;
+} 
+
+
+#cl_main .buddybox {
+  background:#FFFEFA none repeat scroll 0%;
+  border:1px solid #DBD5C5;
+  float:left;
+  margin:5px 10px 1em 0pt;
+  min-height:135px;
+  padding:5px;
+  width:45%;
+}
+#cl_main .buddybox .avatar {
+  background-color:#FFFFFF;
+  border:1px solid #C2C2C4;
+  float:left;
+  margin:3px;
+  padding:3px !important;
+}
+#cl_main .buddybox dl {
+  float:left;
+  margin:0pt 0pt 1em 1em;
+  padding:0pt;
+}
+#cl_main .buddybox dt {
+  border-bottom:1px dotted #CCCCCC;
+  margin:3px 0px;
+  padding:0pt;
+}
+#cl_main .buddybox dt a {
+  color:#000000;
+  font-size:1.1em;
+  font-weight:bold;
+}
+#cl_main .buddybox dd {
+  margin:0;
+  padding:0;
+}
+ 
+ 
+ 
+#cl_main .footer {
+  font-size: 0.8em;
+  text-align: center;
+  margin-top: 1em;
+}
+
+
+/*******************************************************************************/
+/* Styling of links and buttons with images 
+/*******************************************************************************/
+/*
+ * Note: When use a CSS3 feature to highlight external the following image 
+ *       normally would not be visisble. The ! important fixes this.
+ * a[href^="http:"],
+ * a[href^="https:"] {
+ *     padding-left: 1.5em;
+ *     background: url('images/internet.gif') no-repeat bottom left;
+ * }
+ *
+/*******************************************************************************/
+
+#cl_main a.image, 
+#cl_main button.image,
+#cl_main a.image, 
+#cl_main button.image {
+  margin: 0 0.5em;
+  font-size: 1em;
+  padding: 2px 0 2px 19px ! important; /* 16px image + spacer */
+}
+#cl_main a.showbuddies {
+  background: url(../pnimages/agt_family.gif) no-repeat 0 50%
+}
+#cl_main a.createbuddy {
+  background: url(../pnimages/add_user.gif) no-repeat 0 50%
+}
+#cl_main a.ignorelist {
+  background: url(../pnimages/locked.gif) no-repeat 0 50%;
+}
+
+/*******************************************************************************/
+/* Clearfix solution
+/*******************************************************************************/
+
+.cl_clearfix:after {
+  content: "."; 
+  display: block; 
+  height: 0; 
+  clear: both; 
+  visibility: hidden;
+}
+
+.cl_clearfix {display: inline-block;}
+
+/* Hides from IE-mac \*/
+* html .cl_clearfix {height: 1%;}
+.cl_clearfix {display: block;}
+/* End hide from IE-mac */
+
+/* Overflow-Methode zum Clearen der Float-Umgebungen */
+.cl_floatbox {overflow:hidden;}
+
+/* .floatbox-Anpassung für IE */
+* html .cl_floatbox { width:100% }

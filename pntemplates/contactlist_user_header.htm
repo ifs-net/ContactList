@@ -1,8 +1,20 @@
-<!--[pngetstatusmsg]-->
 <!--[pnmodgetvar module="ContactList" name="useignore" assign="ignore"]-->
-[
-<a href="<!--[pnmodurl modname="ContactList" type="user" func="main"]-->"><!--[pnml name="_CONTACTLISTSHOWBUDDIES"]--></a> |
-<a href="<!--[pnmodurl modname="ContactList" type="user" func="create"]-->"><!--[pnml name="_CONTACTLISTCREATEBUDDY"]--></a>
-<!--[if $ignore eq 1]--> | <a href="<!--[pnmodurl modname="ContactList" type="user" func="ignore"]-->"><!--[pnml name="_CONTACTLISTSHOWIGNORELIST"]--></a><!--[/if]-->
-]
-<br /><br />
+
+<div id="cl_main">
+
+<ul class="navigation">
+  <li>
+  <a class="image showbuddies" href="<!--[pnmodurl modname="ContactList" type="user" func="main"]-->"><!--[pnml name="_CONTACTLISTSHOWBUDDIES"]--></a>
+  </li>
+  <li>
+  <a class="image createbuddy" href="<!--[pnmodurl modname="ContactList" type="user" func="create"]-->"><!--[pnml name="_CONTACTLISTCREATEBUDDY"]--></a>
+  </li>
+<!--[if $ignore eq 1]-->  
+  <li>
+  <a class="image ignorelist" href="<!--[pnmodurl modname="ContactList" type="user" func="ignore"]-->"><!--[pnml name="_CONTACTLISTSHOWIGNORELIST"]--></a>
+  </li>
+<!--[/if]-->  
+</ul>
+
+<!--[pngetstatusmsg]-->
+
