@@ -2,11 +2,11 @@
 
 // The following information is used by the Modules module 
 // for display and upgrade purposes
-$modversion['name']           = pnVarPrepForDisplay('ContactList');
+$modversion['name']           = _CONTACTLIST_NAME;
+$modversion['description']    = _CONTACTLIST_DESCRIPTION; 
+$modversion['displayname']    = _CONTACTLIST_DISPLAYNAME;
 // the version string must not exceed 10 characters!
 $modversion['version']        = '1.0';
-$modversion['description']    = pnVarPrepForDisplay('Supports buddy management and user ignore lists'); 
-$modversion['displayname']    = pnVarPrepForDisplay('ContactList');
 
 // The following in formation is used by the credits module
 // to display the correct credits
@@ -25,5 +25,3 @@ $modversion['admin']          = 1;
 // This one adds the info to the DB, so that users can click on the 
 // headings in the permission module
 $modversion['securityschema'] = array('ContactList::' => 'UID::');
-
-?>
