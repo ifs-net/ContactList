@@ -1,13 +1,16 @@
 <!--[ admincategorymenu xhtml=1 ]-->
-<div class="pn-admincontainer">
-    <div>
-	<!--[pngetstatusmsg]-->
+<div class="pn-adminbox">
+<h1><!--[pnml name=_CONTACTLISTBACKEND]--></h1>
+</div>
 
-	<h1><!--[pnml name=_CONTACTLISTBACKEND]--></h1>
+<div class="pn-admincontainer">
+<div class="pn-adminpageicon"><!--[pnimg modname=ContactList src=admin.gif set=icons/large]--></div>
+<h2><!--[pnml name="_CONTACTLISTCONFIG"]--></h2>
+
+<div>
+	<!--[pngetstatusmsg]-->
 	<!--[pnformvalidationsummary]-->
 	
-	<fieldset>
-	<legend><!--[pnml name="_CONTACTLISTCONFIG"]--></legend>
 	<!--[pnform]-->
 		<fieldset>
 		<legend><!--[pnml name="_CONTACTLISTMAINCONFIG"]--></legend>
@@ -40,30 +43,28 @@
 		<br />
 		<!--[pnformbutton commandName="update" text="_CONTACTLISTUPDATECONFIG"]-->
 	<!--[/pnform]-->
-	</fieldset>
 	
 	<fieldset>
-	<legend><!--[pnml name="_CONTACTLISTSUPPORTCONTACTLIST"]--></legend>
-	<!--[pnml name="_CONTACTLISTDONATE"]-->
-	<form name="_xclick" action="https://www.paypal.com/de/cgi-bin/webscr" method="post">
-	<input type="hidden" name="cmd" value="_xclick" />
-	<input type="hidden" name="business" value="florian.schiessl@ifs-net.de" />
-	<input type="hidden" name="item_name" value="Donation for the CONTACTLISTs module" />
-	<select name="amount">
-	<option value="5">5&nbsp;</option>
-	<option value="10" selected="selected">10&nbsp;</option>
-	<option value="15">15&nbsp;</option>
-	<option value="20">20&nbsp;</option>
-	<option value="25">25&nbsp;</option>
-	</select>
-	<select name="currency_code">
-	<option value="USD" selected="selected">USD&nbsp;</option>
-	<option value="EUR">EUR&nbsp;</option>
-	</select>
-	<input type="submit" name="submit" value="<!--[pnml name="_CONTACTLISTDONATETHIS"]-->"/>
-	</form>
+  	<legend><!--[pnml name="_CONTACTLISTSUPPORTCONTACTLIST"]--></legend>
+  	<!--[pnml name="_CONTACTLISTDONATE"]-->
+  	<form name="_xclick" action="https://www.paypal.com/de/cgi-bin/webscr" method="post">
+    	<input type="hidden" name="cmd" value="_xclick" />
+    	<input type="hidden" name="business" value="florian.schiessl@ifs-net.de" />
+    	<input type="hidden" name="item_name" value="Donation for the CONTACTLISTs module" />
+    	<select name="amount">
+    	<option value="5">5&nbsp;</option>
+    	<option value="10" selected="selected">10&nbsp;</option>
+    	<option value="15">15&nbsp;</option>
+    	<option value="20">20&nbsp;</option>
+    	<option value="25">25&nbsp;</option>
+    	</select>
+    	<select name="currency_code">
+    	<option value="USD" selected="selected">USD&nbsp;</option>
+    	<option value="EUR">EUR&nbsp;</option>
+    	</select>
+    	<input type="submit" name="submit" value="<!--[pnml name="_CONTACTLISTDONATETHIS"]-->"/>
+  	</form>
 	</fieldset>
-	<br />
 
 	</div>
 </div>
