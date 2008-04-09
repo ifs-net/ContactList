@@ -7,6 +7,12 @@
 <!--[if $request_text ne ""]--><!--[pnml name="_CONTACTLISTREQUESTTEXT"]-->: <!--[$request_text]-->
 <!--[/if]-->
 
+<!--[if $nocounterconnection]-->
+<!--[pnml name="_CONTACTLISTATTENTION"]-->
+==================
+<!--[pnml name="_CONTACTLISTAUTOMATICCONFIRM"]-->
+<!--[/if]-->
+
 <!--[pnml name="_CONTACTBUDDYMANAGEMENT"]-->
 <!--[pngetbaseurl]--><!--[pnmodurl modname="ContactList" type="user" func="main"]-->
 

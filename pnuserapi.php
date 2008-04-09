@@ -175,6 +175,7 @@ function ContactList_userapi_create($args) {
 		  	$render = pnRender::getInstance('ContactList');
 		  	$render->assign('bid',	$bid);
 		  	$render->assign('uid',	$uid);
+		  	$render->assign('nocounterconnection',$nocounterconnection);
 		  	$render->assign('request_text',	$request_text);
 		  	$body = $render->fetch('contactlist_email_add_confirm.htm');
 			$subject = _CONTACTLISTCONFIRMSUBJECT;

@@ -69,6 +69,8 @@ define('_CONTACTLISTREQUESTREJECTED',	'A user has rejected your buddy request');
 define('_CONTACTLISTDEARUSER',			'Dear');
 define('_CONTACTLISTTHEUSER',			'the user');
 define('_CONTACTLISTADDEDYOUASBUDDY',	'has added you as a buddy. This means you are friends now and your accounts got linked on the website');
+define('_CONTACTLISTATTENTION',			'Attention');
+define('_CONTACTLISTAUTOMATICCONFIRM',	'This request was automatically accepted because some times ago you wanted the other person to be your buddy');
 define('_CONTACTBUDDYMANAGEMENT',		'To access your buddy management visit the url');
 define('_CONTACTLISTDONOTREPLY',		'Please do not reply to this email. This email was sent automatically. For further questions ask the user who added / rejected / accepted / suspended you as a buddy or contact the site administrator otherwise');
 define('_CONTACTLISTWANTSTOADDYOUAT',	'wants to add you as new buddy at');
