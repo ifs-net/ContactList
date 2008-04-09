@@ -18,9 +18,9 @@
  */
 function ContactList_userapi_getall($args) {
 	// filter for buddy or user id
-  	if (isset($args['uid'])) $where = 'uid = '.(int)$args['uid'];
-  	if (isset($args['uid']) && isset($args['bid'])) $where.=' and ';
-  	if (isset($args['bid'])) $where = 'bid = '.(int)$args['bid'];
+  	if (isset($args['uid']) && isset($args['bid'])) $where='uid = '.(int)$args['uid'].' and bid = '.(int)$args['bid'];
+  	else if (isset($args['uid'])) $where = 'uid = '.(int)$args['uid'];
+  	else if (isset($args['bid'])) $where = 'bid = '.(int)$args['bid'];
 
 	// filter if state should be filtered
   	if (!isset($where) && isset($args['state'])) $where = 'state = '.(int)$args['state'];
