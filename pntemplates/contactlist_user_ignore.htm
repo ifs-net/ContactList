@@ -34,7 +34,7 @@
 <!--[foreach from=$ignorelist item="item"]-->
 <li><!--[$item.iuname|userprofilelink]--> (<a href="<!--[pnmodurl modname="ContactList" type="user" func="ignore" action="delete" iuid=$item.iuid authid=$authid]-->"><!--[pnml name="_CONTACTLISTREMOVEIGNOREDUSER"]--></a>)</li>
 <!--[foreachelse]-->
-<!--[pnml name="_CONTACTLISTNOIGNOREDUSERS"]-->
+<li><!--[pnml name="_CONTACTLISTNOIGNOREDUSERS"]--></li>
 <!--[/foreach]-->
 </ul>
 
