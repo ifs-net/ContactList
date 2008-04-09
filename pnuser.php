@@ -27,42 +27,54 @@ function ContactList_user_main()
 
 	// redirect after any action to avoid auth-id problems
 	if (isset($action)) return pnRedirect(pnModURL('ContactList','user','main'));
-	
+		
 	// Create output
 	$render = pnRender::getInstance('ContactList');
 	
 	// assign data
 	$uid = pnUserGetVar('uid');
 	$render->assign('dateformat',pnModGetVar('ContactList','dateformat'));
+	// unconfirmed buddies are always assigned
 	$render->assign('buddies_unconfirmed',pnModAPIFunc('ContactList','user','getall',
 									array(	'bid'		=> $uid,
 											'state'		=> 0 ) ));
-	$buddies_pending = pnModAPIFunc('ContactList','user','getall',
+
+	// Do some filtering? state 1,2,3 is possibe
+	$state = (int) FormUtil::getPassedValue('state');
+	if ($state > 0) {
+	  	$buddies = pnModAPIFunc('ContactList','user','getall',
 									array(	'uid'		=> $uid,
-											'state'		=> 0 ) );
-	$buddies_confirmed = pnModAPIFunc('ContactList','user','getall',
-									array(	'uid'		=> $uid,
-											'state'		=> 1,
+											'state'		=> $state,
 											'birthday'	=> true,
-//											'sort'		=> 'nextbirthday'
+											'sort'		=> 'uame'
 											) );
-	$buddies_rejected = pnModAPIFunc('ContactList','user','getall',
-									array(	'uid'		=> $uid,
-											'state'		=> 2 ) );
-	$buddies_suspended = pnModAPIFunc('ContactList','user','getall',
-									array(	'uid'		=> $uid,
-											'state'		=> 3 ) );
-	foreach ($buddies_pending   as $buddy) $buddies[]=$buddy;
-	foreach ($buddies_confirmed as $buddy) $buddies[]=$buddy;
-	foreach ($buddies_suspended as $buddy) $buddies[]=$buddy;
-	foreach ($buddies_rejected  as $buddy) $buddies[]=$buddy;
+	}
+	else {	// assign all we have ;-)
+		$buddies_pending = pnModAPIFunc('ContactList','user','getall',
+										array(	'uid'		=> $uid,
+												'state'		=> 0 ) );
+		$buddies_confirmed = pnModAPIFunc('ContactList','user','getall',
+										array(	'uid'		=> $uid,
+												'state'		=> 1,
+												'birthday'	=> true,
+												) );
+		$buddies_rejected = pnModAPIFunc('ContactList','user','getall',
+										array(	'uid'		=> $uid,
+												'state'		=> 2 ) );
+		$buddies_suspended = pnModAPIFunc('ContactList','user','getall',
+										array(	'uid'		=> $uid,
+												'state'		=> 3 ) );
+		foreach ($buddies_pending   as $buddy) $buddies[]=$buddy;
+		foreach ($buddies_confirmed as $buddy) $buddies[]=$buddy;
+		foreach ($buddies_suspended as $buddy) $buddies[]=$buddy;
+		foreach ($buddies_rejected  as $buddy) $buddies[]=$buddy;
+		$render->assign('buddies_pending',$buddies_pending);
+		$render->assign('buddies_confirmed',$buddies_confirmed);
+		$render->assign('buddies_rejected',$buddies_rejected);
+		$render->assign('buddies_suspended',$buddies_suspended);
+	}
 	$render->assign('contacts_all',count($buddies));
 	$render->assign('buddies',$buddies);
-	$render->assign('buddies_pending',$buddies_pending);
-	$render->assign('buddies_confirmed',$buddies_confirmed);
-	$render->assign('buddies_rejected',$buddies_rejected);
-	$render->assign('buddies_suspended',$buddies_suspended);
-	$state = (int) FormUtil::getPassedValue('state');
 	$render->assign('state',$state));
 	$render->assign('contacts',count($buddies_confirmed));
 	$render->assign('nopubliccomment',(int)pnModGetVar('ContactList','nopubliccomment'));
