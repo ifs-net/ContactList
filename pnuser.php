@@ -82,6 +82,7 @@ function ContactList_user_main()
 	$render->assign('state',$state);
 	$render->assign('contacts',count($buddies_confirmed));
 	$render->assign('nopubliccomment',(int)pnModGetVar('ContactList','nopubliccomment'));
+	$render->assign('nopublicbuddylist',(int)pnModGetVar('ContactList','nopublicbuddylist'));	
 	$render->assign('authid',SecurityUtil::generateAuthKey());
 	// return output
 	return $render->fetch('contactlist_user_main.htm');

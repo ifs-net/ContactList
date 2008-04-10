@@ -1,5 +1,6 @@
 <!--[include file="contactlist_user_header.htm"]-->
-
+<!--[pnmodavailable modname="pnMessages" assign="pnMessages"]-->
+<!--[pnvarcleanfrominput name="state" assign="filterstate1" ]-->
 <!--[if $buddies_unconfirmed gt 0]-->
 <div id="unconfirm">
 <h3><!--[pnml name="_CONTACTLISTTOCONFIRM"]--></h3>
@@ -33,38 +34,41 @@
 <!--[pnusergetvar uid=$buddy.bid name="_YOURAVATAR" assign="avatar"]-->
 <div class="buddybox">
   <img src="images/avatar/<!--[$avatar|pnvarprepfordisplay]-->" class="avatar" />
-  <dl>  
-  <dt><!--[$uname|userprofilelink]--></dt>   
-	<!--[if $buddy.birthday]-->
-  <dd class="birthday"><!--[pnml name="_CONTACTLISTBIRTHDAY"]-->:&nbsp;<!--[$buddy.birthday|date_format:"$dateformat"]--></dd>
-	<!--[/if]-->
-
-  <dd><!--[pnml name="_CONTACTLISTSTATE"]-->:&nbsp;
-	<!--[if $buddy.state eq 0]-->
-		<!--[pnml name="_CONTACTLISTNOTCONFIRMED"]-->
-	<!--[elseif $buddy.state eq 1]-->
-		<!--[pnml name="_CONTACTLISTCONFIRMED"]-->
-	<!--[elseif $buddy.state eq 2]-->
-		<!--[pnml name="_CONTACTLISTREQUESTDECLINED"]-->
-	<!--[elseif $buddy.state eq 3]-->
-		<!--[pnml name="_CONTACTLISTSUSPENDED"]-->
-	<!--[/if]-->
-	</dd>
-
-	<dd class="options"><!--[pnml name="_CONTACTLISTACTIONS"]-->:&nbsp;
-		<!--[if $buddy.state eq 1]--><a href="<!--[pnmodurl modname="ContactList" type="user" func="edit" id=$buddy.id]-->"><!--[pnml name="_CONTACTLISTEDIT"]--></a>&nbsp;<!--[/if]-->
-		<!--[if $buddy.state ne 0 and $buddy.state ne 3]--><a href="<!--[pnmodurl modname="ContactList" type="user" func="main" action="suspend" authid=$authid id=$buddy.id]-->" onclick="return confirm('<!--[pnml name="_CONTACTLISTREALLYSUSPEND"]-->')"><!--[pnml name="_CONTACTLISTSUSPEND"]--></a>&nbsp;<!--[/if]-->
-		<!--[if $buddy.state eq 3]--><a href="<!--[pnmodurl modname="ContactList" type="user" func="main" action="suspend" authid=$authid id=$buddy.id ne="1"]-->"><!--[pnml name="_CONTACTLISTDELETE"]--></a>&nbsp;<!--[/if]-->
-  </dd>
   
-	<!--[if $buddy.prv_comment]-->
-  <dd><!--[$buddy.prv_comment]--></dd>
-	<!--[/if]-->
-    
-	<!--[if $nopubliccomment ne 1 and $buddy.pub_comment ne ""]-->
-	<dd><!--[pnml name="_CONTACTLISTPUBCOMMENT"]-->:&nbsp;<!--[$buddy.pub_comment]--></dd>
-	<!--[/if]-->
-</dl>   
+  <h4><!--[$uname|userprofilelink]--><!--[if $buddy.online eq true]-->&nbsp;<em class="cl_online">(online)</em><!--[/if]--></h4>   
+  
+  <ul class="options">
+  <!--[if $pnMessages]--><li><a href="<!--[pnmodurl modname="pnMessages" type="user" func="newpm" uname=$uname]-->">Nachricht schicken</a></li><!--[/if]-->
+  <!--[if $nopublicbuddylist ne 1]--><li><a href="<!--[pnmodurl modname="ContactList" type="user" func="display" uid=$buddy.bid]-->">Kontakte</a></li><!--[/if]-->
+  <!--[if $buddy.state eq 1]--><li><a href="<!--[pnmodurl modname="ContactList" type="user" func="edit" id=$buddy.id]-->"><!--[pnml name="_CONTACTLISTEDIT"]--></a></li><!--[/if]-->
+  <!--[if $buddy.state ne 0 and $buddy.state ne 3]--><li><a href="<!--[pnmodurl modname="ContactList" type="user" func="main" action="suspend" authid=$authid id=$buddy.id]-->" onclick="return confirm('<!--[pnml name="_CONTACTLISTREALLYSUSPEND"]-->')"><!--[pnml name="_CONTACTLISTSUSPEND"]--></a></li><!--[/if]-->
+  <!--[if $buddy.state eq 3]--><li><a href="<!--[pnmodurl modname="ContactList" type="user" func="main" action="suspend" authid=$authid id=$buddy.id ne="1"]-->"><!--[pnml name="_CONTACTLISTDELETE"]--></a></li><!--[/if]-->
+  </ul>
+  
+  <ul class="cl_userinfo">
+    <li><strong><!--[pnml name="_CONTACTLISTSTATE"]-->:</strong>&nbsp;
+  	<!--[if $buddy.state eq 0]-->
+  		<!--[pnml name="_CONTACTLISTNOTCONFIRMED"]-->
+  	<!--[elseif $buddy.state eq 1]-->
+  		<!--[pnml name="_CONTACTLISTCONFIRMED"]-->
+  	<!--[elseif $buddy.state eq 2]-->
+  		<!--[pnml name="_CONTACTLISTREQUESTDECLINED"]-->
+  	<!--[elseif $buddy.state eq 3]-->
+  		<!--[pnml name="_CONTACTLISTSUSPENDED"]-->
+  	<!--[/if]-->
+  	</li>
+  	<!--[if $buddy.birthday]-->
+    <li class="birthday"><strong><!--[pnml name="_CONTACTLISTBIRTHDAY"]-->:</strong>&nbsp;<!--[$buddy.birthday|date_format:"$dateformat"]--></li>
+  	<!--[/if]-->  	
+  </ul>
+  
+  <!--[if $buddy.prv_comment]-->
+  <p><strong><!--[pnml name="_CONTACTLISTPRVCOMMENT"]-->:</strong>&nbsp;<!--[$buddy.prv_comment|pnvarprepfordisplay|pnmodcallhooks]--></p>
+  <!--[/if]-->
+      
+  <!--[if $nopubliccomment ne 1 and $buddy.pub_comment ne ""]-->
+  <p><strong><!--[pnml name="_CONTACTLISTPUBCOMMENT"]-->:</strong>&nbsp;<!--[$buddy.pub_comment|pnvarprepfordisplay|pnmodcallhooks]--></p>
+  <!--[/if]-->
 </div>     			
 <!--[/foreach]-->
 </div>	

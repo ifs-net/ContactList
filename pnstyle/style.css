@@ -27,6 +27,12 @@ div.autocomplete_user ul li {
 
 
 
+em.cl_online {
+  color: red;
+  font-weight:bold;
+  font-size:0.9em;
+}
+
 .contactlist_tab_buddy {
  	border-style:dotted;
 	border-width:1px;
@@ -44,6 +50,7 @@ div.autocomplete_user ul li {
   font-weight: bold;
   text-align: center;
   padding: 0 0 0.5em 0;
+  list-style:none;
 }
 #cl_main ul.navigation li {
   display: inline;
@@ -55,11 +62,9 @@ div.autocomplete_user ul li {
 #cl_main .buddybox {
   background:#FFFEFA none repeat scroll 0%;
   border:1px solid #DBD5C5;
-  float:left;
   margin:5px 10px 1em 0pt;
   min-height:135px;
   padding:5px;
-  width:45%;
 }
 #cl_main .buddybox .avatar {
   background-color:#FFFFFF;
@@ -68,24 +73,40 @@ div.autocomplete_user ul li {
   margin:3px;
   padding:3px !important;
 }
-#cl_main .buddybox dl {
-  float:left;
-  margin:0pt 0pt 1em 1em;
-  padding:0pt;
-}
-#cl_main .buddybox dt {
+
+#cl_main .buddybox h4 {
   border-bottom:1px dotted #CCCCCC;
-  margin:3px 0px;
+  margin:0pt 0 1em 150px;
   padding:0pt;
 }
-#cl_main .buddybox dt a {
+#cl_main .buddybox h4 a {
   color:#000000;
-  font-size:1.1em;
+  font-size:14px;
   font-weight:bold;
 }
-#cl_main .buddybox dd {
+#cl_main .buddybox ul.cl_userinfo {
+  margin:0pt 12em 1em 150px;
+  padding:0pt;
+  list-style:none;
+}
+#cl_main .buddybox ul.cl_userinfo li {
   margin:0;
   padding:0;
+}
+#cl_main .buddybox ul.options {
+  float:right;
+  list-style:none;
+  margin:0pt 5px;
+  padding:0pt;
+}
+#cl_main .buddybox ul.options li {
+  margin:0;
+  padding:0;
+  border-bottom:1px dotted #CCCCCC;  
+}
+#cl_main .buddybox p {
+  margin:0pt 12em 0.5em 150px;
+  padding:0pt;
 }
  
  
