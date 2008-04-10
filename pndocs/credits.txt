@@ -2,4 +2,4 @@ Credits:
 ========
 
 Programming: 	Florian Schieﬂl: http://www.ifs-net.de
-Design: 		Carsten Vollmer: http://www.carsten-vollmer.de
+Design: 		Carsten Volmer: http://www.carsten-volmer.de
