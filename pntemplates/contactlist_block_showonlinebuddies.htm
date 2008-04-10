@@ -1,0 +1,9 @@
+<!--[pnml name="_CONTACTLISTMYONLINEBUDDIES"]-->
+<ul>
+<!--[foreach from=$buddies_online item="buddy"]-->:
+	<li><!--[$buddy.uname|userprofilelink]--></li>
+<!--[foreachelse]-->
+	<!--[pnml name="_CONTACTLISTNOBUDDYONLINE"]-->!
+<!--[/foreach]-->
+</ul>
+
