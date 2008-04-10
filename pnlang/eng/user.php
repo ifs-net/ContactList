@@ -2,16 +2,17 @@
 // menu
 define('_CONTACTLISTCREATEBUDDY',	                	'Add new buddy');
 define('_CONTACTLISTSHOWBUDDIES',	                	'Show my buddylist');
-define('_CONTACTLISTSHOWIGNORELIST',              	'Show my ignorelist');
+define('_CONTACTLISTSHOWIGNORELIST',              		'Show my ignorelist');
+define('_CONTACTLISTUSERPREFERENCES',					'My preferences');
 
 // main
 define('_CONTACTLISTMYCONTACTS',	                 	'My contacts');
 define('_CONTACTLISTADDBUDDY',			                'Add new contact');
-define('_CONTACTLISTTOCONFIRM',	                    'These request are awaiting your confirmation');
-define('_CONTACTLISTUNAME',				                  'Username');
+define('_CONTACTLISTTOCONFIRM',	                    	'These request are awaiting your confirmation');
+define('_CONTACTLISTUNAME',				                'Username');
 define('_CONTACTLISTCOMMENTS',			                'Comments');
 define('_CONTACTLISTSTATE',		 	                    'State');
-define('_CONTACTLISTACTIONS',			                  'Action');
+define('_CONTACTLISTACTIONS',			           		'Action');
 define('_CONTACTLISTPUBCOMMENT',	                 	'Public comment');
 define('_CONTACTLISTPRVCOMMENT',	                	'Private comment');
 define('_CONTACTLISTBUDDYUNAME',	                 	'User to add as buddy');
