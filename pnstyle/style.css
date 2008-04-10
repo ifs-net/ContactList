@@ -46,11 +46,12 @@ em.cl_online {
  
  
 #cl_main ul.navigation {
-  text-align: center;
-  font-weight: bold;
-  text-align: center;
-  padding: 0 0 0.5em 0;
+  border-bottom:1px dashed #CCC;
+  font-weight:bold;
   list-style:none;
+  margin:1.5em 0pt;
+  padding:0pt;
+  text-align:center;
 }
 #cl_main ul.navigation li {
   display: inline;

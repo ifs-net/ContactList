@@ -1,8 +1,8 @@
 <!--[include file="contactlist_user_header.htm"]-->
 <!--[pnmodavailable modname="pnMessages" assign="pnMessages"]-->
-<!--[pnvarcleanfrominput name="state" assign="filterstate1" ]-->
+<!--[pnvarcleanfrominput name="state" assign="filterstate" ]-->
 <!--[if $buddies_unconfirmed gt 0]-->
-<div id="unconfirm">
+<div id="unconfirm" class="cl_floatbox">
 <h3><!--[pnml name="_CONTACTLISTTOCONFIRM"]--></h3>
 <!--[foreach from=$buddies_unconfirmed item="buddy"]-->
 <!--[pnusergetvar uid=$buddy.uid name="uname" assign="uname"]-->
@@ -28,10 +28,29 @@
 </div>
 <!--[/if]-->
 
+<ul class="navigation">
+  <li><a href="<!--[pnmodurl modname="ContactList" type="user" func="main"]-->"><!--[pnml name="_CONTACTLISTFILTERBUDDIESALL"]--></a></li>
+  <li><a href="<!--[pnmodurl modname="ContactList" type="user" func="main" state=1]-->"><!--[pnml name="_CONTACTLISTFILTERBUDDIESCONFIRM"]--></a></li>
+  <li><a href="<!--[pnmodurl modname="ContactList" type="user" func="main" state=2]-->"><!--[pnml name="_CONTACTLISTFILTERYOURBUDDIESREJECT"]--></a></li>  
+  <li><a href="<!--[pnmodurl modname="ContactList" type="user" func="main" state=3]-->"><!--[pnml name="_CONTACTLISTFILTERYOURBUDDIESSUSPEND"]--></a></li>  
+</ul>
+
 <!--[if $contacts_all gt 0]-->
 <div id="contacts" class="cl_floatbox">
-<h3><!--[pnml name="_CONTACTLISTYOURBUDDIES"]--></h3>
-<p><!--[pnml name="_CONTACTLISTBUDDIESAMOUNT"]-->: <!--[$contacts]--></p>
+
+<!--[if $filterstate eq ""]-->
+  <h3><!--[pnml name="_CONTACTLISTYOURBUDDIES"]--></h3>
+  <p><!--[pnml name="_CONTACTLISTAMOUNTCONFIRM"]-->:&nbsp;<!--[$contacts]-->&nbsp;<!--[pnml name="_CONTACTLISTOF"]-->&nbsp;<!--[$contacts_all]--></p>
+<!--[elseif $filterstate eq 1]-->
+  <h3><!--[pnml name="_CONTACTLISTYOURBUDDIESCONFIRM"]--></h3>
+  <p><!--[pnml name="_CONTACTLISTAMOUNTCONFIRM"]-->:&nbsp;<!--[$contacts_all]--></p>
+<!--[elseif $filterstate eq 2]-->
+  <h3><!--[pnml name="_CONTACTLISTYOURBUDDIESREJECT"]--></h3>
+  <p><!--[pnml name="_CONTACTLISTAMOUNTREJECTED"]-->:&nbsp;<!--[$contacts_all]--></p>
+<!--[elseif $filterstate eq 3]-->
+  <h3><!--[pnml name="_CONTACTLISTYOURBUDDIESSUSPEND"]--></h3>
+  <p><!--[pnml name="_CONTACTLISTAMOUNTSUSPENDED"]-->:&nbsp;<!--[$contacts_all]--></p>
+<!--[/if]-->
 
 <!--[foreach from=$buddies item="buddy"]-->
 <!--[pnusergetvar uid=$buddy.bid name="uname" assign="uname"]-->
@@ -52,7 +71,7 @@
   <ul class="cl_userinfo">
     <li><strong><!--[pnml name="_CONTACTLISTSTATE"]-->:</strong>&nbsp;
   	<!--[if $buddy.state eq 0]-->
-  		<!--[pnml name="_CONTACTLISTNOTCONFIRMED"]-->
+  		<!--[pnml name="_CONTACTLISTPENDING"]-->
   	<!--[elseif $buddy.state eq 1]-->
   		<!--[pnml name="_CONTACTLISTCONFIRMED"]-->
   	<!--[elseif $buddy.state eq 2]-->
@@ -78,5 +97,3 @@
 <!--[/if]-->
 
 <!--[include file="contactlist_user_footer.htm"]-->
-
-<!--[pndebug]-->
