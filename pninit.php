@@ -9,17 +9,17 @@ function ContactList_init()
 
     if (!DBUtil::createTable('contactlist_ignorelist')) return false;
     if (!DBUtil::createTable('contactlist_buddylist')) return false;
-
-	// Set some default values for module variables
-	pnModSetVar('usemyprofilebirthday','usemyprofilebirthday','');
-	pnModSetVar('myprofilebirthday','myprofilebirthday','');
-	pnModSetVar('useprofilebirthday','useprofilebirthday','');
-	pnModSetVar('profilebirthday','profilebirthday','');
-	pnModSetVar('ContactList','useignore',1);
-	pnModSetVar('ContactList','noconfirm',0);
-	pnModSetVar('ContactList','nopubliccomment',0);
-	pnModSetVar('ContactList','dateformat','%d.%m.%Y');	
-	pnModSetVar('ContactList','nopublicbuddylist',0);
+    
+    // Set some default values for module variables
+    pnModSetVar('ContactList','usemyprofilebirthday','');
+    pnModSetVar('ContactList','myprofilebirthday','');
+    pnModSetVar('ContactList','useprofilebirthday','');
+    pnModSetVar('ContactList','profilebirthday','');
+    pnModSetVar('ContactList','useignore',1);
+    pnModSetVar('ContactList','noconfirm',0);
+    pnModSetVar('ContactList','nopubliccomment',0);
+    pnModSetVar('ContactList','dateformat','%d.%m.%Y');	
+    pnModSetVar('ContactList','nopublicbuddylist',0);
 
     // Initialisation successful
     return true;
@@ -36,14 +36,14 @@ function ContactList_delete()
 	$res = DBUtil::deleteObjectByID('objectdata_attributes','contactlist_publicstate','attribute_name');
 	if (!$res) return false;
 
-    // Delete the table
-    if (!DBUtil::dropTable('contactlist_ignorelist')) return false;
-    if (!DBUtil::dropTable('contactlist_buddylist')) return false;
+  // Delete the table
+  if (!DBUtil::dropTable('contactlist_ignorelist')) return false;
+  if (!DBUtil::dropTable('contactlist_buddylist')) return false;
 
 	// Delete all module variables
 	pnModDelVar('ContactList');
 		
-    // Deletion successful
-    return true;
+  // Deletion successful
+  return true;
 }
 ?>
