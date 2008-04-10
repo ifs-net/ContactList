@@ -119,3 +119,4 @@ define('_CONTACTLISTTABTITLE',			                'User\'s buddies');
 define('_CONTACTLISTMYBUDDIES',		                 	'User\'s buddy list');
 define('_CONTACTLISTTHEUSERHAS',		                'The user has');
 define('_CONTACTLISTBUDDIES',			                  'Buddies');
+define('_CONTACTLISTLISTNOTPUBLIC',					'The user\'s buddy list is not visible for you');

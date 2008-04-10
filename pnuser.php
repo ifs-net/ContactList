@@ -98,8 +98,6 @@ function ContactList_user_preferences()
 	// Security check 
 	if (!SecurityUtil::checkPermission('ContactList::', '::', ACCESS_COMMENT)) return LogUtil::registerPermissionError();
 
-	$uid = (int) pnUserGetVar('uid');
-
 	// Create output
 	$render = FormUtil :: newpnForm('ContactList');
 
@@ -123,11 +121,29 @@ function ContactList_user_display($args)
 	unset($args);
 	if (!$uid) return LogUtil::registerError(_GETFAILED);
 
-	// Security check 
-	if (!SecurityUtil::checkPermission('ContactList::', '::', ACCESS_READ)) return LogUtil::registerPermissionError();
-	
+	// Security Check
+	if (!SecurityUtil::checkPermission('ContactList::', '::', ACCESS_READ)) return LogUtil::registerPermissionError();	  	
+
+	$display = false;
+	if (pnUserGetVar('uid') != $uid) {
+		// check for privacy settings
+		$prefs = pnModAPIFunc('ContactList','user','getPreferences',array('uid' => $uid));
+		switch ($prefs['publicstate']) {
+		  	case 1:		$display=false; 
+			  			break;
+		  	case 2:		$isBuddy = pnModAPIFunc('ContactList','user','isBuddy',array('uid1' => $uid, 'uid2' => pnUserGetVar('uid')));
+						if ($isBuddy) $display = true;
+		  				break;
+		  	case 3:		if (pnUserLoggedIn()) $display = true; 
+			  			break;
+		  	default: 	return LogUtil::registerPermissionError(); 
+			  			break;
+		}
+	}
+	else $display = true;	
    	// generate and return output
  	$render = pnRender::getInstance('ContactList');
+ 	if (!$display) return $render->fetch('contactlist_user_nodisplay.htm');
  	$render->assign('uid',$uid);
 	$buddies = pnModAPIFunc('ContactList','user','getall', array('uid' => $uid, 'state' => 1 ) );
  	$render->assign('buddies',$buddies);
@@ -287,9 +303,9 @@ class contactlist_user_preferencesHandler {
 		$render->assign('publicstate',$set['publicstate']);
 		// assign items for dropdown menu
 		$items_publicstate = array (	
-								array('text' => _CONTACTLISTPRIVACYNOBODY, 	'value' => 0),
-								array('text' => _CONTACTLISTPRIVACYBUDDIES,	'value' => 1),
-								array('text' => _CONTACTLISTPRIVACYMEMBERS,	'value' => 2)
+								array('text' => _CONTACTLISTPRIVACYNOBODY, 	'value' => 1),
+								array('text' => _CONTACTLISTPRIVACYBUDDIES,	'value' => 2),
+								array('text' => _CONTACTLISTPRIVACYMEMBERS,	'value' => 3)
 								);
 		$render->assign('items_publicstate',$items_publicstate);
 	  	return true;
@@ -298,8 +314,8 @@ class contactlist_user_preferencesHandler {
 		if ($args['commandName'] == 'update') {
 			if (!$render->pnFormIsValid()) return false;
 			$data = $render->pnFormGetValues();
-			$prefs = array (	'publicstate' => $data['publicstate']);
-			$result= pnModAPIFunc('ContactList','user','setPreferences',array('uid' => pnUserGetVar('uid')));
+			$preferences = array (	'publicstate' => $data['publicstate']);
+			$result= pnModAPIFunc('ContactList','user','setPreferences',array('uid' => pnUserGetVar('uid'), 'preferences' => $preferences));
 			if ($result) LogUtil::registerStatus(_CONTACTLISTPREFSUPDATED);
 			else LogUtil::registerError(_CONTACTLISTPREFSUPDATEERROR);
 			return pnRedirect(pnModURL('ContactList','user','preferences'));

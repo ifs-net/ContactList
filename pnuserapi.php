@@ -327,12 +327,11 @@ function ContactList_userapi_confirm($args) {
  * will also be "visible to nobody"
  *
  * @param	$args['uid']	int
- * @return	array			array:	'publicstate' 	=> int	{ 0 = not visible; 1 = visible for friends; 2 = visible for registered users;}
+ * @return	array			array:	'publicstate' 	=> int	{ 1 = not visible; 2 = visible for friends; 3 = visible for registered users;}
  */
 function ContactList_userapi_getPreferences($args) {
   	$uid = (int) $args['uid'];
-  	if (!($uid > 1)) return false;
-    // check the user attributes for userprefs
+    // get user and attributes
     $user = DBUtil::selectObjectByID('users', $uid, 'uid', null, null, null, false);
     if (!is_array($user)) return false; // no user data?
     if (!isset($user['__ATTRIBUTES__']) || (!isset($user['__ATTRIBUTES__']['contactlist_publicstate']))) {
@@ -360,7 +359,7 @@ function ContactList_userapi_setPreferences($args) {
     else {
         $user['__ATTRIBUTES__']['contactlist_publicstate'] = (int)$args['preferences']['publicstate'];
         // store attributes 
-        DBUtil::updateObject($user, 'users', '', 'uid'); 
+        return DBUtil::updateObject($user, 'users', '', 'uid'); 
     }
 	return true;
 }
