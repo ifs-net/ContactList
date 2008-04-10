@@ -82,14 +82,13 @@
   	</li>
   	<!--[if $buddy.birthday]-->
     <li class="birthday"><strong><!--[pnml name="_CONTACTLISTBIRTHDAY"]-->:</strong>&nbsp;<!--[$buddy.birthday|date_format:"$dateformat"]--></li>
-  	<!--[/if]-->  
-    <!--[if $buddy.prv_comment]-->
-    <li><strong><!--[pnml name="_CONTACTLISTPRVCOMMENT"]-->:</strong>&nbsp;<!--[$buddy.prv_comment|pnvarprepfordisplay|pnmodcallhooks]--></li>
-    <!--[/if]-->
-        
+  	<!--[/if]-->          
     <!--[if $nopubliccomment ne 1 and $buddy.pub_comment ne ""]-->
-    <li><strong><!--[pnml name="_CONTACTLISTPUBCOMMENT"]-->:</strong>&nbsp;<!--[$buddy.pub_comment|pnvarprepfordisplay|pnmodcallhooks]--></li>
+    <li><strong><!--[pnml name="_CONTACTLISTPUBCOMMENT"]-->:</strong><br /><em><!--[$buddy.pub_comment|pnvarprepfordisplay|pnmodcallhooks|nl2br]--></em></li>
     <!--[/if]-->    	
+    <!--[if $buddy.prv_comment]-->
+    <li><strong><!--[pnml name="_CONTACTLISTPRVCOMMENT"]-->:</strong><br /><em><!--[$buddy.prv_comment|pnvarprepfordisplay|pnmodcallhooks|nl2br]--></em></li>
+    <!--[/if]-->
   </ul>
 </div>     			
 <!--[/foreach]-->
