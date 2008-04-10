@@ -1,4 +1,5 @@
 Credits:
 ========
 
-Florian Schieﬂl: http://www.ifs-net.de
+Programming: 	Florian Schieﬂl: http://www.ifs-net.de
+Design: 		Carsten Vollmer: http://www.carsten-vollmer.de
