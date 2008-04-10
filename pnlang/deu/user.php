@@ -1,0 +1,125 @@
+<?php
+// menu
+define('_CONTACTLISTCREATEBUDDY',	                	'Kontakt hinzufügen');
+define('_CONTACTLISTSHOWBUDDIES',	                	'Kontaktliste anzeigen');
+define('_CONTACTLISTSHOWIGNORELIST',              		'Ignorierliste anzeigen');
+define('_CONTACTLISTUSERPREFERENCES',					'Einstellungen');
+
+// user preferences
+define('_CONTACTLISTUSERPREFS',							'Meine Einstellungen');
+define('_CONTACTLISTMYPUBLICSTATE',						'Einstellungen zum Datenschutz');
+define('_CONTACTLISTUPDATEPREFS',						'Einstellungen speichern');
+define('_CONTACTLISTPRIVACYNOBODY',						'Keiner soll meine Kontaktliste einsehen können');
+define('_CONTACTLISTPRIVACYBUDDIES',					'Bestätigte Kontakte sollen meine Kontaktliste einsehen können');
+define('_CONTACTLISTPRIVACYMEMBERS',					'Alle angemeldeten Benutzer sollen meine Kontaktliste einsehen können');
+define('_CONTACTLISTPREFSUPDATEERROR',					'Beim Speichern der Einstellungen ist ein Fehler aufgetreten');
+define('_CONTACTLISTPREFSUPDATED',						'Einstellungen aktualisiert');
+
+// main
+define('_CONTACTLISTMYCONTACTS',	                 	'Meine Kontakte');
+define('_CONTACTLISTADDBUDDY',			                'Neuen Kontakt hinzufügen');
+define('_CONTACTLISTTOCONFIRM',	                    	'Folgende Anfragen liegen vor');
+define('_CONTACTLISTUNAME',				                'Benutzername');
+define('_CONTACTLISTCOMMENTS',			                'Kommentare');
+define('_CONTACTLISTSTATE',		 	                    'Status');
+define('_CONTACTLISTACTIONS',			           		'Aktion');
+define('_CONTACTLISTPUBCOMMENT',	                 	'Öffentlicher Kommentar');
+define('_CONTACTLISTPRVCOMMENT',	                	'Privater Kommentar');
+define('_CONTACTLISTBUDDYUNAME',	                 	'Benutzernamen des neuen Kontaktes');
+define('_CONTACTLISTEDIT',			                   	'Editieren');
+define('_CONTACTLISTADD',			                      'Als Kontakt hinzufügen');
+define('_CONTACTLISTNOREQUTEXT',	                 	'Es wurde kein Grund für die Kontaktaufnahme angegeben');
+define('_CONTACTLISTREQUTEXT',	                   	'Begründung');
+define('_CONTACTLISTCANCEL',						'Anfrage abbrechen');
+define('_CONTACTLISTREQUESTDATE',	                	'Datum der Anfrage');
+define('_CONTACTLISTDECLINE',		                   	'Anfrage zurückweisen');
+define('_CONTACTLISTCONFIRM',		                   	'Anfrage akzeptieren');
+define('_CONTACTLISTPENDING',                   		'Anfrage noch nicht beantwortet');
+define('_CONTACTLISTCANNOTDELETEYET',					'Eine offene Anfrage kann frühestens nach 30 Tagen wieder gelöscht werden um unnötig viele Anfragen an einen gleichen Benutzer zu vermeiden');
+define('_CONTACTLISTCONFIRMED',		                 	'Kontakt bestätigt');
+define('_CONTACTLISTSUSPENDED',		                 	'Kontagt gekündigt');
+define('_CONTACTLISTREQUESTDECLINED',	              'Anfrage zurückgewiesen');
+define('_CONTACTLISTREQUESTACCEPTED',	              'Kontakt akzeptiert');
+define('_CONTACTLISTREQUESTDECLINEERR',	            'Ein Fehler ist aufgetreten beim Zurückweisen einer Kontaktanfrage');
+define('_CONTACTLISTREQUESTACCERR',	              	'Ein Fehler ist aufgetreten beim Akzeptieren einer Kontaktabfrage');
+define('_CONTACTLISTNA',				                    'nicht verfügbar');
+define('_CONTACTLISTSUSPEND',			                  'kündigen');
+define('_CONTACTLISTDELETE',			                  'löschen');
+define('_CONTACTLISTREALLYSUSPEND',		              'Soll die Verbindung zu diesem Kontakt wirklich aufgelöst werden? Der andere Kontakt wird über diese Statusänderung per Email informiert.');
+define('_CONTACTLISTSUSPENDERROR',	               	'Beim Auflösen der Verbindung zu dem Kontakt ist ein Fehler aufgetreten');
+define('_CONTACTLISTBUDDYSUSPENDED',              	'Der Kontakt wurde entfernt');
+
+define('_CONTACTLISTFILTERBUDDIESALL',	            'Alle Kontakte');
+define('_CONTACTLISTFILTERBUDDIESCONFIRM',	        'Bestätigte Kontakte');
+define('_CONTACTLISTFILTERYOURBUDDIESREJECT',		    'Zurückgewiesene Anfragen');
+define('_CONTACTLISTFILTERYOURBUDDIESSUSPEND',	    'Gekündigte Kontakte');
+
+define('_CONTACTLISTYOURBUDDIES',	                  'Deine Kontakte');
+define('_CONTACTLISTYOURBUDDIESCONFIRM',	         	'Deine bestätigten Kontakte');
+define('_CONTACTLISTYOURBUDDIESREJECT',		          'Deine zurückgewiesenen Anfragen');
+define('_CONTACTLISTYOURBUDDIESSUSPEND',	         	'Deine gekündigten Kontakte');
+define('_CONTACTLISTAMOUNTCONFIRM',	              	'Anzahl bestätigter Kontakte');
+define('_CONTACTLISTAMOUNTREJECTED',	             	'Anzahl zurückgewiesener Anfragen');
+define('_CONTACTLISTAMOUNTSUSPENDED',	            	'Anzahl gekündigter Kontakte');
+define('_CONTACTLISTBIRTHDAY',		                	'Geburtstag');
+define('_CONTACTLISTSENDPM',		                  	'Nachricht senden');
+define('_CONTACTLISTSHOWCONTACTS',	             		'Kontakte des Benutzers');
+define('_CONTACTLISTONLINE',			                  'online');
+define('_CONTACTLISTOF',		                      	'von');
+
+// ignore
+define('_CONTACTLISTIGNORELISTMANAGEMENT',          'Ignorierte Kontakte verwalten');
+define('_CONTACTLISTIGNOREUNAME',		                'Zu ignorierender Benutzername');
+define('_CONTACTLISTIGNOREEXPLAIN',	              	'Hier können Benutzer auf eine Ignorierliste gesetzt werden. Das heisst, dass Du von diesen dann keine EMails etc. mehr empfangen wirst.');
+define('_CONTACTLISTADDUSER',			                  'Benutzer hinzufügen');
+define('_CONTACTLISTUSERNOTFOUND',              		'Der angegebene Benutzer konnte nicht gefunden weden');
+define('_CONTACTLISTDONOTIGNOREYOURSELF',           'Ich weiß, manche können sich selbst nicht leiden. Aber deswegen kannst Du dich dennoch nicht selbst auf deine eigene Ignorierliste setzen :-)');
+define('_CONTACTLISTIGNOREDUSERADDED',            	'Benutzer wurde als hinzugefügt');
+define('_CONTACTLISTNOIGNOREDUSERS',	              'Es befinden sich noch keine Benutzer auf der Liste');
+define('_CONTACTLISTIGNORELIST',		                'Folgende Benutzer werden aktuell ignoriert');
+define('_CONTACTLISTREMOVEIGNOREDUSER',	            'Benutzer nicht mehr ignorieren');
+define('_CONTACTLISTUSERUPDATEERROR',	              'Aktualisieren der Ignorierliste fehlgeschlagen');
+define('_CONTACTLISTUSERNOLONGERIGNORED',           'Der Benutzer wird nun nicht mehr ignoriert');
+
+// create
+define('_CONTACTLISTCONFIRMREQU',	                	'Nach Abschicken dieses Formulars wird der andere Benutzer eine Nachricht erhalten, dass er die Anfrage bearbeiten soll. Sobald die Kontaktanfrage akzeptiert oder abgelehnt wurde, wirst Du informiert');
+define('_CONTACTLISTREQUESTTEXT',		                'Grund für die Kontaktaufnahme');
+define('_CONTACTLISTNOTADDYOURSELF',	              'Such Dir doch Freunde... Oder willst Du dich selbst als Kontakt hinzufügen? Das geht nicht ;-)');
+define('_CONTACTLISTUNAMEINVALID',		              'Es wurde kein gültiger Benutzername übermittelt');
+define('_CONTACTLISTDUPLICATEREQUEST',            	'Der übermittelte Benutzer steht schon auf deiner Liste. Evtl abgelehnte Kontakte müssen zuerst gelöscht werden, bevor eine neue Anfrage gestartet werden kann. Aber doppelt Eintragen geht nicht. Geh lieber raus und such Dir weitere Freunde ;-)');
+define('_CONTACTLISTREQUESTSENT',		                'Die Kontaktanfrage wurde an den anderen Benutzer übermittelt');
+define('_CONTACTLISTBUDDYADDED',		                'Kontakt hinzugefügt');
+
+// emails
+define('_CONTACTLISTUNCONFIRMSUBJECT',	            'Du wurdest als neuer Kontakt hinzugefügt');
+define('_CONTACTLISTCONFIRMSUBJECT',	              'Ein Benutzer will dich als Kontakt hinzufügen');
+define('_CONTACTLISTBUDDYSUSPENDEDYOU',           	'Einer deiner Kontakte hat dir gekündigt');
+define('_CONTACTLISTREQUESTREJECTED',	              'Eine Kontaktanfrage wurde abgelehnt');
+define('_CONTACTLISTDEARUSER',			                'Liebe(r)');
+define('_CONTACTLISTTHEUSER',			                  'der Benutzer');
+define('_CONTACTLISTADDEDYOUASBUDDY',	              'hat Dich als Kontakt hinzugefügt. Das heisst, ihr seit jetzt Freunde und gegenseitig in eueren Kontaktlisten verlinkt');
+define('_CONTACTLISTATTENTION',			                'Achtung');
+define('_CONTACTLISTAUTOMATICCONFIRM',            	'Diese Anfrage wurde automatisch angenommen, da Du selbst erst kürzlich eine Kontaktanfrage an den anderen Benutzer gestellt hast, welche noch nicht gelöscht wurde in der Zwischenzeit.');
+define('_CONTACTBUDDYMANAGEMENT',		                'Verwaltung der Kontaktliste');
+define('_CONTACTLISTDONOTREPLY',		                'Bitte auf diese Email nicht antworten. Diese Email wurde automatisch aufgrund Deiner Mitgliedschaft auf obiger Seite an Dich verschickt. Wenn es Fragen wegen der Kontaktaufnahme, einer Ablehnung oder einer Kündigung eines Kontaktes geht, wende Dich bitte an den oben angegebenen Benutzer. In Problemfällen wende dich einfach an den Administrator der obigen Internetseite.');
+define('_CONTACTLISTWANTSTOADDYOUAT',             	'will dich als neuen Kontakt hinzhufügen');
+define('_CONTACTLISTREJECTORACCEPT',	              'Bitte akzeptiere oder lehne die Anfrage ab');
+define('_CONTACTLISTHASREJECTEDYOURREQUESTAT',    	'hat deinen Kontaktwunsch leider abgelehnt auf');
+define('_CONTACTLISTHASACCEPTEDYOURREQUESTAT',	    'hat deinen Kontaktwunsch angenommen auf');
+define('_CONTACTLISTSUSPENDEDYOUAT',	              'hat dich als Kontakt gekündigt und von seiner Kontaktliste entfernt');
+
+// edit
+define('_CONTACTLISTEDITINFO',			                'Kontaktdetails bearbeiten');
+define('_CONTACTLISTUPDATEINFO',		                'Kontaktdetails aktualisieren');
+define('_CONTACTLISTBUDDYNOTFOUND',	              	'Es trat ein Fehler beim Laden des Kontaktes auf');
+define('_CONTACTLISTFOREIGNBUDDY',	               	'Du kannst natürlich nur deine eigenen Freunde bearbeiten... Geh lieber raus und such Dir neue Freunde ;-)');
+define('_CONTACTLISTBUDDYUPDATED',	               	'Kontaktdetails wurden aktualisiert');
+define('_CONTACTLISTBUDDYUPDATEFAILED',	            'Beim Aktualisieren der Kontaktdetails trat ein Fehler auf');
+
+// myprofile plugin and display-function
+define('_CONTACTLISTTABTITLE',			                'Freunde');
+define('_CONTACTLISTMYBUDDIES',		                 	'Freundesliste des Benutzers');
+define('_CONTACTLISTTHEUSERHAS',		                'Der Benutzer hat');
+define('_CONTACTLISTBUDDIES',			                  'Freunde');
+define('_CONTACTLISTLISTNOTPUBLIC',					'Die Kontaktliste des Benutzers ist für dich nicht sichtbar');
+?>
