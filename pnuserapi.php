@@ -247,11 +247,24 @@ function ContactList_userapi_suspend($args) {
   	$id = (int)$args['id'];
   	$uid = pnUserGetVar('uid');
   	$obj = DBUtil::selectObjectByID('contactlist_buddylist',$id);
-  	// only the user that is a buddy can suspend the connection
+  	// Security check: only the user that is a buddy can suspend the connection
   	if ($obj['uid'] != $uid) return false;
   	
   	// if the connection is only in one direction (already suspended) just delete the object
-  	if ($obj['state'] == 3) return DBUtil::deleteObject($obj,'contactlist_buddylist');
+  	if ($obj['state'] == 2) return DBUtil::deleteObject($obj,'contactlist_buddylist');
+  	else if ($obj['state'] == 3) return DBUtil::deleteObject($obj,'contactlist_buddylist');
+  	else if ($obj['state'] == 0) {	// now we have to handle an request with no response!
+	    // is the request old enough to be deleted? otherwise a user might nerve other users
+	    // sending and deleting requests in a loop
+	    $date_now 		= time();
+	    $date_request	= strtotime($obj['date'].' GMT');
+	    $date_diff		= $date_now-$date_request;
+	    if ($date_diff > (60*60*24*30)) return DBUtil::deleteObjectg($obj,'contactlist_buddylist');
+		else {
+		  	LogUtil::registerError(_CONTACTLISTCANNOTDELETEYET);
+		  	return false;
+		}
+	}
   	// get the counterpart
   	$counter_obj = pnModAPIFunc('ContactList','user','getall',array('uid'=>$obj['bid'],'bid'=>$obj['uid']));
   	$counter_obj = $counter_obj[0];
