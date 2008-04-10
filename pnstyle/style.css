@@ -176,6 +176,9 @@ div.autocomplete_user ul li {
 #cl_main a.ignorelist {
   background: url(../pnimages/locked.gif) no-repeat 0 50%;
 }
+#cl_main a.preferences {
+  background: url(../pnimages/user_pref.gif) no-repeat 0 50%;
+}
 
 /*******************************************************************************/
 /* Clearfix solution

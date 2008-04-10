@@ -13,14 +13,13 @@
   
   <h4><!--[$uname|userprofilelink]--></h4>
   
-  <ul class="options">
-  <li><a href="<!--[pnmodurl modname="ContactList" type="user" func="main" authid=$authid action="confirm" id=$buddy.id"]-->"><!--[pnml name="_CONTACTLISTCONFIRM"]--></a></li>
-  <li><a href="<!--[pnmodurl modname="ContactList" type="user" func="main" authid=$authid action="decline" id=$buddy.id"]-->"><!--[pnml name="_CONTACTLISTDECLINE"]--></a></li>
-  </ul>
-  
   <ul class="cl_userinfo">
     <li><strong><!--[pnml name="_CONTACTLISTREQUESTDATE"]-->:</strong>&nbsp;<!--[$buddy.date|pndate_format:datetimebrief]--></li>
     <li><!--[if $buddy.request_text ne ""]--><strong><!--[pnml name="_CONTACTLISTREQUTEXT"]-->:</strong>&nbsp;<!--[$buddy.request_text|pnvarprepfordisplay|pnmodcallhooks]--><!--[else]--><!--[pnml name="_CONTACTLISTNOREQUTEXT"]--><!--[/if]--></li>
+    <li>
+      [&nbsp;<a href="<!--[pnmodurl modname="ContactList" type="user" func="main" authid=$authid action="confirm" id=$buddy.id"]-->"><!--[pnml name="_CONTACTLISTCONFIRM"]--></a>&nbsp;|&nbsp;
+      <a href="<!--[pnmodurl modname="ContactList" type="user" func="main" authid=$authid action="decline" id=$buddy.id"]-->"><!--[pnml name="_CONTACTLISTDECLINE"]--></a>&nbsp;]      
+    </li>
   </ul>
   
 </div>    
