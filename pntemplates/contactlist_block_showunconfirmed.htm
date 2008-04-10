@@ -1,0 +1,8 @@
+<!--[pnml name="_CONTACTLISTUNCONFIRMEDBUDDIES"]-->
+<ul>
+<!--[foreach from=$buddies_unconfirmed item="buddy"]-->
+	<li><!--[$buddy.uname|userprofilelink]--></li>
+<!--[/foreach]-->
+</ul>
+<a href="<!--[pnmodurl modname="ContactList" type="user" func="main" state="0"]-->"><!--[pnml name="_CONTACTLISTRESPONDREQUEST"]--></a>
+
