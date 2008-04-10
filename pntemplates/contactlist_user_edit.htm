@@ -1,19 +1,22 @@
 <!--[include file="contactlist_user_header.htm"]-->
 
-<h3><!--[pnml name="_CONTACTLISTEDITINFO"]--></h3>
-<!--[pnform]-->
-	<!--[pnformvalidationsummary]-->
-	<!--[if $nopubliccomment eq 0]-->
-		<br /><br />
-		<!--[pnformlabel for="pub_comment" text="_CONTACTLISTPUBCOMMENT" ]-->:<br />
-		<!--[pnformtextinput id="pub_comment" textMode=multiline]-->
-	<!--[/if]-->
-	<br /><br />
-	<!--[pnformlabel for=prv_comment text="_CONTACTLISTPRVCOMMENT"]-->:<br />
-	<!--[pnformtextinput id=prv_comment textMode=multiline]-->
-	<br /><br />
-	<!--[pnformbutton commandName="update" text=_CONTACTLISTUPDATEINFO]-->
-<!--[/pnform]-->
-<!--[pndebug output="html"]-->
+<div id="cl_edit" class="cl_floatbox">
+  <h3><!--[pnml name="_CONTACTLISTEDITINFO"]--></h3>
+  <!--[pnform]-->
+  <!--[pnformvalidationsummary]-->
+  
+  <dl class="cl_clearfix">
+  <!--[if $nopubliccomment eq 0]-->
+  <dt><!--[pnformlabel for="pub_comment" text="_CONTACTLISTPUBCOMMENT" ]--></dt>
+  <dd><!--[pnformtextinput id="pub_comment" textMode=multiline]--></dd>
+  <!--[/if]-->
+
+  <dt><!--[pnformlabel for=prv_comment text="_CONTACTLISTPRVCOMMENT"]--></dt>
+  <dd><!--[pnformtextinput id=prv_comment textMode=multiline]--></dd>
+  
+  </dl>
+  <!--[pnformbutton commandName="update" text=_CONTACTLISTUPDATEINFO]-->
+  <!--[/pnform]-->
+</div>
 
 <!--[include file="contactlist_user_footer.htm"]-->

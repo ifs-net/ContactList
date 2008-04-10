@@ -1,55 +1,12 @@
-div.autocomplete_user {
-    position:absolute;
-    width: 25em;
-    background-color: white;
-    border: 1px solid #888;
-    margin: 0;
-    padding: 0;
-}
-div.autocomplete_user ul {
-    list-style-image: url("../../../images/icons/extrasmall/edit_user.gif");
-    margin: 0;
-    padding: 0;
-}
-div.autocomplete_user ul li.selected { background-color: #ffb;}
-div.autocomplete_user ul li {
-    margin: 0;
-    padding: 0.1em 0 0.1em 0;
-    line-height: 1.4em;
-    cursor:pointer;
-}
-
-
-#liveusersearch {
-    margin: 1em 0 1em 0;
-}
-
-
-
-
-em.cl_online {
-  color: red;
-  font-weight:bold;
-  font-size:0.9em;
-}
-
-.contactlist_tab_buddy {
- 	border-style:dotted;
-	border-width:1px;
-	margin:3px;
-	padding:10px;
-	float:left;
-	width:130px;
-	height:180px;
-	overflow:none;
-}
- 
+/*******************************************************************************/
+/* Navigation 
+/*******************************************************************************/
  
 #cl_main ul.navigation {
   border-bottom:1px dashed #CCC;
   font-weight:bold;
   list-style:none;
-  margin:1.5em 0pt;
+  margin:1em 0pt;
   padding:0pt;
   text-align:center;
 }
@@ -59,6 +16,27 @@ em.cl_online {
   margin: 0 1em;
 } 
 
+/*******************************************************************************/
+/* General 
+/*******************************************************************************/
+
+#cl_edit,
+#cl_create,
+#cl_unconfirm,
+#cl_contacts,
+#cl_ignorelist,
+#cl_ignoresearch {
+  margin:1.5em 0pt;
+}
+#cl_footer {
+  font-size: 0.8em;
+  text-align: center;
+  margin-top: 1em;
+}
+
+/*******************************************************************************/
+/* Buddybox 
+/*******************************************************************************/
 
 #cl_main .buddybox {
   background:#FFFEFA none repeat scroll 0%;
@@ -68,15 +46,14 @@ em.cl_online {
   padding:5px;
 }
 #cl_main .buddybox .avatar {
-  background-color:#FFFFFF;
+  background-color:#FFF;
   border:1px solid #C2C2C4;
   float:left;
   margin:3px;
   padding:3px !important;
 }
-
 #cl_main .buddybox h4 {
-  border-bottom:1px dotted #CCCCCC;
+  border-bottom:1px dotted #CCC;
   margin:0pt 0 1em 150px;
   padding:0pt;
 }
@@ -103,21 +80,70 @@ em.cl_online {
 #cl_main .buddybox ul.options li {
   margin:0;
   padding:0;
-  border-bottom:1px dotted #CCCCCC;  
+  border-bottom:1px dotted #CCC;  
 }
 #cl_main .buddybox p {
   margin:0pt 12em 0.5em 150px;
   padding:0pt;
 }
- 
- 
- 
-#cl_main .footer {
-  font-size: 0.8em;
-  text-align: center;
-  margin-top: 1em;
+em.cl_online {
+  color: red;
+  font-weight:bold;
+  font-size:0.9em;
+} 
+
+/*******************************************************************************/
+/* Autocomplete
+/*******************************************************************************/
+#cl_edit dl dt,
+#cl_ignoresearch dl dt,
+#cl_create dl dt {
+  display: block;
+  float: left;
+  text-align: right;
+  width: 30%;
+  padding: 0;
+  margin: 0.5em;
+  line-height: 2em;
+}
+#cl_edit dl dd,
+#cl_ignoresearch dl dd,
+#cl_create dl dd {
+  display: block;
+  float: left;
+  text-align: left;
+  width: 65%;
+  margin: 0.5em;
+  padding: 0;
+  line-height: 2em;
 }
 
+/*******************************************************************************/
+/* Autocomplete
+/*******************************************************************************/
+
+div.autocomplete_user {
+  position:absolute;
+  width:25em;
+  background-color:white;
+  border:1px solid #888;
+  margin:0;
+  padding:0;
+}
+div.autocomplete_user ul {
+  list-style-image: url("../../../images/icons/extrasmall/edit_user.gif");
+  margin: 0;
+  padding: 0;
+}
+div.autocomplete_user ul li.selected { background-color: #ffb;}
+div.autocomplete_user ul li {
+  margin: 0;
+  padding: 0.1em 0 0.1em 0;
+  line-height: 1.4em;
+  cursor:pointer;
+}
+#liveusersearch {
+}
 
 /*******************************************************************************/
 /* Styling of links and buttons with images 
@@ -175,3 +201,19 @@ em.cl_online {
 
 /* .floatbox-Anpassung für IE */
 * html .cl_floatbox { width:100% }
+
+
+/*******************************************************************************/
+/* myProfile-Plugin
+/*******************************************************************************/
+
+.contactlist_tab_buddy {
+ 	border-style:dotted;
+	border-width:1px;
+	margin:3px;
+	padding:10px;
+	float:left;
+	width:130px;
+	height:180px;
+	overflow:none;
+}
