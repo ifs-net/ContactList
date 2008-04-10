@@ -38,6 +38,7 @@ function ContactList_NextBirthdaysblock_display($blockinfo)
     $vars = pnBlockVarsFromContent($blockinfo['content']);
 
     if (empty($vars['numitems'])) $vars['numitems'] = 5;
+    if (empty($vars['dateformat'])) $vars['dateformat'] = '%d.%m.';
     $render = pnRender::getInstance('ContactList', false);
 
     $uid = pnUserGetVar('uid');
@@ -58,7 +59,8 @@ function ContactList_NextBirthdaysblock_display($blockinfo)
 	}
 	// return if no buddy is out there
 	if ($c==0) return false;
-    $render->assign('buddies',$res);
+    $render->assign('buddies',		$res);
+    $render->assign('dateformat',	$vars['dateformat']);
 
     $blockinfo['content'] = $render->fetch('contactlist_block_nextbirthdays.htm');
     return themesideblock($blockinfo);
@@ -75,9 +77,11 @@ function ContactList_NextBirthdaysblock_modify($blockinfo)
     $vars = pnBlockVarsFromContent($blockinfo['content']);
 
     if (empty($vars['numitems'])) $vars['numitems'] = 5;
+    if (empty($vars['dateformat'])) $vars['dateformat'] = '%d.%m.';
 
     $render = pnRender::getInstance('ContactList', false);
     $render->assign('numitems', $vars['numitems']);
+    $render->assign('dateformat', $vars['dateformat']);
     return $render->fetch('contactlist_block_nextbirthdays_modify.htm');
 }
 
@@ -91,7 +95,8 @@ function ContactList_NextBirthdaysblock_modify($blockinfo)
 function ContactList_NextBirthdaysblock_update($blockinfo)
 {
     $vars = pnBlockVarsFromContent($blockinfo['content']);
-    $vars['numitems'] = (int) FormUtil::getPassedValue('numitems', 5, 'POST');
+    $vars['numitems'] 	= (int) FormUtil::getPassedValue('numitems', 5, 'POST');
+    $vars['dateformat']	= FormUtil::getPassedValue('dateformat', '%d.%m.', 'POST');
 
     $blockinfo['content'] = pnBlockVarsToContent($vars);
 
