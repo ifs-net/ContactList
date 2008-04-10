@@ -22,6 +22,19 @@ $modversion['contact']        = 'http://www.ifs-net.de/';
 // module has an admin option.
 $modversion['admin']          = 1;
 
+// module dependencies
+$modversion['dependencies'] = array(
+	array(	'modname'    => 'pnMessages',
+            'minversion' => '1.0', 'maxversion' => '',
+    		'status'     => PNMODULE_DEPENDENCY_RECOMMENDED),
+    array(	'modname'    => 'Avatar',
+            'minversion' => '1.0', 'maxversion' => '',
+            'status'     => PNMODULE_DEPENDENCY_RECOMMENDED),
+    array(	'modname'    => 'MyProfile',
+            'minversion' => '1.0', 'maxversion' => '',
+            'status'     => PNMODULE_DEPENDENCY_RECOMMENDED)
+	);
+
 // This one adds the info to the DB, so that users can click on the 
 // headings in the permission module
 $modversion['securityschema'] = array('ContactList::' => 'uid::');
