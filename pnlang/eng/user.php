@@ -16,7 +16,7 @@ define('_CONTACTLISTACTIONS',			'Action');
 define('_CONTACTLISTPUBCOMMENT',		'Public comment');
 define('_CONTACTLISTPRVCOMMENT',		'Private comment');
 define('_CONTACTLISTBUDDYUNAME',		'User to add as buddy');
-define('_CONTACTLISTEDIT',				'edit');
+define('_CONTACTLISTEDIT',				'Edit');
 define('_CONTACTLISTADD',				'add as buddy');
 define('_CONTACTLISTNOREQUTEXT',		'no reason given');
 define('_CONTACTLISTREQUESTDATE',		'request\'s date');
@@ -30,13 +30,16 @@ define('_CONTACTLISTREQUESTDECLINEERR',	'Error rejecting request');
 define('_CONTACTLISTREQUESTACCEPTED',	'Buddy accepted');
 define('_CONTACTLISTREQUESTACCERR',		'Error accepting request');
 define('_CONTACTLISTNA',				'N/A');
-define('_CONTACTLISTSUSPEND',			'suspend');
-define('_CONTACTLISTDELETE',			'delete');
+define('_CONTACTLISTSUSPEND',			'Suspend');
+define('_CONTACTLISTDELETE',			'Delete');
 define('_CONTACTLISTREALLYSUSPEND',		'Should the connection between you and this buddy really be suspended? Please note: the buddy will be informed about this.');
 define('_CONTACTLISTSUSPENDERROR',		'An error occurred while trying to suspend the buddy');
 define('_CONTACTLISTBUDDYSUSPENDED',	'The connection to this buddy was suspended successfully');
 define('_CONTACTLISTBUDDIESAMOUNT',		'Number of confirmed contacts');
 define('_CONTACTLISTBIRTHDAY',			'Birthday');
+define('_CONTACTLISTSENDPM',			'Send PM');
+define('_CONTACTLISTSHOWCONTACTS',			'Show Contacts');
+define('_CONTACTLISTONLINE',			'Online');
 
 // ignore
 define('_CONTACTLISTIGNORELISTMANAGEMENT','Ignore-list management');
