@@ -38,3 +38,4 @@ $modversion['dependencies'] = array(
 // This one adds the info to the DB, so that users can click on the 
 // headings in the permission module
 $modversion['securityschema'] = array('ContactList::' => 'uid::');
+?>
