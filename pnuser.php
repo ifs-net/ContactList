@@ -26,7 +26,7 @@ function ContactList_user_main()
 	}
 
 	// redirect after any action to avoid auth-id problems
-	if (isset($action)) return pnRedirect(pnModURL('ContactList','user','main'));
+	if (isset($action)) return pnRedirect(pnModURL('ContactList','user','main',array('state'=>FormUtil::getPassedValue('state'))));
 		
 	// Create output
 	$render = pnRender::getInstance('ContactList');

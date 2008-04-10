@@ -63,9 +63,9 @@
   <!--[if $pnMessages]--><li><a href="<!--[pnmodurl modname="pnMessages" type="user" func="newpm" uname=$uname]-->"><!--[pnml name="_CONTACTLISTSENDPM"]--></a></li><!--[/if]-->
   <!--[if $nopublicbuddylist ne 1]--><li><a href="<!--[pnmodurl modname="ContactList" type="user" func="display" uid=$buddy.bid]-->"><!--[pnml name="_CONTACTLISTSHOWCONTACTS"]--></a></li><!--[/if]-->
   <!--[if $buddy.state eq 1]--><li><a href="<!--[pnmodurl modname="ContactList" type="user" func="edit" id=$buddy.id]-->"><!--[pnml name="_CONTACTLISTEDIT"]--></a></li><!--[/if]-->
-  <!--[if $buddy.state eq 0]--><li><a href="<!--[pnmodurl modname="ContactList" type="user" func="main" action="suspend" id=$buddy.id authid=$authid]-->"><!--[pnml name="_CONTACTLISTCANCEL"]--></a></li><!--[/if]-->
-  <!--[if $buddy.state ne 0 and $buddy.state ne 3]--><li><a href="<!--[pnmodurl modname="ContactList" type="user" func="main" action="suspend" authid=$authid id=$buddy.id]-->" onclick="return confirm('<!--[pnml name="_CONTACTLISTREALLYSUSPEND"]-->')"><!--[pnml name="_CONTACTLISTSUSPEND"]--></a></li><!--[/if]-->
-  <!--[if $buddy.state eq 3 or $buddy.state eq 2]--><li><a href="<!--[pnmodurl modname="ContactList" type="user" func="main" action="suspend" authid=$authid id=$buddy.id ne="1"]-->"><!--[pnml name="_CONTACTLISTDELETE"]--></a></li><!--[/if]-->
+  <!--[if $buddy.state eq 0]--><li><a href="<!--[pnmodurl modname="ContactList" type="user" func="main" action="suspend" id=$buddy.id authid=$authid state=$filterstate]-->"><!--[pnml name="_CONTACTLISTCANCEL"]--></a></li><!--[/if]-->
+  <!--[if $buddy.state eq 1]--><li><a href="<!--[pnmodurl modname="ContactList" type="user" func="main" action="suspend" authid=$authid id=$buddy.id state=$filterstate]-->" onclick="return confirm('<!--[pnml name="_CONTACTLISTREALLYSUSPEND"]-->')"><!--[pnml name="_CONTACTLISTSUSPEND"]--></a></li><!--[/if]-->
+  <!--[if $buddy.state eq 2 or $buddy.state eq 3]--><li><a href="<!--[pnmodurl modname="ContactList" type="user" func="main" action="suspend" authid=$authid id=$buddy.id ne="1" state=$filterstate]-->"><!--[pnml name="_CONTACTLISTDELETE"]--></a></li><!--[/if]-->
   </ul>
   
   <ul class="cl_userinfo">
