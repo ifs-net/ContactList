@@ -85,12 +85,12 @@ em.cl_online {
   font-weight:bold;
 }
 #cl_main .buddybox ul.cl_userinfo {
-  margin:0pt 12em 1em 150px;
+  margin:0pt 12em 0 150px;
   padding:0pt;
   list-style:none;
 }
 #cl_main .buddybox ul.cl_userinfo li {
-  margin:0;
+  margin:0pt 0pt 0.5em;
   padding:0;
 }
 #cl_main .buddybox ul.options {
