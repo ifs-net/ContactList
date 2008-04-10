@@ -32,13 +32,17 @@ function ContactList_init()
  */
 function ContactList_delete()
 {
+	// Delete all attributes we set to manage the user's preferences
+	$res = DBUtil::deleteObjectByID('objectdata_attributes','contactlist_publicstate','attribute_name');
+	if (!$res) return false;
+
     // Delete the table
     if (!DBUtil::dropTable('contactlist_ignorelist')) return false;
     if (!DBUtil::dropTable('contactlist_buddylist')) return false;
 
 	// Delete all module variables
 	pnModDelVar('ContactList');
-	
+		
     // Deletion successful
     return true;
 }
