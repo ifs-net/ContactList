@@ -5,6 +5,16 @@ define('_CONTACTLISTSHOWBUDDIES',	                	'Show my buddylist');
 define('_CONTACTLISTSHOWIGNORELIST',              		'Show my ignorelist');
 define('_CONTACTLISTUSERPREFERENCES',					'My preferences');
 
+// user preferences
+define('_CONTACTLISTUSERPREFS',							'My preferences');
+define('_CONTACTLISTMYPUBLICSTATE',						'Buddy list privacy settings');
+define('_CONTACTLISTUPDATEPREFS',						'Update my preferences');
+define('_CONTACTLISTPRIVACYNOBODY',						'Nobody can see my buddy list');
+define('_CONTACTLISTPRIVACYBUDDIES',					'My buddies can see my buddy list');
+define('_CONTACTLISTPRIVACYMEMBERS',					'All registered users can see my buddy list');
+define('_CONTACTLISTPREFSUPDATEERROR',					'An error occured while updating your user preferences');
+define('_CONTACTLISTPREFSUPDATED',						'User preferences updated successfully');
+
 // main
 define('_CONTACTLISTMYCONTACTS',	                 	'My contacts');
 define('_CONTACTLISTADDBUDDY',			                'Add new contact');

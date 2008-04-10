@@ -320,6 +320,52 @@ function ContactList_userapi_confirm($args) {
 }
 
 /**
+ * Get user preferences
+ * This function gets the user preferences if the contact list should be
+ * public to all, to friends or to nobody
+ * If public contact lists are disabled by the administrator this settings
+ * will also be "visible to nobody"
+ *
+ * @param	$args['uid']	int
+ * @return	array			array:	'publicstate' 	=> int	{ 0 = not visible; 1 = visible for friends; 2 = visible for registered users;}
+ */
+function ContactList_userapi_getPreferences($args) {
+  	$uid = (int) $args['uid'];
+  	if (!($uid > 1)) return false;
+    // check the user attributes for userprefs
+    $user = DBUtil::selectObjectByID('users', $uid, 'uid', null, null, null, false);
+    if (!is_array($user)) return false; // no user data?
+    if (!isset($user['__ATTRIBUTES__']) || (!isset($user['__ATTRIBUTES__']['contactlist_publicstate']))) {
+		// userprefs for this user do not exist, create them with defaults
+        $user['__ATTRIBUTES__']['contactlist_publicstate'] = 2;
+        // store attributes 
+        DBUtil::updateObject($user, 'users', '', 'uid'); 
+    }
+	return array('publicstate' => $user['__ATTRIBUTES__']['contactlist_publicstate']);
+}
+
+/**
+ * Store user preferences
+ *
+ * @param	$args['uid']			int
+ * @param	$args['preferences']	array
+ * @return	boolean
+ */
+function ContactList_userapi_setPreferences($args) {
+  	$uid = (int) $args['uid'];
+  	if (!($uid > 1)) return false;
+    // check the user attributes for userprefs
+    $user = DBUtil::selectObjectByID('users', $uid, 'uid', null, null, null, false);
+    if (!is_array($user)) return false; // no user data?
+    else {
+        $user['__ATTRIBUTES__']['contactlist_publicstate'] = (int)$args['preferences']['publicstate'];
+        // store attributes 
+        DBUtil::updateObject($user, 'users', '', 'uid'); 
+    }
+	return true;
+}
+
+/**
  * This function checks if there is a buddy connection between two users
  * and returns a boolean value (true or false)
  * To be used from other module developers!

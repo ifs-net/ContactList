@@ -89,6 +89,28 @@ function ContactList_user_main()
 }
 
 /**
+ * the main user function
+ * 
+ * @return       output
+ */
+function ContactList_user_preferences()
+{
+	// Security check 
+	if (!SecurityUtil::checkPermission('ContactList::', '::', ACCESS_COMMENT)) return LogUtil::registerPermissionError();
+
+	$uid = (int) pnUserGetVar('uid');
+
+	// Create output
+	$render = FormUtil :: newpnForm('ContactList');
+
+	// assign some data
+	$render->assign('nopubliccomment',(int)pnModGetVar('ContactList','nopubliccomment'));
+
+	// return output
+	return $render->pnFormExecute('contactlist_user_preferences.htm', new contactlist_user_preferencesHandler());
+}
+
+/**
  * display a user's buddy list
  * 
  * @return       output
@@ -253,6 +275,34 @@ class contactlist_user_editHandler {
 			if (DBUtil::updateObject($obj,'contactlist_buddylist')) LogUtil::registerStatus(_CONTACTLISTBUDDYUPDATED);
 			else LogUtil::registerStatus(_CONTACTLISTBUDDYUPDATEFAILED);
 			return pnRedirect(pnModURL('ContactList','user','main'));
+		}
+		return true;
+	}
+}
+class contactlist_user_preferencesHandler {
+	function initialize(& $render) {
+	  	// get preferences
+  		$uid = pnUserGetVar('uid');
+  		$set = pnModAPIFunc('ContactList','user','getPreferences',array('uid' => $uid));
+		$render->assign('publicstate',$set['publicstate']);
+		// assign items for dropdown menu
+		$items_publicstate = array (	
+								array('text' => _CONTACTLISTPRIVACYNOBODY, 	'value' => 0),
+								array('text' => _CONTACTLISTPRIVACYBUDDIES,	'value' => 1),
+								array('text' => _CONTACTLISTPRIVACYMEMBERS,	'value' => 2)
+								);
+		$render->assign('items_publicstate',$items_publicstate);
+	  	return true;
+	}
+	function handleCommand(& $render, & $args) {
+		if ($args['commandName'] == 'update') {
+			if (!$render->pnFormIsValid()) return false;
+			$data = $render->pnFormGetValues();
+			$prefs = array (	'publicstate' => $data['publicstate']);
+			$result= pnModAPIFunc('ContactList','user','setPreferences',array('uid' => pnUserGetVar('uid')));
+			if ($result) LogUtil::registerStatus(_CONTACTLISTPREFSUPDATED);
+			else LogUtil::registerError(_CONTACTLISTPREFSUPDATEERROR);
+			return pnRedirect(pnModURL('ContactList','user','preferences'));
 		}
 		return true;
 	}
