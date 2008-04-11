@@ -1,6 +1,8 @@
 <!--[include file="contactlist_user_header.htm"]-->
 <!--[pnmodavailable modname="pnMessages" assign="pnMessages"]-->
-<!--[pnvarcleanfrominput name="state" assign="filterstate" ]-->
+<!--[pnvarcleanfrominput name="state" assign="state" ]-->
+<!--[if $state]--><!--[assign var="filterstate" value="state=\"`$state`\""]--><!--[/if]-->
+
 <!--[if $buddies_unconfirmed gt 0]-->
 <div id="cl_pending" class="cl_box cl_floatbox">
 <h3><!--[pnml name="_CONTACTLISTTOCONFIRM"]--></h3>
@@ -33,23 +35,23 @@
   <li><a href="<!--[pnmodurl modname="ContactList" type="user" func="main" state=3]-->"><!--[pnml name="_CONTACTLISTFILTERYOURBUDDIESSUSPEND"]--></a></li>  
 </ul>
 
-<!--[if $contacts_all gt 0]-->
 <div id="cl_contacts" class="cl_box cl_floatbox">
 
-<!--[if $filterstate eq ""]-->
+<!--[if $state eq ""]-->
   <h3><!--[pnml name="_CONTACTLISTYOURBUDDIES"]--></h3>
   <p><!--[pnml name="_CONTACTLISTAMOUNTCONFIRM"]-->:&nbsp;<!--[$contacts]-->&nbsp;<!--[pnml name="_CONTACTLISTOF"]-->&nbsp;<!--[$contacts_all]--></p>
-<!--[elseif $filterstate eq 1]-->
+<!--[elseif $state eq 1]-->
   <h3><!--[pnml name="_CONTACTLISTYOURBUDDIESCONFIRM"]--></h3>
   <p><!--[pnml name="_CONTACTLISTAMOUNTCONFIRM"]-->:&nbsp;<!--[$contacts_all]--></p>
-<!--[elseif $filterstate eq 2]-->
+<!--[elseif $state eq 2]-->
   <h3><!--[pnml name="_CONTACTLISTYOURBUDDIESREJECT"]--></h3>
   <p><!--[pnml name="_CONTACTLISTAMOUNTREJECTED"]-->:&nbsp;<!--[$contacts_all]--></p>
-<!--[elseif $filterstate eq 3]-->
+<!--[elseif $state eq 3]-->
   <h3><!--[pnml name="_CONTACTLISTYOURBUDDIESSUSPEND"]--></h3>
   <p><!--[pnml name="_CONTACTLISTAMOUNTSUSPENDED"]-->:&nbsp;<!--[$contacts_all]--></p>
 <!--[/if]-->
 
+<!--[if $contacts_all gt 0]-->
 <!--[foreach from=$buddies item="buddy"]-->
 <!--[pnusergetvar uid=$buddy.bid name="_YOURAVATAR" assign="avatar"]-->
 <div class="buddybox">
@@ -61,9 +63,9 @@
   <!--[if $pnMessages]--><li><a href="<!--[pnmodurl modname="pnMessages" type="user" func="newpm" uname=$buddy.uname]-->"><!--[pnml name="_CONTACTLISTSENDPM"]--></a></li><!--[/if]-->
   <!--[if $nopublicbuddylist ne 1]--><li><a href="<!--[pnmodurl modname="ContactList" type="user" func="display" uid=$buddy.bid]-->"><!--[pnml name="_CONTACTLISTSHOWCONTACTS"]--></a></li><!--[/if]-->
   <li><a href="<!--[pnmodurl modname="ContactList" type="user" func="edit" id=$buddy.id]-->"><!--[pnml name="_CONTACTLISTEDIT"]--></a></li>
-  <!--[if $buddy.state eq 0]--><li><a href="<!--[pnmodurl modname="ContactList" type="user" func="main" action="suspend" id=$buddy.id state=$filterstate authid=$authid]-->"><!--[pnml name="_CONTACTLISTCANCEL"]--></a></li><!--[/if]-->
-  <!--[if $buddy.state eq 1]--><li><a href="<!--[pnmodurl modname="ContactList" type="user" func="main" action="suspend" id=$buddy.id state=$filterstate authid=$authid]-->" onclick="return confirm('<!--[pnml name="_CONTACTLISTREALLYSUSPEND"]-->')"><!--[pnml name="_CONTACTLISTSUSPEND"]--></a></li><!--[/if]-->
-  <!--[if $buddy.state eq 2 or $buddy.state eq 3]--><li><a href="<!--[pnmodurl modname="ContactList" type="user" func="main" action="suspend" id=$buddy.id ne="1" state=$filterstate authid=$authid]-->"><!--[pnml name="_CONTACTLISTDELETE"]--></a></li><!--[/if]-->
+  <!--[if $buddy.state eq 0]--><li><a href="<!--[pnmodurl modname="ContactList" type="user" func="main" action="suspend" id=$buddy.id state=$state authid=$authid]-->"><!--[pnml name="_CONTACTLISTCANCEL"]--></a></li><!--[/if]-->
+  <!--[if $buddy.state eq 1]--><li><a href="<!--[pnmodurl modname="ContactList" type="user" func="main" action="suspend" id=$buddy.id state=$state authid=$authid]-->" onclick="return confirm('<!--[pnml name="_CONTACTLISTREALLYSUSPEND"]-->')"><!--[pnml name="_CONTACTLISTSUSPEND"]--></a></li><!--[/if]-->
+  <!--[if $buddy.state eq 2 or $buddy.state eq 3]--><li><a href="<!--[pnmodurl modname="ContactList" type="user" func="main" action="suspend" id=$buddy.id ne="1" state=$state authid=$authid]-->"><!--[pnml name="_CONTACTLISTDELETE"]--></a></li><!--[/if]-->
   </ul>
   
   <ul class="cl_userinfo">
@@ -90,7 +92,8 @@
   </ul>
 </div>     			
 <!--[/foreach]-->
-</div>	
 <!--[/if]-->
+</div>	
+
 
 <!--[include file="contactlist_user_footer.htm"]-->

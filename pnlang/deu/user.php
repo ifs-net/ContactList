@@ -116,8 +116,8 @@ define('_CONTACTLISTBUDDYUPDATEFAILED',	            'Beim Aktualisieren der Kont
 
 // myprofile plugin and display-function
 define('_CONTACTLISTTABTITLE',			                'Freunde');
-define('_CONTACTLISTMYBUDDIES',		                 	'Freundesliste des Benutzers');
+define('_CONTACTLISTMYBUDDIES',		                 	'Kontakte von');
 define('_CONTACTLISTTHEUSERHAS',		                'Der Benutzer hat');
-define('_CONTACTLISTBUDDIES',			                  'Freunde');
-define('_CONTACTLISTLISTNOTPUBLIC',					'Die Kontaktliste des Benutzers ist für dich nicht sichtbar');
+define('_CONTACTLISTBUDDIES',			                  'Kontakte');
+define('_CONTACTLISTLISTNOTPUBLIC',					'Die Liste des Benutzers ist für dich nicht sichtbar');
 
