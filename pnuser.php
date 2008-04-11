@@ -113,12 +113,12 @@ function ContactList_user_preferences()
  * 
  * @return       output
  */
-function ContactList_user_display($args)
+function ContactList_user_display()
 {
-  	// check if buddy list is public
-  	if (pnModGetVar('ContactList','nopublicbuddylist')) return LogUtil::registerPermissionError();
-	$uid = (int) FormUtil::getPassedValue('uid', (isset($args['uid'])) ? $args['uid'] : null, 'GET');
-	unset($args);
+
+	// check if buddy list is public
+	if (pnModGetVar('ContactList','nopublicbuddylist')) return LogUtil::registerPermissionError();
+  $uid = (int) FormUtil::getPassedValue('uid');
 	if (!$uid) return LogUtil::registerError(_GETFAILED);
 
 	// Security Check

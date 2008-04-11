@@ -17,8 +17,8 @@
     <li><strong><!--[pnml name="_CONTACTLISTREQUESTDATE"]-->:</strong>&nbsp;<!--[$buddy.date|pndate_format:datetimebrief]--></li>
     <li><!--[if $buddy.request_text ne ""]--><strong><!--[pnml name="_CONTACTLISTREQUTEXT"]-->:</strong>&nbsp;<!--[$buddy.request_text|pnvarprepfordisplay|pnmodcallhooks]--><!--[else]--><!--[pnml name="_CONTACTLISTNOREQUTEXT"]--><!--[/if]--></li>
     <li>
-      [&nbsp;<a href="<!--[pnmodurl modname="ContactList" type="user" func="main" authid=$authid action="confirm" id=$buddy.id"]-->"><!--[pnml name="_CONTACTLISTCONFIRM"]--></a>&nbsp;|&nbsp;
-      <a href="<!--[pnmodurl modname="ContactList" type="user" func="main" authid=$authid action="decline" id=$buddy.id"]-->"><!--[pnml name="_CONTACTLISTDECLINE"]--></a>&nbsp;]      
+      [&nbsp;<a href="<!--[pnmodurl modname="ContactList" type="user" func="main" action="confirm" id=$buddy.id authid=$authid]-->"><!--[pnml name="_CONTACTLISTCONFIRM"]--></a>&nbsp;|&nbsp;
+      <a href="<!--[pnmodurl modname="ContactList" type="user" func="main" action="decline" id=$buddy.id authid=$authid]-->"><!--[pnml name="_CONTACTLISTDECLINE"]--></a>&nbsp;]      
     </li>
   </ul>
   
@@ -63,9 +63,9 @@
   <!--[if $pnMessages]--><li><a href="<!--[pnmodurl modname="pnMessages" type="user" func="newpm" uname=$uname]-->"><!--[pnml name="_CONTACTLISTSENDPM"]--></a></li><!--[/if]-->
   <!--[if $nopublicbuddylist ne 1]--><li><a href="<!--[pnmodurl modname="ContactList" type="user" func="display" uid=$buddy.bid]-->"><!--[pnml name="_CONTACTLISTSHOWCONTACTS"]--></a></li><!--[/if]-->
   <li><a href="<!--[pnmodurl modname="ContactList" type="user" func="edit" id=$buddy.id]-->"><!--[pnml name="_CONTACTLISTEDIT"]--></a></li>
-  <!--[if $buddy.state eq 0]--><li><a href="<!--[pnmodurl modname="ContactList" type="user" func="main" action="suspend" id=$buddy.id authid=$authid state=$filterstate]-->"><!--[pnml name="_CONTACTLISTCANCEL"]--></a></li><!--[/if]-->
-  <!--[if $buddy.state eq 1]--><li><a href="<!--[pnmodurl modname="ContactList" type="user" func="main" action="suspend" authid=$authid id=$buddy.id state=$filterstate]-->" onclick="return confirm('<!--[pnml name="_CONTACTLISTREALLYSUSPEND"]-->')"><!--[pnml name="_CONTACTLISTSUSPEND"]--></a></li><!--[/if]-->
-  <!--[if $buddy.state eq 2 or $buddy.state eq 3]--><li><a href="<!--[pnmodurl modname="ContactList" type="user" func="main" action="suspend" authid=$authid id=$buddy.id ne="1" state=$filterstate]-->"><!--[pnml name="_CONTACTLISTDELETE"]--></a></li><!--[/if]-->
+  <!--[if $buddy.state eq 0]--><li><a href="<!--[pnmodurl modname="ContactList" type="user" func="main" action="suspend" id=$buddy.id state=$filterstate authid=$authid]-->"><!--[pnml name="_CONTACTLISTCANCEL"]--></a></li><!--[/if]-->
+  <!--[if $buddy.state eq 1]--><li><a href="<!--[pnmodurl modname="ContactList" type="user" func="main" action="suspend" id=$buddy.id state=$filterstate authid=$authid]-->" onclick="return confirm('<!--[pnml name="_CONTACTLISTREALLYSUSPEND"]-->')"><!--[pnml name="_CONTACTLISTSUSPEND"]--></a></li><!--[/if]-->
+  <!--[if $buddy.state eq 2 or $buddy.state eq 3]--><li><a href="<!--[pnmodurl modname="ContactList" type="user" func="main" action="suspend" id=$buddy.id ne="1" state=$filterstate authid=$authid]-->"><!--[pnml name="_CONTACTLISTDELETE"]--></a></li><!--[/if]-->
   </ul>
   
   <ul class="cl_userinfo">
