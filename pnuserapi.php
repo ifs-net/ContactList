@@ -222,8 +222,7 @@ function ContactList_userapi_decline($args) {
   	// change state to "2, rejected"
   	$obj['state'] = 2;
   	if (!DBUtil::updateObject($obj,'contactlist_buddylist')) {
-  	  	LogUtil::registerError('error updating buddy object');
-	    return false;
+  	  	return LogUtil::registerError('error updating buddy object');
 	}
 
   	// send email
@@ -261,8 +260,7 @@ function ContactList_userapi_suspend($args) {
 	    $date_diff		= $date_now-$date_request;
 	    if ($date_diff > (60*60*24*30)) return DBUtil::deleteObjectg($obj,'contactlist_buddylist');
 		else {
-		  	LogUtil::registerError(_CONTACTLISTCANNOTDELETEYET);
-		  	return false;
+		  	return LogUtil::registerError(_CONTACTLISTCANNOTDELETEYET);
 		}
 	}
   	// get the counterpart
@@ -273,8 +271,7 @@ function ContactList_userapi_suspend($args) {
   	// change state to "3, suspended"
   	$counter_obj['state'] = 3;
   	if (!DBUtil::updateObject($counter_obj,'contactlist_buddylist')) {
-  	  	LogUtil::registerError('error updating buddy object');
-	    return false;
+  	  	return LogUtil::registerError('error updating buddy object');
 	}
   	
 	// delete the old object
@@ -312,8 +309,7 @@ function ContactList_userapi_confirm($args) {
   	$obj['request_text'] = '';
 
   	if (!DBUtil::updateObject($obj,'contactlist_buddylist')) {
-  	  	LogUtil::registerError('error updating buddy object');
-	    return false;
+  	  	return LogUtil::registerError('error updating buddy object');
 	}
 	// create counterpart
 	$counterobj = array	(	'uid'	=>	$obj['bid'],
@@ -506,4 +502,3 @@ function ContactList_userapi_getBuddyList($args) {
 	
   	return $res;
 }
-?>

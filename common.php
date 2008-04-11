@@ -13,4 +13,3 @@ function _cl_getOnline($args)
 	foreach ($result as $item) $uidlist[] = $item['uid'];
     return $uidlist;
 }
-?>

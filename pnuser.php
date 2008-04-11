@@ -239,13 +239,11 @@ class contactlist_user_ignoreHandler {
 			$uid = pnUserGetVar('uid');
 			// validation check
 			if ($uid == $iuid) {
-			  	LogUtil::registerError(_CONTACTLISTDONOTIGNOREYOURSELF);
-			  	return false;
+			  	return LogUtil::registerError(_CONTACTLISTDONOTIGNOREYOURSELF);
 			}
 			// does the user exist?
 			if (!($iuid > 1)) {
-			  	LogUtil::registerError(_CONTACTLISTUSERNOTFOUND);
-			  	return false;
+			  	return LogUtil::registerError(_CONTACTLISTUSERNOTFOUND);
 			}
 			// ToDo: check if user is already ignored
 
@@ -338,19 +336,16 @@ class contactlist_user_createHandler {
 			$uid = pnUserGetVar('uid');
 			// own user name
 			if ($bid == $uid) {
-			  	LogUtil::registerError(_CONTACTLISTNOTADDYOURSELF);
-			  	return false;
+			  	return LogUtil::registerError(_CONTACTLISTNOTADDYOURSELF);
 			}
 			// valid user name?
 			if (!($bid > 1)) {
-			  	LogUtil::registerError(_CONTACTLISTUNAMEINVALID);
-			  	return false;
+			  	return LogUtil::registerError(_CONTACTLISTUNAMEINVALID);
 			}
 			// already my buddy?
 			$buddies = pnModAPIFunc('ContactList','user','getall',array('bid' => $bid, 'uid' => $uid));
 			if (count($buddies)>0) {
-				LogUtil::registerError(_CONTACTLISTDUPLICATEREQUEST);
-				return false;
+				return LogUtil::registerError(_CONTACTLISTDUPLICATEREQUEST);
 			}
 			if (pnModAPIFunc('ContactList','user','create',array(	
 						'uid'			=> $uid,
@@ -364,5 +359,3 @@ class contactlist_user_createHandler {
 		return true;
 	}
 }
-
-?>

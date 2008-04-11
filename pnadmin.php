@@ -46,12 +46,10 @@ class ContactList_admin_editConfigHandler
 		    $obj = $render->pnFormGetValues();
 
 		    if ($obj['useprofilebirthday'] && $obj['usemyprofilebirthday']) {
-		      	LogUtil::registerError(_CONTACTLISTDONOTCHOOSEBOTH);
-			  	return false;
+		      	return LogUtil::registerError(_CONTACTLISTDONOTCHOOSEBOTH);
 			}
 			if ($obj['useprofilebirthday'] && (($obj['profilebirthday'] == '') || (!isset($obj['profilebirthday'])))) {
-		      	LogUtil::registerError(_CONTACTLISTPROFILEBIRTHDAYNOENTRY);
-			  	return false;			  	
+		      	return LogUtil::registerError(_CONTACTLISTPROFILEBIRTHDAYNOENTRY);
 			}
 		    pnModDelVar('ContactList');
 		    pnModSetVar('ContactList','nopubliccomment',$obj['nopubliccomment']);
@@ -69,4 +67,3 @@ class ContactList_admin_editConfigHandler
 		return true;
     }
 }
-?>

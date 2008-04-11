@@ -1,8 +1,8 @@
 <?php
 // menu
 define('_CONTACTLISTCREATEBUDDY',	                	'Kontakt hinzufügen');
-define('_CONTACTLISTSHOWBUDDIES',	                	'Kontaktliste anzeigen');
-define('_CONTACTLISTSHOWIGNORELIST',              		'Ignorierliste anzeigen');
+define('_CONTACTLISTSHOWBUDDIES',	                	'Kontaktliste');
+define('_CONTACTLISTSHOWIGNORELIST',              		'Ignorierliste');
 define('_CONTACTLISTUSERPREFERENCES',					'Einstellungen');
 
 // user preferences
@@ -25,7 +25,6 @@ define('_CONTACTLISTSTATE',		 	                    'Status');
 define('_CONTACTLISTACTIONS',			           		'Aktion');
 define('_CONTACTLISTPUBCOMMENT',	                 	'Öffentlicher Kommentar');
 define('_CONTACTLISTPRVCOMMENT',	                	'Privater Kommentar');
-define('_CONTACTLISTBUDDYUNAME',	                 	'Benutzernamen des neuen Kontaktes');
 define('_CONTACTLISTEDIT',			                   	'Editieren');
 define('_CONTACTLISTADD',			                      'Als Kontakt hinzufügen');
 define('_CONTACTLISTNOREQUTEXT',	                 	'Es wurde kein Grund für die Kontaktaufnahme angegeben');
@@ -35,7 +34,7 @@ define('_CONTACTLISTREQUESTDATE',	                	'Datum der Anfrage');
 define('_CONTACTLISTDECLINE',		                   	'Anfrage zurückweisen');
 define('_CONTACTLISTCONFIRM',		                   	'Anfrage akzeptieren');
 define('_CONTACTLISTPENDING',                   		'Anfrage noch nicht beantwortet');
-define('_CONTACTLISTCANNOTDELETEYET',					'Eine offene Anfrage kann frühestens nach 30 Tagen wieder gelöscht werden um unnötig viele Anfragen an einen gleichen Benutzer zu vermeiden');
+define('_CONTACTLISTCANNOTDELETEYET',					'Eine offene Anfrage kann frühestens nach 30 Tagen wieder gelöscht werden, um unnötig viele Anfragen an einen gleichen Benutzer zu vermeiden');
 define('_CONTACTLISTCONFIRMED',		                 	'Kontakt bestätigt');
 define('_CONTACTLISTSUSPENDED',		                 	'Kontagt gekündigt');
 define('_CONTACTLISTREQUESTDECLINED',	              'Anfrage zurückgewiesen');
@@ -43,8 +42,8 @@ define('_CONTACTLISTREQUESTACCEPTED',	              'Kontakt akzeptiert');
 define('_CONTACTLISTREQUESTDECLINEERR',	            'Ein Fehler ist aufgetreten beim Zurückweisen einer Kontaktanfrage');
 define('_CONTACTLISTREQUESTACCERR',	              	'Ein Fehler ist aufgetreten beim Akzeptieren einer Kontaktabfrage');
 define('_CONTACTLISTNA',				                    'nicht verfügbar');
-define('_CONTACTLISTSUSPEND',			                  'kündigen');
-define('_CONTACTLISTDELETE',			                  'löschen');
+define('_CONTACTLISTSUSPEND',			                  'Kündigen');
+define('_CONTACTLISTDELETE',			                  'Löschen');
 define('_CONTACTLISTREALLYSUSPEND',		              'Soll die Verbindung zu diesem Kontakt wirklich aufgelöst werden? Der andere Kontakt wird über diese Statusänderung per Email informiert.');
 define('_CONTACTLISTSUSPENDERROR',	               	'Beim Auflösen der Verbindung zu dem Kontakt ist ein Fehler aufgetreten');
 define('_CONTACTLISTBUDDYSUSPENDED',              	'Der Kontakt wurde entfernt');
@@ -69,8 +68,7 @@ define('_CONTACTLISTOF',		                      	'von');
 
 // ignore
 define('_CONTACTLISTIGNORELISTMANAGEMENT',          'Ignorierte Kontakte verwalten');
-define('_CONTACTLISTIGNOREUNAME',		                'Zu ignorierender Benutzername');
-define('_CONTACTLISTIGNOREEXPLAIN',	              	'Hier können Benutzer auf eine Ignorierliste gesetzt werden. Das heisst, dass Du von diesen dann keine EMails etc. mehr empfangen wirst.');
+define('_CONTACTLISTIGNOREEXPLAIN',	              	'Hier können Benutzer auf eine Ignorierliste gesetzt werden. Das heisst, dass Du von diesen dann keine E-Mails etc. mehr empfangen wirst.');
 define('_CONTACTLISTADDUSER',			                  'Benutzer hinzufügen');
 define('_CONTACTLISTUSERNOTFOUND',              		'Der angegebene Benutzer konnte nicht gefunden weden');
 define('_CONTACTLISTDONOTIGNOREYOURSELF',           'Ich weiß, manche können sich selbst nicht leiden. Aber deswegen kannst Du dich dennoch nicht selbst auf deine eigene Ignorierliste setzen :-)');
@@ -82,7 +80,7 @@ define('_CONTACTLISTUSERUPDATEERROR',	              'Aktualisieren der Ignorierl
 define('_CONTACTLISTUSERNOLONGERIGNORED',           'Der Benutzer wird nun nicht mehr ignoriert');
 
 // create
-define('_CONTACTLISTCONFIRMREQU',	                	'Nach Abschicken dieses Formulars wird der andere Benutzer eine Nachricht erhalten, dass er die Anfrage bearbeiten soll. Sobald die Kontaktanfrage akzeptiert oder abgelehnt wurde, wirst Du informiert');
+define('_CONTACTLISTCONFIRMREQU',	                	'Nach Abschicken dieses Formulars wird der andere Benutzer eine Nachricht erhalten, dass er die Anfrage bearbeiten soll. Sobald die Kontaktanfrage akzeptiert oder abgelehnt wurde, wirst Du informiert.');
 define('_CONTACTLISTREQUESTTEXT',		                'Grund für die Kontaktaufnahme');
 define('_CONTACTLISTNOTADDYOURSELF',	              'Such Dir doch Freunde... Oder willst Du dich selbst als Kontakt hinzufügen? Das geht nicht ;-)');
 define('_CONTACTLISTUNAMEINVALID',		              'Es wurde kein gültiger Benutzername übermittelt');
@@ -122,4 +120,4 @@ define('_CONTACTLISTMYBUDDIES',		                 	'Freundesliste des Benutzers'
 define('_CONTACTLISTTHEUSERHAS',		                'Der Benutzer hat');
 define('_CONTACTLISTBUDDIES',			                  'Freunde');
 define('_CONTACTLISTLISTNOTPUBLIC',					'Die Kontaktliste des Benutzers ist für dich nicht sichtbar');
-?>
+

@@ -104,4 +104,3 @@ function ContactList_NextBirthdaysblock_update($blockinfo)
     $render->clear_cache('contactlist_block_nextbirthdays.htm');
     return $blockinfo;
 }
-?>

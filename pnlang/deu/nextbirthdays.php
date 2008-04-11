@@ -5,4 +5,3 @@ define('_CONTACTLISTTODAY',					'heute');
 define('_CONTACTLISTTOMORROW',				'morgen');
 define('_CONTACTLISTDATEFORMATFORBLOCK',	'Format in welchem das Geburtsdatum im Block (ohne Jahreszahl) dargestellt werde soll');
 
-?>

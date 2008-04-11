@@ -46,4 +46,4 @@ function ContactList_delete()
   // Deletion successful
   return true;
 }
-?>
+

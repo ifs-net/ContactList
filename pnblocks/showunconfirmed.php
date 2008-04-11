@@ -72,4 +72,3 @@ function ContactList_ShowUnconfirmedblock_update($blockinfo)
     $blockinfo['content'] = pnBlockVarsToContent($vars);
     return $blockinfo;
 }
-?>

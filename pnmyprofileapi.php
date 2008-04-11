@@ -36,4 +36,4 @@ function ContactList_myprofileapi_tab($args)
 	$render->display('contactlist_myprofile_tab.htm');
 	return;
 }
-?>
+

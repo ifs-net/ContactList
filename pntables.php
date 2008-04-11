@@ -55,5 +55,3 @@ function ContactList_pntables()
     // Return the table information
     return $pntable;
 }
-
-?>

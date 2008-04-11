@@ -80,4 +80,3 @@ function ContactList_ShowOnlineBuddiesblock_update($blockinfo)
     $blockinfo['content'] = pnBlockVarsToContent($vars);
     return $blockinfo;
 }
-?>

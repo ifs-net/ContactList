@@ -25,7 +25,6 @@ define('_CONTACTLISTSTATE',		 	                    'State');
 define('_CONTACTLISTACTIONS',			           		'Action');
 define('_CONTACTLISTPUBCOMMENT',	                 	'Public comment');
 define('_CONTACTLISTPRVCOMMENT',	                	'Private comment');
-define('_CONTACTLISTBUDDYUNAME',	                 	'User to add as buddy');
 define('_CONTACTLISTEDIT',			                   	'Edit');
 define('_CONTACTLISTADD',			                      'add as buddy');
 define('_CONTACTLISTNOREQUTEXT',	                 	'no reason given');
@@ -69,7 +68,6 @@ define('_CONTACTLISTOF',		                      	'of');
 
 // ignore
 define('_CONTACTLISTIGNORELISTMANAGEMENT',          'Ignore-list management');
-define('_CONTACTLISTIGNOREUNAME',		                'User you want to ignore');
 define('_CONTACTLISTIGNOREEXPLAIN',	              	'You can add users here you want to ignore. Ignoring means protection from emails etc.');
 define('_CONTACTLISTADDUSER',			                  'Add user');
 define('_CONTACTLISTUSERNOTFOUND',              		'User could not be found');
