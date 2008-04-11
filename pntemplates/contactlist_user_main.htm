@@ -5,13 +5,12 @@
 <div id="cl_pending" class="cl_box cl_floatbox">
 <h3><!--[pnml name="_CONTACTLISTTOCONFIRM"]--></h3>
 <!--[foreach from=$buddies_unconfirmed item="buddy"]-->
-<!--[pnusergetvar uid=$buddy.uid name="uname" assign="uname"]-->
 <!--[pnusergetvar uid=$buddy.uid name="_YOURAVATAR" assign="avatar"]-->
 
 <div class="buddybox">
   <img src="images/avatar/<!--[$avatar|pnvarprepfordisplay]-->" class="avatar" />
   
-  <h4><!--[$uname|userprofilelink]--></h4>
+  <h4><!--[$buddy.uname|userprofilelink]--></h4>
   
   <ul class="cl_userinfo">
     <li><strong><!--[pnml name="_CONTACTLISTREQUESTDATE"]-->:</strong>&nbsp;<!--[$buddy.date|pndate_format:datetimebrief]--></li>
@@ -52,15 +51,14 @@
 <!--[/if]-->
 
 <!--[foreach from=$buddies item="buddy"]-->
-<!--[pnusergetvar uid=$buddy.bid name="uname" assign="uname"]-->
 <!--[pnusergetvar uid=$buddy.bid name="_YOURAVATAR" assign="avatar"]-->
 <div class="buddybox">
   <img src="images/avatar/<!--[$avatar|pnvarprepfordisplay]-->" class="avatar" />
   
-  <h4><!--[$uname|userprofilelink]--><!--[if $buddy.online eq true]-->&nbsp;<em class="cl_online">(<!--[pnml name="_CONTACTLISTONLINE"]-->)</em><!--[/if]--></h4>   
+  <h4><!--[$buddy.uname|userprofilelink]--><!--[if $buddy.online eq true]-->&nbsp;<em class="cl_online">(<!--[pnml name="_CONTACTLISTONLINE"]-->)</em><!--[/if]--></h4>   
   
   <ul class="options">
-  <!--[if $pnMessages]--><li><a href="<!--[pnmodurl modname="pnMessages" type="user" func="newpm" uname=$uname]-->"><!--[pnml name="_CONTACTLISTSENDPM"]--></a></li><!--[/if]-->
+  <!--[if $pnMessages]--><li><a href="<!--[pnmodurl modname="pnMessages" type="user" func="newpm" uname=$buddy.uname]-->"><!--[pnml name="_CONTACTLISTSENDPM"]--></a></li><!--[/if]-->
   <!--[if $nopublicbuddylist ne 1]--><li><a href="<!--[pnmodurl modname="ContactList" type="user" func="display" uid=$buddy.bid]-->"><!--[pnml name="_CONTACTLISTSHOWCONTACTS"]--></a></li><!--[/if]-->
   <li><a href="<!--[pnmodurl modname="ContactList" type="user" func="edit" id=$buddy.id]-->"><!--[pnml name="_CONTACTLISTEDIT"]--></a></li>
   <!--[if $buddy.state eq 0]--><li><a href="<!--[pnmodurl modname="ContactList" type="user" func="main" action="suspend" id=$buddy.id state=$filterstate authid=$authid]-->"><!--[pnml name="_CONTACTLISTCANCEL"]--></a></li><!--[/if]-->

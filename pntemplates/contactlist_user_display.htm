@@ -1,14 +1,31 @@
-<h3><!--[pnml name="_CONTACTLISTMYBUDDIES"]--></h3>
+<!--[include file="contactlist_user_header.htm"]-->
+<!--[pnvarcleanfrominput name="uid" assign="displayuid" ]-->
+<!--[pnusergetvar uid=$displayuid name="uname" assign="displayuname"]-->
+
+<div id="cl_display" class="cl_box cl_floatbox">
+<h3><!--[pnml name="_CONTACTLISTMYBUDDIES"]-->:&nbsp;<!--[$displayuname]--></h3>
 <p><!--[pnml name="_CONTACTLISTTHEUSERHAS"]--> <!--[$buddies|@count]--> <!--[pnml name="_CONTACTLISTBUDDIES"]--></p>
 
 <!--[foreach from=$buddies item="buddy"]-->
-  <!--[pnusergetvar name="uname" uid=$buddy.bid assign="uname"]-->
-	<dl>
-	<dt><!--[$uname|userprofilelink]--></dt>
-	<!--[if $nopubliccomment eq 0 and $buddy.pub_comment ne ""]-->
-    <dd><!--[$buddy.pub_comment]--></dd>
-  <!--[/if]-->
-	</dl>
+<!--[pnusergetvar uid=$buddy.bid name="_YOURAVATAR" assign="avatar"]-->
+
+<div class="buddybox">
+  <img src="images/avatar/<!--[$avatar|pnvarprepfordisplay]-->" class="avatar" />
+  
+  <h4><!--[$buddy.uname|userprofilelink]--><!--[if $buddy.online eq true]-->&nbsp;<em class="cl_online">(<!--[pnml name="_CONTACTLISTONLINE"]-->)</em><!--[/if]--></h4>   
+  
+  <ul class="cl_userinfo">
+  	<!--[if $buddy.birthday]-->
+    <li class="birthday"><strong><!--[pnml name="_CONTACTLISTBIRTHDAY"]-->:</strong>&nbsp;<!--[$buddy.birthday|date_format:"$dateformat"]--></li>
+  	<!--[/if]-->          
+    <!--[if $nopubliccomment ne 1 and $buddy.pub_comment ne ""]-->
+    <li><strong><!--[pnml name="_CONTACTLISTPUBCOMMENT"]-->:</strong>&nbsp;<em><!--[$buddy.pub_comment|pnvarprepfordisplay|pnmodcallhooks]--></em></li>
+    <!--[/if]-->    	
+  </ul>
+</div>  
+
 <!--[/foreach]-->
 
-<!--[pndebug output="html"]-->
+</div>
+
+<!--[include file="contactlist_user_footer.htm"]-->
