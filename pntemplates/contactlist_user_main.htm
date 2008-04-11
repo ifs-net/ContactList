@@ -2,7 +2,7 @@
 <!--[pnmodavailable modname="pnMessages" assign="pnMessages"]-->
 <!--[pnvarcleanfrominput name="state" assign="filterstate" ]-->
 <!--[if $buddies_unconfirmed gt 0]-->
-<div id="cl_unconfirm" class="cl_floatbox">
+<div id="cl_pending" class="cl_box cl_floatbox">
 <h3><!--[pnml name="_CONTACTLISTTOCONFIRM"]--></h3>
 <!--[foreach from=$buddies_unconfirmed item="buddy"]-->
 <!--[pnusergetvar uid=$buddy.uid name="uname" assign="uname"]-->
@@ -35,7 +35,7 @@
 </ul>
 
 <!--[if $contacts_all gt 0]-->
-<div id="cl_contacts" class="cl_floatbox">
+<div id="cl_contacts" class="cl_box cl_floatbox">
 
 <!--[if $filterstate eq ""]-->
   <h3><!--[pnml name="_CONTACTLISTYOURBUDDIES"]--></h3>

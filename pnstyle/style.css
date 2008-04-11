@@ -17,24 +17,6 @@
 } 
 
 /*******************************************************************************/
-/* General 
-/*******************************************************************************/
-
-#cl_edit,
-#cl_create,
-#cl_unconfirm,
-#cl_contacts,
-#cl_ignorelist,
-#cl_ignoresearch {
-  margin:1.5em 0pt;
-}
-#cl_footer {
-  font-size: 0.8em;
-  text-align: center;
-  margin-top: 1em;
-}
-
-/*******************************************************************************/
 /* Buddybox 
 /*******************************************************************************/
 
@@ -93,11 +75,12 @@ em.cl_online {
 } 
 
 /*******************************************************************************/
-/* Autocomplete
+/* General
 /*******************************************************************************/
-#cl_edit dl dt,
-#cl_ignoresearch dl dt,
-#cl_create dl dt {
+.cl_box {
+  margin:1.5em 0pt;
+}
+.cl_box dl dt {
   display: block;
   float: left;
   text-align: right;
@@ -106,9 +89,7 @@ em.cl_online {
   margin: 0.5em;
   line-height: 2em;
 }
-#cl_edit dl dd,
-#cl_ignoresearch dl dd,
-#cl_create dl dd {
+.cl_box dl dd {
   display: block;
   float: left;
   text-align: left;
@@ -116,6 +97,11 @@ em.cl_online {
   margin: 0.5em;
   padding: 0;
   line-height: 2em;
+}
+.cl_footer {
+  font-size: 0.8em;
+  text-align: center;
+  margin-top: 1em;
 }
 
 /*******************************************************************************/
