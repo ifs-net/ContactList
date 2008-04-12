@@ -10,7 +10,11 @@
 <!--[pnusergetvar uid=$buddy.bid name="_YOURAVATAR" assign="avatar"]-->
 
 <div class="buddybox">
+  <!--[if $avatar eq '' or $avatar eq 'blank.gif']-->
+  <!--[pnimg modname=ContactList src=avatar_male.gif class="avatar"]-->
+  <!--[else]-->
   <img src="images/avatar/<!--[$avatar|pnvarprepfordisplay]-->" class="avatar" />
+  <!--[/if]-->
   
   <h4><!--[$buddy.uname|userprofilelink]--><!--[if $buddy.online eq true]-->&nbsp;<em class="cl_online">(<!--[pnml name="_CONTACTLISTONLINE"]-->)</em><!--[/if]--></h4>   
   
