@@ -57,7 +57,7 @@ function ContactList_ShowUnconfirmedblock_display($blockinfo)
  */
 function ContactList_ShowUnconfirmedblock_modify($blockinfo)
 {
-    return "";
+	return true;
 }
 
 

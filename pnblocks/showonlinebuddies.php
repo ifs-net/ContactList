@@ -65,7 +65,7 @@ function ContactList_ShowOnlineBuddiesblock_display($blockinfo)
  */
 function ContactList_ShowOnlineBuddiesblock_modify($blockinfo)
 {
-    return "";
+	return true;
 }
 
 
