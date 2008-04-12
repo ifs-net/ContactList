@@ -36,7 +36,7 @@ define('_CONTACTLISTCONFIRM',		                   	'Anfrage akzeptieren');
 define('_CONTACTLISTPENDING',                   		'Anfrage noch nicht beantwortet');
 define('_CONTACTLISTCANNOTDELETEYET',					'Eine offene Anfrage kann frühestens nach 30 Tagen wieder gelöscht werden, um unnötig viele Anfragen an einen gleichen Benutzer zu vermeiden');
 define('_CONTACTLISTCONFIRMED',		                 	'Kontakt bestätigt');
-define('_CONTACTLISTSUSPENDED',		                 	'Kontagt aufgehoben');
+define('_CONTACTLISTSUSPENDED',		                 	'Kontakt aufgehoben');
 define('_CONTACTLISTREQUESTDECLINED',	              'Anfrage zurückgewiesen');
 define('_CONTACTLISTREQUESTACCEPTED',	              'Kontakt akzeptiert');
 define('_CONTACTLISTREQUESTDECLINEERR',	            'Ein Fehler ist aufgetreten beim Zurückweisen einer Kontaktanfrage');
@@ -44,7 +44,7 @@ define('_CONTACTLISTREQUESTACCERR',	              	'Ein Fehler ist aufgetreten b
 define('_CONTACTLISTNA',				                    'nicht verfügbar');
 define('_CONTACTLISTSUSPEND',			                  'Aufheben');
 define('_CONTACTLISTDELETE',			                  'Entfernen');
-define('_CONTACTLISTREALLYSUSPEND',		              'Soll die Verbindung zu diesem Kontakt wirklich aufgelöst werden? Der andere Kontakt wird über diese Statusänderung per Email informiert.');
+define('_CONTACTLISTREALLYSUSPEND',		              'Soll die Verbindung zu diesem Kontakt wirklich aufgelöst werden? Der andere Kontakt wird über diese Statusänderung per E-Mail informiert.');
 define('_CONTACTLISTSUSPENDERROR',	               	'Beim Auflösen der Verbindung zu dem Kontakt ist ein Fehler aufgetreten');
 define('_CONTACTLISTBUDDYSUSPENDED',              	'Der Kontakt wurde entfernt');
 
@@ -89,22 +89,22 @@ define('_CONTACTLISTREQUESTSENT',		                'Die Kontaktanfrage wurde an 
 define('_CONTACTLISTBUDDYADDED',		                'Kontakt hinzugefügt');
 
 // emails
-define('_CONTACTLISTUNCONFIRMSUBJECT',	            'Du wurdest als neuer Kontakt hinzugefügt');
-define('_CONTACTLISTCONFIRMSUBJECT',	              'Ein Benutzer will dich als Kontakt hinzufügen');
-define('_CONTACTLISTBUDDYSUSPENDEDYOU',           	'Einer deiner Kontakte hat die Verbindung aufgehoben');
-define('_CONTACTLISTREQUESTREJECTED',	              'Eine Kontaktanfrage wurde abgelehnt');
+define('_CONTACTLISTUNCONFIRMSUBJECT',	            'Du wurdest als neuer Kontakt hinzugefügt.');
+define('_CONTACTLISTCONFIRMSUBJECT',	              'Ein Benutzer will dich als Kontakt hinzufügen.');
+define('_CONTACTLISTBUDDYSUSPENDEDYOU',           	'Einer deiner Kontakte hat die Verbindung aufgehoben.');
+define('_CONTACTLISTREQUESTREJECTED',	              'Eine Kontaktanfrage wurde abgelehnt.');
 define('_CONTACTLISTDEARUSER',			                'Liebe(r)');
 define('_CONTACTLISTTHEUSER',			                  'der Benutzer');
-define('_CONTACTLISTADDEDYOUASBUDDY',	              'hat Dich als Kontakt hinzugefügt. Das heisst, ihr seit jetzt Freunde und gegenseitig in eueren Kontaktlisten verlinkt');
+define('_CONTACTLISTADDEDYOUASBUDDY',	              'hat Dich als Kontakt auf %sitename% hinzugefügt. Das heisst, ihr seid jetzt Freunde und gegenseitig in euren Kontaktlisten verlinkt.');
 define('_CONTACTLISTATTENTION',			                'Achtung');
-define('_CONTACTLISTAUTOMATICCONFIRM',            	'Diese Anfrage wurde automatisch angenommen, da Du selbst erst kürzlich eine Kontaktanfrage an den anderen Benutzer gestellt hast, welche noch nicht gelöscht wurde in der Zwischenzeit.');
+define('_CONTACTLISTAUTOMATICCONFIRM',            	'Diese Anfrage wurde automatisch angenommen, da Du selbst erst kürzlich eine Kontaktanfrage an den anderen Benutzer gestellt hast, welche in der Zwischenzeit noch nicht gelöscht wurde.');
 define('_CONTACTBUDDYMANAGEMENT',		                'Verwaltung der Kontaktliste');
-define('_CONTACTLISTDONOTREPLY',		                'Bitte auf diese Email nicht antworten. Diese Email wurde automatisch aufgrund Deiner Mitgliedschaft auf obiger Seite an Dich verschickt. Wenn es Fragen wegen der Kontaktaufnahme, einer Ablehnung oder einer Aufhebung eines Kontaktes geht, wende Dich bitte an den oben angegebenen Benutzer. In Problemfällen wende dich einfach an den Administrator der obigen Internetseite.');
-define('_CONTACTLISTWANTSTOADDYOUAT',             	'will dich als neuen Kontakt hinzhufügen');
-define('_CONTACTLISTREJECTORACCEPT',	              'Bitte akzeptiere oder lehne die Anfrage ab');
-define('_CONTACTLISTHASREJECTEDYOURREQUESTAT',    	'hat deinen Kontaktwunsch leider abgelehnt auf');
-define('_CONTACTLISTHASACCEPTEDYOURREQUESTAT',	    'hat deinen Kontaktwunsch angenommen auf');
-define('_CONTACTLISTSUSPENDEDYOUAT',	              'hat dich als Kontakt aufgehoben und von seiner Kontaktliste entfernt');
+define('_CONTACTLISTDONOTREPLY',		                'Bitte auf diese E-Mail nicht antworten. Diese E-Mail wurde automatisch aufgrund Deiner Mitgliedschaft auf obiger Seite an Dich verschickt. Wenn es Fragen wegen der Kontaktaufnahme, einer Ablehnung oder einer Aufhebung eines Kontaktes geht, wende Dich bitte an den oben angegebenen Benutzer. In Problemfällen wende dich einfach an den Administrator der obigen Internetseite.');
+define('_CONTACTLISTWANTSTOADDYOUAT',             	'will dich als neuen Kontakt auf %sitename% hinzufügen.');
+define('_CONTACTLISTREJECTORACCEPT',	              'Bitte akzeptiere oder lehne die Anfrage ab.');
+define('_CONTACTLISTHASREJECTEDYOURREQUESTAT',    	'hat deinen Kontaktwunsch auf %sitename% leider abgelehnt.');
+define('_CONTACTLISTHASACCEPTEDYOURREQUESTAT',	    'hat deinen Kontaktwunsch auf %sitename% angenommen.');
+define('_CONTACTLISTSUSPENDEDYOUAT',	              'hat dich als Kontakt auf %sitename% aufgehoben und von seiner Kontaktliste entfernt.');
 
 // edit
 define('_CONTACTLISTEDITINFO',			                'Kontaktdetails bearbeiten');

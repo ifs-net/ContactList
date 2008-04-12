@@ -16,7 +16,8 @@ define('_CONTACTLISTDATEFORMAT',			'Specify the date format');
 define('_CONTACTLISTMAINCONFIG',			'Main configuration');
 define('_CONTACTLISTCONFIGBIRTHDAYPLUGIN',	'Configure buddy\'s birthday integration');
 define('_CONTACTLISTOR',					'or');
-define('_CONTACTLISTNOPUBLICBUDDYLIST',		'Disable public buddy lists. If not disabled, every user can choose who should be allowed to view his buddy list');
+define('_CONTACTLISTNOPUBLICBUDDYLIST',		'Disable public buddy lists');
+define('_CONTACTLISTNOPUBLICBUDDYLISTHINT',		'If not disabled, every user can choose who should be allowed to view his buddy list');
 
 // admin, donation
 define('_CONTACTLISTSUPPORTCONTACTLIST',	'Support the ContactList module');

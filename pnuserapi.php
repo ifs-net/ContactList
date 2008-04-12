@@ -166,6 +166,7 @@ function ContactList_userapi_create($args) {
 		  	LogUtil::registerStatus(_CONTACTLISTBUDDYADDED);
 		  	// send email
 		  	$render = pnRender::getInstance('ContactList');
+		  	$render->assign('sitename',	pnConfigGetVar('sitename'));		  	
 		  	$render->assign('bid',	$bid);
 		  	$render->assign('uid',	$uid);
 		  	$body = $render->fetch('contactlist_email_add_noconfirm.htm');
@@ -191,6 +192,7 @@ function ContactList_userapi_create($args) {
 		  	LogUtil::registerStatus(_CONTACTLISTREQUESTSENT);
 		  	// send email
 		  	$render = pnRender::getInstance('ContactList');
+		  	$render->assign('sitename',	pnConfigGetVar('sitename'));
 		  	$render->assign('bid',	$bid);
 		  	$render->assign('uid',	$uid);
 		  	$render->assign('nocounterconnection',$nocounterconnection);
@@ -227,6 +229,7 @@ function ContactList_userapi_decline($args) {
 
   	// send email
   	$render = pnRender::getInstance('ContactList');
+		$render->assign('sitename',	pnConfigGetVar('sitename'));  	
   	$render->assign('bid',	$obj['bid']);
   	$render->assign('uid',	$obj['uid']);
   	$body = $render->fetch('contactlist_email_rejected.htm');
@@ -281,6 +284,7 @@ function ContactList_userapi_suspend($args) {
   	$noemail = (int)FormUtil::getPassedValue('ne');
   	if (!(isset($ne) && ($ne == 1))) {
 	  	$render = pnRender::getInstance('ContactList');
+	  	$render->assign('sitename',	pnConfigGetVar('sitename'));	  	
 	  	$render->assign('bid',	$obj['bid']);
 	  	$render->assign('uid',	$obj['uid']);
 	  	$body = $render->fetch('contactlist_email_suspended.htm');
@@ -320,6 +324,7 @@ function ContactList_userapi_confirm($args) {
 
   	// send email
   	$render = pnRender::getInstance('ContactList');
+  	$render->assign('sitename',	pnConfigGetVar('sitename'));  	
   	$render->assign('bid',	$obj['bid']);
   	$render->assign('uid',	$obj['uid']);
   	$body = $render->fetch('contactlist_email_accepted.htm');

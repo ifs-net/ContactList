@@ -7,47 +7,62 @@
 <div class="pn-adminpageicon"><!--[pnimg modname=ContactList src=admin.gif set=icons/large]--></div>
 <h2><!--[pnml name="_CONTACTLISTCONFIG"]--></h2>
 
-<div>
+<div class="cl_box">
 	<!--[pngetstatusmsg]-->
 	<!--[pnformvalidationsummary]-->
 	
 	<!--[pnform]-->
 		<fieldset>
 		<legend><!--[pnml name="_CONTACTLISTMAINCONFIG"]--></legend>
-
-		    <!--[pnformcheckbox id="useignore" checked="0"]--><!--[pnformlabel for="useignore" text="_CONTACTLISTUSEIGNORE"]--><br />
-		    <!--[pnformcheckbox id="noconfirm" checked="0"]--><!--[pnformlabel for="noconfirm" text="_CONTACTLISTNOCONFIRM"]--><br />
-		    <!--[pnformcheckbox id="nopubliccomment" checked="0"]--><!--[pnformlabel for="nopubliccomment" text="_CONTACTLISTNOPUBLICCOMMENTS"]--><br />
-		    <!--[pnformcheckbox id="nopublicbuddylist" checked="0"]--><!--[pnformlabel for="nopublicbuddylist" text="_CONTACTLISTNOPUBLICBUDDYLIST"]--><br />
-
+		<dl class="cl_clearfix">
+  	    <dt><!--[pnformcheckbox id="useignore" checked="0"]--></dt>
+        <dd><!--[pnformlabel for="useignore" text="_CONTACTLISTUSEIGNORE"]--></dd>
+		    <dt><!--[pnformcheckbox id="noconfirm" checked="0"]--></dt>
+        <dd><!--[pnformlabel for="noconfirm" text="_CONTACTLISTNOCONFIRM"]--></dd>
+		    <dt><!--[pnformcheckbox id="nopubliccomment" checked="0"]--></dt>
+        <dd><!--[pnformlabel for="nopubliccomment" text="_CONTACTLISTNOPUBLICCOMMENTS"]--></dd>
+		    <dt><!--[pnformcheckbox id="nopublicbuddylist" checked="0"]--></dt>
+        <dd><!--[pnformlabel for="nopublicbuddylist" text="_CONTACTLISTNOPUBLICBUDDYLIST"]--></dd>
+        <dt>&nbsp;</dt>
+        <dd><div class="pn-informationmsg"><!--[pnml name="_CONTACTLISTNOPUBLICBUDDYLISTHINT" html=1]--></div></dd>
+    </dl>
 		</fieldset>
+		
 		<fieldset>
 		<legend><!--[pnml name="_CONTACTLISTCONFIGBIRTHDAYPLUGIN"]--></legend>
-
-		    <!--[pnml name="_CONTACTLISTGEBDATECONF"]--><br /><br />
-		    <!--[if $myprofile eq 1 and $items_myprofile|@count gt 0]-->
-			    <!--[pnformcheckbox id="usemyprofilebirthday" checked="0"]--><!--[pnformlabel for="usemyprofilebirthday" text="_CONTACTLISTMYPROFILEFIELD"]--> 
-			    <!--[pnformdropdownlist id="myprofilebirthday" items=$items_myprofile]--><br />
-		    <!--[/if]-->
-	
-			<!--[if $profile eq 1 and $myprofile eq 1]--><!--[pnml name="_CONTACTLISTOR"]-->...<br /><!--[/if]-->
-			
-		    <!--[if $profile eq 1]-->
-			    <!--[pnformcheckbox id="useprofilebirthday" checked="0"]--><!--[pnformlabel for="useprofilebirthday" text="_CONTACTLISTPROFILEFIELD"]-->: 
-			    <!--[pnformtextinput id="profilebirthday" maxLength="80"]--><br />
-		    <!--[/if]-->
-			<br />
-			<!--[pnformlabel for="dateformat" text="_CONTACTLISTDATEFORMAT"]--><br />
-		    <!--[pnformtextinput id="dateformat" maxLength="20"]--><br />		
-	
+    <div class="pn-informationmsg"><!--[pnml name="_CONTACTLISTGEBDATECONF" html=1]--></div>		
+		<dl class="cl_clearfix">
+      <!--[if $myprofile eq 1 and $items_myprofile|@count gt 0]-->
+      <dt><!--[pnformcheckbox id="usemyprofilebirthday" checked="0"]--></dt>
+      <dd><!--[pnformlabel for="usemyprofilebirthday" text="_CONTACTLISTMYPROFILEFIELD"]--></dd>
+      <dt>&nbsp;</dt> 
+      <dd><!--[pnformdropdownlist id="myprofilebirthday" items=$items_myprofile]--></dd>
+      <!--[/if]-->
+  
+  		<!--[if $profile eq 1 and $myprofile eq 1]-->
+      <dt>&nbsp;</dt>
+      <dd><!--[pnml name="_CONTACTLISTOR"]--></dd>
+      <!--[/if]-->
+  	
+      <!--[if $profile eq 1]-->
+      <dt><!--[pnformcheckbox id="useprofilebirthday" checked="0"]--></dt>
+      <dd><!--[pnformlabel for="useprofilebirthday" text="_CONTACTLISTPROFILEFIELD"]--></dd>
+      <dt>&nbsp;</dt>       
+  	  <dd><!--[pnformtextinput id="profilebirthday" maxLength="80"]--></dd>
+      <!--[/if]-->
+  
+  		<dt><!--[pnformlabel for="dateformat" text="_CONTACTLISTDATEFORMAT"]--></dt>
+  	  <dd><!--[pnformtextinput id="dateformat" maxLength="20"]--></dd>		
+    </dl>	
 		</fieldset>
-		<br />
-		<!--[pnformbutton commandName="update" text="_CONTACTLISTUPDATECONFIG"]-->
+
+    <p><!--[pnformbutton commandName="update" text="_CONTACTLISTUPDATECONFIG"]--></p>
 	<!--[/pnform]-->
 	
 	<fieldset>
   	<legend><!--[pnml name="_CONTACTLISTSUPPORTCONTACTLIST"]--></legend>
-  	<!--[pnml name="_CONTACTLISTDONATE"]-->
+  	<div class="pn-informationmsg"><!--[pnml name="_CONTACTLISTDONATE" html=1]--></div>		
+    <br />
   	<form name="_xclick" action="https://www.paypal.com/de/cgi-bin/webscr" method="post">
     	<input type="hidden" name="cmd" value="_xclick" />
     	<input type="hidden" name="business" value="florian.schiessl@ifs-net.de" />
@@ -68,4 +83,10 @@
 	</fieldset>
 
 	</div>
+	
+  <p class="cl_footer">
+    <!--[pnmodgetinfo modname=ContactList info=all assign=modinfo]-->
+    <!--[$modinfo.name]-->&nbsp;<!--[$modinfo.version]-->&nbsp;&copy;&nbsp;<a href="http://www.ifs-net.de">Florian Schieﬂl</a>&nbsp;-&nbsp;<a href="http://www.carsten-volmer.de" title="Carsten Volmer">Carsten Volmer</a>
+  </p> 
+	
 </div>
