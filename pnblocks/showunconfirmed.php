@@ -1,7 +1,7 @@
 <?php
 /**
  * initialise block
- * 
+ *
  */
 function ContactList_ShowUnconfirmedblock_init()
 {
@@ -10,7 +10,7 @@ function ContactList_ShowUnconfirmedblock_init()
 
 /**
  * get information on block
- * 
+ *
  * @return       array       The block information
  */
 function ContactList_ShowUnconfirmedblock_info()
@@ -27,43 +27,49 @@ function ContactList_ShowUnconfirmedblock_info()
 
 /**
  * display block
- * 
+ *
  * @param        array       $blockinfo     a blockinfo structure
  * @return       output      the rendered bock
  */
 function ContactList_ShowUnconfirmedblock_display($blockinfo)
 {
-    if (!pnUserLoggedIn() || !pnModAvailable('ContactList') || !SecurityUtil::checkPermission('ContactList:ShowUnconfirmedblock:', "$blockinfo[title]::", ACCESS_READ)) return false;
+    if (!SecurityUtil::checkPermission('ContactList:ShowUnconfirmedblock:', "$blockinfo[title]::", ACCESS_READ)) {
+        return false;
+    }
+
+    if (!pnModAvailable('MediaAttach') || !pnUserLoggedIn() ) {
+        return false;
+    }
 
     $render = pnRender::getInstance('ContactList', false);
     $uid = pnUserGetVar('uid');
-	$buddies = pnModAPIFunc('ContactList','user','getall',
-									array(	'bid'		=> $uid,
-											'state'		=> 0,
-											'sort'		=> 'uname') );
-	if (!(count($buddies)>0)) return false;
-	else {
-	    $render->assign('buddies_unconfirmed',		$buddies);
-	    $blockinfo['content'] = $render->fetch('contactlist_block_showunconfirmed.htm');
-	    return themesideblock($blockinfo);
-	}
+    $buddies = pnModAPIFunc('ContactList','user','getall',
+    array(	'bid'		=> $uid,
+  											'state'		=> 0,
+  											'sort'		=> 'uname') );
+    	
+    if (!(count($buddies)>0)) return false;
+    else {
+        $render->assign('buddies_unconfirmed',		$buddies);
+        $blockinfo['content'] = $render->fetch('contactlist_block_showunconfirmed.htm');
+        return themesideblock($blockinfo);
+    }
 }
 
 /**
  * modify block settings
- * 
+ *
  * @param        array       $blockinfo     a blockinfo structure
  * @return       output      the bock form
  */
 function ContactList_ShowUnconfirmedblock_modify($blockinfo)
 {
-	return true;
+    return "";
 }
-
 
 /**
  * update block settings
- * 
+ *
  * @param        array       $blockinfo     a blockinfo structure
  * @return       $blockinfo  the modified blockinfo structure
  */

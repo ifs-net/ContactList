@@ -1,4 +1,4 @@
-<?php    
+<?php
 define('_CONTACTLISTNEXBIRTHDAYNUMITEMS',	'Wie viele nächste Geburtstage sollen maximal angezeigt werden?');
 define('_CONTACTLISTDAYS',					'Tage');
 define('_CONTACTLISTTODAY',					'heute');

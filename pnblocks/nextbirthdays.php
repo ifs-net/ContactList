@@ -1,7 +1,7 @@
 <?php
 /**
  * initialise block
- * 
+ *
  */
 function ContactList_NextBirthdaysblock_init()
 {
@@ -10,7 +10,7 @@ function ContactList_NextBirthdaysblock_init()
 
 /**
  * get information on block
- * 
+ *
  * @return       array       The block information
  */
 function ContactList_NextBirthdaysblock_info()
@@ -27,13 +27,19 @@ function ContactList_NextBirthdaysblock_info()
 
 /**
  * display block
- * 
+ *
  * @param        array       $blockinfo     a blockinfo structure
  * @return       output      the rendered bock
  */
 function ContactList_NextBirthdaysblock_display($blockinfo)
 {
-    if (!pnUserLoggedIn() || !pnModAvailable('ContactList') || !SecurityUtil::checkPermission('ContactList:NextBirthdaysblock:', "$blockinfo[title]::", ACCESS_READ)) return false;
+    if (!SecurityUtil::checkPermission('ContactList:NextBirthdaysblock:', "$blockinfo[title]::", ACCESS_READ)) {
+        return false;
+    }
+
+    if (!pnModAvailable('MediaAttach') || !pnUserLoggedIn() ) {
+        return false;
+    }
 
     $vars = pnBlockVarsFromContent($blockinfo['content']);
 
@@ -42,23 +48,24 @@ function ContactList_NextBirthdaysblock_display($blockinfo)
     $render = pnRender::getInstance('ContactList', false);
 
     $uid = pnUserGetVar('uid');
-	$buddies = pnModAPIFunc('ContactList','user','getall',
-									array(	'uid'		=> $uid,
-											'state'		=> 1,
-											'birthday'	=> true,
-											'sort'		=> 'daystonextbirthday') );
-	$c=0;
-	if (!(count($buddies)>0)) return false;
-	foreach ($buddies as $buddy) {
-	  	$buddy['uname'] = pnUserGetVar('uname',$buddy['bid']);
-	  	if ($buddy['daystonextbirthday'] >= 0) {
-		  	$res[] = $buddy;
-		  	$c++;
-		}
-	  	if ($c==$vars['numitems']) break;
-	}
-	// return if no buddy is out there
-	if ($c==0) return false;
+    $buddies = pnModAPIFunc('ContactList','user','getall',
+    array(	'uid'		=> $uid,
+  											'state'		=> 1,
+  											'birthday'	=> true,
+  											'sort'		=> 'daystonextbirthday') );
+    $c=0;
+    if (!(count($buddies)>0)) return false;
+    foreach ($buddies as $buddy) {
+        $buddy['uname'] = pnUserGetVar('uname',$buddy['bid']);
+        if ($buddy['daystonextbirthday'] >= 0) {
+            $res[] = $buddy;
+            $c++;
+        }
+        if ($c==$vars['numitems']) break;
+    }
+    // return if no buddy is out there
+    if ($c==0) return false;
+     
     $render->assign('buddies',		$res);
     $render->assign('dateformat',	$vars['dateformat']);
 
@@ -68,7 +75,7 @@ function ContactList_NextBirthdaysblock_display($blockinfo)
 
 /**
  * modify block settings
- * 
+ *
  * @param        array       $blockinfo     a blockinfo structure
  * @return       output      the bock form
  */
@@ -85,10 +92,9 @@ function ContactList_NextBirthdaysblock_modify($blockinfo)
     return $render->fetch('contactlist_block_nextbirthdays_modify.htm');
 }
 
-
 /**
  * update block settings
- * 
+ *
  * @param        array       $blockinfo     a blockinfo structure
  * @return       $blockinfo  the modified blockinfo structure
  */

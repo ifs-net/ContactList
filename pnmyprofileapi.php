@@ -6,8 +6,8 @@
  */
 function ContactList_myprofileapi_getTitle($args)
 {
-  	pnModLangLoad('ContactList');
-  	return _CONTACTLISTTABTITLE;
+    pnModLangLoad('ContactList');
+    return _CONTACTLISTTABTITLE;
 }
 
 /**
@@ -17,7 +17,7 @@ function ContactList_myprofileapi_getTitle($args)
  */
 function ContactList_myprofileapi_getURLAddOn($args)
 {
-  	return '';
+    return '';
 }
 
 /**
@@ -28,12 +28,12 @@ function ContactList_myprofileapi_getURLAddOn($args)
 function ContactList_myprofileapi_tab($args)
 {
    	// generate output
- 	$render = pnRender::getInstance('ContactList');
- 	$render->assign('uid',(int)$args['uid']);
-	$buddies = pnModAPIFunc('ContactList','user','getall', array('uid' => $args['uid'], 'state' => 1 ) );
- 	$render->assign('buddies',$buddies);
- 	$render->assign('nopubliccomment',pnModGetVar('ContactList','nopubliccomment'));
-	$render->display('contactlist_myprofile_tab.htm');
-	return;
+    $render = pnRender::getInstance('ContactList');
+    $render->assign('uid',(int)$args['uid']);
+    $buddies = pnModAPIFunc('ContactList','user','getall', array('uid' => $args['uid'], 'state' => 1 ) );
+    $render->assign('buddies',$buddies);
+    $render->assign('nopubliccomment',pnModGetVar('ContactList','nopubliccomment'));
+    $render->display('contactlist_myprofile_tab.htm');
+    return;
 }
 

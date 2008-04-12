@@ -17,7 +17,7 @@ define('_CONTACTLISTMAINCONFIG',			'Konfiguration der Standardeinstellungen');
 define('_CONTACTLISTCONFIGBIRTHDAYPLUGIN',	'Geburtstagsdaten-Konfiguration');
 define('_CONTACTLISTOR',					'oder');
 define('_CONTACTLISTNOPUBLICBUDDYLIST',		'Öffentliche Anzeige von fremden Kontaktlisten global deaktivieren');
-define('_CONTACTLISTNOPUBLICBUDDYLISTHINT',		'Ist die öffentliche Anzeige der Kontaktlisten aktiviert, kann jeder Benutzer selbst regeln, wer seine Kontaktliste einsehen darf: Registrierte Benutzer, seine bestätigten Kontakte oder niemand.');
+define('_CONTACTLISTNOPUBLICBUDDYLISTHINT',	'Ist die öffentliche Anzeige der Kontaktlisten aktiviert, kann jeder Benutzer selbst regeln, wer seine Kontaktliste einsehen darf: Registrierte Benutzer, seine bestätigten Kontakte oder niemand.');
 
 // admin, donation
 define('_CONTACTLISTSUPPORTCONTACTLIST',	'Unterstütze die Entwicklung dieses Modul');

@@ -1,9 +1,9 @@
 <?php
 
-// The following information is used by the Modules module 
+// The following information is used by the Modules module
 // for display and upgrade purposes
 $modversion['name']           = 'ContactList';
-$modversion['description']    = _CONTACTLISTDESCRIPTION; 
+$modversion['description']    = _CONTACTLISTDESCRIPTION;
 $modversion['displayname']    = _CONTACTLISTDISPLAYNAME;
 // the version string must not exceed 10 characters!
 $modversion['version']        = '1.0';
@@ -24,18 +24,18 @@ $modversion['admin']          = 1;
 
 // module dependencies
 $modversion['dependencies'] = array(
-	array(	'modname'    => 'pnMessages',
+array(	'modname'    => 'pnMessages',
             'minversion' => '1.0', 'maxversion' => '',
     		'status'     => PNMODULE_DEPENDENCY_RECOMMENDED),
-    array(	'modname'    => 'Avatar',
+array(	'modname'    => 'Avatar',
             'minversion' => '1.0', 'maxversion' => '',
             'status'     => PNMODULE_DEPENDENCY_RECOMMENDED),
-    array(	'modname'    => 'MyProfile',
+array(	'modname'    => 'MyProfile',
             'minversion' => '1.0', 'maxversion' => '',
             'status'     => PNMODULE_DEPENDENCY_RECOMMENDED)
-	);
+);
 
-// This one adds the info to the DB, so that users can click on the 
+// This one adds the info to the DB, so that users can click on the
 // headings in the permission module
 $modversion['securityschema'] = array('ContactList::' => 'uid::');
 

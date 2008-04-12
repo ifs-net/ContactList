@@ -1,7 +1,7 @@
 <?php
 /**
  * initialise block
- * 
+ *
  */
 function ContactList_ShowOnlineBuddiesblock_init()
 {
@@ -10,7 +10,7 @@ function ContactList_ShowOnlineBuddiesblock_init()
 
 /**
  * get information on block
- * 
+ *
  * @return       array       The block information
  */
 function ContactList_ShowOnlineBuddiesblock_info()
@@ -27,51 +27,56 @@ function ContactList_ShowOnlineBuddiesblock_info()
 
 /**
  * display block
- * 
+ *
  * @param        array       $blockinfo     a blockinfo structure
  * @return       output      the rendered bock
  */
 function ContactList_ShowOnlineBuddiesblock_display($blockinfo)
 {
-    if (!pnUserLoggedIn() || !pnModAvailable('ContactList') || !SecurityUtil::checkPermission('ContactList:ShowOnlineBuddiesblock:', "$blockinfo[title]::", ACCESS_READ)) return false;
+    if (!SecurityUtil::checkPermission('ContactList:ShowOnlineBuddiesblock:', "$blockinfo[title]::", ACCESS_READ)) {
+        return false;
+    }
+
+    if (!pnModAvailable('MediaAttach') || !pnUserLoggedIn() ) {
+        return false;
+    }
 
     $render = pnRender::getInstance('ContactList', false);
     $uid = pnUserGetVar('uid');
-	$buddies = pnModAPIFunc('ContactList','user','getall',
-									array(	'uid'		=> $uid,
-											'state'		=> 1,
-											'sort'		=> 'uname') );
-	$c=0;
-	if (!(count($buddies)>0)) return false;	// if there are no buddies return no content
-	else {
-	  	foreach ($buddies as $buddy) {
-		    if ($buddy['online']) {
-			  	$buddies_online[]=$buddy;
-			  	$c++;
-		    }
-		}
-	    $render->assign('buddies_online',				$buddies_online);
-	    $render->assign('buddies_online_counter',		$c);
-	    $blockinfo['content'] = $render->fetch('contactlist_block_showonlinebuddies.htm');
-	    return themesideblock($blockinfo);
-	}
+    $buddies = pnModAPIFunc('ContactList','user','getall',
+    array(	'uid'		=> $uid,
+  											'state'		=> 1,
+  											'sort'		=> 'uname') );
+    $c=0;
+    if (!(count($buddies)>0)) return false;	// if there are no buddies return no content
+    else {
+        foreach ($buddies as $buddy) {
+            if ($buddy['online']) {
+                $buddies_online[]=$buddy;
+                $c++;
+            }
+        }
+        $render->assign('buddies_online',				$buddies_online);
+        $render->assign('buddies_online_counter',		$c);
+        $blockinfo['content'] = $render->fetch('contactlist_block_showonlinebuddies.htm');
+        return themesideblock($blockinfo);
+    }
 }
 
 /**
  * modify block settings
- * 
+ *
  * @param        array       $blockinfo     a blockinfo structure
  * @return       output      the bock form
  */
 function ContactList_ShowOnlineBuddiesblock_modify($blockinfo)
 {
-	return true;
+    return "";
 }
-
 
 /**
  * update block settings
- * 
+ *
  * @param        array       $blockinfo     a blockinfo structure
  * @return       $blockinfo  the modified blockinfo structure
  */

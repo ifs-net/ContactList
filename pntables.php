@@ -21,13 +21,13 @@ function ContactList_pntables()
 						'iuid'			=> 'iuid'
 						);
 
-    $pntable['contactlist_ignorelist_column_def'] = array (
+						$pntable['contactlist_ignorelist_column_def'] = array (
 						'id'			=>	"I NOTNULL AUTO PRIMARY",
 						'uid'			=> 	"I NOTNULL DEFAULT 0",
 						'iuid'			=> 	"I NOTNULL DEFAULT 0"
 						);
 
-    $pntable['contactlist_buddylist_column'] = array(
+						$pntable['contactlist_buddylist_column'] = array(
 						'id'			=> 'id',
 						'uid'			=> 'uid',
 						'bid'			=> 'bid',
@@ -36,12 +36,12 @@ function ContactList_pntables()
 						'request_text'	=> 'request_text',
 						'date'			=> 'date',
 						'state'			=> 'state'		// 0 = unconfirmed 	(one way!)
-														// 1 = confirmed	(both directions!)
-														// 2 = rejected		(one way!)
-														// 3 = suspended	(one way!)
+						// 1 = confirmed	(both directions!)
+						// 2 = rejected		(one way!)
+						// 3 = suspended	(one way!)
 						);
 
-    $pntable['contactlist_buddylist_column_def'] = array (
+						$pntable['contactlist_buddylist_column_def'] = array (
 						'id'			=>	"I NOTNULL AUTO PRIMARY",
 						'uid'			=> 	"I NOTNULL DEFAULT 0",
 						'bid'			=> 	"I NOTNULL DEFAULT 0",
@@ -52,6 +52,6 @@ function ContactList_pntables()
 						'state'			=>	"I(1) NOTNULL DEFAULT 0"
 						);
 
-    // Return the table information
-    return $pntable;
+						// Return the table information
+						return $pntable;
 }

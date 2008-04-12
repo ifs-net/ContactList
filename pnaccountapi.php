@@ -2,7 +2,7 @@
 /**
  * Return an array of items to show in the your account panel
  *
- * @return   array   
+ * @return   array
  */
 function ContactList_accountapi_getall($args)
 {
