@@ -93,10 +93,11 @@ function ContactList_userapi_getall($args) {
     // get all online users to include the user's online status into the result list
     // also assign usernames
     $online_list = _cl_getOnline();
-    die(print_r($online_list));
     foreach ($result as $res) {
         // online status
-		if (in_array($res['bid'],$online_list)) $res['online'] = true;
+        unset($bid);
+        $bid = $res['bid'];
+		if ($online_list[$bid] == $bid) $res['online'] = true;
 		else $res['online'] = false;
         // user name
         if ((isset($args['bid'])) && (isse($args['uid']))) {
@@ -106,6 +107,7 @@ function ContactList_userapi_getall($args) {
         else if (isset($args['bid'])) $res['uname'] = pnUserGetVar('uname',$res['uid']);
         else if (isset($args['uid'])) $res['uname'] = pnUserGetVar('uname',$res['bid']);
         $result_online[] = $res;
+        unset($res);
     }
     
     // sort the list

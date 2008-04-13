@@ -16,9 +16,11 @@
 function _cl_getOnline($args)
 {
     $timestamp = time() - (pnConfigGetVar('secinactivemins') * 60);
-    $sql =  "lastused  > $timestamp";
+	$pntable =& pnDBGetTables();
+    $column = $pntable['session_info_column']['lastused'];
+    $where =  $column." > $timestamp";
     $result = DBUtil::selectObjectArray('session_info',$where);
-    foreach ($result as $item) $uidlist[] = $item['uid'];
+    foreach ($result as $item) $uidlist[$item['uid']] = $item['uid'];
     return $uidlist;
 }
 

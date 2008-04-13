@@ -54,13 +54,13 @@ function ContactList_ShowOnlineBuddiesblock_display($blockinfo)
     $uid = pnUserGetVar('uid');
     $buddies = pnModAPIFunc('ContactList','user','getall',
     array(	'uid'		=> $uid,
-  											'state'		=> 1,
-  											'sort'		=> 'uname') );
+			'state'		=> 1,
+			'sort'		=> 'uname') );
     $c=0;
     if (!(count($buddies)>0)) return false;	// if there are no buddies return no content
     else {
         foreach ($buddies as $buddy) {
-            if ($buddy['online']) {
+            if ($buddy['online'] == true) {
                 $buddies_online[]=$buddy;
                 $c++;
             }
