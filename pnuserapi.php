@@ -21,7 +21,6 @@ Loader::requireOnce('modules/ContactList/common.php');
  *												2 = rejected
  *												3 = suspended
  * @param	$args['birthday']	boolean		default: false; include birthday in result
- * @param	$args['uname']		boolean		default: false; include username in result
  * @param	$args['sort']		string		default: no sort order.
  *												options: birthday, nextbirthday, daystonextbirthday, state
  * @return	array
@@ -102,20 +101,11 @@ function ContactList_userapi_getall($args) {
         if (isset($args['uid'])) $res['uname'] = pnUserGetVar('uname',$res['bid']);
         $result_online[] = $res;
     }
-
-    // shoud we apply an "order by"?
-    if (isset($args['sort'])) {		// Apply an "order by"?
-        foreach ($result as $key => $row) {
-            if ($args['sort'] == 'birthday') $sort[$key]  = $row['birthday'];
-            else if ($args['sort'] == 'nextbirthday') $sort[$key]  = $row['nextbirthday'];
-            else if ($args['sort'] == 'daystonextbirthday') $sort[$key]  = $row['daystonextbirthday'];
-            else if ($args['sort'] == 'state') $sort[$key]  = $row['state'];
-            else if ($args['sort'] == 'uname') $sort[$key]  = $row['uname'];
-        }
-        array_multisort($sort, SORT_ASC, $result_online);
-    }
-
-    // return result;
+    
+    // sort the list
+	$result_online = _cl_sortList($result_online,$args['sort']);
+    
+	// return result;
     return $result_online;
 }
 

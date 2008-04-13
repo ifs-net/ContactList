@@ -89,11 +89,12 @@ function ContactList_user_main()
 				'birthday'	=> $birthday,
 	    		'sort'		=> $sort,
 				'state'		=> 3 ) );
-//		die("sort $sort birthday $birthday");
         if (is_array($buddies_pending)) foreach ($buddies_pending   as $buddy) $buddies[]=$buddy;
 		if (is_array($buddies_confirmed)) foreach ($buddies_confirmed as $buddy) $buddies[]=$buddy;
         if (is_array($buddies_suspended)) foreach ($buddies_suspended as $buddy) $buddies[]=$buddy;
         if (is_array($buddies_rejected)) foreach ($buddies_rejected  as $buddy) $buddies[]=$buddy;
+        // let's sort the buddies array
+        $buddies = _cl_sortList($buddies,$sort);
         $render->assign('buddies_pending',$buddies_pending);
         $render->assign('buddies_confirmed',$buddies_confirmed);
         $render->assign('buddies_rejected',$buddies_rejected);
