@@ -112,7 +112,7 @@ function ContactList_userapi_getall($args) {
             else if ($args['sort'] == 'state') $sort[$key]  = $row['state'];
             else if ($args['sort'] == 'uname') $sort[$key]  = $row['uname'];
         }
-        array_multisort($sort, SORT_ASC, $result);
+        array_multisort($sort, SORT_ASC, $result_online);
     }
 
     // return result;

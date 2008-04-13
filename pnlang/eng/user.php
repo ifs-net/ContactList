@@ -25,6 +25,11 @@ define('_CONTACTLISTPREFSUPDATEERROR',					'An error occured while updating your
 define('_CONTACTLISTPREFSUPDATED',						'User preferences updated successfully');
 
 // main
+define('_CONTACTLISTSORTITEMS',							'Sort list');
+define('_CONTACTLISTRELOAD',							'reload');
+define('_CONTACTLISTSORTUNAME',							'username');
+define('_CONTACTLISTSORTBIRTHDAY',						'birthday');
+define('_CONTACTLISTSORTAYSTONEXTBIRTHDAY',				'next birthday');
 define('_CONTACTLISTMYCONTACTS',	                 	'My contacts');
 define('_CONTACTLISTADDBUDDY',			                'Add new contact');
 define('_CONTACTLISTTOCONFIRM',	                    	'These request are awaiting your confirmation');

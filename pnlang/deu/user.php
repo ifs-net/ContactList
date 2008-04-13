@@ -25,6 +25,11 @@ define('_CONTACTLISTPREFSUPDATEERROR',					'Beim Speichern der Einstellungen ist
 define('_CONTACTLISTPREFSUPDATED',						'Einstellungen aktualisiert');
 
 // main
+define('_CONTACTLISTSORTITEMS',							'Liste nach');
+define('_CONTACTLISTRELOAD',							'sortieren');
+define('_CONTACTLISTSORTUNAME',							'Benutzernamen');
+define('_CONTACTLISTSORTBIRTHDAY',						'Geburtstag');
+define('_CONTACTLISTSORTAYSTONEXTBIRTHDAY',				'nächsten Geburtstagen');
 define('_CONTACTLISTMYCONTACTS',	                 	'Meine Kontakte');
 define('_CONTACTLISTADDBUDDY',			                'Neuen Kontakt hinzufügen');
 define('_CONTACTLISTTOCONFIRM',	                    	'Folgende Anfragen liegen vor');

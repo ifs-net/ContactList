@@ -37,50 +37,63 @@ function ContactList_user_main()
     // redirect after any action to avoid auth-id problems
     if (isset($action)) return pnRedirect(pnModURL('ContactList','user','main',array('state'=>FormUtil::getPassedValue('state'))));
 
+	// check if the result should be sorted
+	$birthday	= FormUtil::getPassedValue('birthday',	false);
+	$sort		= FormUtil::getPassedValue('sort',		'uname');
+	// some validations
+	if (($sort == 'birthday') || ($sort == 'nextbirthday') || ($sort == 'daystonextbirthday')) $birthday = true;	// for this sort criteria we need the user's birthday
+	else if (($sort != 'state') && ($sort != 'uname')) $sort = 'uname';	// this is just a check if the agument $sort is valid
+	
     // Create output
-    $render = pnRender::getInstance('ContactList');
+    $render = FormUtil :: newpnForm('ContactList');
 
     // assign data
     $uid = pnUserGetVar('uid');
     $render->assign('dateformat',pnModGetVar('ContactList','dateformat'));
     // unconfirmed buddies are always assigned
     $render->assign('buddies_unconfirmed',pnModAPIFunc('ContactList','user','getall',
-    array(	'bid'		=> $uid,
-											'state'		=> 0 ) ));
+		    array(	'bid'		=> $uid,
+		    		'sort'		=> $sort,
+		    		'birthday'	=> $birthday,
+					'state'		=> 0 ) ));
 
     // Do some filtering? state 1,2,3 is possibe
     $state = (int) FormUtil::getPassedValue('state');
     if ($state > 0) {
         $buddies = pnModAPIFunc('ContactList','user','getall',
         array(	'uid'		=> $uid,
-											'state'		=> $state,
-											'birthday'	=> true,
-											'sort'		=> 'uname'
-											) );
+				'state'		=> $state,
+				'birthday'	=> $birthday,
+	    		'sort'		=> $sort
+										) );
     }
     else {	// assign and fetch all data all we have otherwise
         $buddies_pending = pnModAPIFunc('ContactList','user','getall',
         array(	'uid'		=> $uid,
-												'sort'		=> 'uname',
-												'state'		=> 0 ) );
+				'birthday'	=> $birthday,
+	    		'sort'		=> $sort,
+				'state'		=> 0 ) );
         $buddies_confirmed = pnModAPIFunc('ContactList','user','getall',
         array(	'uid'		=> $uid,
-												'state'		=> 1,
-												'sort'		=> 'uname',
-												'birthday'	=> true,
+				'state'		=> 1,
+				'birthday'	=> $birthday,
+	    		'sort'		=> $sort
         ) );
         $buddies_rejected = pnModAPIFunc('ContactList','user','getall',
         array(	'uid'		=> $uid,
-												'sort'		=> 'uname',
-												'state'		=> 2 ) );
+				'birthday'	=> $birthday,
+	    		'sort'		=> $sort,
+				'state'		=> 2 ) );
         $buddies_suspended = pnModAPIFunc('ContactList','user','getall',
         array(	'uid'		=> $uid,
-												'sort'		=> 'uname',
-												'state'		=> 3 ) );
-        foreach ($buddies_pending   as $buddy) $buddies[]=$buddy;
-        foreach ($buddies_confirmed as $buddy) $buddies[]=$buddy;
-        foreach ($buddies_suspended as $buddy) $buddies[]=$buddy;
-        foreach ($buddies_rejected  as $buddy) $buddies[]=$buddy;
+				'birthday'	=> $birthday,
+	    		'sort'		=> $sort,
+				'state'		=> 3 ) );
+//		die("sort $sort birthday $birthday");
+        if (is_array($buddies_pending)) foreach ($buddies_pending   as $buddy) $buddies[]=$buddy;
+		if (is_array($buddies_confirmed)) foreach ($buddies_confirmed as $buddy) $buddies[]=$buddy;
+        if (is_array($buddies_suspended)) foreach ($buddies_suspended as $buddy) $buddies[]=$buddy;
+        if (is_array($buddies_rejected)) foreach ($buddies_rejected  as $buddy) $buddies[]=$buddy;
         $render->assign('buddies_pending',$buddies_pending);
         $render->assign('buddies_confirmed',$buddies_confirmed);
         $render->assign('buddies_rejected',$buddies_rejected);
@@ -94,7 +107,7 @@ function ContactList_user_main()
     $render->assign('nopublicbuddylist',(int)pnModGetVar('ContactList','nopublicbuddylist'));
     $render->assign('authid',SecurityUtil::generateAuthKey());
     // return output
-    return $render->fetch('contactlist_user_main.htm');
+    return $render->pnFormExecute('contactlist_user_main.htm', new contactlist_user_mainHandler());
 }
 
 /**
@@ -233,6 +246,25 @@ function ContactList_user_create()
 
 /* ********************************************** classes ********************************************** */
 
+class contactlist_user_mainHandler {
+    function initialize(& $render) {
+        $items_sortlist = array (
+	        array('text' => _CONTACTLISTSORTUNAME, 					'value' => 'uname'),
+	        array('text' => _CONTACTLISTSORTBIRTHDAY,				'value' => 'nextbirthday'),
+	        array('text' => _CONTACTLISTSORTAYSTONEXTBIRTHDAY, 		'value' => 'daystonextbirthday')
+        );
+        $render->assign('items_sortlist',$items_sortlist);
+        return true;
+    }
+    function handleCommand(& $render, & $args) {
+        if ($args['commandName'] == 'update') {
+            $data = $render->pnFormGetValues();
+            $render->assign($data);
+            return pnRedirect(pnModURL('ContactList','user','main',array('sort' => $data['sort'])));
+        }
+        return true;
+    }
+}
 class contactlist_user_ignoreHandler {
     function initialize(& $render) {
         $uname = FormUtil::getPassedValue('uname');

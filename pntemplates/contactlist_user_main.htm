@@ -57,6 +57,13 @@
   <p><!--[pnml name="_CONTACTLISTAMOUNTSUSPENDED"]-->:&nbsp;<!--[$contacts_all]--></p>
 <!--[/if]-->
 
+<!--[pnform]-->
+<!--[pnformvalidationsummary]-->
+<!--[pnformlabel for="sort" text="_CONTACTLISTSORTITEMS"]--> <!--[pnformdropdownlist id="sort" items=$items_sortlist]-->
+<!--[pnformbutton commandName="update" text=_CONTACTLISTRELOAD]-->
+<!--[/pnform]-->
+
+
 <!--[if $contacts_all gt 0]-->
 <!--[foreach from=$buddies item="buddy"]-->
 <!--[pnusergetvar uid=$buddy.bid name="_YOURAVATAR" assign="avatar"]-->
