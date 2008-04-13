@@ -97,8 +97,12 @@ function ContactList_userapi_getall($args) {
         // online status
         $res['online'] = in_array($res['bid'],$online_list);
         // user name
-        if (isset($args['bid'])) $res['uname'] = pnUserGetVar('uname',$res['uid']);
-        if (isset($args['uid'])) $res['uname'] = pnUserGetVar('uname',$res['bid']);
+        if ((isset($args['bid'])) && (isse($args['uid']))) {
+		  	$res['uname'] = pnUserGetVar('uname',$res['uid']);
+		  	$res['buname'] = pnUserGetVar('uname',$res['bid']);
+		}
+        else if (isset($args['bid'])) $res['uname'] = pnUserGetVar('uname',$res['uid']);
+        else if (isset($args['uid'])) $res['uname'] = pnUserGetVar('uname',$res['bid']);
         $result_online[] = $res;
     }
     

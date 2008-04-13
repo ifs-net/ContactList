@@ -34,13 +34,21 @@ function _cl_sortList($list,$criteria) {
     // shoud we apply an "order by"?
     if (!isset($criteria) || ($criteria == '')) return $list;
     foreach ($list as $key => $row) {
-        if ($criteria == 'birthday') $sort[$key]  = $row['birthday'];
-        else if ($criteria == 'nextbirthday') $sort[$key]  = $row['nextbirthday'];
-        else if ($criteria == 'daystonextbirthday') $sort[$key]  = $row['daystonextbirthday'];
-        else if ($criteria == 'state') $sort[$key]  = $row['state'];
-        else if ($criteria == 'uname') $sort[$key]  = $row['uname'];
+        if ($criteria == 'birthday') $first[$key]  = $row['birthday'];
+        else if ($criteria == 'nextbirthday') $first[$key]  = $row['nextbirthday'];
+        else if ($criteria == 'daystonextbirthday') $first[$key]  = $row['daystonextbirthday'];
+        else if ($criteria == 'state') {
+		  	$first[$key]  = $row['state'];
+		  	$second[$key]  = $row['uname'];
+		}
+        else if ($criteria == 'uname') {
+		  	$first[$key]  = $row['uname'];
+		  	$second[$key]  = $row['state'];
+		}
 	}
-	array_multisort($sort, SORT_ASC, $list);
+	if ($criteria == 'state') array_multisort($first, SORT_ASC, $second, SORT_ASC, $list);
+	else if ($criteria == 'uname') array_multisort($first, SORT_ASC, $second, SORT_ASC, $list);
+	else array_multisort($first, SORT_ASC, $list); 
   	return $list;
 }
 

@@ -29,6 +29,7 @@ define('_CONTACTLISTSORTITEMS',							'Sort list');
 define('_CONTACTLISTRELOAD',							'reload');
 define('_CONTACTLISTSORTUNAME',							'username');
 define('_CONTACTLISTSORTBIRTHDAY',						'birthday');
+define('_CONTACTLISTSORTSTATE',							'state');
 define('_CONTACTLISTSORTAYSTONEXTBIRTHDAY',				'next birthday');
 define('_CONTACTLISTMYCONTACTS',	                 	'My contacts');
 define('_CONTACTLISTADDBUDDY',			                'Add new contact');

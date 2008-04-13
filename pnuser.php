@@ -49,6 +49,7 @@ function ContactList_user_main()
 
     // assign data
     $uid = pnUserGetVar('uid');
+    $render->assign('sort',FormUtil::getPassedValue('sort'));
     $render->assign('dateformat',pnModGetVar('ContactList','dateformat'));
     // unconfirmed buddies are always assigned
     $render->assign('buddies_unconfirmed',pnModAPIFunc('ContactList','user','getall',
@@ -251,8 +252,9 @@ class contactlist_user_mainHandler {
     function initialize(& $render) {
         $items_sortlist = array (
 	        array('text' => _CONTACTLISTSORTUNAME, 					'value' => 'uname'),
+	        array('text' => _CONTACTLISTSORTSTATE,					'value' => 'state'),
+	        array('text' => _CONTACTLISTSORTAYSTONEXTBIRTHDAY, 		'value' => 'daystonextbirthday'),
 	        array('text' => _CONTACTLISTSORTBIRTHDAY,				'value' => 'nextbirthday'),
-	        array('text' => _CONTACTLISTSORTAYSTONEXTBIRTHDAY, 		'value' => 'daystonextbirthday')
         );
         $render->assign('items_sortlist',$items_sortlist);
         return true;
