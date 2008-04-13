@@ -392,7 +392,7 @@ function ContactList_userapi_setPreferences($args) {
  *
  * @param	$args['uid1']	int
  * @param	$args['uid2']	int
- * @return	boolean	or integer if true
+ * @return	boolean	(false) or integer (partnerhip id) if true
  */
 function ContactList_userapi_isBuddy($args) {
     $buddies = pnModAPIFunc('ContactList','user','getall',array(
