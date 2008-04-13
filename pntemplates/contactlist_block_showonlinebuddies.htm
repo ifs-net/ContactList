@@ -1,12 +1,10 @@
 <!--[* $Id$ *]-->
 
+	<strong><!--[pnml name="_CONTACTLISTMYONLINEBUDDIES"]-->:</strong><br />
 <ul>
-<!--[if $buddies_online]-->
-  <li><strong><!--[pnml name="_CONTACTLISTMYONLINEBUDDIES"]-->:</strong></li>
-  <!--[foreach from=$buddies_online item="buddy"]-->
+<!--[foreach from=$buddies_online item="buddy"]-->
   <li><!--[$buddy.uname|userprofilelink]--></li>
-  <!--[/foreach]-->
-  <!--[else]-->
+<!--[foreachelse]-->
   <li><!--[pnml name="_CONTACTLISTNOBUDDYONLINE"]--></li>
-  <!--[/if]-->
+  <!--[/foreach]-->
 </ul>

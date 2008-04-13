@@ -46,7 +46,7 @@ function ContactList_ShowOnlineBuddiesblock_display($blockinfo)
         return false;
     }
 
-    if (!pnModAvailable('MediaAttach') || !pnUserLoggedIn() ) {
+    if (!pnModAvailable('ContactList') || !pnUserLoggedIn() ) {
         return false;
     }
 
