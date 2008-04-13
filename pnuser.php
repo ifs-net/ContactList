@@ -141,7 +141,7 @@ function ContactList_user_display()
             case 1:		$display=false;
             break;
             case 2:		$isBuddy = pnModAPIFunc('ContactList','user','isBuddy',array('uid1' => $uid, 'uid2' => pnUserGetVar('uid')));
-            if ($isBuddy) $display = true;
+            if ($isBuddy > 0) $display = true;
             break;
             case 3:		if (pnUserLoggedIn()) $display = true;
             break;
