@@ -97,27 +97,24 @@ em.cl_online {
 .cl_box {
 	margin: 1.5em 0pt;
 }
-
 .cl_box dl dt {
 	display: block;
 	float: left;
 	text-align: right;
 	width: 30%;
-	padding: 0;
-	margin: 0.5em;
-	line-height: 2em;
+	padding: 0 !important;
+	margin: 0.5em !important;
+	line-height: 2em !important;
 }
-
 .cl_box dl dd {
 	display: block;
 	float: left;
 	text-align: left;
 	width: 65%;
-	margin: 0.5em;
-	padding: 0;
-	line-height: 2em;
+	margin: 0.5em !important;
+	padding: 0 !important;
+	line-height: 2em !important;
 }
-
 .cl_footer {
 	font-size: 0.8em;
 	text-align: center;
