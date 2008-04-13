@@ -98,10 +98,10 @@ define('_CONTACTLISTREQUESTSENT',		                'Die Kontaktanfrage wurde an 
 define('_CONTACTLISTBUDDYADDED',		                'Kontakt hinzugefügt');
 
 // emails
-define('_CONTACTLISTUNCONFIRMSUBJECT',	            'Du wurdest als neuer Kontakt hinzugefügt.');
-define('_CONTACTLISTCONFIRMSUBJECT',	              'Ein Benutzer will dich als Kontakt hinzufügen.');
-define('_CONTACTLISTBUDDYSUSPENDEDYOU',           	'Einer deiner Kontakte hat die Verbindung aufgehoben.');
-define('_CONTACTLISTREQUESTREJECTED',	              'Eine Kontaktanfrage wurde abgelehnt.');
+define('_CONTACTLISTUNCONFIRMSUBJECT',	            'Du wurdest als neuer Kontakt hinzugefügt');
+define('_CONTACTLISTCONFIRMSUBJECT',	              'Ein Benutzer will dich als Kontakt hinzufügen');
+define('_CONTACTLISTBUDDYSUSPENDEDYOU',           	'Einer deiner Kontakte hat die Verbindung aufgehoben');
+define('_CONTACTLISTREQUESTREJECTED',	              'Eine Kontaktanfrage wurde abgelehnt');
 define('_CONTACTLISTDEARUSER',			                'Liebe(r)');
 define('_CONTACTLISTTHEUSER',			                  'der Benutzer');
 define('_CONTACTLISTADDEDYOUASBUDDY',	              'hat Dich als Kontakt auf %sitename% hinzugefügt. Das heisst, ihr seid jetzt Freunde und gegenseitig in euren Kontaktlisten verlinkt.');
