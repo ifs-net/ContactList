@@ -63,15 +63,18 @@ define('_CONTACTLISTREALLYSUSPEND',		              'Soll die Verbindung zu diese
 define('_CONTACTLISTSUSPENDERROR',	               	'Beim Auflösen der Verbindung zu dem Kontakt ist ein Fehler aufgetreten');
 define('_CONTACTLISTBUDDYSUSPENDED',              	'Der Kontakt wurde entfernt');
 
-define('_CONTACTLISTFILTERBUDDIESALL',	            'Alle Kontakte');
-define('_CONTACTLISTFILTERBUDDIESCONFIRM',	        'Bestätigte Kontakte');
-define('_CONTACTLISTFILTERYOURBUDDIESREJECT',		    'Zurückgewiesene Anfragen');
-define('_CONTACTLISTFILTERYOURBUDDIESSUSPEND',	    'Aufgehobene Kontakte');
+define('_CONTACTLISTFILTERBUDDIESALL',	            'Alle');
+define('_CONTACTLISTFILTERBUDDIESPENDING',	        'Unbeantwortet');
+define('_CONTACTLISTFILTERBUDDIESCONFIRM',	        'Bestätigt');
+define('_CONTACTLISTFILTERYOURBUDDIESREJECT',		    'Zurückgewiesen');
+define('_CONTACTLISTFILTERYOURBUDDIESSUSPEND',	    'Aufgehoben');
 
 define('_CONTACTLISTYOURBUDDIES',	                  'Deine Kontakte');
+define('_CONTACTLISTYOURBUDDIESPENDING',	         	'Deine unbeantworteten Anfragen');
 define('_CONTACTLISTYOURBUDDIESCONFIRM',	         	'Deine bestätigten Kontakte');
 define('_CONTACTLISTYOURBUDDIESREJECT',		          'Deine zurückgewiesenen Anfragen');
 define('_CONTACTLISTYOURBUDDIESSUSPEND',	         	'Deine aufgehobenen Kontakte');
+define('_CONTACTLISTAMOUNTPENDING',	              	'Anzahl unbeantworteter Anfragen');
 define('_CONTACTLISTAMOUNTCONFIRM',	              	'Anzahl bestätigter Kontakte');
 define('_CONTACTLISTAMOUNTREJECTED',	             	'Anzahl zurückgewiesener Anfragen');
 define('_CONTACTLISTAMOUNTSUSPENDED',	            	'Anzahl aufgehobener Kontakte');

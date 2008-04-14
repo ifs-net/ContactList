@@ -36,16 +36,21 @@
 
 <ul class="navigation">
   <li><a href="<!--[pnmodurl modname="ContactList" type="user" func="main"]-->"><!--[pnml name="_CONTACTLISTFILTERBUDDIESALL"]--></a></li>
+  <li><a href="<!--[pnmodurl modname="ContactList" type="user" func="main" state=0]-->"><!--[pnml name="_CONTACTLISTFILTERBUDDIESPENDING"]--></a></li>
   <li><a href="<!--[pnmodurl modname="ContactList" type="user" func="main" state=1]-->"><!--[pnml name="_CONTACTLISTFILTERBUDDIESCONFIRM"]--></a></li>
   <li><a href="<!--[pnmodurl modname="ContactList" type="user" func="main" state=2]-->"><!--[pnml name="_CONTACTLISTFILTERYOURBUDDIESREJECT"]--></a></li>  
   <li><a href="<!--[pnmodurl modname="ContactList" type="user" func="main" state=3]-->"><!--[pnml name="_CONTACTLISTFILTERYOURBUDDIESSUSPEND"]--></a></li>  
 </ul>
+
 
 <div id="cl_contacts" class="cl_box cl_floatbox">
 
 <!--[if $state eq ""]-->
   <h3><!--[pnml name="_CONTACTLISTYOURBUDDIES"]--></h3>
   <p><!--[pnml name="_CONTACTLISTAMOUNTCONFIRM"]-->:&nbsp;<!--[$contacts]-->&nbsp;<!--[pnml name="_CONTACTLISTOF"]-->&nbsp;<!--[$contacts_all]--></p>
+<!--[elseif $state eq 0]-->
+  <h3><!--[pnml name="_CONTACTLISTYOURBUDDIESPENDING"]--></h3>
+  <p><!--[pnml name="_CONTACTLISTAMOUNTPENDING"]-->:&nbsp;<!--[$contacts_all]--></p>
 <!--[elseif $state eq 1]-->
   <h3><!--[pnml name="_CONTACTLISTYOURBUDDIESCONFIRM"]--></h3>
   <p><!--[pnml name="_CONTACTLISTAMOUNTCONFIRM"]-->:&nbsp;<!--[$contacts_all]--></p>

@@ -63,15 +63,18 @@ define('_CONTACTLISTREALLYSUSPEND',		              'Should the connection betwee
 define('_CONTACTLISTSUSPENDERROR',	               	'An error occurred while trying to suspend the buddy');
 define('_CONTACTLISTBUDDYSUSPENDED',              	'The connection to this buddy was suspended successfully');
 
-define('_CONTACTLISTFILTERBUDDIESALL',	            'All contacts');
-define('_CONTACTLISTFILTERBUDDIESCONFIRM',	        'Confirmed buddies');
-define('_CONTACTLISTFILTERYOURBUDDIESREJECT',		    'Rejected contacts');
-define('_CONTACTLISTFILTERYOURBUDDIESSUSPEND',	    'Suspended contacts');
+define('_CONTACTLISTFILTERBUDDIESALL',	            'All');
+define('_CONTACTLISTFILTERBUDDIESPENDING',	        'Unconfirmed');
+define('_CONTACTLISTFILTERBUDDIESCONFIRM',	        'Confirmed');
+define('_CONTACTLISTFILTERYOURBUDDIESREJECT',		    'Rejected');
+define('_CONTACTLISTFILTERYOURBUDDIESSUSPEND',	    'Suspended');
 
 define('_CONTACTLISTYOURBUDDIES',	                  'Your contacts');
+define('_CONTACTLISTYOURBUDDIESPENDING',	         	'Your pending contacts');
 define('_CONTACTLISTYOURBUDDIESCONFIRM',	         	'Your confirmed buddies');
 define('_CONTACTLISTYOURBUDDIESREJECT',		          'Your rejected contacts');
 define('_CONTACTLISTYOURBUDDIESSUSPEND',	         	'Your suspended contacts');
+define('_CONTACTLISTAMOUNTPENDING',	              	'Number of pending contacts');
 define('_CONTACTLISTAMOUNTCONFIRM',	              	'Number of confirmed contacts');
 define('_CONTACTLISTAMOUNTREJECTED',	             	'Number of rejected contacts');
 define('_CONTACTLISTAMOUNTSUSPENDED',	            	'Number of suspended contacts');

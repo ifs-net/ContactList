@@ -60,8 +60,9 @@ function ContactList_user_main()
 					'state'		=> 0 ) ));
 
     // Do some filtering? state 1,2,3 is possibe
-    $state = (int) FormUtil::getPassedValue('state');
-    if ($state > 0) {
+    $state = FormUtil::getPassedValue('state');
+    
+    if ($state <> "") {
         $buddies = pnModAPIFunc('ContactList','user','getall',
         array(	'uid'		=> $uid,
 				'state'		=> $state,

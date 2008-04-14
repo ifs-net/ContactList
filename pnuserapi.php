@@ -17,7 +17,7 @@ Loader::requireOnce('modules/ContactList/common.php');
  * @param	$args['bid']		int			buddy's id to get users that have this person as buddy
  * @param	$args['state']		int			filter different states
  *												0 = unconfirmed
- *												1 = accepted
+ *												1 = confirmed
  *												2 = rejected
  *												3 = suspended
  * @param	$args['birthday']	boolean		default: false; include birthday in result
