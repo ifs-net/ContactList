@@ -3,7 +3,7 @@
 <h3><!--[pnml name="_CONTACTLISTMYBUDDIES"]--></h3>
 <!--[pnml name="_CONTACTLISTTHEUSERHAS"]--> <!--[$buddies|@count]--> <!--[pnml name="_CONTACTLISTBUDDIES"]-->
 
-<div id="cl_contacts" class="cl_box cl_floatbox">
+<div id="cl_main" class="cl_box cl_floatbox">
 <!--[foreach from=$buddies item="buddy"]-->
 <!--[pnusergetvar uid=$buddy.bid name="_YOURAVATAR" assign="avatar"]-->
 <div class="buddybox">
@@ -22,6 +22,4 @@
   </ul>
 </div>     			
 <!--[/foreach]-->
-
-</div>	
-
+</div>
