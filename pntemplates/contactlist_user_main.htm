@@ -41,6 +41,11 @@
   <li><a href="<!--[pnmodurl modname="ContactList" type="user" func="main" state=3]-->"><!--[pnml name="_CONTACTLISTFILTERYOURBUDDIESSUSPEND"]--></a></li>  
 </ul>
 
+<center>carsten bitte das css hier anpassen und zuentriert machen danke! dafür hast du jetzt nen pager ;)<br />
+<!--[* Display a pager to go to the pages   *]-->
+<!--[pager show="page" rowcount=$contacts_all limit=$cl_limit posvar=cl_startnum shift=1]-->
+</center>
+
 <div id="cl_contacts" class="cl_box cl_floatbox">
 
 <!--[if $state eq ""]-->
@@ -109,6 +114,13 @@
   </ul>
 </div>     			
 <!--[/foreach]-->
+
+<center>carsten bitte das css hier anpassen und zuentriert machen danke! dafür hast du jetzt nen pager ;)<br />
+<!--[* Display a pager to go to the pages   *]-->
+<!--[pager show="page" rowcount=$contacts_all limit=$cl_limit posvar=cl_startnum shift=1]-->
+</center>
+
+
 <!--[/if]-->
 </div>	
 

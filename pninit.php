@@ -26,6 +26,7 @@ function ContactList_init()
     pnModSetVar('ContactList','profilebirthday','');
     pnModSetVar('ContactList','useignore',1);
     pnModSetVar('ContactList','noconfirm',0);
+    pnModSetVar('ContactList','itemsperpage',10);
     pnModSetVar('ContactList','nopubliccomment',0);
     pnModSetVar('ContactList','dateformat','%d.%m.%Y');
     pnModSetVar('ContactList','nopublicbuddylist',0);

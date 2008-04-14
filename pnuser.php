@@ -51,6 +51,7 @@ function ContactList_user_main()
     $uid = pnUserGetVar('uid');
     $render->assign('sort',FormUtil::getPassedValue('sort'));
     $render->assign('dateformat',pnModGetVar('ContactList','dateformat'));
+
     // unconfirmed buddies are always assigned
     $render->assign('buddies_unconfirmed',pnModAPIFunc('ContactList','user','getall',
 		    array(	'bid'		=> $uid,
@@ -90,24 +91,35 @@ function ContactList_user_main()
 				'birthday'	=> $birthday,
 	    		'sort'		=> $sort,
 				'state'		=> 3 ) );
-        if (is_array($buddies_pending)) foreach ($buddies_pending   as $buddy) $buddies[]=$buddy;
-		if (is_array($buddies_confirmed)) foreach ($buddies_confirmed as $buddy) $buddies[]=$buddy;
-        if (is_array($buddies_suspended)) foreach ($buddies_suspended as $buddy) $buddies[]=$buddy;
-        if (is_array($buddies_rejected)) foreach ($buddies_rejected  as $buddy) $buddies[]=$buddy;
+        if (is_array($buddies_pending)) 	foreach ($buddies_pending   as $buddy) $buddies[]=$buddy;
+		if (is_array($buddies_confirmed)) 	foreach ($buddies_confirmed as $buddy) $buddies[]=$buddy;
+        if (is_array($buddies_suspended)) 	foreach ($buddies_suspended as $buddy) $buddies[]=$buddy;
+        if (is_array($buddies_rejected)) 	foreach ($buddies_rejected  as $buddy) $buddies[]=$buddy;
         // let's sort the buddies array
         $buddies = _cl_sortList($buddies,$sort);
-        $render->assign('buddies_pending',$buddies_pending);
-        $render->assign('buddies_confirmed',$buddies_confirmed);
-        $render->assign('buddies_rejected',$buddies_rejected);
-        $render->assign('buddies_suspended',$buddies_suspended);
     }
     $render->assign('contacts_all',count($buddies));
-    $render->assign('buddies',$buddies);
     $render->assign('state',$state);
     $render->assign('contacts',count($buddies_confirmed));
     $render->assign('nopubliccomment',(int)pnModGetVar('ContactList','nopubliccomment'));
     $render->assign('nopublicbuddylist',(int)pnModGetVar('ContactList','nopublicbuddylist'));
     $render->assign('authid',SecurityUtil::generateAuthKey());
+    // pagination
+    $cl_limit 		= pnModGetVar('ContactList','itemsperpage');
+    $cl_startnum	= (int)FormUtil::getPassedValue('cl_startnum',1);
+    $render->assign('cl_limit',		$cl_limit);
+    $render->assign('cl_startnum',	$cl_startnum);
+    // now just give back the buddy list we need for this page
+    // I know this is not really very performant - but there is no other way to do this because 
+	// of the data and the sort criterias, that are included in the result list
+    $c = 1;
+    $c_start = $cl_startnum;
+    $c_stop = $cl_startnum + $cl_limit;
+    foreach ($buddies as $buddy) {
+	  	if (($c>=$c_start) && ($c < $c_stop)) $assign_buddies[]=$buddy;
+	  	$c++;
+	}
+    $render->assign('buddies',$assign_buddies);
     // return output
     return $render->pnFormExecute('contactlist_user_main.htm', new contactlist_user_mainHandler());
 }
