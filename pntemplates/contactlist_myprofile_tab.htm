@@ -5,21 +5,21 @@
 
 <div id="cl_main" class="cl_box cl_floatbox">
 <!--[foreach from=$buddies item="buddy"]-->
-<!--[pnusergetvar uid=$buddy.bid name="_YOURAVATAR" assign="avatar"]-->
-<div class="buddybox">
-  <!--[if $avatar eq '' or $avatar eq 'blank.gif']-->
-  <!--[pnimg modname=ContactList src="avatar_male.gif" width="50" class="avatar"]-->
-  <!--[else]-->
-  <img src="images/avatar/<!--[$avatar|pnvarprepfordisplay]-->" class="avatar" width="50" />
-  <!--[/if]-->
-  
-  <h4><!--[$buddy.uname|userprofilelink]--><!--[if $buddy.online eq true]-->&nbsp;<em class="cl_online">(<!--[pnml name="_CONTACTLISTONLINE"]-->)</em><!--[/if]--></h4>   
-  
-    <ul class="cl_userinfo">
-    <!--[if $nopubliccomment ne 1 and $buddy.pub_comment ne ""]-->
-    <li><strong><!--[pnml name="_CONTACTLISTPUBCOMMENT"]-->:</strong>&nbsp;<em><!--[$buddy.pub_comment|pnvarprepfordisplay|pnmodcallhooks]--></em></li>
-    <!--[/if]-->    	
-  </ul>
-</div>     			
+	<!--[pnusergetvar uid=$buddy.bid name="_YOURAVATAR" assign="avatar"]-->	
+	<div style="width: 100px; float: left;">
+		<!--[if $avatar eq '' or $avatar eq 'blank.gif']-->
+		<!--[pnimg modname=ContactList src="avatar_male.gif" width="50" class="avatar"]-->
+		<!--[else]-->
+		<img src="images/avatar/<!--[$avatar|pnvarprepfordisplay]-->" class="avatar" width="50" />
+		<!--[/if]-->
+	  	<br />
+		<!--[$buddy.uname|userprofilelink]--><!--[if $buddy.online eq true]--><br />
+		<em class="cl_online">(<!--[pnml name="_CONTACTLISTONLINE"]-->)</em><!--[/if]-->
+	  
+		<!--[if $nopubliccomment ne 1 and $buddy.pub_comment ne ""]-->
+	    <li><strong><!--[pnml name="_CONTACTLISTPUBCOMMENT"]-->:</strong>&nbsp;<em><!--[$buddy.pub_comment|pnvarprepfordisplay|pnmodcallhooks]--></em></li>
+	    <!--[/if]-->    	
+	</div>     			
+	
 <!--[/foreach]-->
 </div>
