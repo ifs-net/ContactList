@@ -34,7 +34,6 @@ function _cl_addOnlineStatusAndUsername($list,$args)
 		}
         else if (isset($args['bid'])) $buddy['uname'] = pnUserGetVar('uname',$buddy['uid']);
         else if (isset($args['uid'])) $buddy['uname'] = pnUserGetVar('uname',$buddy['bid']);
-        print "buiddy uname ".$buddy['uname'];
         $result_online[] = $buddy;
         unset($buddy);
     }
