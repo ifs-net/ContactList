@@ -91,7 +91,7 @@ function ContactList_userapi_getall($args) {
     else return;
 
     // add onlinestatus and username and sort and returl the result
-	return _cl_sortList(_cl_addOnlineStatusAndUsername($result),$args['sort']);
+	return _cl_sortList(_cl_addOnlineStatusAndUsername($result,$args),$args['sort']);
 }
 
 /**

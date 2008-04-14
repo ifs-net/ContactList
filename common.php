@@ -13,7 +13,7 @@
  *
  * @return	array
  */
-function _cl_addOnlineStatusAndUsername($list)
+function _cl_addOnlineStatusAndUsername($list,$args)
 {
   	// get the time for inactive users and get a list of active users
     $timestamp = time() - (pnConfigGetVar('secinactivemins') * 60);
@@ -28,8 +28,12 @@ function _cl_addOnlineStatusAndUsername($list)
 		if ($uidlist[$bid] == $bid) $buddy['online'] = true;
 		else $buddy['online'] = false;
         // user name
-        if (isset($args['bid'])) $buddy['uname'] = pnUserGetVar('uname',$buddy['uid']);
-        if (isset($args['uid'])) $buddy['uname'] = pnUserGetVar('uname',$buddy['bid']);
+        if (isset($args['bid']) && isset($args['uid'])) {
+		  	$buddy['uname'] = pnUserGetVar('uname',$buddy['uid']);
+		  	$buddy['buname'] = pnUserGetVar('buname',$buddy['bid']);
+		}
+        else if (isset($args['bid'])) $buddy['uname'] = pnUserGetVar('uname',$buddy['uid']);
+        else if (isset($args['uid'])) $buddy['uname'] = pnUserGetVar('uname',$buddy['bid']);
         print "buiddy uname ".$buddy['uname'];
         $result_online[] = $buddy;
         unset($buddy);
