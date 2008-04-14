@@ -240,3 +240,24 @@ div.autocomplete_user ul li {
 	height: 180px;
 	overflow: none;
 }
+#cl_myprofile dl.profilebox {
+  border:1px dashed #AAAAAA;
+  float:left;
+  margin:5px 5px 5px 0pt;
+  min-height:180px;
+  padding:5px;
+  text-align:center;
+  width:150px;
+}
+#cl_myprofile dd {
+  margin:0pt;
+  padding:0pt;
+}
+#cl_myprofile dd.cl_online {
+  color:red;
+}
+#cl_myprofile dt {
+  font-weight:bold;
+  margin:1em 0pt 0pt;
+  padding:0pt;
+}
