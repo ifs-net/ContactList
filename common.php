@@ -15,24 +15,22 @@
  */
 function _cl_addOnlineStatusAndUsername($list)
 {
+  	// get the time for inactive users and get a list of active users
     $timestamp = time() - (pnConfigGetVar('secinactivemins') * 60);
 	$pntable =& pnDBGetTables();
     $column = $pntable['session_info_column']['lastused'];
     $where =  $column." > $timestamp";
     $result = DBUtil::selectObjectArray('session_info',$where);
-    foreach ($result as $item) $uidlist[$item['uid']] = $item['uid'];
+    foreach ($result as $item) $uidlist[$item['uid']] = $item['uid']; // now we have an array with key and value == user id if the user is "active"
 	foreach ($list as $buddy) {
         // online status
         $bid = $buddy['bid'];
 		if ($uidlist[$bid] == $bid) $buddy['online'] = true;
 		else $buddy['online'] = false;
         // user name
-        if ((isset($args['bid'])) && (isset($args['uid']))) {
-		  	$buddy['uname'] = pnUserGetVar('uname',$buddy['uid']);
-		  	$buddy['buname'] = pnUserGetVar('uname',$buddy['bid']);
-		}
-        else if (isset($args['bid'])) $buddy['uname'] = pnUserGetVar('uname',$buddy['uid']);
-        else if (isset($args['uid'])) $buddy['uname'] = pnUserGetVar('uname',$buddy['bid']);
+        if (isset($args['bid'])) $buddy['uname'] = pnUserGetVar('uname',$buddy['uid']);
+        if (isset($args['uid'])) $buddy['uname'] = pnUserGetVar('uname',$buddy['bid']);
+        print "buiddy uname ".$buddy['uname'];
         $result_online[] = $buddy;
         unset($buddy);
     }
