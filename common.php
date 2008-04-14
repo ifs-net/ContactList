@@ -24,7 +24,7 @@ function _cl_addOnlineStatusAndUsername($list)
 	foreach ($list as $buddy) {
         // online status
         $bid = $buddy['bid'];
-		if ($online_list[$bid] == $bid) $buddy['online'] = true;
+		if ($uidlist[$bid] == $bid) $buddy['online'] = true;
 		else $buddy['online'] = false;
         // user name
         if ((isset($args['bid'])) && (isset($args['uid']))) {
