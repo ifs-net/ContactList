@@ -38,8 +38,7 @@ function ContactList_userapi_getall($args) {
     // return objects
     $res = DBUtil::selectObjectArray('contactlist_buddylist',$where);
     if (count($res) >0) {
-      	if (isset($args['birthday']) && ($args['birthday'])) $birthdy == true;
-      	else $birthday = false;
+		$birthday = $args['birthday'];
         if ($birthday) {
             $myprofile = (pnModGetVar('ContactList','usemyprofilebirthday') && pnModAvailable('MyProfile'));
             $profile = (pnModGetVar('ContactList','useprofilebirthday') && pnModAvailable('Profile'));

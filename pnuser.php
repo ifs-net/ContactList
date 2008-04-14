@@ -38,7 +38,7 @@ function ContactList_user_main()
     if (isset($action)) return pnRedirect(pnModURL('ContactList','user','main',array('state'=>FormUtil::getPassedValue('state'))));
 
 	// check if the result should be sorted
-	$birthday	= FormUtil::getPassedValue('birthday',	false);
+	$birthday	= FormUtil::getPassedValue('birthday',	true);
 	$sort		= FormUtil::getPassedValue('sort',		'uname');
 	// some validations
 	if (($sort == 'birthday') || ($sort == 'nextbirthday') || ($sort == 'daystonextbirthday')) $birthday = true;	// for this sort criteria we need the user's birthday
