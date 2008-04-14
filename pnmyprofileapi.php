@@ -36,8 +36,31 @@ function ContactList_myprofileapi_getURLAddOn($args)
  */
 function ContactList_myprofileapi_tab($args)
 {
+  	// check if list should be shown
+  	$nopublicbuddylist = (int)pnModGetVar('ContactList','nopublicbuddylist');
+ 	pnModLangLoad('ContactList');
+    // check for privacy settings
+    $prefs = pnModAPIFunc('ContactList','user','getPreferences',array('uid' => $args['uid']));
+    $display = false;
+    if ($args['uid'] != pnUserGetVar('uid')) switch ($prefs['publicstate']) {
+        case 1:		$display=false;
+        break;
+        case 2:		$isBuddy = pnModAPIFunc('ContactList','user','isBuddy',array('uid1' => $uid, 'uid2' => pnUserGetVar('uid')));
+        if ($isBuddy > 0) $display = true;
+        break;
+        case 3:		if (pnUserLoggedIn()) $display = true;
+        break;
+        default: 	return LogUtil::registerPermissionError();
+        break;
+    }
+    else $display = true;
+
    	// generate output
     $render = pnRender::getInstance('ContactList');
+
+  	if (($nopublicbuddylist == 1) or (!$display)) $render->assign('display',false);
+  	else $render->assign('display',true);
+
     $render->assign('uid',(int)$args['uid']);
     $buddies = pnModAPIFunc('ContactList','user','getall', array('uid' => $args['uid'], 'state' => 1 ) );
     $render->assign('contacts_all',count($buddies));
