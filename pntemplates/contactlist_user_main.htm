@@ -41,11 +41,6 @@
   <li><a href="<!--[pnmodurl modname="ContactList" type="user" func="main" state=3]-->"><!--[pnml name="_CONTACTLISTFILTERYOURBUDDIESSUSPEND"]--></a></li>  
 </ul>
 
-<center>carsten bitte das css hier anpassen und zuentriert machen danke! dafür hast du jetzt nen pager ;)<br />
-<!--[* Display a pager to go to the pages   *]-->
-<!--[pager show="page" rowcount=$contacts_all limit=$cl_limit posvar=cl_startnum shift=1]-->
-</center>
-
 <div id="cl_contacts" class="cl_box cl_floatbox">
 
 <!--[if $state eq ""]-->
@@ -62,14 +57,14 @@
   <p><!--[pnml name="_CONTACTLISTAMOUNTSUSPENDED"]-->:&nbsp;<!--[$contacts_all]--></p>
 <!--[/if]-->
 
+<!--[if $contacts_all gt 0]-->
+
 <!--[pnform]-->
 <!--[pnformvalidationsummary]-->
 <!--[pnformlabel for="sort" text="_CONTACTLISTSORTITEMS"]--> <!--[pnformdropdownlist id="sort" items=$items_sortlist]-->
 <!--[pnformbutton commandName="update" text=_CONTACTLISTRELOAD]-->
 <!--[/pnform]-->
 
-
-<!--[if $contacts_all gt 0]-->
 <!--[foreach from=$buddies item="buddy"]-->
 <!--[pnusergetvar uid=$buddy.bid name="_YOURAVATAR" assign="avatar"]-->
 <div class="buddybox">
@@ -115,11 +110,8 @@
 </div>     			
 <!--[/foreach]-->
 
-<center>carsten bitte das css hier anpassen und zuentriert machen danke! dafür hast du jetzt nen pager ;)<br />
 <!--[* Display a pager to go to the pages   *]-->
 <!--[pager show="page" rowcount=$contacts_all limit=$cl_limit posvar=cl_startnum shift=1]-->
-</center>
-
 
 <!--[/if]-->
 </div>	
