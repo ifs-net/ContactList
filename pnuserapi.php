@@ -36,11 +36,11 @@ function ContactList_userapi_getall($args) {
     if (isset($where) && isset($args['state'])) $where.= ' and state = '.(int)$args['state'];
 
     $sort = (isset($args['sort']) && !empty($args['sort'])) ? $args['sort'] : '';
+    $birthday = isset($args['birthday']) ? $args['birthday'] : false;
 
     // return objects
     $res = DBUtil::selectObjectArray('contactlist_buddylist',$where);
     if (count($res) >0) {
-        $birthday = isset($args['birthday']);
         if ($birthday) {
             $myprofile = (pnModGetVar('ContactList','usemyprofilebirthday') && pnModAvailable('MyProfile'));
             $profile = (pnModGetVar('ContactList','useprofilebirthday') && pnModAvailable('Profile'));
