@@ -8,5 +8,4 @@
  * @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
  */
 
-define('_CONTACTLISTMYONLINEBUDDIES',			'Folgende Freunde sind online');
 define('_CONTACTLISTNOBUDDYONLINE',				'Kein Kontakt online');

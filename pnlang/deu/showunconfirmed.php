@@ -8,6 +8,6 @@
  * @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
  */
 
-define('_CONTACTLISTUNCONFIRMEDBUDDIES',	'Mindestens eine Anfrage auf Kontaktaufnahme ist noch offen');
+define('_CONTACTLISTUNCONFIRMEDBUDDIES',	'Offene Kontaktanfragen');
 define('_CONTACTLISTRESPONDREQUEST',		'Anfragen bearbeiten');
 

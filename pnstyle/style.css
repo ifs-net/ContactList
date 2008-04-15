@@ -33,7 +33,7 @@
 #cl_main .buddybox {
 	background: #FFFEFA none repeat scroll 0%;
 	border: 1px solid #DBD5C5;
-	margin: 5px 10px 1em 0pt;
+	margin: 0.5em 0;
 	min-height: 135px;
 	padding: 5px;
 }
@@ -169,27 +169,101 @@ div.autocomplete_user ul li {
  * }
  *
 /*******************************************************************************/
-#cl_main a.image,#cl_main button.image,#cl_main a.image,#cl_main button.image
+#cl_main a.image,
+#cl_main button.image,
+#cl_main a.image,
+#cl_main button.image
 	{
-	margin: 0 0.5em;
+	margin: 0;
 	font-size: 1em;
 	padding: 2px 0 2px 19px ! important; /* 16px image + spacer */
 }
 
 #cl_main a.showbuddies {
-	background: url(../pnimages/agt_family.gif) no-repeat 0 50%
+	background: url(../pnimages/group.png) no-repeat 0 50%
 }
-
 #cl_main a.createbuddy {
-	background: url(../pnimages/add_user.gif) no-repeat 0 50%
+	background: url(../pnimages/user_add.png) no-repeat 0 50%
 }
-
 #cl_main a.ignorelist {
-	background: url(../pnimages/locked.gif) no-repeat 0 50%;
+	background: url(../pnimages/group_error.png) no-repeat 0 50%;
+}
+#cl_main a.preferences {
+	background: url(../pnimages/key.png) no-repeat 0 50%;
+}
+#cl_main a.accept {
+	background: url(../pnimages/accept.png) no-repeat 0 50%;
+}
+#cl_main a.cancel {
+	background: url(../pnimages/cancel.png) no-repeat 0 50%;
+}
+#cl_main a.mail {
+	background: url(../pnimages/email.png) no-repeat 0 50%;
+}
+#cl_main a.useredit {
+	background: url(../pnimages/user_edit.png) no-repeat 0 50%;
+}
+#cl_main a.userdelete {
+	background: url(../pnimages/user_delete.png) no-repeat 0 50%;
+}
+#cl_main a.usercancel {
+	background: url(../pnimages/user_go.png) no-repeat 0 50%;
 }
 
-#cl_main a.preferences {
-	background: url(../pnimages/user_pref.gif) no-repeat 0 50%;
+/*******************************************************************************/
+	/* Blocks
+/*******************************************************************************/
+ul.contactlist,
+dl.contactlist {
+  padding:0;
+  margin:0 0 1em 0;
+	list-style: none;  
+}
+.contactlist dt {
+  font-weight: normal;
+  margin:3px 0;
+}
+.contactlist .date {
+	background: url(../pnimages/date.png) no-repeat 0 50%;
+	margin: 0;
+	font-size: 1em;
+	padding: 2px 0 2px 25px ! important;
+}
+.contactlist .birthday {
+	background: url(../pnimages/cake.png) no-repeat 0 50%;
+	margin: 0;
+	font-size: 1em;
+	padding: 2px 0 2px 25px ! important;	
+}
+.contactlist .pending {
+	background: url(../pnimages/user_comment.png) no-repeat 0 50%;
+	margin: 0;
+	font-size: 1em;
+	padding: 2px 0 2px 25px ! important;	
+}
+.contactlist .user {
+	background: url(../pnimages/user.png) no-repeat 0 50%;
+	margin: 0;
+	font-size: 1em;
+	padding: 2px 0 2px 25px ! important;	
+}
+.contactlist .edit {
+	background: url(../pnimages/user_edit.png) no-repeat 0 50%;
+	margin: 0;
+	font-size: 1em;
+	padding: 2px 0 2px 25px ! important;	
+}
+.contactlist .online {
+	background: url(../pnimages/status_online.png) no-repeat 0 50%;
+	margin: 0 0 0 10px;
+	font-size: 1em;
+	padding: 2px 0 2px 25px ! important;	
+}
+.contactlist .offline {
+	background: url(../pnimages/status_offline.png) no-repeat 0 50%;
+	margin: 0 0 0 10px;
+	font-size: 1em;
+	padding: 2px 0 2px 25px ! important;	
 }
 
 /*******************************************************************************/
