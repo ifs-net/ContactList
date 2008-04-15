@@ -65,7 +65,6 @@ function ContactList_NextBirthdaysblock_display($blockinfo)
     $c=0;
     if (!(count($buddies)>0)) return false;
     foreach ($buddies as $buddy) {
-        $buddy['uname'] = pnUserGetVar('uname',$buddy['bid']);
         if ($buddy['daystonextbirthday'] >= 0) {
             $res[] = $buddy;
             $c++;
