@@ -28,7 +28,7 @@ define('_CONTACTLISTPREFSUPDATED',						'Einstellungen aktualisiert');
 define('_CONTACTLISTSORTITEMS',							'Liste nach');
 define('_CONTACTLISTRELOAD',							'sortieren');
 define('_CONTACTLISTSORTUNAME',							'Benutzernamen');
-define('_CONTACTLISTSORTBIRTHDAY',						'Geburtstag');
+define('_CONTACTLISTSORTBIRTHDAY',						'Geburtsdatum');
 define('_CONTACTLISTSORTSTATE',							'Kontaktstatus');
 define('_CONTACTLISTSORTAYSTONEXTBIRTHDAY',				'nächsten Geburtstagen');
 define('_CONTACTLISTMYCONTACTS',	                 	'Meine Kontakte');

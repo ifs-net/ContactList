@@ -1,13 +1,13 @@
 <?php
 /**
  * @package      ContactList
- * @version      $Id$ 
+ * @version      $Id$
  * @author       Florian Schießl, Carsten Volmer
  * @link         http://www.ifs-net.de, http://www.carsten-volmer.de
  * @copyright    Copyright (C) 2008
  * @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
  */
- 
+
 /**
  * the main user function
  *
@@ -37,13 +37,13 @@ function ContactList_user_main()
     // redirect after any action to avoid auth-id problems
     if (isset($action)) return pnRedirect(pnModURL('ContactList','user','main',array('state'=>FormUtil::getPassedValue('state'))));
 
-	// check if the result should be sorted
-	$birthday	= FormUtil::getPassedValue('birthday',	true);
-	$sort		= FormUtil::getPassedValue('sort',		'uname');
-	// some validations
-	if (($sort == 'birthday') || ($sort == 'nextbirthday') || ($sort == 'daystonextbirthday')) $birthday = true;	// for this sort criteria we need the user's birthday
-	else if (($sort != 'state') && ($sort != 'uname')) $sort = 'uname';	// this is just a check if the agument $sort is valid
-	
+    // check if the result should be sorted
+    $birthday	= FormUtil::getPassedValue('birthday',	true);
+    $sort		= FormUtil::getPassedValue('sort',		'uname');
+    // some validations
+    if (($sort == 'birthday') || ($sort == 'nextbirthday') || ($sort == 'daystonextbirthday')) $birthday = true;	// for this sort criteria we need the user's birthday
+    else if (($sort != 'state') && ($sort != 'uname')) $sort = 'uname';	// this is just a check if the agument $sort is valid
+
     // Create output
     $render = FormUtil :: newpnForm('ContactList');
 
@@ -54,21 +54,21 @@ function ContactList_user_main()
 
     // unconfirmed buddies are always assigned
     $render->assign('buddies_unconfirmed',pnModAPIFunc('ContactList','user','getall',
-		    array(	'bid'		=> $uid,
+    array(	'bid'		=> $uid,
 		    		'sort'		=> $sort,
 		    		'birthday'	=> $birthday,
 					'state'		=> 0 ) ));
 
     // Do some filtering? state 1,2,3 is possibe
     $state = FormUtil::getPassedValue('state');
-    
+
     if ($state != "") {
         $buddies = pnModAPIFunc('ContactList','user','getall',
         array(	'uid'		=> $uid,
 				'state'		=> $state,
 				'birthday'	=> $birthday,
 	    		'sort'		=> $sort
-										) );
+        ) );
     }
     else {	// assign and fetch all data all we have otherwise
         $buddies_pending = pnModAPIFunc('ContactList','user','getall',
@@ -93,7 +93,7 @@ function ContactList_user_main()
 	    		'sort'		=> $sort,
 				'state'		=> 3 ) );
         if (is_array($buddies_pending)) 	foreach ($buddies_pending   as $buddy) $buddies[]=$buddy;
-		if (is_array($buddies_confirmed)) 	foreach ($buddies_confirmed as $buddy) $buddies[]=$buddy;
+        if (is_array($buddies_confirmed)) 	foreach ($buddies_confirmed as $buddy) $buddies[]=$buddy;
         if (is_array($buddies_suspended)) 	foreach ($buddies_suspended as $buddy) $buddies[]=$buddy;
         if (is_array($buddies_rejected)) 	foreach ($buddies_rejected  as $buddy) $buddies[]=$buddy;
         // let's sort the buddies array
@@ -111,15 +111,15 @@ function ContactList_user_main()
     $render->assign('cl_limit',		$cl_limit);
     $render->assign('cl_startnum',	$cl_startnum);
     // now just give back the buddy list we need for this page
-    // I know this is not really very performant - but there is no other way to do this because 
-	// of the data and the sort criterias, that are included in the result list
+    // I know this is not really very performant - but there is no other way to do this because
+    // of the data and the sort criterias, that are included in the result list
     $c = 1;
     $c_start = $cl_startnum;
     $c_stop = $cl_startnum + $cl_limit;
     foreach ($buddies as $buddy) {
-	  	if (($c>=$c_start) && ($c < $c_stop)) $assign_buddies[]=$buddy;
-	  	$c++;
-	}
+        if (($c>=$c_start) && ($c < $c_stop)) $assign_buddies[]=$buddy;
+        $c++;
+    }
     $render->assign('buddies',$assign_buddies);
     // return output
     return $render->pnFormExecute('contactlist_user_main.htm', new contactlist_user_mainHandler());
@@ -264,10 +264,10 @@ function ContactList_user_create()
 class contactlist_user_mainHandler {
     function initialize(& $render) {
         $items_sortlist = array (
-	        array('text' => _CONTACTLISTSORTUNAME, 					'value' => 'uname'),
-	        array('text' => _CONTACTLISTSORTSTATE,					'value' => 'state'),
-	        array('text' => _CONTACTLISTSORTAYSTONEXTBIRTHDAY, 		'value' => 'daystonextbirthday'),
-	        array('text' => _CONTACTLISTSORTBIRTHDAY,				'value' => 'nextbirthday'),
+        array('text' => _CONTACTLISTSORTUNAME, 					'value' => 'uname'),
+        array('text' => _CONTACTLISTSORTSTATE,					'value' => 'state'),
+        array('text' => _CONTACTLISTSORTAYSTONEXTBIRTHDAY, 		'value' => 'daystonextbirthday'),
+        array('text' => _CONTACTLISTSORTBIRTHDAY,				'value' => 'nextbirthday'),
         );
         $render->assign('items_sortlist',$items_sortlist);
         return true;

@@ -1,7 +1,7 @@
 <?php
 /**
  * @package      ContactList
- * @version      $Id$ 
+ * @version      $Id$
  * @author       Florian Schießl, Carsten Volmer
  * @link         http://www.ifs-net.de, http://www.carsten-volmer.de
  * @copyright    Copyright (C) 2008
@@ -35,10 +35,12 @@ function ContactList_userapi_getall($args) {
     if (!isset($where) && isset($args['state'])) $where = 'state = '.(int)$args['state'];
     if (isset($where) && isset($args['state'])) $where.= ' and state = '.(int)$args['state'];
 
+    $sort = (isset($args['sort']) && !empty($args['sort'])) ? $args['sort'] : '';
+
     // return objects
     $res = DBUtil::selectObjectArray('contactlist_buddylist',$where);
     if (count($res) >0) {
-		$birthday = $args['birthday'];
+        $birthday = isset($args['birthday']);
         if ($birthday) {
             $myprofile = (pnModGetVar('ContactList','usemyprofilebirthday') && pnModAvailable('MyProfile'));
             $profile = (pnModGetVar('ContactList','useprofilebirthday') && pnModAvailable('Profile'));
@@ -91,7 +93,7 @@ function ContactList_userapi_getall($args) {
     else return;
 
     // add onlinestatus and username and sort and returl the result
-	return _cl_sortList(_cl_addOnlineStatusAndUsername($result,$args),$args['sort']);
+    return _cl_sortList(_cl_addOnlineStatusAndUsername($result,$args),$sort);
 }
 
 /**
