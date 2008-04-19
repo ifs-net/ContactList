@@ -116,14 +116,13 @@ function ContactList_user_main()
     // I know this is not really very performant - but there is no other way to do this because
     // of the data and the sort criterias, that are included in the result list
 
-    $c = 1;
-    $c_start = $cl_startnum;
+    $numBuddies = count($buddies) - $cl_startnum;
+    if ($cl_limit > $numBuddies) $cl_limit = $numBuddies+1;
     $c_stop = $cl_startnum + $cl_limit;
-    foreach ($buddies as $buddy) {
-        if (($c>=$c_start) && ($c < $c_stop)) $assign_buddies[]=$buddy;
-        $c++;
-    }
-   
+    for ($c = $cl_startnum-1; $c < $c_stop-1; $c++) {
+        $assign_buddies[] = $buddies[$c];
+    }    
+
     $render->assign('buddies',$assign_buddies);
     // return output
     return $render->pnFormExecute('contactlist_user_main.htm', new contactlist_user_mainHandler());
