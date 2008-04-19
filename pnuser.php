@@ -19,8 +19,8 @@ function ContactList_user_main()
     if (!SecurityUtil::checkPermission('ContactList::', '::', ACCESS_COMMENT)) return LogUtil::registerPermissionError();
 
     // check for action
-    $action = FormUtil::getPassedValue('action');
-    if (isset($action) && !(SecurityUtil::confirmAuthKey())) return Logutil::registerAuthIDError();
+    $action = FormUtil::getPassedValue('action', '');
+    if (!empty($action) && !(SecurityUtil::confirmAuthKey())) return Logutil::registerAuthIDError();
     if ($action == "decline") {
         if (pnModAPIFunc('ContactList','user','decline',array('id'=>(int)FormUtil::getPassedValue('id')))) LogUtil::registerStatus(_CONTACTLISTREQUESTDECLINED);
         else LogUtil::registerError(_CONTACTLISTREQUESTDECLINEERR);
@@ -35,7 +35,7 @@ function ContactList_user_main()
     }
 
     // redirect after any action to avoid auth-id problems
-    if (isset($action)) return pnRedirect(pnModURL('ContactList','user','main',array('state'=>FormUtil::getPassedValue('state'))));
+    if (!empty($action)) return pnRedirect(pnModURL('ContactList','user','main',array('state'=>FormUtil::getPassedValue('state'))));
 
     // check if the result should be sorted
     $birthday	= FormUtil::getPassedValue('birthday',	true);
@@ -61,6 +61,8 @@ function ContactList_user_main()
 
     // Do some filtering? state 1,2,3 is possibe
     $state = FormUtil::getPassedValue('state');
+
+    $buddies = array();
 
     if ($state != "") {
         $buddies = pnModAPIFunc('ContactList','user','getall',
@@ -113,6 +115,7 @@ function ContactList_user_main()
     // now just give back the buddy list we need for this page
     // I know this is not really very performant - but there is no other way to do this because
     // of the data and the sort criterias, that are included in the result list
+
     $c = 1;
     $c_start = $cl_startnum;
     $c_stop = $cl_startnum + $cl_limit;
@@ -120,6 +123,7 @@ function ContactList_user_main()
         if (($c>=$c_start) && ($c < $c_stop)) $assign_buddies[]=$buddy;
         $c++;
     }
+   
     $render->assign('buddies',$assign_buddies);
     // return output
     return $render->pnFormExecute('contactlist_user_main.htm', new contactlist_user_mainHandler());
