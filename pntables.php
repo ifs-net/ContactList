@@ -54,9 +54,9 @@ function ContactList_pntables()
 						'id'			=>	"I NOTNULL AUTO PRIMARY",
 						'uid'			=> 	"I NOTNULL DEFAULT 0",
 						'bid'			=> 	"I NOTNULL DEFAULT 0",
-						'prv_comment'	=>	"XL NOTNULL DEFAULT ''",
-						'pub_comment'	=>	"XL NOTNULL DEFAULT ''",
-						'request_text'	=>	"XL NOTNULL DEFAULT ''",
+						'prv_comment'	=>	"XL NOTNULL",
+						'pub_comment'	=>	"XL NOTNULL",
+						'request_text'	=>	"XL NOTNULL",
 						'date'			=>	"T",
 						'state'			=>	"I(1) NOTNULL DEFAULT 0"
 						);
