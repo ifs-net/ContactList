@@ -19,7 +19,7 @@ function _cl_addOnlineStatusAndUsername($list,$args)
     $timestamp = time() - (pnConfigGetVar('secinactivemins') * 60);
     $pntable =& pnDBGetTables();
     $column = $pntable['session_info_column']['lastused'];
-    $where =  $column." > $timestamp";
+    $where =  $column." > '".date("Y-m-d H:i:s",$timestamp)."'";
     $result = DBUtil::selectObjectArray('session_info',$where);
     foreach ($result as $item) $uidlist[$item['uid']] = $item['uid']; // now we have an array with key and value == user id if the user is "active"
     foreach ($list as $buddy) {
