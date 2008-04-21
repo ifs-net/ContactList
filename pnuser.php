@@ -8,7 +8,7 @@
  * @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
  */
 
-Loader::requireOnce('modules/ContactList/handlers.php');
+Loader::requireOnce('modules/ContactList/includes/handlers.php');
 
 /**
  * the main user function
@@ -123,7 +123,7 @@ function ContactList_user_main()
     $c_stop = $cl_startnum + $cl_limit;
     for ($c = $cl_startnum-1; $c < $c_stop-1; $c++) {
         $assign_buddies[] = $buddies[$c];
-    }    
+    }
 
     $render->assign('buddies',$assign_buddies);
     // return output
@@ -229,7 +229,7 @@ function ContactList_user_ignore()
     $render = FormUtil :: newpnForm('ContactList');
     $render->assign('ignorelist',pnModAPIFunc('ContactList','user','getallignorelist',array('uid' => pnUserGetVar('uid'), 'sort' => 'iuname')));
     $render->assign('authid',SecurityUtil::generateAuthKey());
-     
+
     // check for action
     $action = FormUtil::getPassedValue('action');
     if (isset($action) && (strtolower($action) == 'delete')) {

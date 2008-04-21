@@ -8,7 +8,7 @@
  * @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
  */
 
-Loader::requireOnce('modules/ContactList/common.php');
+Loader::requireOnce('modules/ContactList/includes/common.php');
 
 /**
  * get all buddys
@@ -114,7 +114,7 @@ function ContactList_userapi_create($args) {
     $pub_comment 	= $args['pub_comment'];
     $request_text 	= $args['request_text'];
     if (!($uid > 1) || !($bid > 1)) return false;
-     
+
     // is there an old rejected or suspended connection?
     $result = ContactList_userapi_getall(array('uid' => $bid, 'bid' => $uid));
     if (count($result) == 1) {
@@ -126,7 +126,7 @@ function ContactList_userapi_create($args) {
         DBUtil::updateObject($conn,'contactlist_buddylist');
         $nocounterconnection = true;
     }
-     
+
     // now add or create the request
     $noconfirm = pnModGetVar('ContactList','noconfirm');
     if ($noconfirm) {
@@ -235,7 +235,7 @@ function ContactList_userapi_suspend($args) {
     $obj = DBUtil::selectObjectByID('contactlist_buddylist',$id);
     // Security check: only the user that is a buddy can suspend the connection
     if ($obj['uid'] != $uid) return false;
-     
+
     // if the connection is only in one direction (already suspended) just delete the object
     if ($obj['state'] == 2) return DBUtil::deleteObject($obj,'contactlist_buddylist');
     else if ($obj['state'] == 3) return DBUtil::deleteObject($obj,'contactlist_buddylist');
@@ -260,7 +260,7 @@ function ContactList_userapi_suspend($args) {
     if (!DBUtil::updateObject($counter_obj,'contactlist_buddylist')) {
         return LogUtil::registerError('error updating buddy object');
     }
-     
+
     // delete the old object
     DBUtil::deleteObject($obj,'contactlist_buddylist');
 
@@ -291,7 +291,7 @@ function ContactList_userapi_confirm($args) {
     $obj = DBUtil::selectObjectByID('contactlist_buddylist',$id);
     // only the user that should be a new buddy should be able to decline
     if ($obj['bid'] != $uid) return false;
-     
+
     // change state to "1, acepted" and delete request text
     $obj['state'] = 1;
     $obj['request_text'] = '';
@@ -373,7 +373,7 @@ function ContactList_userapi_setPreferences($args) {
  */
 function ContactList_userapi_isBuddy($args) {
     $buddies = pnModAPIFunc('ContactList','user','getall',array(
-  	'uid' 	=> (int)$args['uid1'], 
+  	'uid' 	=> (int)$args['uid1'],
 		'bid' 	=> (int)$args['uid2'],
 		'state'	=> '1')					);
     if (count($buddies) > 0) return (int)$buddies[0]['id'];
@@ -484,7 +484,7 @@ function ContactList_userapi_deleteIgnoredUser($args) {
  */
 function ContactList_userapi_getBuddyList($args) {
     $buddies = pnModAPIFunc('ContactList','user','getall',array(
-	  	'uid' 		=> (int)$args['uid'], 
+	  	'uid' 		=> (int)$args['uid'],
 		'state'		=> '1')					);
     if (count($buddies)==0) return false;
     foreach ($buddies as $buddy) $res[] = array('uid' => $buddy['bid'], 'uname' => pnUserGetVar('uname',$buddy['bid']));
