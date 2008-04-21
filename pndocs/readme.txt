@@ -10,7 +10,8 @@ module developers take a look at developers.txt please!
 
 Modules that integrate ContactList
 ==================================
-- ContactList:	ingored users cannot send buddy-requests
-- EZComments:	ignored users cannot comment a user's content
-- TimeIt:		Calendar sharing options "events for friends only"
-				Ignored user's calendar entries are not shown
+- ContactList:	1.0	ingored users cannot send buddy-requests
+- EZComments:	1.6	ignored users cannot comment a user's content
+- TimeIt:		1.1	Calendar sharing options "events for friends only"
+					Ignored user's calendar entries are not shown
+- pnMessages:	SVN	Ignored users cannot send private messages any mre
