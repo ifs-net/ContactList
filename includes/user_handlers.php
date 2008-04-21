@@ -1,7 +1,7 @@
 <?php
 /**
  * @package      ContactList
- * @version      $Id: handlers.php 134 2008-04-20 15:48:13Z quan $
+ * @version      $Id: user_handlers.php 134 2008-04-20 15:48:13Z quan $
  * @author       Florian Schießl, Carsten Volmer
  * @link         http://www.ifs-net.de, http://www.carsten-volmer.de
  * @copyright    Copyright (C) 2008
@@ -9,7 +9,7 @@
  */
 
 /**
- * Handler for function " mein"
+ * Handler for function " main"
  */
 class contactlist_user_mainHandler {
     function initialize(& $render) {
