@@ -165,6 +165,8 @@ class contactlist_user_createHandler {
             if (!($bid > 1)) {
                 return LogUtil::registerError(_CONTACTLISTUNAMEINVALID);
             }
+            // is the potential buddy ignoring me?
+            if (pnModAPIFunc('ContactList','user','isIgnored',array('uid' => $bid, 'iuid' => $uid))) return LogUtil::registerError(_CONTACTLISTUSERIGNORESYOU);
             // already my buddy?
             $buddies = pnModAPIFunc('ContactList','user','getall',array('bid' => $bid, 'uid' => $uid));
             if (count($buddies)>0) {

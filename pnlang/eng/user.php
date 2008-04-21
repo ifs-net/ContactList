@@ -105,6 +105,7 @@ define('_CONTACTLISTUNAMEINVALID',		              'You have to submit a valid us
 define('_CONTACTLISTDUPLICATEREQUEST',            	'You can not make multiple requests. The user is your buddy or has already recieved a buddy request from you. Go out and find more friends instead :-)');
 define('_CONTACTLISTREQUESTSENT',		                'Buddy request sent to the user');
 define('_CONTACTLISTBUDDYADDED',		                'Buddy added');
+define('_CONTACTLISTUSERIGNORESYOU',				'Seems as if there is a conflict between you and your potential buddy because you are on the other user\'s ignore list. So, your request could not be sent!');
 
 // emails
 define('_CONTACTLISTUNCONFIRMSUBJECT',	            'You where added as buddy');

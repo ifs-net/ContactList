@@ -105,7 +105,7 @@ define('_CONTACTLISTUNAMEINVALID',		              'Es wurde kein gültiger Benutz
 define('_CONTACTLISTDUPLICATEREQUEST',            	'Der übermittelte Benutzer steht schon auf deiner Liste. Evtl abgelehnte Kontakte müssen zuerst gelöscht werden, bevor eine neue Anfrage gestartet werden kann. Aber doppelt Eintragen geht nicht. Geh lieber raus und such Dir weitere Freunde ;-)');
 define('_CONTACTLISTREQUESTSENT',		                'Die Kontaktanfrage wurde an den anderen Benutzer übermittelt');
 define('_CONTACTLISTBUDDYADDED',		                'Kontakt hinzugefügt');
-
+define('_CONTACTLISTUSERIGNORESYOU',				'Nicht gut... Dein potentieller Buddy hat dich auf seiner Ignorier-Liste - daher war eine Kontaktanfrage nicht möglich');
 // emails
 define('_CONTACTLISTUNCONFIRMSUBJECT',	            'Du wurdest als neuer Kontakt hinzugefügt');
 define('_CONTACTLISTCONFIRMSUBJECT',	              'Ein Benutzer will dich als Kontakt hinzufügen');
