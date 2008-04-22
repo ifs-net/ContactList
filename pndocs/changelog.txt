@@ -5,4 +5,4 @@ svn / next release:
 
 1.0:
 ====
-- bug #16140 fixed: table names do not have upper case letters any more
+- initial release
