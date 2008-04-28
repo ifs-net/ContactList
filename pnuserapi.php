@@ -491,3 +491,85 @@ function ContactList_userapi_getBuddyList($args) {
 
     return $res;
 }
+
+/**
+ * get nearest foaf-link for two users
+ *
+ * @param	$args['uid1']	int
+ * @param	$args['uid2']	int
+ * @return	output
+ */
+function ContactList_userapi_getFOAFLink($args) {
+  	$res = false;
+    $uid1 = (int) $args['uid1'];
+    $uid2 = (int) $args['uid2'];
+    // user views his own profile
+    if (($uid1 == $uid2) || (!($uid1 > 1)) || (!($uid2 > 1))) return false;
+    // user views the profile of a frind
+    else if (ContactList_userapi_isBuddy(array('uid1' => $uid1, 'uid2' => $uid2))) {
+	  	$res = array ( 
+			array(	'uid' => $uid1,	
+					'uname'=>pnUserGetVar('uname',$uid1)	),
+			array(	'uid' => $uid2,	
+					'uname'=>pnUserGetVar('uname',$uid2)	)
+		);
+	}
+	// now we have to check for mor connections...
+	else {	// one man is in the middle... perhaps :-)
+	  	// we will not use the api function because of performance savings
+	  	
+	  	// get left buddies (uid1) for the sql "where in" statement.
+	  	$leftArray = DBUtil::selectObjectArray('contactlist_buddylist','uid = '.$uid1);
+	  	foreach ($leftArray as $item) {
+		    $in.=$item['bid'].",";
+		}
+		$in.=0;
+
+	  	// we now the right user: $uid2
+	  	// now we have to select everythink from the contactlist_buddylist table
+	  	// where bid = $uid
+	  	// and uid in (left)
+	  	
+	  	// get left buddies (uid1)
+	  	$middleArray = DBUtil::selectObjectArray('contactlist_buddylist','uid in ('.$in.') and bid = '.$uid2);
+		foreach ($middleArray as $item) {
+		  	// we'll collect this data for the next dimension
+		  	$bid = $item['bid'];
+		  	$secondBackLink[$bid] = $item['uid'];
+		  	// check for user's privacy settings.
+		  	// If the buddy in the linked connection has set privacy to friends he has to be a buddy of the viewer to be displayed!
+		  	$preferences = ContactList_userapi_getPreferences(array('uid' => $item['uid']));
+		  	if (	($preferences['publicstate'] == 3) || 
+			  		(	($preferences['publicstate'] == 2) && 
+					  	(ContactList_userapi_isBuddy(array(
+						  	'uid1' 	=> pnUserGetVar('uid'), 
+							'uid2' 	=> $item['uid']))) 		 )	) {
+				// check for valid account (no orphan users!)
+			    $uname = pnUserGetVar('uname',$item['uid']);
+			    if (strlen($uname)>0) {
+				    $middle = array('uid' 	=> $item['uid'],
+									'uname'	=> $uname);
+				  	break;
+				}
+			}
+		}
+		if (is_array($middle)) {
+	  	$res = array ( 
+			array(	'uid' => $uid1,	
+					'uname'=>pnUserGetVar('uname',$uid1)	),
+					$middle,
+			array(	'uid' => $uid2,	
+					'uname'=>pnUserGetVar('uname',$uid2)	)
+		);
+		}
+	}
+	$render = pnRender::getInstance('ContactList');
+	$render->assign('FOAFList',		$res);
+	$render->assign('FOAFLinkDepth',(count($res)-1));
+	// load language file for ContactList module (function call might be from other modules)
+	pnModLangLoad('ContactList','user');
+	$output = $render->display('contactlist_user_foaf.htm');
+	print DataUtil::convertToUTF8($output);
+	return;
+}
+?>

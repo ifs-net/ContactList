@@ -62,8 +62,11 @@ function ContactList_myprofileapi_tab($args)
   	else $render->assign('display',true);
 
     $render->assign('uid',(int)$args['uid']);
+    $render->assign('viewer_uid',pnUserGetVar('uid'));
     $buddies = pnModAPIFunc('ContactList','user','getall', array('uid' => $args['uid'], 'state' => 1 ) );
     $render->assign('contacts_all',count($buddies));
+	$render->assign('contactlistavailable',	pnModAvailable('ContactList'));
+	if (pnModAvailable('ContactList')) $render->assign('contactlist_nopublicbuddylist',	pnModGetVar('ContactList','nopublicbuddylist'));
     // pagination
     $cl_limit 		= pnModGetVar('ContactList','itemsperpage');
     $cl_startnum	= (int)FormUtil::getPassedValue('cl_startnum',1);

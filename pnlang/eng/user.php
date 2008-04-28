@@ -8,6 +8,10 @@
  * @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
  */
 
+// foaf plugin for contactlist
+define('_CONTACTLISTCONNECTION',						'Show link to member');
+define('_CONTACTLISTNOLINKFOUND',						'No link to this user found');
+
 // menu
 define('_CONTACTLISTCREATEBUDDY',	                	'Add new buddy');
 define('_CONTACTLISTSHOWBUDDIES',	                	'Show my buddylist');

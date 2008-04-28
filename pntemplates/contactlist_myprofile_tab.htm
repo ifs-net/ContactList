@@ -3,6 +3,12 @@
 <h3><!--[pnml name="_CONTACTLISTMYBUDDIES"]--></h3>
 <!--[pnml name="_CONTACTLISTTHEUSERHAS"]--> <!--[$buddies|@count]--> <!--[pnml name="_CONTACTLISTBUDDIES"]-->
 
+<!--[if $contactlistavailable and $contactlist_nopublicbuddylist ne 1]-->
+	<div>
+	<!--[pnmodapifunc modname="ContactList" type="user" func="getFOAFLink" uid1=$viewer_uid uid2=$uid]-->
+	</div>
+<!--[/if]-->
+
 <div id="cl_myprofile" class="cl_floatbox">
 <!--[foreach from=$buddies item="buddy"]-->
 <!--[pnusergetvar uid=$buddy.bid name="_YOURAVATAR" assign="avatar"]-->

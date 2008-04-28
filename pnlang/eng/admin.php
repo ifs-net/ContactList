@@ -25,7 +25,7 @@ define('_CONTACTLISTDATEFORMAT',			'Specify the date format');
 define('_CONTACTLISTMAINCONFIG',			'Main configuration');
 define('_CONTACTLISTCONFIGBIRTHDAYPLUGIN',	'Configure buddy\'s birthday integration');
 define('_CONTACTLISTOR',					'or');
-define('_CONTACTLISTNOPUBLICBUDDYLIST',		'Disable public buddy lists');
+define('_CONTACTLISTNOPUBLICBUDDYLIST',		'Disable public buddy lists. This will also disable the FOAF (friend of a friend) function');
 define('_CONTACTLISTNOPUBLICBUDDYLISTHINT',		'If not disabled, every user can choose who should be allowed to view his buddy list');
 define('_CONTACTLISTITEMSPERPAGE',			'Number of buddies to be showed on one page in the main buddy list');
 // admin, donation

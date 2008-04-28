@@ -25,7 +25,7 @@ define('_CONTACTLISTDATEFORMAT',			'Format Datumsanzeige');
 define('_CONTACTLISTMAINCONFIG',			'Konfiguration der Standardeinstellungen');
 define('_CONTACTLISTCONFIGBIRTHDAYPLUGIN',	'Geburtstagsdaten-Konfiguration');
 define('_CONTACTLISTOR',					'oder');
-define('_CONTACTLISTNOPUBLICBUDDYLIST',		'Öffentliche Anzeige von fremden Kontaktlisten global deaktivieren');
+define('_CONTACTLISTNOPUBLICBUDDYLIST',		'Öffentliche Anzeige von fremden Kontaktlisten global deaktivieren. Dies deaktiviert auch die FOAF (friend of a friend)-Funktion.');
 define('_CONTACTLISTNOPUBLICBUDDYLISTHINT',	'Ist die öffentliche Anzeige der Kontaktlisten aktiviert, kann jeder Benutzer selbst regeln, wer seine Kontaktliste einsehen darf: Registrierte Benutzer, seine bestätigten Kontakte oder niemand.');
 define('_CONTACTLISTITEMSPERPAGE',			'Anzahl der Kontakte pro Seite in der Hauptansicht');
 // admin, donation
