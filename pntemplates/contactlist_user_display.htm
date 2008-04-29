@@ -1,17 +1,18 @@
 <!--[* $Id$ *]-->
 
 <!--[include file="contactlist_user_header.htm"]-->
+<!--[pnmodavailable modname="pnMessages" assign="pnMessages"]-->
 <!--[pnvarcleanfrominput name="uid" assign="displayuid" ]-->
 <!--[pnusergetvar uid=$displayuid name="uname" assign="displayuname"]-->
 
 <div id="cl_display" class="cl_box cl_floatbox">
 <h3><!--[pnml name="_CONTACTLISTMYBUDDIES"]-->&nbsp;<!--[$displayuname]--></h3>
-<p><!--[pnml name="_CONTACTLISTTHEUSERHAS"]--> <!--[$buddies|@count]--> <!--[pnml name="_CONTACTLISTBUDDIES"]--></p>
+<p><!--[pnml name="_CONTACTLISTTHEUSERHAS"]--> <!--[$contacts_all]--> <!--[pnml name="_CONTACTLISTBUDDIES"]--></p>
 
 <!--[foreach from=$buddies item="buddy"]-->
 <!--[pnusergetvar uid=$buddy.bid name="_YOURAVATAR" assign="avatar"]-->
 
-<div class="buddybox">
+<div class="buddybox cl_clearfix">
   <!--[if $avatar eq '' or $avatar eq 'blank.gif']-->
   <!--[pnimg modname=ContactList src=avatar_male.gif class="avatar"]-->
   <!--[else]-->
@@ -19,18 +20,24 @@
   <!--[/if]-->
   
   <h4><!--[$buddy.uname|userprofilelink]--><!--[if $buddy.online eq true]-->&nbsp;<em class="cl_online">(<!--[pnml name="_CONTACTLISTONLINE"]-->)</em><!--[/if]--></h4>   
-  
+
+  <ul class="options">
+  <!--[if $pnMessages]--><li><a class="image mail" href="<!--[pnmodurl modname="pnMessages" type="user" func="newpm" uname=$buddy.uname]-->"><!--[pnml name="_CONTACTLISTSENDPM"]--></a></li><!--[/if]-->
+  <li><a class="image createbuddy" href="<!--[pnmodurl modname="ContactList" type="user" func="create" uname=$buddy.uname]-->"><!--[pnml name="_CONTACTLISTCREATEBUDDY"]--></a></li>
+  </ul>
+
   <ul class="cl_userinfo">
-    <!--[if $buddy.birthday]-->
-    <li class="birthday"><strong><!--[pnml name="_CONTACTLISTBIRTHDAY"]-->:</strong>&nbsp;<!--[$buddy.birthday|date_format:"$dateformat"]--></li>
-    <!--[/if]-->          
     <!--[if $nopubliccomment ne 1 and $buddy.pub_comment ne ""]-->
     <li><strong><!--[pnml name="_CONTACTLISTPUBCOMMENT"]-->:</strong>&nbsp;<em><!--[$buddy.pub_comment|pnvarprepfordisplay|pnmodcallhooks]--></em></li>
     <!--[/if]-->    	
   </ul>
+  
 </div>  
 
 <!--[/foreach]-->
+
+<!--[* Display a pager to go to the pages   *]-->
+<!--[pager show="page" rowcount=$contacts_all limit=$cl_limit posvar=cl_startnum shift=1]-->
 
 </div>
 

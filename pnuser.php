@@ -180,12 +180,32 @@ function ContactList_user_display()
         }
     }
     else $display = true;
+    
+    $buddies = pnModAPIFunc('ContactList','user','getall',
+    array( 'uid'        => $uid,
+           'state'      => 1 ));    
+
+    $cl_limit       = pnModGetVar('ContactList','itemsperpage');
+    $cl_startnum    = (int)FormUtil::getPassedValue('cl_startnum',1);
+    
+    // now just give back the buddy list we need for this page
+    // I know this is not really very performant - but there is no other way to do this because
+    // of the data and the sort criterias, that are included in the result list
+    $numBuddies = count($buddies) - $cl_startnum;
+    if ($cl_limit > $numBuddies) $cl_limit = $numBuddies+1;
+    $c_stop = $cl_startnum + $cl_limit;
+    for ($c = $cl_startnum-1; $c < $c_stop-1; $c++) {
+        $assign_buddies[] = $buddies[$c];
+    }
+
     // generate and return output
     $render = pnRender::getInstance('ContactList');
     if (!$display) return $render->fetch('contactlist_user_nodisplay.htm');
+    $render->assign('contacts_all',count($buddies));
+    $render->assign('cl_limit',		$cl_limit);
+    $render->assign('cl_startnum',	$cl_startnum);    
     $render->assign('uid',$uid);
-    $buddies = pnModAPIFunc('ContactList','user','getall', array('uid' => $uid, 'state' => 1 ) );
-    $render->assign('buddies',$buddies);
+    $render->assign('buddies',$assign_buddies);
     $render->assign('nopubliccomment',(int)pnModGetVar('ContactList','nopubliccomment'));
     return $render->fetch('contactlist_user_display.htm');
 }
