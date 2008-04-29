@@ -1,7 +1,7 @@
 <?php
 /**
  * @package      ContactList
- * @version      $Id: common.php 134 2008-04-20 15:48:13Z quan $
+ * @version      $Id$
  * @author       Florian Schießl, Carsten Volmer
  * @link         http://www.ifs-net.de, http://www.carsten-volmer.de
  * @copyright    Copyright (C) 2008
