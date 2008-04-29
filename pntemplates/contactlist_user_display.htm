@@ -21,9 +21,9 @@
   <h4><!--[$buddy.uname|userprofilelink]--><!--[if $buddy.online eq true]-->&nbsp;<em class="cl_online">(<!--[pnml name="_CONTACTLISTONLINE"]-->)</em><!--[/if]--></h4>   
   
   <ul class="cl_userinfo">
-  	<!--[if $buddy.birthday]-->
+    <!--[if $buddy.birthday]-->
     <li class="birthday"><strong><!--[pnml name="_CONTACTLISTBIRTHDAY"]-->:</strong>&nbsp;<!--[$buddy.birthday|date_format:"$dateformat"]--></li>
-  	<!--[/if]-->          
+    <!--[/if]-->          
     <!--[if $nopubliccomment ne 1 and $buddy.pub_comment ne ""]-->
     <li><strong><!--[pnml name="_CONTACTLISTPUBCOMMENT"]-->:</strong>&nbsp;<em><!--[$buddy.pub_comment|pnvarprepfordisplay|pnmodcallhooks]--></em></li>
     <!--[/if]-->    	

@@ -15,19 +15,19 @@ class ContactList_admin_editConfigHandler
 {
     function initialize(&$render)
     {
-        $render->assign('nopubliccomment',pnModGetVar('ContactList','nopubliccomment'));
-        $render->assign('noconfirm',pnModGetVar('ContactList','noconfirm'));
-        $render->assign('useignore',pnModGetVar('ContactList','useignore'));
-        $render->assign('itemsperpage',pnModGetVar('ContactList','itemsperpage'));
-        $render->assign('dateformat',pnModGetVar('ContactList','dateformat'));
-        $render->assign('nopublicbuddylist',pnModGetVar('ContactList','nopublicbuddylist'));
-        $render->assign('myprofilebirthday',pnModGetVar('ContactList','myprofilebirthday'));
-        $render->assign('usemyprofilebirthday',pnModGetVar('ContactList','usemyprofilebirthday'));
-        $render->assign('profilebirthday',pnModGetVar('ContactList','profilebirthday'));
-        $render->assign('useprofilebirthday',pnModGetVar('ContactList','useprofilebirthday'));
+        $render->assign('nopubliccomment',      pnModGetVar('ContactList','nopubliccomment'));
+        $render->assign('noconfirm',            pnModGetVar('ContactList','noconfirm'));
+        $render->assign('useignore',            pnModGetVar('ContactList','useignore'));
+        $render->assign('itemsperpage',         pnModGetVar('ContactList','itemsperpage'));
+        $render->assign('dateformat',           pnModGetVar('ContactList','dateformat'));
+        $render->assign('nopublicbuddylist',    pnModGetVar('ContactList','nopublicbuddylist'));
+        $render->assign('myprofilebirthday',    pnModGetVar('ContactList','myprofilebirthday'));
+        $render->assign('usemyprofilebirthday', pnModGetVar('ContactList','usemyprofilebirthday'));
+        $render->assign('profilebirthday',      pnModGetVar('ContactList','profilebirthday'));
+        $render->assign('useprofilebirthday',   pnModGetVar('ContactList','useprofilebirthday'));
 
-        $render->assign('profile',pnModAvailable('Profile'));
-        $render->assign('myprofile',pnModAvailable('MyProfile'));
+        $render->assign('profile',      pnModAvailable('Profile'));
+        $render->assign('myprofile',    pnModAvailable('MyProfile'));
         if (pnModAvailable('MyProfile')) {
             $fields = pnModAPIFunc('MyProfile','admin','getFields');
             foreach ($fields as $field) if ($field['fieldtype'] == 'DATE') $res[] = array('text' => $field['identifier'], 'value' => $field['identifier']);
@@ -49,21 +49,19 @@ class ContactList_admin_editConfigHandler
                 return LogUtil::registerError(_CONTACTLISTPROFILEBIRTHDAYNOENTRY);
             }
             pnModDelVar('ContactList');
-            pnModSetVar('ContactList','nopubliccomment',$obj['nopubliccomment']);
-            pnModSetVar('ContactList','noconfirm',$obj['noconfirm']);
-            pnModSetVar('ContactList','useignore',$obj['useignore']);
-            pnModSetVar('ContactList','dateformat',$obj['dateformat']);
-            pnModSetVar('ContactList','itemsperpage',$obj['itemsperpage']);
-            pnModSetVar('ContactList','nopublicbuddylist',$obj['nopublicbuddylist']);
-            pnModSetVar('ContactList','myprofilebirthday',$obj['myprofilebirthday']);
-            pnModSetVar('ContactList','usemyprofilebirthday',$obj['usemyprofilebirthday']);
-            pnModSetVar('ContactList','profilebirthday',$obj['profilebirthday']);
-            pnModSetVar('ContactList','useprofilebirthday',$obj['useprofilebirthday']);
+            pnModSetVar('ContactList','nopubliccomment',        $obj['nopubliccomment']);
+            pnModSetVar('ContactList','noconfirm',              $obj['noconfirm']);
+            pnModSetVar('ContactList','useignore',              $obj['useignore']);
+            pnModSetVar('ContactList','dateformat',             $obj['dateformat']);
+            pnModSetVar('ContactList','itemsperpage',           $obj['itemsperpage']);
+            pnModSetVar('ContactList','nopublicbuddylist',      $obj['nopublicbuddylist']);
+            pnModSetVar('ContactList','myprofilebirthday',      $obj['myprofilebirthday']);
+            pnModSetVar('ContactList','usemyprofilebirthday',   $obj['usemyprofilebirthday']);
+            pnModSetVar('ContactList','profilebirthday',        $obj['profilebirthday']);
+            pnModSetVar('ContactList','useprofilebirthday',     $obj['useprofilebirthday']);
             LogUtil::registerStatus(_CONTACTLISTCONFIGUPDATED);
             return pnRedirect(pnModURL('ContactList','admin','main'));
         }
         return true;
     }
 }
-
-?>

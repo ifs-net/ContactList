@@ -14,10 +14,10 @@
 class contactlist_user_mainHandler {
     function initialize(& $render) {
         $items_sortlist = array (
-        array('text' => _CONTACTLISTSORTUNAME, 					'value' => 'uname'),
-        array('text' => _CONTACTLISTSORTSTATE,					'value' => 'state'),
-        array('text' => _CONTACTLISTSORTAYSTONEXTBIRTHDAY, 		'value' => 'daystonextbirthday'),
-        array('text' => _CONTACTLISTSORTBIRTHDAY,				'value' => 'nextbirthday'),
+        array('text' => _CONTACTLISTSORTUNAME,                  'value' => 'uname'),
+        array('text' => _CONTACTLISTSORTSTATE,                  'value' => 'state'),
+        array('text' => _CONTACTLISTSORTAYSTONEXTBIRTHDAY,      'value' => 'daystonextbirthday'),
+        array('text' => _CONTACTLISTSORTBIRTHDAY,               'value' => 'nextbirthday'),
         );
         $render->assign('items_sortlist',$items_sortlist);
         return true;
@@ -173,15 +173,14 @@ class contactlist_user_createHandler {
                 return LogUtil::registerError(_CONTACTLISTDUPLICATEREQUEST);
             }
             if (pnModAPIFunc('ContactList','user','create',array(
-						'uid'			=> $uid,
-						'bid'			=> $bid,
-						'prv_comment'	=> $data['prv_comment'],
-						'pub_comment'	=> $data['pub_comment'],
-						'request_text'	=> $data['request_text']
+                        'uid'           => $uid,
+                        'bid'           => $bid,
+                        'prv_comment'   => $data['prv_comment'],
+                        'pub_comment'   => $data['pub_comment'],
+                        'request_text'  => $data['request_text']
             ))) return pnRedirect(pnModURL('ContactList', 'user', 'main'));
             else return false;
         }
         return true;
     }
 }
-?>

@@ -24,5 +24,3 @@ function ContactList_admin_main()
     $render = FormUtil::newpnForm('ContactList');
     return $render->pnFormExecute('contactlist_admin_main.htm', new ContactList_admin_editconfighandler());
 }
-
-?>

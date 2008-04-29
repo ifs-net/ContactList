@@ -10,32 +10,32 @@
 <h2><!--[pnml name="_CONTACTLISTCONFIG"]--></h2>
 
 <div class="cl_box">
-	<!--[pngetstatusmsg]-->
-	<!--[pnformvalidationsummary]-->
-	
-	<!--[pnform]-->
-		<fieldset>
-		<legend><!--[pnml name="_CONTACTLISTMAINCONFIG"]--></legend>
-		<dl class="cl_clearfix">
-  	    <dt><!--[pnformcheckbox id="useignore" checked="0"]--></dt>
+  <!--[pngetstatusmsg]-->
+  <!--[pnformvalidationsummary]-->
+  
+  <!--[pnform]-->
+    <fieldset>
+    <legend><!--[pnml name="_CONTACTLISTMAINCONFIG"]--></legend>
+    <dl class="cl_clearfix">
+        <dt><!--[pnformcheckbox id="useignore" checked="0"]--></dt>
         <dd><!--[pnformlabel for="useignore" text="_CONTACTLISTUSEIGNORE"]--></dd>
-		    <dt><!--[pnformcheckbox id="noconfirm" checked="0"]--></dt>
+        <dt><!--[pnformcheckbox id="noconfirm" checked="0"]--></dt>
         <dd><!--[pnformlabel for="noconfirm" text="_CONTACTLISTNOCONFIRM"]--></dd>
-		    <dt><!--[pnformcheckbox id="nopubliccomment" checked="0"]--></dt>
+        <dt><!--[pnformcheckbox id="nopubliccomment" checked="0"]--></dt>
         <dd><!--[pnformlabel for="nopubliccomment" text="_CONTACTLISTNOPUBLICCOMMENTS"]--></dd>
-		    <dt><!--[pnformcheckbox id="nopublicbuddylist" checked="0"]--></dt>
+        <dt><!--[pnformcheckbox id="nopublicbuddylist" checked="0"]--></dt>
         <dd><!--[pnformlabel for="nopublicbuddylist" text="_CONTACTLISTNOPUBLICBUDDYLIST"]--></dd>
         <dt>&nbsp;</dt>
         <dd><div class="pn-informationmsg"><!--[pnml name="_CONTACTLISTNOPUBLICBUDDYLISTHINT" html=1]--></div></dd>
-  	    <dt><!--[pnformintinput id="itemsperpage" minValue="1" maxValue="100" size="2" mandatory="1"]--></dt>
+        <dt><!--[pnformintinput id="itemsperpage" minValue="1" maxValue="100" size="2" mandatory="1"]--></dt>
         <dd><!--[pnformlabel for="itemsperpage" text="_CONTACTLISTITEMSPERPAGE"]--></dd>
     </dl>
-		</fieldset>
-		
-		<fieldset>
-		<legend><!--[pnml name="_CONTACTLISTCONFIGBIRTHDAYPLUGIN"]--></legend>
-    <div class="pn-informationmsg"><!--[pnml name="_CONTACTLISTGEBDATECONF" html=1]--></div>		
-		<dl class="cl_clearfix">
+    </fieldset>
+    
+    <fieldset>
+    <legend><!--[pnml name="_CONTACTLISTCONFIGBIRTHDAYPLUGIN"]--></legend>
+    <div class="pn-informationmsg"><!--[pnml name="_CONTACTLISTGEBDATECONF" html=1]--></div>
+    <dl class="cl_clearfix">
       <!--[if $myprofile eq 1 and $items_myprofile|@count gt 0]-->
       <dt><!--[pnformcheckbox id="usemyprofilebirthday" checked="0"]--></dt>
       <dd><!--[pnformlabel for="usemyprofilebirthday" text="_CONTACTLISTMYPROFILEFIELD"]--></dd>
@@ -43,54 +43,54 @@
       <dd><!--[pnformdropdownlist id="myprofilebirthday" items=$items_myprofile]--></dd>
       <!--[/if]-->
   
-  		<!--[if $profile eq 1 and $myprofile eq 1]-->
+      <!--[if $profile eq 1 and $myprofile eq 1]-->
       <dt>&nbsp;</dt>
       <dd><!--[pnml name="_CONTACTLISTOR"]--></dd>
       <!--[/if]-->
-  	
+
       <!--[if $profile eq 1]-->
       <dt><!--[pnformcheckbox id="useprofilebirthday" checked="0"]--></dt>
       <dd><!--[pnformlabel for="useprofilebirthday" text="_CONTACTLISTPROFILEFIELD"]--></dd>
       <dt>&nbsp;</dt>       
-  	  <dd><!--[pnformtextinput id="profilebirthday" maxLength="80"]--></dd>
+      <dd><!--[pnformtextinput id="profilebirthday" maxLength="80"]--></dd>
       <!--[/if]-->
   
-  		<dt><!--[pnformlabel for="dateformat" text="_CONTACTLISTDATEFORMAT"]--></dt>
-  	  <dd><!--[pnformtextinput id="dateformat" maxLength="20"]--></dd>		
+      <dt><!--[pnformlabel for="dateformat" text="_CONTACTLISTDATEFORMAT"]--></dt>
+      <dd><!--[pnformtextinput id="dateformat" maxLength="20"]--></dd>		
     </dl>	
-		</fieldset>
+    </fieldset>
 
     <p><!--[pnformbutton commandName="update" text="_CONTACTLISTUPDATECONFIG"]--></p>
-	<!--[/pnform]-->
-	
-	<fieldset>
-  	<legend><!--[pnml name="_CONTACTLISTSUPPORTCONTACTLIST"]--></legend>
-  	<div class="pn-informationmsg"><!--[pnml name="_CONTACTLISTDONATE" html=1]--></div>		
-    <br />
-  	<form name="_xclick" action="https://www.paypal.com/de/cgi-bin/webscr" method="post">
-    	<input type="hidden" name="cmd" value="_xclick" />
-    	<input type="hidden" name="business" value="florian.schiessl@ifs-net.de" />
-    	<input type="hidden" name="item_name" value="Donation for the CONTACTLISTs module" />
-    	<select name="amount">
-    	<option value="5">5&nbsp;</option>
-    	<option value="10" selected="selected">10&nbsp;</option>
-    	<option value="15">15&nbsp;</option>
-    	<option value="20">20&nbsp;</option>
-    	<option value="25">25&nbsp;</option>
-    	</select>
-    	<select name="currency_code">
-    	<option value="USD" selected="selected">USD&nbsp;</option>
-    	<option value="EUR">EUR&nbsp;</option>
-    	</select>
-    	<input type="submit" name="submit" value="<!--[pnml name="_CONTACTLISTDONATETHIS"]-->"/>
-  	</form>
-	</fieldset>
+  <!--[/pnform]-->
 
-	</div>
-	
+  <fieldset>
+    <legend><!--[pnml name="_CONTACTLISTSUPPORTCONTACTLIST"]--></legend>
+    <div class="pn-informationmsg"><!--[pnml name="_CONTACTLISTDONATE" html=1]--></div>		
+    <br />
+    <form name="_xclick" action="https://www.paypal.com/de/cgi-bin/webscr" method="post">
+      <input type="hidden" name="cmd" value="_xclick" />
+      <input type="hidden" name="business" value="florian.schiessl@ifs-net.de" />
+      <input type="hidden" name="item_name" value="Donation for the CONTACTLISTs module" />
+      <select name="amount">
+      <option value="5">5&nbsp;</option>
+      <option value="10" selected="selected">10&nbsp;</option>
+      <option value="15">15&nbsp;</option>
+      <option value="20">20&nbsp;</option>
+      <option value="25">25&nbsp;</option>
+      </select>
+      <select name="currency_code">
+      <option value="USD" selected="selected">USD&nbsp;</option>
+      <option value="EUR">EUR&nbsp;</option>
+      </select>
+      <input type="submit" name="submit" value="<!--[pnml name="_CONTACTLISTDONATETHIS"]-->"/>
+   </form>
+  </fieldset>
+
+  </div>
+
   <p class="cl_footer">
     <!--[pnmodgetinfo modname=ContactList info=all assign=modinfo]-->
     <!--[$modinfo.name]-->&nbsp;<!--[$modinfo.version]-->&nbsp;&copy;&nbsp;<a href="http://www.ifs-net.de">Florian Schieﬂl</a>&nbsp;-&nbsp;<a href="http://www.carsten-volmer.de" title="Carsten Volmer">Carsten Volmer</a>
   </p> 
-	
+
 </div>

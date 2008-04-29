@@ -1,7 +1,7 @@
 <?php
 /**
  * @package      ContactList
- * @version      $Id$ 
+ * @version      $Id$
  * @author       Florian Schießl, Carsten Volmer
  * @link         http://www.ifs-net.de, http://www.carsten-volmer.de
  * @copyright    Copyright (C) 2008
@@ -53,13 +53,13 @@ function ContactList_ShowUnconfirmedblock_display($blockinfo)
     $render = pnRender::getInstance('ContactList', false);
     $uid = pnUserGetVar('uid');
     $buddies = pnModAPIFunc('ContactList','user','getall',
-    array(	'bid'		=> $uid,
-  											'state'		=> 0,
-  											'sort'		=> 'uname') );
-    	
+    array(  'bid'       => $uid,
+            'state'     => 0,
+            'sort'      => 'uname'));
+
     if (!(count($buddies)>0)) return false;
     else {
-        $render->assign('buddies_unconfirmed',		$buddies);
+        $render->assign('buddies_unconfirmed', $buddies);
         $blockinfo['content'] = $render->fetch('contactlist_block_showunconfirmed.htm');
         return themesideblock($blockinfo);
     }

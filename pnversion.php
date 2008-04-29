@@ -1,7 +1,7 @@
 <?php
 /**
  * @package      ContactList
- * @version      $Id$ 
+ * @version      $Id$
  * @author       Florian Schießl, Carsten Volmer
  * @link         http://www.ifs-net.de, http://www.carsten-volmer.de
  * @copyright    Copyright (C) 2008
@@ -32,15 +32,15 @@ $modversion['admin']          = 1;
 
 // module dependencies
 $modversion['dependencies'] = array(
-array(	'modname'    => 'pnMessages',
-            'minversion' => '1.0', 'maxversion' => '',
-    		'status'     => PNMODULE_DEPENDENCY_RECOMMENDED),
-array(	'modname'    => 'Avatar',
-            'minversion' => '1.0', 'maxversion' => '',
-            'status'     => PNMODULE_DEPENDENCY_RECOMMENDED),
-array(	'modname'    => 'MyProfile',
-            'minversion' => '1.0', 'maxversion' => '',
-            'status'     => PNMODULE_DEPENDENCY_RECOMMENDED)
+array(  'modname'    => 'pnMessages',
+        'minversion' => '1.0', 'maxversion' => '',
+        'status'     => PNMODULE_DEPENDENCY_RECOMMENDED),
+array(  'modname'    => 'Avatar',
+        'minversion' => '1.0', 'maxversion' => '',
+        'status'     => PNMODULE_DEPENDENCY_RECOMMENDED),
+array(  'modname'    => 'MyProfile',
+        'minversion' => '1.0', 'maxversion' => '',
+        'status'     => PNMODULE_DEPENDENCY_RECOMMENDED)
 );
 
 // This one adds the info to the DB, so that users can click on the

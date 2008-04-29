@@ -13,16 +13,16 @@ Loader::requireOnce('modules/ContactList/includes/common.php');
 /**
  * get all buddys
  *
- * @param	$args['uid']		int			user's id to get his buddies
- * @param	$args['bid']		int			buddy's id to get users that have this person as buddy
- * @param	$args['state']		int			filter different states
- *												0 = unconfirmed
- *												1 = confirmed
- *												2 = rejected
- *												3 = suspended
- * @param	$args['birthday']	boolean		default: false; include birthday in result
- * @param	$args['sort']		string		default: no sort order.
- *												options: birthday, nextbirthday, daystonextbirthday, state
+ * @param   $args['uid']        int         user's id to get his buddies
+ * @param   $args['bid']        int         buddy's id to get users that have this person as buddy
+ * @param   $args['state']      int         filter different states
+ *                                          0 = unconfirmed
+ *                                          1 = confirmed
+ *                                          2 = rejected
+ *                                          3 = suspended
+ * @param   $args['birthday']   boolean     default: false; include birthday in result
+ * @param   $args['sort']       string      default: no sort order.
+ *                                          options: birthday, nextbirthday, daystonextbirthday, state
  * @return	array
  */
 function ContactList_userapi_getall($args) {
@@ -99,20 +99,20 @@ function ContactList_userapi_getall($args) {
 /**
  * create a new buddy request or add a new buddy
  *
- * @param	$args['uid']		int			user's id to get his buddies
- * @param	$args['bid']		int			buddy's id to get users that have this person as buddy
- * @param	$args['prv_comment']	string 		private comment
- * @param	$args['pub_comment']	string 		public comment
- * @param	$args['request_text']	string 		request text
- * @return	boolean
+ * @param   $args['uid']            int         user's id to get his buddies
+ * @param   $args['bid']            int         buddy's id to get users that have this person as buddy
+ * @param   $args['prv_comment']    string      private comment
+ * @param   $args['pub_comment']    string      public comment
+ * @param   $args['request_text']   string      request text
+ * @return  boolean
  */
 function ContactList_userapi_create($args) {
     // some checks
-    $uid 			= $args['uid'];
-    $bid 			= $args['bid'];
-    $prv_comment 	= $args['prv_comment'];
-    $pub_comment 	= $args['pub_comment'];
-    $request_text 	= $args['request_text'];
+    $uid                = $args['uid'];
+    $bid                = $args['bid'];
+    $prv_comment        = $args['prv_comment'];
+    $pub_comment        = $args['pub_comment'];
+    $request_text       = $args['request_text'];
     if (!($uid > 1) || !($bid > 1)) return false;
 
     // is there an old rejected or suspended connection?
@@ -131,20 +131,20 @@ function ContactList_userapi_create($args) {
     $noconfirm = pnModGetVar('ContactList','noconfirm');
     if ($noconfirm) {
         $obj[] = array (
-	  		'bid'			=> $bid,
-	  		'uid'			=> $uid,
-	  		'state'			=> 1,
-	  		'date'			=> date("Y-m-d H:i:s"),
-	  		'prv_comment'	=> $prv_comment,
-	  		'pub_comment'	=> $pub_comment,
+            'bid'           => $bid,
+            'uid'           => $uid,
+            'state'         => 1,
+            'date'          => date("Y-m-d H:i:s"),
+            'prv_comment'   => $prv_comment,
+            'pub_comment'   => $pub_comment,
         );
         if (!$nocounterconnection) 	$obj[] = array (
-	  		'bid'			=> $uid,
-	  		'uid'			=> $bid,
-	  		'state'			=> 1,
-	  		'date'			=> date("Y-m-d H:i:s"),
-	  		'prv_comment'	=> $prv_comment,
-	  		'pub_comment'	=> $pub_comment,
+            'bid'           => $uid,
+            'uid'           => $bid,
+            'state'         => 1,
+            'date'          => date("Y-m-d H:i:s"),
+            'prv_comment'   => $prv_comment,
+            'pub_comment'   => $pub_comment,
         );
         if (DBUtil::insertObjectArray($obj,'contactlist_buddylist')) {
             LogUtil::registerStatus(_CONTACTLISTBUDDYADDED);
@@ -162,13 +162,13 @@ function ContactList_userapi_create($args) {
     }
     else {
         $obj = array (
-	  		'bid'			=> $bid,
-	  		'uid'			=> $uid,
-	  		'state'			=> 0,
-	  		'date'			=> date("Y-m-d H:i:s"),
-	  		'prv_comment'	=> $prv_comment,
-	  		'pub_comment'	=> $pub_comment,
-	  		'request_text'	=> $request_text
+            'bid'           => $bid,
+            'uid'           => $uid,
+            'state'         => 0,
+            'date'          => date("Y-m-d H:i:s"),
+            'prv_comment'   => $prv_comment,
+            'pub_comment'   => $pub_comment,
+            'request_text'  => $request_text
         );
         // update an old rejected connection if needed
         if ($nocounterconnection) $obj['state']=1;
@@ -194,8 +194,8 @@ function ContactList_userapi_create($args) {
 /**
  * reject buddy request
  *
- * @param	$args['id']		int			id of buddy request
- * @return	bool
+ * @param   $args['id']     int     id of buddy request
+ * @return  bool
  */
 function ContactList_userapi_decline($args) {
     // get object
@@ -225,8 +225,8 @@ function ContactList_userapi_decline($args) {
 /**
  * delete a buddy
  *
- * @param	$args['id']		int			id of buddy request
- * @return	bool
+ * @param   $args['id']     int     id of buddy request
+ * @return  bool
  */
 function ContactList_userapi_suspend($args) {
     // get object
@@ -242,9 +242,9 @@ function ContactList_userapi_suspend($args) {
     else if ($obj['state'] == 0) {	// now we have to handle an request with no response!
         // is the request old enough to be deleted? otherwise a user might nerve other users
         // sending and deleting requests in a loop
-        $date_now 		= time();
-        $date_request	= strtotime($obj['date'].' GMT');
-        $date_diff		= $date_now-$date_request;
+        $date_now       = time();
+        $date_request   = strtotime($obj['date'].' GMT');
+        $date_diff      = $date_now-$date_request;
         if ($date_diff > (60*60*24*30)) return DBUtil::deleteObjectg($obj,'contactlist_buddylist');
         else {
             return LogUtil::registerError(_CONTACTLISTCANNOTDELETEYET);
@@ -281,8 +281,8 @@ function ContactList_userapi_suspend($args) {
 /**
  * confirm buddy request
  *
- * @param	$args['id']		int			id of buddy request
- * @return	bool
+ * @param   $args['id']     int         id of buddy request
+ * @return  bool
  */
 function ContactList_userapi_confirm($args) {
     // get object
@@ -300,17 +300,17 @@ function ContactList_userapi_confirm($args) {
         return LogUtil::registerError('error updating buddy object');
     }
     // create counterpart
-    $counterobj = array	(	'uid'	=>	$obj['bid'],
-							'bid'	=>	$obj['uid'],
-							'date'	=>	date("Y-m-d H:i:s"),
-							'state'	=>	1);
+    $counterobj = array ( 'uid'   => $obj['bid'],
+                          'bid'   => $obj['uid'],
+                          'date'  => date("Y-m-d H:i:s"),
+                          'state' => 1);
     DBUtil::insertObject($counterobj,'contactlist_buddylist');
 
     // send email
     $render = pnRender::getInstance('ContactList');
-    $render->assign('sitename',	pnConfigGetVar('sitename'));
-    $render->assign('bid',	$obj['bid']);
-    $render->assign('uid',	$obj['uid']);
+    $render->assign('sitename', pnConfigGetVar('sitename'));
+    $render->assign('bid', $obj['bid']);
+    $render->assign('uid', $obj['uid']);
     $body = $render->fetch('contactlist_email_accepted.htm');
     $subject = _CONTACTLISTREQUESTACCEPTED;
     pnMail(pnUserGetVar('email',$uid), $subject, $body, array('header' => '\nMIME-Version: 1.0\nContent-type: text/plain'), false);
@@ -324,8 +324,8 @@ function ContactList_userapi_confirm($args) {
  * If public contact lists are disabled by the administrator this settings
  * will also be "visible to nobody"
  *
- * @param	$args['uid']	int
- * @return	array			array:	'publicstate' 	=> int	{ 1 = not visible; 2 = visible for friends; 3 = visible for registered users;}
+ * @param   $args['uid']    int
+ * @return  array           array: 'publicstate' => int { 1 = not visible; 2 = visible for friends; 3 = visible for registered users;}
  */
 function ContactList_userapi_getPreferences($args) {
     $uid = (int) $args['uid'];
@@ -344,9 +344,9 @@ function ContactList_userapi_getPreferences($args) {
 /**
  * Store user preferences
  *
- * @param	$args['uid']			int
- * @param	$args['preferences']	array
- * @return	boolean
+ * @param   $args['uid']            int
+ * @param   $args['preferences']    array
+ * @return  boolean
  */
 function ContactList_userapi_setPreferences($args) {
     $uid = (int) $args['uid'];
@@ -367,15 +367,15 @@ function ContactList_userapi_setPreferences($args) {
  * and returns a boolean value (true or false)
  * To be used from other module developers!
  *
- * @param	$args['uid1']	int
- * @param	$args['uid2']	int
- * @return	boolean	(false) or integer (partnerhip id) if true
+ * @param   $args['uid1']   int
+ * @param   $args['uid2']   int
+ * @return  boolean (false) or integer (partnerhip id) if true
  */
 function ContactList_userapi_isBuddy($args) {
     $buddies = pnModAPIFunc('ContactList','user','getall',array(
-  	'uid' 	=> (int)$args['uid1'],
-		'bid' 	=> (int)$args['uid2'],
-		'state'	=> '1')					);
+                    'uid'   => (int)$args['uid1'],
+                    'bid'   => (int)$args['uid2'],
+                    'state' => '1'));
     if (count($buddies) > 0) return (int)$buddies[0]['id'];
     else return false;
 }
@@ -383,18 +383,18 @@ function ContactList_userapi_isBuddy($args) {
 /**
  * ignore another user
  *
- * @param	$args['uid']	int
- * @param	$args['iuid']	int
- * @return	boolean
+ * @param   $args['uid']    int
+ * @param   $args['iuid']   int
+ * @return  boolean
  */
 function ContactList_userapi_ignoreUser($args) {
-    $uid 	= (int)$args['uid'];
-    $iuid 	= (int)$args['iuid'];
+    $uid    = (int)$args['uid'];
+    $iuid   = (int)$args['iuid'];
     if ($uid == $iuid) return false;
     if (!($uid > 1) || !($iuid > 1)) return false;
     $obj = array (
-  		'uid'	=> $uid,
-  		'iuid'	=> $iuid
+                'uid'   => $uid,
+                'iuid'  => $iuid
     );
     if (ContactList_userapi_isIgnored($args)) return false;
     if (DBUtil::insertObject($obj,'contactlist_ignorelist')) return true;
@@ -404,18 +404,18 @@ function ContactList_userapi_ignoreUser($args) {
 /**
  * get all user that are ignored by another user all users that ignore another user
  *
- * @param	$args['uid']	int			user id
- * @param	$args['iuid']	int			ignored user id
- * @param	$args['sort']	string		identifier value to sort the list for (iuname,uname)
- * @return 	boolean
+ * @param   $args['uid']    int         user id
+ * @param   $args['iuid']   int         ignored user id
+ * @param   $args['sort']   string      identifier value to sort the list for (iuname,uname)
+ * @return  boolean
  */
 function ContactList_userapi_getallignorelist($args) {
 
     // return false if ignore list functionallity is disabled by the admin
     if (!pnModGetVar('ContactList','useignore')) return false;
     // otherwise do some checks
-    $uid 	= (int)$args['uid'];
-    $iuid 	= (int)$args['iuid'];
+    $uid    = (int)$args['uid'];
+    $iuid   = (int)$args['iuid'];
     if (($uid > 1) && ($iuid > 1)) $where = 'iuid = '.$iuid.' and uid = '.$uid;
     else if ($uid > 1) $where = 'uid = '.$uid;
     else if ($iuid > 1) $where = 'iuid = '.$iuid;
@@ -432,7 +432,7 @@ function ContactList_userapi_getallignorelist($args) {
             if ($args['sort'] == 'iuname') $sort[$key]  = $row['iuname'];
             else if ($args['sort'] == 'uname') $sort[$key]  = $row['uname'];
         }
-        array_multisort(	$sort, SORT_ASC, $ignorelist);
+        array_multisort($sort, SORT_ASC, $ignorelist);
     }
     return $ignorelist;
 }
@@ -441,16 +441,16 @@ function ContactList_userapi_getallignorelist($args) {
  * check if a user is ignored by another user
  * To be used from other module developers
  *
- * @param	$args['uid']	int			user id
- * @param	$args['iuid']	int			ignored user id
- * @return 	boolean
+ * @param   $args['uid']    int         user id
+ * @param   $args['iuid']   int         ignored user id
+ * @return  boolean
  */
 function ContactList_userapi_isIgnored($args) {
     // return false if ignore list functionallity is disabled by the admin
     if (!pnModGetVar('ContactList','useignore')) return false;
     // otherwise do some checks
-    $uid 	= (int)$args['uid'];
-    $iuid 	= (int)$args['iuid'];
+    $uid    = (int)$args['uid'];
+    $iuid   = (int)$args['iuid'];
     if ($uid == $iuid) return false;
     if (!($uid > 1) || !($iuid > 1)) return false;
     $where = 'uid = '.$uid.' and iuid = '.$iuid;
@@ -462,8 +462,8 @@ function ContactList_userapi_isIgnored($args) {
 /**
  * delete a user from the users ignore list
  *
- * @param	$args['iuid']	int
- * @return	boolean
+ * @param   $args['iuid']       int
+ * @return  boolean
  */
 function ContactList_userapi_deleteIgnoredUser($args) {
     $iuid = (int) $args['iuid'];
@@ -479,13 +479,13 @@ function ContactList_userapi_deleteIgnoredUser($args) {
  * buddy connection a user has.
  * To be used from other module developers!
  *
- * @param	$args['uid']	int
- * @return	array			uid => user id	uname => uname
+ * @param   $args['uid']        int
+ * @return  array               uid => user id  uname => uname
  */
 function ContactList_userapi_getBuddyList($args) {
     $buddies = pnModAPIFunc('ContactList','user','getall',array(
-	  	'uid' 		=> (int)$args['uid'],
-		'state'		=> '1')					);
+        'uid'       => (int)$args['uid'],
+        'state'     => '1'));
     if (count($buddies)==0) return false;
     foreach ($buddies as $buddy) $res[] = array('uid' => $buddy['bid'], 'uname' => pnUserGetVar('uname',$buddy['bid']));
 
@@ -495,81 +495,81 @@ function ContactList_userapi_getBuddyList($args) {
 /**
  * get nearest foaf-link for two users
  *
- * @param	$args['uid1']	int
- * @param	$args['uid2']	int
- * @return	output
+ * @param   $args['uid1']   int
+ * @param   $args['uid2']   int
+ * @return  output
  */
 function ContactList_userapi_getFOAFLink($args) {
-  	$res = false;
+    $res = false;
     $uid1 = (int) $args['uid1'];
     $uid2 = (int) $args['uid2'];
     // user views his own profile
     if (($uid1 == $uid2) || (!($uid1 > 1)) || (!($uid2 > 1))) return false;
-    // user views the profile of a frind
+    // user views the profile of a friend
     else if (ContactList_userapi_isBuddy(array('uid1' => $uid1, 'uid2' => $uid2))) {
-	  	$res = array ( 
-			array(	'uid' => $uid1,	
-					'uname'=>pnUserGetVar('uname',$uid1)	),
-			array(	'uid' => $uid2,	
-					'uname'=>pnUserGetVar('uname',$uid2)	)
-		);
-	}
-	// now we have to check for mor connections...
-	else {	// one man is in the middle... perhaps :-)
-	  	// we will not use the api function because of performance savings
-	  	
-	  	// get left buddies (uid1) for the sql "where in" statement.
-	  	$leftArray = DBUtil::selectObjectArray('contactlist_buddylist','uid = '.$uid1);
-	  	foreach ($leftArray as $item) {
-		    $in.=$item['bid'].",";
-		}
-		$in.=0;
+        $res = array (
+        array( 'uid' => $uid1,
+               'uname'=>pnUserGetVar('uname',$uid1)),
+        array( 'uid' => $uid2,
+               'uname'=>pnUserGetVar('uname',$uid2))
+        );
+    }
+    // now we have to check for more connections...
+    else {  // one man is in the middle... perhaps :-)
+        // we will not use the api function because of performance savings
 
-	  	// we now the right user: $uid2
-	  	// now we have to select everythink from the contactlist_buddylist table
-	  	// where bid = $uid
-	  	// and uid in (left)
-	  	
-	  	// get left buddies (uid1)
-	  	$middleArray = DBUtil::selectObjectArray('contactlist_buddylist','uid in ('.$in.') and bid = '.$uid2);
-		foreach ($middleArray as $item) {
-		  	// we'll collect this data for the next dimension
-		  	$bid = $item['bid'];
-		  	$secondBackLink[$bid] = $item['uid'];
-		  	// check for user's privacy settings.
-		  	// If the buddy in the linked connection has set privacy to friends he has to be a buddy of the viewer to be displayed!
-		  	$preferences = ContactList_userapi_getPreferences(array('uid' => $item['uid']));
-		  	if (	($preferences['publicstate'] == 3) || 
-			  		(	($preferences['publicstate'] == 2) && 
-					  	(ContactList_userapi_isBuddy(array(
-						  	'uid1' 	=> pnUserGetVar('uid'), 
-							'uid2' 	=> $item['uid']))) 		 )	) {
-				// check for valid account (no orphan users!)
-			    $uname = pnUserGetVar('uname',$item['uid']);
-			    if (strlen($uname)>0) {
-				    $middle = array('uid' 	=> $item['uid'],
-									'uname'	=> $uname);
-				  	break;
-				}
-			}
-		}
-		if (is_array($middle)) {
-	  	$res = array ( 
-			array(	'uid' => $uid1,	
-					'uname'=>pnUserGetVar('uname',$uid1)	),
-					$middle,
-			array(	'uid' => $uid2,	
-					'uname'=>pnUserGetVar('uname',$uid2)	)
-		);
-		}
-	}
-	$render = pnRender::getInstance('ContactList');
-	$render->assign('FOAFList',		$res);
-	$render->assign('FOAFLinkDepth',(count($res)-1));
-	// load language file for ContactList module (function call might be from other modules)
-	pnModLangLoad('ContactList','user');
-	$output = $render->display('contactlist_user_foaf.htm');
-	print DataUtil::convertToUTF8($output);
-	return;
+        // get left buddies (uid1) for the sql "where in" statement.
+        $leftArray = DBUtil::selectObjectArray('contactlist_buddylist','uid = '.$uid1);
+        foreach ($leftArray as $item) {
+            $in.=$item['bid'].",";
+        }
+        $in.=0;
+
+        // we have now the right user: $uid2
+        // now we have to select everything from the contactlist_buddylist table
+        // where bid = $uid
+        // and uid in (left)
+
+        // get left buddies (uid1)
+        $middleArray = DBUtil::selectObjectArray('contactlist_buddylist','uid in ('.$in.') and bid = '.$uid2);
+        foreach ($middleArray as $item) {
+            // we will collect this data for the next dimension
+            $bid = $item['bid'];
+            $secondBackLink[$bid] = $item['uid'];
+            // check for user's privacy settings.
+            // If the buddy in the linked connection has set privacy to friends he has to be a buddy of the viewer to be displayed!
+            $preferences = ContactList_userapi_getPreferences(array('uid' => $item['uid']));
+            if (($preferences['publicstate'] == 3) ||
+            (($preferences['publicstate'] == 2) &&
+            (ContactList_userapi_isBuddy(array(
+                            'uid1' 	=> pnUserGetVar('uid'), 
+                            'uid2' 	=> $item['uid']))) )) {
+            // check for valid account (no orphan users!)
+            $uname = pnUserGetVar('uname',$item['uid']);
+            if (strlen($uname)>0) {
+                $middle = array('uid'   => $item['uid'],
+                                'uname' => $uname);
+                break;
+            }
+                            }
+        }
+        if (is_array($middle)) {
+            $res = array (
+            array( 'uid' => $uid1,
+                   'uname'=>pnUserGetVar('uname',$uid1)),
+            $middle,
+            array( 'uid' => $uid2,
+                   'uname'=>pnUserGetVar('uname',$uid2))
+            );
+        }
+    }
+    $render = pnRender::getInstance('ContactList');
+    $render->assign('FOAFList',     $res);
+    $render->assign('FOAFLinkDepth',(count($res)-1));
+    // load language file for ContactList module (function call might be from other modules)
+    pnModLangLoad('ContactList','user');
+    $output = $render->display('contactlist_user_foaf.htm');
+    print DataUtil::convertToUTF8($output);
+    return;
 }
-?>
+

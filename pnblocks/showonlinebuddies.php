@@ -1,7 +1,7 @@
 <?php
 /**
  * @package      ContactList
- * @version      $Id$ 
+ * @version      $Id$
  * @author       Florian Schießl, Carsten Volmer
  * @link         http://www.ifs-net.de, http://www.carsten-volmer.de
  * @copyright    Copyright (C) 2008
@@ -53,9 +53,9 @@ function ContactList_ShowOnlineBuddiesblock_display($blockinfo)
     $render = pnRender::getInstance('ContactList', false);
     $uid = pnUserGetVar('uid');
     $buddies = pnModAPIFunc('ContactList','user','getall',
-    array(	'uid'		=> $uid,
-			'state'		=> 1,
-			'sort'		=> 'uname') );
+    array(  'uid'       => $uid,
+            'state'     => 1,
+            'sort'      => 'uname'));
     $c=0;
     if (!(count($buddies)>0)) return false;	// if there are no buddies return no content
     else {
@@ -65,8 +65,8 @@ function ContactList_ShowOnlineBuddiesblock_display($blockinfo)
                 $c++;
             }
         }
-        $render->assign('buddies_online',				$buddies_online);
-        $render->assign('buddies_online_counter',		$c);
+        $render->assign('buddies_online', $buddies_online);
+        $render->assign('buddies_online_counter', $c);
         $blockinfo['content'] = $render->fetch('contactlist_block_showonlinebuddies.htm');
         return themesideblock($blockinfo);
     }

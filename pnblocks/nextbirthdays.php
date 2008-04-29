@@ -1,7 +1,7 @@
 <?php
 /**
  * @package      ContactList
- * @version      $Id$ 
+ * @version      $Id$
  * @author       Florian Schießl, Carsten Volmer
  * @link         http://www.ifs-net.de, http://www.carsten-volmer.de
  * @copyright    Copyright (C) 2008
@@ -58,10 +58,10 @@ function ContactList_NextBirthdaysblock_display($blockinfo)
 
     $uid = pnUserGetVar('uid');
     $buddies = pnModAPIFunc('ContactList','user','getall',
-    array(	'uid'		=> $uid,
-  											'state'		=> 1,
-  											'birthday'	=> true,
-  											'sort'		=> 'daystonextbirthday') );
+    array(  'uid'       => $uid,
+            'state'     => 1,
+            'birthday'  => true,
+            'sort'      => 'daystonextbirthday'));
     $c=0;
     if (!(count($buddies)>0)) return false;
     foreach ($buddies as $buddy) {
@@ -73,9 +73,9 @@ function ContactList_NextBirthdaysblock_display($blockinfo)
     }
     // return if no buddy is out there
     if ($c==0) return false;
-     
-    $render->assign('buddies',		$res);
-    $render->assign('dateformat',	$vars['dateformat']);
+
+    $render->assign('buddies',      $res);
+    $render->assign('dateformat',   $vars['dateformat']);
 
     $blockinfo['content'] = $render->fetch('contactlist_block_nextbirthdays.htm');
     return themesideblock($blockinfo);
@@ -109,8 +109,8 @@ function ContactList_NextBirthdaysblock_modify($blockinfo)
 function ContactList_NextBirthdaysblock_update($blockinfo)
 {
     $vars = pnBlockVarsFromContent($blockinfo['content']);
-    $vars['numitems'] 	= (int) FormUtil::getPassedValue('numitems', 5, 'POST');
-    $vars['dateformat']	= FormUtil::getPassedValue('dateformat', '%d.%m.', 'POST');
+    $vars['numitems']   = (int) FormUtil::getPassedValue('numitems', 5, 'POST');
+    $vars['dateformat'] = FormUtil::getPassedValue('dateformat', '%d.%m.', 'POST');
 
     $blockinfo['content'] = pnBlockVarsToContent($vars);
 

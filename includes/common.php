@@ -26,7 +26,7 @@ function _cl_addOnlineStatusAndUsername($list,$args)
         // online status
         $bid = $buddy['bid'];
         $buddy['online'] = (isset($uidlist[$bid]) && $uidlist[$bid] == $bid) ? true : false;
-        
+
         // user name
         if (isset($args['bid']) && isset($args['uid'])) {
             $buddy['uname'] = pnUserGetVar('uname',$buddy['uid']);
@@ -42,10 +42,10 @@ function _cl_addOnlineStatusAndUsername($list,$args)
 
 /**
  * this function sorts the list result
- * @param	array	the buddylist
- * @param	string	sort criteria
+ * @param   array   the buddylist
+ * @param   string  sort criteria
  *
- * @return	array	the buddylist sorted
+ * @return  array   the buddylist sorted
  */
 function _cl_sortList($list,$criteria) {
     if ((!isset($list)) || (!is_array($list))) return;
@@ -70,5 +70,3 @@ function _cl_sortList($list,$criteria) {
     return $list;
 }
 
-
-?>

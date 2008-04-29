@@ -4,9 +4,9 @@
 <!--[pnml name="_CONTACTLISTTHEUSERHAS"]--> <!--[$buddies|@count]--> <!--[pnml name="_CONTACTLISTBUDDIES"]-->
 
 <!--[if $contactlistavailable and $contactlist_nopublicbuddylist ne 1]-->
-	<div>
-	<!--[pnmodapifunc modname="ContactList" type="user" func="getFOAFLink" uid1=$viewer_uid uid2=$uid]-->
-	</div>
+  <div>
+  <!--[pnmodapifunc modname="ContactList" type="user" func="getFOAFLink" uid1=$viewer_uid uid2=$uid]-->
+  </div>
 <!--[/if]-->
 
 <div id="cl_myprofile" class="cl_floatbox">
@@ -18,7 +18,7 @@
   <!--[else]-->
   <dd><img src="images/avatar/<!--[$avatar|pnvarprepfordisplay]-->" class="avatar" width="50" /></dd>
   <!--[/if]-->
-  
+
   <!--[if $buddy.online eq true]-->
   <dd class="cl_online">(<!--[pnml name="_CONTACTLISTONLINE"]-->)</dd>
   <!--[else]-->
@@ -29,7 +29,7 @@
   <!--[if $nopubliccomment ne 1 and $buddy.pub_comment ne ""]-->
   <dt><!--[pnml name="_CONTACTLISTPUBCOMMENT"]-->:</dt>
   <dd><em><!--[$buddy.pub_comment|pnvarprepfordisplay|pnmodcallhooks]--></em></dd>
-  <!--[/if]-->    	
-</dl>     			
+  <!--[/if]-->
+</dl>
 <!--[/foreach]-->
 </div>
