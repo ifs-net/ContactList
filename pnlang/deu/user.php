@@ -44,7 +44,7 @@ define('_CONTACTLISTSTATE',                             'Status');
 define('_CONTACTLISTACTIONS',                           'Aktion');
 define('_CONTACTLISTPUBCOMMENT',                        'Öffentlicher Kommentar');
 define('_CONTACTLISTPRVCOMMENT',                        'Privater Kommentar');
-define('_CONTACTLISTEDIT',                              'Bearbeiten');
+define('_CONTACTLISTEDIT',                              'Kontakt bearbeiten');
 define('_CONTACTLISTADD',                               'Als Kontakt hinzufügen');
 define('_CONTACTLISTNOREQUTEXT',                        'Es wurde kein Grund für die Kontaktaufnahme angegeben');
 define('_CONTACTLISTREQUTEXT',                          'Begründung');
@@ -87,6 +87,7 @@ define('_CONTACTLISTSENDPM',                            'Nachricht senden');
 define('_CONTACTLISTSHOWCONTACTS',                      'Kontakte des Benutzers');
 define('_CONTACTLISTONLINE',                            'online');
 define('_CONTACTLISTOF',                                'von');
+define('_CONTACTLISTSHOWPROFILE',                       'Profil anzeigen');
 
 // ignore
 define('_CONTACTLISTIGNORELISTMANAGEMENT',              'Ignorierte Kontakte verwalten');

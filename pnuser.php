@@ -157,20 +157,22 @@ function ContactList_user_display()
 
     // check if buddy list is public
     if (pnModGetVar('ContactList','nopublicbuddylist')) return LogUtil::registerPermissionError();
-    $uid = (int) FormUtil::getPassedValue('uid');
-    if (!$uid) return LogUtil::registerError(_GETFAILED);
+    $viewer_uid = (int) FormUtil::getPassedValue('uid');
+    if (!$viewer_uid) return LogUtil::registerError(_GETFAILED);
 
     // Security Check
     if (!SecurityUtil::checkPermission('ContactList::', '::', ACCESS_READ)) return LogUtil::registerPermissionError();
 
     $display = false;
-    if (pnUserGetVar('uid') != $uid) {
+    $current_uid = (int) pnUserGetVar('uid');
+    
+    if ($current_uid != $viewer_uid) {
         // check for privacy settings
-        $prefs = pnModAPIFunc('ContactList','user','getPreferences',array('uid' => $uid));
+        $prefs = pnModAPIFunc('ContactList','user','getPreferences',array('uid' => $viewer_uid));
         switch ($prefs['publicstate']) {
             case 1:		$display=false;
             break;
-            case 2:		$isBuddy = pnModAPIFunc('ContactList','user','isBuddy',array('uid1' => $uid, 'uid2' => pnUserGetVar('uid')));
+            case 2:		$isBuddy = pnModAPIFunc('ContactList','user','isBuddy',array('uid1' => $viewer_uid, 'uid2' => $current_uid));
             if ($isBuddy > 0) $display = true;
             break;
             case 3:		if (pnUserLoggedIn()) $display = true;
@@ -182,8 +184,8 @@ function ContactList_user_display()
     else $display = true;
     
     $buddies = pnModAPIFunc('ContactList','user','getall',
-    array( 'uid'        => $uid,
-           'state'      => 1 ));    
+    array( 'uid'        => $viewer_uid,
+           'state'      => 1 ));
 
     $cl_limit       = pnModGetVar('ContactList','itemsperpage');
     $cl_startnum    = (int)FormUtil::getPassedValue('cl_startnum',1);
@@ -204,7 +206,9 @@ function ContactList_user_display()
     $render->assign('contacts_all',count($buddies));
     $render->assign('cl_limit',		$cl_limit);
     $render->assign('cl_startnum',	$cl_startnum);    
-    $render->assign('uid',$uid);
+    $render->assign('viewer_uid',$viewer_uid);
+    $render->assign('viewer_uname',pnUserGetVar('uname',$viewer_uid));    
+    $render->assign('current_uid',$current_uid);    
     $render->assign('buddies',$assign_buddies);
     $render->assign('nopubliccomment',(int)pnModGetVar('ContactList','nopubliccomment'));
     return $render->fetch('contactlist_user_display.htm');

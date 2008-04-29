@@ -209,6 +209,9 @@ div.autocomplete_user ul li {
 #cl_main a.usercancel {
 	background: url(../pnimages/user_go.png) no-repeat 0 50%;
 }
+#cl_main a.userprofile {
+	background: url(../pnimages/status_online.png) no-repeat 0 50%;
+}
 
 /*******************************************************************************/
 	/* Blocks

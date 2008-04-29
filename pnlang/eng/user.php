@@ -44,7 +44,7 @@ define('_CONTACTLISTSTATE',		 	                    'State');
 define('_CONTACTLISTACTIONS',			           		'Action');
 define('_CONTACTLISTPUBCOMMENT',	                 	'Public comment');
 define('_CONTACTLISTPRVCOMMENT',	                	'Private comment');
-define('_CONTACTLISTEDIT',			                   	'Edit');
+define('_CONTACTLISTEDIT',			                   	'Edit contact');
 define('_CONTACTLISTADD',			                      'add as buddy');
 define('_CONTACTLISTNOREQUTEXT',	                 	'no reason given');
 define('_CONTACTLISTREQUTEXT',	                   	'Reason');
@@ -87,6 +87,7 @@ define('_CONTACTLISTSENDPM',		                  	'Send message');
 define('_CONTACTLISTSHOWCONTACTS',	             		'Show user\'s buddies');
 define('_CONTACTLISTONLINE',			                  'online');
 define('_CONTACTLISTOF',		                      	'of');
+define('_CONTACTLISTSHOWPROFILE',                   'Show Profile');
 
 // ignore
 define('_CONTACTLISTIGNORELISTMANAGEMENT',          'Ignore-list management');

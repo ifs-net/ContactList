@@ -2,15 +2,14 @@
 
 <!--[include file="contactlist_user_header.htm"]-->
 <!--[pnmodavailable modname="pnMessages" assign="pnMessages"]-->
-<!--[pnvarcleanfrominput name="uid" assign="displayuid" ]-->
-<!--[pnusergetvar uid=$displayuid name="uname" assign="displayuname"]-->
 
 <div id="cl_display" class="cl_box cl_floatbox">
-<h3><!--[pnml name="_CONTACTLISTMYBUDDIES"]-->&nbsp;<!--[$displayuname]--></h3>
+<h3><!--[pnml name="_CONTACTLISTMYBUDDIES"]-->&nbsp;<!--[$viewer_uname]--></h3>
 <p><!--[pnml name="_CONTACTLISTTHEUSERHAS"]--> <!--[$contacts_all]--> <!--[pnml name="_CONTACTLISTBUDDIES"]--></p>
 
 <!--[foreach from=$buddies item="buddy"]-->
 <!--[pnusergetvar uid=$buddy.bid name="_YOURAVATAR" assign="avatar"]-->
+<!--[pnmodapifunc modname="ContactList" type="user" func="isBuddy" uid1=$current_uid uid2=$buddy.bid assign="isBuddy"]-->
 
 <div class="buddybox cl_clearfix">
   <!--[if $avatar eq '' or $avatar eq 'blank.gif']-->
@@ -22,8 +21,16 @@
   <h4><!--[$buddy.uname|userprofilelink]--><!--[if $buddy.online eq true]-->&nbsp;<em class="cl_online">(<!--[pnml name="_CONTACTLISTONLINE"]-->)</em><!--[/if]--></h4>   
 
   <ul class="options">
-  <!--[if $pnMessages]--><li><a class="image mail" href="<!--[pnmodurl modname="pnMessages" type="user" func="newpm" uname=$buddy.uname]-->"><!--[pnml name="_CONTACTLISTSENDPM"]--></a></li><!--[/if]-->
-  <li><a class="image createbuddy" href="<!--[pnmodurl modname="ContactList" type="user" func="create" uname=$buddy.uname]-->"><!--[pnml name="_CONTACTLISTCREATEBUDDY"]--></a></li>
+  <li><a class="image userprofile" href="<!--[pnmodurl modname="Profile" type="user" func="view" uid=$buddy.bid]-->"><!--[pnml name="_CONTACTLISTSHOWPROFILE"]--></a></li>
+  <!--[if $pnMessages && $current_uid neq $buddy.bid]--><li><a class="image mail" href="<!--[pnmodurl modname="pnMessages" type="user" func="newpm" uname=$buddy.uname]-->"><!--[pnml name="_CONTACTLISTSENDPM"]--></a></li><!--[/if]-->
+  <li><a class="image showbuddies" href="<!--[pnmodurl modname="ContactList" type="user" func="display" uid=$buddy.bid]-->"><!--[pnml name="_CONTACTLISTSHOWCONTACTS"]--></a></li>
+  <!--[if $current_uid neq $buddy.bid]-->
+  <!--[if $isBuddy gt 0]-->
+    <li><a class="image useredit" href="<!--[pnmodurl modname="ContactList" type="user" func="edit" id=$isBuddy]-->"><!--[pnml name="_CONTACTLISTEDIT"]--></a></li>
+    <!--[else]-->
+    <li><a class="image createbuddy" href="<!--[pnmodurl modname="ContactList" type="user" func="create" uname=$buddy.uname]-->"><!--[pnml name="_CONTACTLISTCREATEBUDDY"]--></a></li>
+    <!--[/if]-->
+  <!--[/if]-->
   </ul>
 
   <ul class="cl_userinfo">
