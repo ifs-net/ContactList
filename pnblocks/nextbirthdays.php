@@ -63,6 +63,7 @@ function ContactList_NextBirthdaysblock_display($blockinfo)
             'birthday'  => true,
             'sort'      => 'daystonextbirthday'));
     $c=0;
+    $res = array();    
     if (!(count($buddies)>0)) return false;
     foreach ($buddies as $buddy) {
         if ($buddy['daystonextbirthday'] >= 0) {
