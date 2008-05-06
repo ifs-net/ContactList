@@ -8,6 +8,8 @@
  * @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
  */
 
+define('_CONTACTLISTTITLE',                             'Kontaktliste');
+ 
 // foaf plugin for contactlist
 define('_CONTACTLISTCONNECTION',                        'Deiner Verbindung hierher');
 define('_CONTACTLISTNOLINKFOUND',                       'Keine Verbindung gefunden');
