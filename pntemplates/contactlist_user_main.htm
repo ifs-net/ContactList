@@ -3,7 +3,7 @@
 <!--[include file="contactlist_user_header.htm"]-->
 <!--[pnmodavailable modname="pnMessages" assign="pnMessages"]-->
 <!--[pnvarcleanfrominput name="state" assign="state" ]-->
-<!--[if $state ne '']--><!--[assign var="filterstate" value="&amp;state=`$state`"]--><!--[/if]-->
+<!--[if $state ne '']--><!--[assign var="filterstate" value="&amp;state=`$state`"]--><!--[else]--><!--[assign var="filterstate" value=""]--><!--[/if]-->
 
 <!--[if $buddies_unconfirmed gt 0]-->
 <div id="cl_pending" class="cl_box cl_floatbox">
