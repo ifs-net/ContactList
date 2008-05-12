@@ -314,7 +314,7 @@ dl.contactlist {
   float: left;
   width: 130px;
   height: 180px;
-  overflow: none;
+  overflow: hidden;
 }
 #cl_myprofile dl.profilebox {
   border:1px dashed #AAAAAA;
