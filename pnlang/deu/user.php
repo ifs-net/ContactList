@@ -106,9 +106,9 @@ define('_CONTACTLISTUSERNOLONGERIGNORED',               'Der Benutzer wird nun n
 // create
 define('_CONTACTLISTCONFIRMREQU',                       'Nach Abschicken dieses Formulars wird der andere Benutzer eine Nachricht erhalten, dass er die Anfrage bearbeiten soll. Sobald die Kontaktanfrage akzeptiert oder abgelehnt wurde, wirst Du informiert.');
 define('_CONTACTLISTREQUESTTEXT',                       'Grund für die Kontaktaufnahme');
-define('_CONTACTLISTNOTADDYOURSELF',                    'Such Dir doch Freunde... Oder willst Du dich selbst als Kontakt hinzufügen? Das geht nicht ;-)');
+define('_CONTACTLISTNOTADDYOURSELF',                    'Du kannst dich nicht selbst als Kontakt hinzufügen.');
 define('_CONTACTLISTUNAMEINVALID',                      'Es wurde kein gültiger Benutzername übermittelt');
-define('_CONTACTLISTDUPLICATEREQUEST',                  'Der übermittelte Benutzer steht schon auf deiner Liste. Evtl abgelehnte Kontakte müssen zuerst gelöscht werden, bevor eine neue Anfrage gestartet werden kann. Aber doppelt Eintragen geht nicht. Geh lieber raus und such Dir weitere Freunde ;-)');
+define('_CONTACTLISTDUPLICATEREQUEST',                  'Der übermittelte Benutzer steht bereits auf deiner Kontaktliste. Evtl. abgelehnte Kontakte müssen zuerst gelöscht werden, bevor eine neue Anfrage durchgeführt werden kann.');
 define('_CONTACTLISTREQUESTSENT',                       'Die Kontaktanfrage wurde an den anderen Benutzer übermittelt');
 define('_CONTACTLISTBUDDYADDED',                        'Kontakt hinzugefügt');
 define('_CONTACTLISTUSERIGNORESYOU',                    'Nicht gut... Dein potentieller Buddy hat dich auf seiner Ignorier-Liste - daher war eine Kontaktanfrage nicht möglich');
@@ -120,7 +120,7 @@ define('_CONTACTLISTBUDDYSUSPENDEDYOU',                 'Einer deiner Kontakte h
 define('_CONTACTLISTREQUESTREJECTED',                   'Eine Kontaktanfrage wurde abgelehnt');
 define('_CONTACTLISTDEARUSER',                          'Liebe(r)');
 define('_CONTACTLISTTHEUSER',                           'der Benutzer');
-define('_CONTACTLISTADDEDYOUASBUDDY',                   'hat Dich als Kontakt auf %sitename% hinzugefügt. Das heisst, ihr seid jetzt Freunde und gegenseitig in euren Kontaktlisten verlinkt.');
+define('_CONTACTLISTADDEDYOUASBUDDY',                   'hat Dich als Kontakt auf %sitename% hinzugefügt. Somit seid ihr jetzt beide in euren Kontaktlisten verknüpft.');
 define('_CONTACTLISTATTENTION',                         'Achtung');
 define('_CONTACTLISTAUTOMATICCONFIRM',                  'Diese Anfrage wurde automatisch angenommen, da Du selbst erst kürzlich eine Kontaktanfrage an den anderen Benutzer gestellt hast, welche in der Zwischenzeit noch nicht gelöscht wurde.');
 define('_CONTACTBUDDYMANAGEMENT',                       'Verwaltung der Kontaktliste');
@@ -135,12 +135,12 @@ define('_CONTACTLISTSUSPENDEDYOUAT',                    'hat dich als Kontakt au
 define('_CONTACTLISTEDITINFO',                          'Kontaktdetails bearbeiten');
 define('_CONTACTLISTUPDATEINFO',                        'Kontaktdetails aktualisieren');
 define('_CONTACTLISTBUDDYNOTFOUND',                     'Es trat ein Fehler beim Laden des Kontaktes auf');
-define('_CONTACTLISTFOREIGNBUDDY',                      'Du kannst natürlich nur deine eigenen Freunde bearbeiten... Geh lieber raus und such Dir neue Freunde ;-)');
+define('_CONTACTLISTFOREIGNBUDDY',                      'Du kannst nur deine eigenen Kontakt bearbeiten.');
 define('_CONTACTLISTBUDDYUPDATED',                      'Kontaktdetails wurden aktualisiert');
 define('_CONTACTLISTBUDDYUPDATEFAILED',                 'Beim Aktualisieren der Kontaktdetails trat ein Fehler auf');
 
 // myprofile plugin and display-function
-define('_CONTACTLISTTABTITLE',                          'Freunde');
+define('_CONTACTLISTTABTITLE',                          'Kontakte');
 define('_CONTACTLISTMYBUDDIES',                         'Kontakte von');
 define('_CONTACTLISTTHEUSERHAS',                        'Der Benutzer hat');
 define('_CONTACTLISTBUDDIES',                           'Kontakte');
