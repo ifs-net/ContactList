@@ -87,7 +87,6 @@ define('_CONTACTLISTAMOUNTSUSPENDED',                   'Anzahl aufgehobener Kon
 define('_CONTACTLISTBIRTHDAY',                          'Geburtstag');
 define('_CONTACTLISTSENDPM',                            'Nachricht senden');
 define('_CONTACTLISTSHOWCONTACTS',                      'Kontakte des Benutzers');
-define('_CONTACTLISTONLINE',                            'online');
 define('_CONTACTLISTOF',                                'von');
 define('_CONTACTLISTSHOWPROFILE',                       'Profil anzeigen');
 

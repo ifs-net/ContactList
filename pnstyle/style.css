@@ -1,15 +1,16 @@
 /**
- * @package      ContactList
- * @version      $Id$
- * @author       Florian Schießl, Carsten Volmer
- * @link         http://www.ifs-net.de, http://www.carsten-volmer.de
- * @copyright    Copyright (C) 2008
- * @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
- */
+* @package      ContactList
+* @version      $Id$
+* @author       Florian Schießl, Carsten Volmer
+* @link         http://www.ifs-net.de, http://www.carsten-volmer.de
+* @copyright    Copyright (C) 2008
+* @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
+*/
 
 /*******************************************************************************/
-  /* Navigation
+/* Navigation
 /*******************************************************************************/
+
 #cl_main ul.navigation {
   font-weight: bold;
   list-style: none;
@@ -27,8 +28,9 @@
   text-align:center;
 }
 /*******************************************************************************/
-  /* Buddybox
+/* Buddybox
 /*******************************************************************************/
+
 #cl_main .buddybox {
   background: #FFFEFA none repeat scroll 0%;
   border: 1px solid #DBD5C5;
@@ -46,9 +48,9 @@
 }
 
 #cl_main .buddybox h4 {
-  border-bottom: 1px dotted #CCC;
-  margin: 0pt 0 1em 150px;
-  padding: 0pt;
+  border-bottom:1px dotted #CCCCCC;
+  margin:0 0 0 150px;
+  padding:0;
 }
 
 #cl_main .buddybox h4 a {
@@ -58,9 +60,9 @@
 }
 
 #cl_main .buddybox ul.cl_userinfo {
-  margin: 0pt 12em 0 150px;
-  padding: 0pt;
   list-style: none;
+  margin:0.5em 16em 0.5em 150px;
+  padding:0;
 }
 
 #cl_main .buddybox ul.cl_userinfo li {
@@ -71,8 +73,8 @@
 #cl_main .buddybox ul.options {
   float: right;
   list-style: none;
-  margin: 0pt 5px;
-  padding: 0pt;
+  margin:0.5em 5px;
+  padding:0;
 }
 
 #cl_main .buddybox ul.options li {
@@ -93,8 +95,9 @@ em.cl_online {
 }
 
 /*******************************************************************************/
-  /* General
+/* General
 /*******************************************************************************/
+
 .cl_box {
   margin: 1.5em 0pt;
 }
@@ -123,8 +126,9 @@ em.cl_online {
 }
 
 /*******************************************************************************/
-  /* Autocomplete
+/* Autocomplete
 /*******************************************************************************/
+
 div.autocomplete_user {
   position: absolute;
   width: 25em;
@@ -156,23 +160,24 @@ div.autocomplete_user ul li {
 }
 
 /*******************************************************************************/
-  /* Styling of links and buttons with images
+/* Styling of links and buttons with images
 /*******************************************************************************/
-  /*
- * Note: When use a CSS3 feature to highlight external the following image
- *       normally would not be visisble. The ! important fixes this.
- * a[href^="http:"],
- * a[href^="https:"] {
- *     padding-left: 1.5em;
- *     background: url('images/internet.gif') no-repeat bottom left;
- * }
- *
+/*
+* Note: When use a CSS3 feature to highlight external the following image
+*       normally would not be visisble. The ! important fixes this.
+* a[href^="http:"],
+* a[href^="https:"] {
+*     padding-left: 1.5em;
+*     background: url('images/internet.gif') no-repeat bottom left;
+* }
+*
 /*******************************************************************************/
+
 #cl_main a.image,
 #cl_main button.image,
 #cl_main a.image,
 #cl_main button.image
-  {
+{
   margin: 0;
   font-size: 1em;
   padding: 2px 0 2px 19px ! important; /* 16px image + spacer */
@@ -213,8 +218,9 @@ div.autocomplete_user ul li {
 }
 
 /*******************************************************************************/
-  /* Blocks
+/* Blocks
 /*******************************************************************************/
+
 ul.contactlist,
 dl.contactlist {
   padding:0;
@@ -235,77 +241,43 @@ dl.contactlist {
   background: url(../pnimages/cake.png) no-repeat 0 50%;
   margin: 0;
   font-size: 1em;
-  padding: 2px 0 2px 25px ! important;	
+  padding: 2px 0 2px 25px ! important;
 }
 .contactlist .pending {
   background: url(../pnimages/user_comment.png) no-repeat 0 50%;
   margin: 0;
   font-size: 1em;
-  padding: 2px 0 2px 25px ! important;	
+  padding: 2px 0 2px 25px ! important;
 }
 .contactlist .user {
   background: url(../pnimages/user.png) no-repeat 0 50%;
   margin: 0;
   font-size: 1em;
-  padding: 2px 0 2px 25px ! important;	
+  padding: 2px 0 2px 25px ! important;
 }
 .contactlist .edit {
   background: url(../pnimages/user_edit.png) no-repeat 0 50%;
   margin: 0;
   font-size: 1em;
-  padding: 2px 0 2px 25px ! important;	
+  padding: 2px 0 2px 25px ! important;
 }
 .contactlist .online {
   background: url(../pnimages/status_online.png) no-repeat 0 50%;
   margin: 0 0 0 10px;
   font-size: 1em;
-  padding: 2px 0 2px 25px ! important;	
+  padding: 2px 0 2px 25px ! important;
 }
 .contactlist .offline {
   background: url(../pnimages/status_offline.png) no-repeat 0 50%;
   margin: 0 0 0 10px;
   font-size: 1em;
-  padding: 2px 0 2px 25px ! important;	
+  padding: 2px 0 2px 25px ! important;
 }
 
 /*******************************************************************************/
-  /* Clearfix solution
+/* myProfile-Plugin
 /*******************************************************************************/
-.cl_clearfix:after {
-  content: ".";
-  display: block;
-  height: 0;
-  clear: both;
-  visibility: hidden;
-}
 
-.cl_clearfix {
-  display: inline-block;
-}
-
-/* Hides from IE-mac \*/
-* html .cl_clearfix {
-  height: 1%;
-}
-
-.cl_clearfix {
-  display: block;
-}
-
-/* End hide from IE-mac */
-  /* Overflow-Methode zum Clearen der Float-Umgebungen */
-.cl_floatbox {
-  overflow: hidden;
-}
-
-/* .floatbox-Anpassung für IE */
-* html .cl_floatbox {
-  width: 100%
-}
-
-/*******************************************************************************/
-  /* myProfile-Plugin
-/*******************************************************************************/
 .contactlist_tab_buddy {
   border-style: dotted;
   border-width: 1px;

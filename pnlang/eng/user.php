@@ -87,7 +87,6 @@ define('_CONTACTLISTAMOUNTSUSPENDED',              'Number of suspended contacts
 define('_CONTACTLISTBIRTHDAY',                   'Birthday');
 define('_CONTACTLISTSENDPM',                     'Send message');
 define('_CONTACTLISTSHOWCONTACTS',                'Show user\'s buddies');
-define('_CONTACTLISTONLINE',                     'online');
 define('_CONTACTLISTOF',                         'of');
 define('_CONTACTLISTSHOWPROFILE',                   'Show Profile');
 

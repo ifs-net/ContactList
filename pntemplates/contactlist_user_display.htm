@@ -3,7 +3,7 @@
 <!--[include file="contactlist_user_header.htm"]-->
 <!--[pnmodavailable modname="pnMessages" assign="pnMessages"]-->
 
-<div id="cl_display" class="cl_box cl_floatbox">
+<div id="cl_display" class="cl_box pn-floatbox">
 <h3><!--[pnml name="_CONTACTLISTMYBUDDIES"]-->&nbsp;<!--[$viewer_uname]--></h3>
 <p><!--[pnml name="_CONTACTLISTTHEUSERHAS"]--> <!--[$contacts_all]--> <!--[pnml name="_CONTACTLISTBUDDIES"]--></p>
 
@@ -11,14 +11,14 @@
 <!--[pnusergetvar uid=$buddy.bid name="_YOURAVATAR" assign="avatar"]-->
 <!--[pnmodapifunc modname="ContactList" type="user" func="isBuddy" uid1=$current_uid uid2=$buddy.bid assign="isBuddy"]-->
 
-<div class="buddybox cl_clearfix">
+<div class="buddybox pn-clearfix">
   <!--[if $avatar eq '' or $avatar eq 'blank.gif']-->
   <!--[pnimg modname=ContactList src=avatar_male.gif class="avatar"]-->
   <!--[else]-->
   <img src="images/avatar/<!--[$avatar|pnvarprepfordisplay]-->" class="avatar" />
   <!--[/if]-->
   
-  <h4><!--[$buddy.uname|userprofilelink]--><!--[if $buddy.online eq true]-->&nbsp;<em class="cl_online">(<!--[pnml name="_CONTACTLISTONLINE"]-->)</em><!--[/if]--></h4>   
+  <h4><!--[$buddy.uname|userprofilelink]--><!--[if $buddy.online eq true]-->&nbsp;<em class="cl_online">(<!--[pnml name="_ONLINE"]-->)</em><!--[/if]--></h4>   
 
   <ul class="options">
   <li><a class="image userprofile" href="<!--[pnmodurl modname="Profile" type="user" func="view" uid=$buddy.bid]-->"><!--[pnml name="_CONTACTLISTSHOWPROFILE"]--></a></li>

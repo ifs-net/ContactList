@@ -6,32 +6,32 @@
 <!--[pnml name="_CONTACTLISTNOLINKFOUND"]-->
 <!--[else]-->
 
-<div id="cl_myprofile" class="cl_floatbox">
-<!--[foreach from=$FOAFList item="buddy" name="friends"]-->
-	<!--[pnusergetvar uid=$buddy.bid name="_YOURAVATAR" assign="avatar"]-->
-	<dl style="  border:none;
-	float:left;
-	min-height:100px;
-	text-align:center;
-	width:100px; ">
-	  <!--[if $avatar eq '' or $avatar eq 'blank.gif']-->
-	  <dd><!--[pnimg modname=ContactList src="avatar_male.gif" width="50" class="avatar"]--></dd>
-	  <!--[else]-->
-	  <dd><img src="images/avatar/<!--[$avatar|pnvarprepfordisplay]-->" class="avatar" width="50" /></dd>
-	  <!--[/if]-->
-	  
-	  <dt><!--[$buddy.uname|userprofilelink]--></dt>   
-	</dl>
-	<!--[if $smarty.foreach.friends.last ne 1]-->
-		<dl style="  border:none;
-		float:left;
-		margin-top:40px;
-		min-height:100px;
-		text-align:center;
-		width:10px; ">
-			<!--[pnimg modname="ContactList" src="arrow.gif"]-->
-		</dl>
-	<!--[/if]-->
-<!--[/foreach]-->
+<div id="cl_myprofile" class="pn-floatbox">
+  <!--[foreach from=$FOAFList item="buddy" name="friends"]-->
+  <!--[pnusergetvar uid=$buddy.bid name="_YOURAVATAR" assign="avatar"]-->
+  <dl style="  border:none;
+    float:left;
+    min-height:100px;
+    text-align:center;
+    width:100px; ">
+    <!--[if $avatar eq '' or $avatar eq 'blank.gif']-->
+    <dd><!--[pnimg modname=ContactList src="avatar_male.gif" width="50" class="avatar"]--></dd>
+    <!--[else]-->
+    <dd><img src="images/avatar/<!--[$avatar|pnvarprepfordisplay]-->" class="avatar" width="50" /></dd>
+    <!--[/if]-->
+
+    <dt><!--[$buddy.uname|userprofilelink]--></dt>
+  </dl>
+  <!--[if $smarty.foreach.friends.last ne 1]-->
+  <dl style="  border:none;
+    float:left;
+    margin-top:40px;
+    min-height:100px;
+    text-align:center;
+    width:10px; ">
+    <!--[pnimg modname="ContactList" src="arrow.gif"]-->
+  </dl>
+  <!--[/if]-->
+  <!--[/foreach]-->
 </div>
 <!--[/if]-->

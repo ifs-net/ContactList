@@ -9,7 +9,7 @@
   </div>
 <!--[/if]-->
 
-<div id="cl_myprofile" class="cl_floatbox">
+<div id="cl_myprofile" class="pn-floatbox">
 <!--[foreach from=$buddies item="buddy"]-->
 <!--[pnusergetvar uid=$buddy.bid name="_YOURAVATAR" assign="avatar"]-->
 <dl class="profilebox">
@@ -20,12 +20,12 @@
   <!--[/if]-->
 
   <!--[if $buddy.online eq true]-->
-  <dd class="cl_online">(<!--[pnml name="_CONTACTLISTONLINE"]-->)</dd>
+  <dd class="cl_online">(<!--[pnml name="_ONLINE"]-->)</dd>
   <!--[else]-->
-  <dd>(offline)</dd> <!--[* ÜBERSETZUNG ÜBERARBEITEN !!! *]-->
+  <dd>(<!--[pnml name="_OFFLINE"]-->)</dd>
   <!--[/if]-->
-  
-  <dt><!--[$buddy.uname|userprofilelink]--></dt>   
+
+  <dt><!--[$buddy.uname|userprofilelink]--></dt>
   <!--[if $nopubliccomment ne 1 and $buddy.pub_comment ne ""]-->
   <dt><!--[pnml name="_CONTACTLISTPUBCOMMENT"]-->:</dt>
   <dd><em><!--[$buddy.pub_comment|pnvarprepfordisplay|pnmodcallhooks]--></em></dd>
