@@ -23,17 +23,17 @@ $modversion['credits']        = 'pndocs/credits.txt';
 $modversion['help']           = 'pndocs/help.txt';
 $modversion['license']        = 'pndocs/license.txt';
 $modversion['official']       = 0;
-$modversion['author']         = 'Florian Schiessl';
-$modversion['contact']        = 'http://www.ifs-net.de/';
+$modversion['author']         = 'Florian Schiessl, Carsten Volmer';
+$modversion['contact']        = 'http://trac.zikula.org/projects/contactlist';
 
-// The following information tells the PostNuke core that this
+// The following information tells the Zikula core that this
 // module has an admin option.
 $modversion['admin']          = 1;
 
 // module dependencies
 $modversion['dependencies'] = array(
 array(  'modname'    => 'pnMessages',
-        'minversion' => '1.0', 'maxversion' => '',
+        'minversion' => '2.0', 'maxversion' => '',
         'status'     => PNMODULE_DEPENDENCY_RECOMMENDED),
 array(  'modname'    => 'Avatar',
         'minversion' => '1.0', 'maxversion' => '',

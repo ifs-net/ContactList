@@ -2,6 +2,8 @@ $Id$
 
 ContactList
 ===========
+http://trac.zikula.org/projects/contactlist
+
 
 content follows :-) (perhaps)
 
@@ -14,4 +16,4 @@ Modules that integrate ContactList
 - EZComments:	1.6	ignored users cannot comment a user's content
 - TimeIt:		1.1	Calendar sharing options "events for friends only"
 					Ignored user's calendar entries are not shown
-- pnMessages:	SVN	Ignored users cannot send private messages any mre
+- pnMessages:	2.0 SVN	Ignored users cannot send private messages any mre
