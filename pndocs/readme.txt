@@ -2,7 +2,7 @@ $Id$
 
 ContactList
 ===========
-http://trac.zikula.org/projects/contactlist
+http://code.zikula.org/contactlist
 
 
 content follows :-) (perhaps)

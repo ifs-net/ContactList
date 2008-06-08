@@ -24,7 +24,7 @@ $modversion['help']           = 'pndocs/help.txt';
 $modversion['license']        = 'pndocs/license.txt';
 $modversion['official']       = 0;
 $modversion['author']         = 'Florian Schiessl, Carsten Volmer';
-$modversion['contact']        = 'http://trac.zikula.org/projects/contactlist';
+$modversion['contact']        = 'http://code.zikula.org/contactlist';
 
 // The following information tells the Zikula core that this
 // module has an admin option.
