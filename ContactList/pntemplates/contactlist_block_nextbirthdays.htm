@@ -1,0 +1,21 @@
+<!--[* $Id$ *]-->
+<!--[pnpageaddvar name="stylesheet" value="modules/ContactList/pnstyle/style.css"]-->
+
+<dl class="cl_birthdays contactlist">
+<!--[foreach from=$buddies item="buddy"]-->
+<dt><!--[$buddy.uname|userprofilelink]--><span class="<!--[if $buddy.online eq true]-->online<!--[else]-->offline<!--[/if]-->">&nbsp;</span></dt>
+  <!--[if $buddy.daystonextbirthday eq 0]-->
+  <dd class="birthday">
+  <!--[$buddy.birthday|date_format:"$dateformat"]-->&nbsp;(<!--[pnml name="_CONTACTLISTTODAY"]-->)
+  </dd>
+<!--[elseif $buddy.daystonextbirthday eq 1]-->
+  <dd class="date">
+  <!--[$buddy.birthday|date_format:"$dateformat"]-->&nbsp;(<!--[pnml name="_CONTACTLISTTOMORROW"]-->)
+  </dd>		
+<!--[else]-->
+  <dd class="date">
+  <!--[$buddy.birthday|date_format:"$dateformat"]-->&nbsp;(<!--[$buddy.daystonextbirthday]--> <!--[pnml name="_CONTACTLISTDAYS"]-->)
+  </dd>  
+<!--[/if]-->
+<!--[/foreach]-->
+</dl>

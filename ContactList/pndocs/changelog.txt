@@ -1,0 +1,8 @@
+$Id$
+
+svn / next release:
+===================
+
+1.0:
+====
+- initial release

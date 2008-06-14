@@ -1,0 +1,10 @@
+<!--[* $Id$ *]-->
+<!--[pnpageaddvar name="stylesheet" value="modules/ContactList/pnstyle/style.css"]-->
+
+<dl class="cl_unconfirm contactlist">
+  <dt><!--[pnml name="_CONTACTLISTUNCONFIRMEDBUDDIES"]--></dt>
+  <!--[foreach from=$buddies_unconfirmed item="buddy"]-->
+  <dd class="pending"><!--[$buddy.uname|userprofilelink]--></dd>
+  <!--[/foreach]-->
+  <dd class="edit"><a href="<!--[pnmodurl modname="ContactList" type="user" func="main"]-->"><!--[pnml name="_CONTACTLISTRESPONDREQUEST"]--></a></dd>
+</dl>

@@ -1,0 +1,35 @@
+<!--[* $Id$ *]-->
+
+<h3><!--[pnml name="_CONTACTLISTMYBUDDIES"]--></h3>
+<!--[pnml name="_CONTACTLISTTHEUSERHAS"]--> <!--[$buddies|@count]--> <!--[pnml name="_CONTACTLISTBUDDIES"]-->
+
+<!--[if $contactlistavailable and $contactlist_nopublicbuddylist ne 1]-->
+  <div>
+  <!--[pnmodapifunc modname="ContactList" type="user" func="getFOAFLink" uid1=$viewer_uid uid2=$uid]-->
+  </div>
+<!--[/if]-->
+
+<div id="cl_myprofile" class="pn-floatbox">
+<!--[foreach from=$buddies item="buddy"]-->
+<!--[pnusergetvar uid=$buddy.bid name="_YOURAVATAR" assign="avatar"]-->
+<dl class="profilebox">
+  <!--[if $avatar eq '' or $avatar eq 'blank.gif']-->
+  <dd><!--[pnimg modname=ContactList src="avatar_male.gif" width="50" class="avatar"]--></dd>
+  <!--[else]-->
+  <dd><img src="images/avatar/<!--[$avatar|pnvarprepfordisplay]-->" class="avatar" width="50" /></dd>
+  <!--[/if]-->
+
+  <!--[if $buddy.online eq true]-->
+  <dd class="cl_online">(<!--[pnml name="_ONLINE"]-->)</dd>
+  <!--[else]-->
+  <dd>(<!--[pnml name="_OFFLINE"]-->)</dd>
+  <!--[/if]-->
+
+  <dt><!--[$buddy.uname|userprofilelink]--></dt>
+  <!--[if $nopubliccomment ne 1 and $buddy.pub_comment ne ""]-->
+  <dt><!--[pnml name="_CONTACTLISTPUBCOMMENT"]-->:</dt>
+  <dd><em><!--[$buddy.pub_comment|pnvarprepfordisplay|pnmodcallhooks]--></em></dd>
+  <!--[/if]-->
+</dl>
+<!--[/foreach]-->
+</div>

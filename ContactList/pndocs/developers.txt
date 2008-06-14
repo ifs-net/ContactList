@@ -1,0 +1,40 @@
+$Id$
+
+Developer's information file:
+=============================
+
+You want to include ContactList into your module? That's easy!
+
+What you can integrate and use is
+
+1. Ignore-List
+2. Buddy-List
+
+
+Use-Casese:
+===========
+- Use the ignore list for messaging modules
+- Use the ignore and buddy list for calendars
+- Use the ignore list and buddy list for online lists
+- Use the ignore list for forum software
+- and so on... you'll see ContactList provices some basically 
+  buddy functions for every module!
+
+
+1. Ignore-List:
+===============
+
+Just call the API Function isIgnored with the parameters "uid" 
+and "iuid" (ignored user id). You'll get a boolean value back. 
+
+2. Buddy-List:
+==============
+
+Just call the API Function isBuddy with the parameters "uid1"
+and "uid2". You'll get a boolean value back. True = the two 
+users are confirmed buddies and false otherwise.
+
+
+You see - ContactList is easy to integrate! 
+So start developing with ContactList as an integration into 
+your modules!

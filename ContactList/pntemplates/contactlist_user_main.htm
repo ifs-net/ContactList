@@ -1,0 +1,129 @@
+<!--[* $Id$ *]-->
+
+<!--[include file="contactlist_user_header.htm"]-->
+<!--[pnmodavailable modname="pnMessages" assign="pnMessages"]-->
+<!--[pnvarcleanfrominput name="state" assign="state" ]-->
+<!--[if $state ne '']--><!--[assign var="filterstate" value="&amp;state=`$state`"]--><!--[else]--><!--[assign var="filterstate" value=""]--><!--[/if]-->
+
+<!--[if $buddies_unconfirmed gt 0]-->
+<div id="cl_pending" class="cl_box pn-floatbox">
+  <h3><!--[pnml name="_CONTACTLISTTOCONFIRM"]--></h3>
+  <!--[foreach from=$buddies_unconfirmed item="buddy"]-->
+  <!--[pnusergetvar uid=$buddy.uid name="_YOURAVATAR" assign="avatar"]-->
+
+  <div class="buddybox pn-clearfix">
+    <!--[if $avatar eq '' or $avatar eq 'blank.gif']-->
+    <!--[pnimg modname=ContactList src=avatar_male.gif class="avatar"]-->
+    <!--[else]-->
+    <img src="images/avatar/<!--[$avatar|pnvarprepfordisplay]-->" class="avatar" />
+    <!--[/if]-->
+
+    <h4><!--[$buddy.uname|userprofilelink]--></h4>
+
+    <ul class="cl_userinfo">
+      <li><strong><!--[pnml name="_CONTACTLISTREQUESTDATE"]-->:</strong>&nbsp;<!--[$buddy.date|pndate_format:datetimebrief]--></li>
+      <li><!--[if $buddy.request_text ne ""]--><strong><!--[pnml name="_CONTACTLISTREQUTEXT"]-->:</strong>&nbsp;<!--[$buddy.request_text|pnvarprepfordisplay|pnmodcallhooks]--><!--[else]--><!--[pnml name="_CONTACTLISTNOREQUTEXT"]--><!--[/if]--></li>
+      <li>
+        <a class="image accept" href="<!--[pnmodurl modname="ContactList" type="user" func="main" action="confirm" id=$buddy.id authid=$authid]-->"><!--[pnml name="_CONTACTLISTCONFIRM"]--></a>
+        &nbsp;|&nbsp;
+        <a class="image cancel" href="<!--[pnmodurl modname="ContactList" type="user" func="main" action="decline" id=$buddy.id authid=$authid]-->"><!--[pnml name="_CONTACTLISTDECLINE"]--></a>
+      </li>
+    </ul>
+
+  </div>
+  <!--[/foreach]-->
+</div>
+<!--[/if]-->
+
+<ul class="navigation">
+  <li><a href="<!--[pnmodurl modname="ContactList" type="user" func="main"]-->"><!--[pnml name="_CONTACTLISTFILTERBUDDIESALL"]--></a></li>
+  <li><a href="<!--[pnmodurl modname="ContactList" type="user" func="main" state=0]-->"><!--[pnml name="_CONTACTLISTFILTERBUDDIESPENDING"]--></a></li>
+  <li><a href="<!--[pnmodurl modname="ContactList" type="user" func="main" state=1]-->"><!--[pnml name="_CONTACTLISTFILTERBUDDIESCONFIRM"]--></a></li>
+  <li><a href="<!--[pnmodurl modname="ContactList" type="user" func="main" state=2]-->"><!--[pnml name="_CONTACTLISTFILTERYOURBUDDIESREJECT"]--></a></li>
+  <li><a href="<!--[pnmodurl modname="ContactList" type="user" func="main" state=3]-->"><!--[pnml name="_CONTACTLISTFILTERYOURBUDDIESSUSPEND"]--></a></li>
+</ul>
+
+
+<div id="cl_contacts" class="cl_box pn-floatbox">
+
+  <!--[if $state eq ""]-->
+  <h3><!--[pnml name="_CONTACTLISTYOURBUDDIES"]--></h3>
+  <p><!--[pnml name="_CONTACTLISTAMOUNTCONFIRM"]-->:&nbsp;<!--[$contacts]-->&nbsp;<!--[pnml name="_CONTACTLISTOF"]-->&nbsp;<!--[$contacts_all]--></p>
+  <!--[elseif $state eq 0]-->
+  <h3><!--[pnml name="_CONTACTLISTYOURBUDDIESPENDING"]--></h3>
+  <p><!--[pnml name="_CONTACTLISTAMOUNTPENDING"]-->:&nbsp;<!--[$contacts_all]--></p>
+  <!--[elseif $state eq 1]-->
+  <h3><!--[pnml name="_CONTACTLISTYOURBUDDIESCONFIRM"]--></h3>
+  <p><!--[pnml name="_CONTACTLISTAMOUNTCONFIRM"]-->:&nbsp;<!--[$contacts_all]--></p>
+  <!--[elseif $state eq 2]-->
+  <h3><!--[pnml name="_CONTACTLISTYOURBUDDIESREJECT"]--></h3>
+  <p><!--[pnml name="_CONTACTLISTAMOUNTREJECTED"]-->:&nbsp;<!--[$contacts_all]--></p>
+  <!--[elseif $state eq 3]-->
+  <h3><!--[pnml name="_CONTACTLISTYOURBUDDIESSUSPEND"]--></h3>
+  <p><!--[pnml name="_CONTACTLISTAMOUNTSUSPENDED"]-->:&nbsp;<!--[$contacts_all]--></p>
+  <!--[/if]-->
+
+  <!--[if $contacts_all gt 0]-->
+
+  <!--[pnform]-->
+    <!--[pnformvalidationsummary]-->
+    <fieldset>
+    <!--[pnformlabel for="sort" text="_CONTACTLISTSORTITEMS"]-->
+    <!--[pnformdropdownlist id="sort" items=$items_sortlist]-->
+    <!--[pnformbutton commandName="update" text=_CONTACTLISTRELOAD]-->
+    </fieldset>
+  <!--[/pnform]-->
+
+  <!--[foreach from=$buddies item="buddy"]-->
+  <!--[pnusergetvar uid=$buddy.bid name="_YOURAVATAR" assign="avatar"]-->
+  <div class="buddybox pn-clearfix">
+    <!--[if $avatar eq '' or $avatar eq 'blank.gif']-->
+    <!--[pnimg modname=ContactList src=avatar_male.gif class="avatar"]-->
+    <!--[else]-->
+    <img src="images/avatar/<!--[$avatar|pnvarprepfordisplay]-->" class="avatar" alt="<!--[$buddy.uname]-->" />
+    <!--[/if]-->
+
+    <h4><!--[$buddy.uname|userprofilelink]--><!--[if $buddy.online eq true]-->&nbsp;<em class="cl_online">(<!--[pnml name="_ONLINE"]-->)</em><!--[/if]--></h4>
+
+    <ul class="options">
+      <li><a class="image userprofile" href="<!--[pnmodurl modname="Profile" type="user" func="view" uid=$buddy.bid]-->"><!--[pnml name="_CONTACTLISTSHOWPROFILE"]--></a></li>
+      <!--[if $pnMessages]--><li><a class="image mail" href="<!--[pnmodurl modname="pnMessages" type="user" func="newpm" uname=$buddy.uname]-->"><!--[pnml name="_CONTACTLISTSENDPM"]--></a></li><!--[/if]-->
+      <!--[if $nopublicbuddylist ne 1]--><li><a class="image showbuddies" href="<!--[pnmodurl modname="ContactList" type="user" func="display" uid=$buddy.bid]-->"><!--[pnml name="_CONTACTLISTSHOWCONTACTS"]--></a></li><!--[/if]-->
+      <li><a class="image useredit" href="<!--[pnmodurl modname="ContactList" type="user" func="edit" id=$buddy.id]-->"><!--[pnml name="_CONTACTLISTEDIT"]--></a></li>
+      <!--[if $buddy.state eq 0]--><li><a class="image usercancel" href="<!--[pnmodurl modname="ContactList" type="user" func="main" action="suspend" id=$buddy.id authid=$authid]--><!--[$filterstate]-->"><!--[pnml name="_CONTACTLISTCANCEL"]--></a></li><!--[/if]-->
+      <!--[if $buddy.state eq 1]--><li><a class="image userdelete" href="<!--[pnmodurl modname="ContactList" type="user" func="main" action="suspend" id=$buddy.id authid=$authid]--><!--[$filterstate]-->" onclick="return confirm('<!--[pnml name="_CONTACTLISTREALLYSUSPEND"]-->')"><!--[pnml name="_CONTACTLISTSUSPEND"]--></a></li><!--[/if]-->
+      <!--[if $buddy.state eq 2 or $buddy.state eq 3]--><li><a class="image userdelete" href="<!--[pnmodurl modname="ContactList" type="user" func="main" action="suspend" id=$buddy.id ne="1" authid=$authid]--><!--[$filterstate]-->"><!--[pnml name="_CONTACTLISTDELETE"]--></a></li><!--[/if]-->
+    </ul>
+
+    <ul class="cl_userinfo">
+      <li><strong><!--[pnml name="_CONTACTLISTSTATE"]-->:</strong>&nbsp;
+        <!--[if $buddy.state eq 0]-->
+        <!--[pnml name="_CONTACTLISTPENDING"]-->
+        <!--[elseif $buddy.state eq 1]-->
+        <!--[pnml name="_CONTACTLISTCONFIRMED"]-->
+        <!--[elseif $buddy.state eq 2]-->
+        <!--[pnml name="_CONTACTLISTREQUESTDECLINED"]-->
+        <!--[elseif $buddy.state eq 3]-->
+        <!--[pnml name="_CONTACTLISTSUSPENDED"]-->
+        <!--[/if]-->
+      </li>
+      <!--[if $buddy.birthday]-->
+      <li class="birthday"><strong><!--[pnml name="_CONTACTLISTBIRTHDAY"]-->:</strong>&nbsp;<!--[$buddy.birthday|date_format:"$dateformat"]--></li>
+      <!--[/if]-->
+      <!--[if $nopubliccomment ne 1 and $buddy.pub_comment ne ""]-->
+      <li><strong><!--[pnml name="_CONTACTLISTPUBCOMMENT"]-->:</strong>&nbsp;<em><!--[$buddy.pub_comment|pnvarprepfordisplay|pnmodcallhooks]--></em></li>
+      <!--[/if]-->
+      <!--[if $buddy.prv_comment]-->
+      <li><strong><!--[pnml name="_CONTACTLISTPRVCOMMENT"]-->:</strong><br /><em><!--[$buddy.prv_comment|pnvarprepfordisplay|pnmodcallhooks|nl2br]--></em></li>
+      <!--[/if]-->
+    </ul>
+  </div>
+  <!--[/foreach]-->
+
+  <!--[* Display a pager to go to the pages   *]-->
+  <!--[pager show="page" rowcount=$contacts_all limit=$cl_limit posvar=cl_startnum shift=1]-->
+
+  <!--[/if]-->
+</div>
+
+<!--[include file="contactlist_user_footer.htm"]-->

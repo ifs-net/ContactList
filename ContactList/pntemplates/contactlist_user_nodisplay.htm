@@ -1,0 +1,12 @@
+<!--[* $Id$ *]-->
+
+<!--[include file="contactlist_user_header.htm"]-->
+<!--[pnvarcleanfrominput name="uid" assign="displayuid" ]-->
+<!--[pnusergetvar uid=$displayuid name="uname" assign="displayuname"]-->
+
+<div id="cl_display" class="cl_box pn-floatbox">
+  <h3><!--[pnml name="_CONTACTLISTMYBUDDIES"]-->&nbsp;<!--[$displayuname]--></h3>
+  <p><!--[pnml name="_CONTACTLISTLISTNOTPUBLIC"]--></p>
+</div>
+
+<!--[include file="contactlist_user_footer.htm"]-->

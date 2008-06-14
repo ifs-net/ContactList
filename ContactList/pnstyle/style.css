@@ -1,0 +1,311 @@
+/**
+* @package      ContactList
+* @version      $Id$
+* @author       Florian Schieﬂl, Carsten Volmer
+* @link         http://www.ifs-net.de, http://www.carsten-volmer.de
+* @copyright    Copyright (C) 2008
+* @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
+*/
+
+/*******************************************************************************/
+/* Navigation
+/*******************************************************************************/
+
+#cl_main ul.navigation {
+  font-weight: bold;
+  list-style: none;
+  margin: 1em 0pt;
+  padding: 0;
+  text-align: center;
+}
+
+#cl_main ul.navigation li {
+  display: inline;
+  font-weight: bold;
+  margin: 0 1em;
+}
+#cl_main .pn-pager {
+  text-align:center;
+}
+/*******************************************************************************/
+/* Buddybox
+/*******************************************************************************/
+
+#cl_main .buddybox {
+  background: #FFFEFA none repeat scroll 0%;
+  border: 1px solid #DBD5C5;
+  margin: 0.5em 0;
+  min-height: 135px;
+  padding: 5px;
+}
+
+#cl_main .buddybox .avatar {
+  background-color: #FFF;
+  border: 1px solid #C2C2C4;
+  float: left;
+  margin: 3px;
+  padding: 3px !important;
+}
+
+#cl_main .buddybox h4 {
+  border-bottom:1px dotted #CCCCCC;
+  margin:0 0 0 150px;
+  padding:0;
+}
+
+#cl_main .buddybox h4 a {
+  color: #000000;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+#cl_main .buddybox ul.cl_userinfo {
+  list-style: none;
+  margin:0.5em 16em 0.5em 150px;
+  padding:0;
+}
+
+#cl_main .buddybox ul.cl_userinfo li {
+  margin: 0pt 0pt 0.5em;
+  padding: 0;
+}
+
+#cl_main .buddybox ul.options {
+  float: right;
+  list-style: none;
+  margin:0.5em 5px;
+  padding:0;
+}
+
+#cl_main .buddybox ul.options li {
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px dotted #CCC;
+}
+
+#cl_main .buddybox p {
+  margin: 0pt 12em 0.5em 150px;
+  padding: 0pt;
+}
+
+em.cl_online {
+  color: red;
+  font-weight: bold;
+  font-size: 0.9em;
+}
+
+/*******************************************************************************/
+/* General
+/*******************************************************************************/
+
+.cl_box {
+  margin: 1.5em 0pt;
+}
+.cl_box dl dt {
+  display: block;
+  float: left;
+  text-align: right;
+  width: 30%;
+  padding: 0 !important;
+  margin: 0.5em !important;
+  line-height: 2em !important;
+}
+.cl_box dl dd {
+  display: block;
+  float: left;
+  text-align: left;
+  width: 65%;
+  margin: 0.5em !important;
+  padding: 0 !important;
+  line-height: 2em !important;
+}
+.cl_footer {
+  font-size: 0.8em;
+  text-align: center;
+  margin-top: 1em;
+}
+
+/*******************************************************************************/
+/* Autocomplete
+/*******************************************************************************/
+
+div.autocomplete_user {
+  position: absolute;
+  width: 25em;
+  background-color: white;
+  border: 1px solid #888;
+  margin: 0;
+  padding: 0;
+}
+
+div.autocomplete_user ul {
+  list-style-image: url("../../../images/icons/extrasmall/edit_user.gif");
+  margin: 0;
+  padding: 0;
+}
+
+div.autocomplete_user ul li.selected {
+  background-color: #ffb;
+}
+
+div.autocomplete_user ul li {
+  margin: 0;
+  padding: 0.1em 0 0.1em 0;
+  line-height: 1.4em;
+  cursor: pointer;
+}
+
+#liveusersearch {
+
+}
+
+/*******************************************************************************/
+/* Styling of links and buttons with images
+/*******************************************************************************/
+/*
+* Note: When use a CSS3 feature to highlight external the following image
+*       normally would not be visisble. The ! important fixes this.
+* a[href^="http:"],
+* a[href^="https:"] {
+*     padding-left: 1.5em;
+*     background: url('images/internet.gif') no-repeat bottom left;
+* }
+*
+/*******************************************************************************/
+
+#cl_main a.image,
+#cl_main button.image,
+#cl_main a.image,
+#cl_main button.image
+{
+  margin: 0;
+  font-size: 1em;
+  padding: 2px 0 2px 19px ! important; /* 16px image + spacer */
+}
+
+#cl_main a.showbuddies {
+  background: url(../pnimages/group_link.png) no-repeat 0 50%
+}
+#cl_main a.createbuddy {
+  background: url(../pnimages/user_add.png) no-repeat 0 50%
+}
+#cl_main a.ignorelist {
+  background: url(../pnimages/group_error.png) no-repeat 0 50%;
+}
+#cl_main a.preferences {
+  background: url(../pnimages/key.png) no-repeat 0 50%;
+}
+#cl_main a.accept {
+  background: url(../pnimages/accept.png) no-repeat 0 50%;
+}
+#cl_main a.cancel {
+  background: url(../pnimages/cancel.png) no-repeat 0 50%;
+}
+#cl_main a.mail {
+  background: url(../pnimages/email.png) no-repeat 0 50%;
+}
+#cl_main a.useredit {
+  background: url(../pnimages/user_edit.png) no-repeat 0 50%;
+}
+#cl_main a.userdelete {
+  background: url(../pnimages/user_delete.png) no-repeat 0 50%;
+}
+#cl_main a.usercancel {
+  background: url(../pnimages/user_go.png) no-repeat 0 50%;
+}
+#cl_main a.userprofile {
+  background: url(../pnimages/status_online.png) no-repeat 0 50%;
+}
+
+/*******************************************************************************/
+/* Blocks
+/*******************************************************************************/
+
+ul.contactlist,
+dl.contactlist {
+  padding:0;
+  margin:0 0 1em 0;
+  list-style: none;
+}
+.contactlist dt {
+  font-weight: normal;
+  margin:3px 0;
+}
+.contactlist .date {
+  background: url(../pnimages/date.png) no-repeat 0 50%;
+  margin: 0;
+  font-size: 1em;
+  padding: 2px 0 2px 25px ! important;
+}
+.contactlist .birthday {
+  background: url(../pnimages/cake.png) no-repeat 0 50%;
+  margin: 0;
+  font-size: 1em;
+  padding: 2px 0 2px 25px ! important;
+}
+.contactlist .pending {
+  background: url(../pnimages/user_comment.png) no-repeat 0 50%;
+  margin: 0;
+  font-size: 1em;
+  padding: 2px 0 2px 25px ! important;
+}
+.contactlist .user {
+  background: url(../pnimages/user.png) no-repeat 0 50%;
+  margin: 0;
+  font-size: 1em;
+  padding: 2px 0 2px 25px ! important;
+}
+.contactlist .edit {
+  background: url(../pnimages/user_edit.png) no-repeat 0 50%;
+  margin: 0;
+  font-size: 1em;
+  padding: 2px 0 2px 25px ! important;
+}
+.contactlist .online {
+  background: url(../pnimages/status_online.png) no-repeat 0 50%;
+  margin: 0 0 0 10px;
+  font-size: 1em;
+  padding: 2px 0 2px 25px ! important;
+}
+.contactlist .offline {
+  background: url(../pnimages/status_offline.png) no-repeat 0 50%;
+  margin: 0 0 0 10px;
+  font-size: 1em;
+  padding: 2px 0 2px 25px ! important;
+}
+
+/*******************************************************************************/
+/* myProfile-Plugin
+/*******************************************************************************/
+
+.contactlist_tab_buddy {
+  border-style: dotted;
+  border-width: 1px;
+  margin: 3px;
+  padding: 10px;
+  float: left;
+  width: 130px;
+  height: 180px;
+  overflow: hidden;
+}
+#cl_myprofile dl.profilebox {
+  border:1px dashed #AAAAAA;
+  float:left;
+  margin:5px 5px 5px 0pt;
+  min-height:180px;
+  padding:5px;
+  text-align:center;
+  width:150px;
+}
+#cl_myprofile dd {
+  margin:0pt;
+  padding:0pt;
+}
+#cl_myprofile dd.cl_online {
+  color:red;
+}
+#cl_myprofile dt {
+  font-weight:bold;
+  margin:1em 0pt 0pt;
+  padding:0pt;
+}

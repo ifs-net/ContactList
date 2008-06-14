@@ -1,0 +1,24 @@
+<!--[* $Id$ *]-->
+
+<!--[include file="contactlist_user_header.htm"]-->
+
+<div id="cl_edit" class="cl_box pn-floatbox">
+  <h3><!--[pnml name="_CONTACTLISTEDITINFO"]--></h3>
+  <!--[pnform]-->
+  <!--[pnformvalidationsummary]-->
+  
+  <dl class="pn-floatbox">
+  <!--[if $nopubliccomment eq 0]-->
+  <dt><!--[pnformlabel for="pub_comment" text="_CONTACTLISTPUBCOMMENT" ]--></dt>
+  <dd><!--[pnformtextinput id="pub_comment" maxLength=160]--></dd>
+  <!--[/if]-->
+
+  <dt><!--[pnformlabel for=prv_comment text="_CONTACTLISTPRVCOMMENT"]--></dt>
+  <dd><!--[pnformtextinput id=prv_comment textMode=multiline]--></dd>
+  
+  </dl>
+  <p><!--[pnformbutton commandName="update" text=_CONTACTLISTUPDATEINFO]--></p>
+  <!--[/pnform]-->
+</div>
+
+<!--[include file="contactlist_user_footer.htm"]-->
