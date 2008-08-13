@@ -313,7 +313,7 @@ function ContactList_userapi_confirm($args) {
     $render->assign('uid', $obj['uid']);
     $body = $render->fetch('contactlist_email_accepted.htm');
     $subject = _CONTACTLISTREQUESTACCEPTED;
-    pnMail(pnUserGetVar('email',$uid), $subject, $body, array('header' => '\nMIME-Version: 1.0\nContent-type: text/plain'), false);
+    pnMail(pnUserGetVar('email',$obj['uid']), $subject, $body, array('header' => '\nMIME-Version: 1.0\nContent-type: text/plain'), false);
     return true;
 }
 
