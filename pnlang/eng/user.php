@@ -11,7 +11,7 @@
 define('_CONTACTLISTTITLE',                             'Contact List');
 
 // foaf plugin for contactlist
-define('_CONTACTLISTCONNECTION',      'Show link to member');
+define('_CONTACTLISTCONNECTION',      'Your connection to this user');
 define('_CONTACTLISTNOLINKFOUND',      'No link to this user found');
 
 // menu
