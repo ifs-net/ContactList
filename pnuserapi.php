@@ -273,7 +273,7 @@ function ContactList_userapi_suspend($args) {
         $render->assign('uid',	$obj['uid']);
         $body = $render->fetch('contactlist_email_suspended.htm');
         $subject = _CONTACTLISTBUDDYSUSPENDEDYOU;
-        pnMail(pnUserGetVar('email',$uid), $subject, $body, array('header' => '\nMIME-Version: 1.0\nContent-type: text/plain'), false);
+        pnMail(pnUserGetVar('email',$obj['bid']), $subject, $body, array('header' => '\nMIME-Version: 1.0\nContent-type: text/plain'), false);
     }
     return true;
 }
