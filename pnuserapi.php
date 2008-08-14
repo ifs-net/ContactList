@@ -245,7 +245,7 @@ function ContactList_userapi_suspend($args) {
         $date_now       = time();
         $date_request   = strtotime($obj['date'].' GMT');
         $date_diff      = $date_now-$date_request;
-        if ($date_diff > (60*60*24*30)) return DBUtil::deleteObjectg($obj,'contactlist_buddylist');
+        if ($date_diff > (60*60*24*30)) return DBUtil::deleteObject($obj,'contactlist_buddylist');
         else {
             return LogUtil::registerError(_CONTACTLISTCANNOTDELETEYET);
         }
