@@ -107,6 +107,11 @@
         <!--[pnml name="_CONTACTLISTSUSPENDED"]-->
         <!--[/if]-->
       </li>
+      <!--[if $buddy.state eq 0]-->
+      <li>
+      <strong><!--[pnml name="_CONTACTLISTREQUESTDATE"]-->:</strong>&nbsp;
+      <!--[$buddy.date|date_format:"$dateformat"]--></li>
+      <!--[/if]-->        
       <!--[if $buddy.birthday]-->
       <li class="birthday"><strong><!--[pnml name="_CONTACTLISTBIRTHDAY"]-->:</strong>&nbsp;<!--[$buddy.birthday|date_format:"$dateformat"]--></li>
       <!--[/if]-->
