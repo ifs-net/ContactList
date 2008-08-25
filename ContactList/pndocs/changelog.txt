@@ -2,7 +2,7 @@ $Id$
 
 svn / next release:
 ===================
-
+- live update check added
 1.0:
 ====
 - initial release
