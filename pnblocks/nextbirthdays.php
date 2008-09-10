@@ -56,6 +56,10 @@ function ContactList_NextBirthdaysblock_display($blockinfo)
     if (empty($vars['dateformat'])) $vars['dateformat'] = '%d.%m.';
     $render = pnRender::getInstance('ContactList', false);
 
+	// activate rendering for this block
+    $render->caching = true;
+    $render->cache_lifetime = 7200;	// cache block for 2 hours.
+
     $uid = pnUserGetVar('uid');
     $buddies = pnModAPIFunc('ContactList','user','getall',
     array(  'uid'       => $uid,
