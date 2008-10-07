@@ -224,7 +224,7 @@ div.autocomplete_user ul li {
 ul.contactlist,
 dl.contactlist {
   padding:0;
-  margin:0 0 1em 0;
+  margin:0 0 1em 0!important;
   list-style: none;
 }
 .contactlist dt {
