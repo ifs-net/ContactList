@@ -31,6 +31,7 @@ define('_CONTACTLISTPREFSUPDATEERROR',     'An error occured while updating your
 define('_CONTACTLISTPREFSUPDATED',      'User preferences updated successfully');
 
 // main
+define('_CONTACTLISTONLINE',		'online');
 define('_CONTACTLISTSORTITEMS',       'Sort list');
 define('_CONTACTLISTRELOAD',       'reload');
 define('_CONTACTLISTSORTUNAME',       'username');
