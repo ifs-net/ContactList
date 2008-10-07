@@ -232,47 +232,48 @@ dl.contactlist {
   margin:3px 0;
 }
 .contactlist .date {
-  background: url(../pnimages/date.png) no-repeat 0 50% !important;
-  margin: 0 !important;
-  font-size: 1em !important;
+  background: url(../pnimages/date.png) no-repeat 0 50%;
+  margin: 0;
+  font-size: 1em;
   padding: 2px 0 2px 25px ! important;
 }
 .contactlist .birthday {
-  background: url(../pnimages/cake.png) no-repeat 0 50% !important;
-  margin: 0 !important;
-  font-size: 1em !important;
+  background: url(../pnimages/cake.png) no-repeat 0 50%;
+  margin: 0;
+  font-size: 1em;
   padding: 2px 0 2px 25px ! important;
 }
 .contactlist .pending {
   background: url(../pnimages/user_comment.png) no-repeat 0 50%;
-  margin: 0 !important;
-  font-size: 1em !important;
+  margin: 0;
+  font-size: 1em;
   padding: 2px 0 2px 25px ! important;
 }
 .contactlist .user {
   background: url(../pnimages/user.png) no-repeat 0 50%;
-  margin: 0 !important;
-  font-size: 1em !important;
+  margin: 0;
+  font-size: 1em;
   padding: 2px 0 2px 25px ! important;
 }
 .contactlist .edit {
-  background: url(../pnimages/user_edit.png) no-repeat 0 50% !important;
-  margin: 0 !important;
-  font-size: 1em !important;
+  background: url(../pnimages/user_edit.png) no-repeat 0 50%;
+  margin: 0;
+  font-size: 1em;
   padding: 2px 0 2px 25px ! important;
 }
 .contactlist .online {
-  background: url(../pnimages/status_online.png) no-repeat 0 50% !important;
-  margin: 0 0 0 10px !important;
-  font-size: 1em !important;
+  background: url(../pnimages/status_online.png) no-repeat 0 50%;
+  margin: 0 0 0 10px;
+  font-size: 1em;
   padding: 2px 0 2px 25px ! important;
 }
 .contactlist .offline {
-  background: url(../pnimages/status_offline.png) no-repeat 0 50% !important;
-  margin: 0 0 0 10px !important;
-  font-size: 1em !important;
+  background: url(../pnimages/status_offline.png) no-repeat 0 50%;
+  margin: 0 0 0 10px;
+  font-size: 1em;
   padding: 2px 0 2px 25px ! important;
 }
+
 
 /*******************************************************************************/
 /* myProfile-Plugin
