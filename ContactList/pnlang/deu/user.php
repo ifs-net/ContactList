@@ -31,6 +31,7 @@ define('_CONTACTLISTPREFSUPDATEERROR',                  'Beim Speichern der Eins
 define('_CONTACTLISTPREFSUPDATED',                      'Einstellungen aktualisiert');
 
 // main
+define('_CONTACTLISTONLINE',							'online');
 define('_CONTACTLISTSORTITEMS',                         'Liste nach');
 define('_CONTACTLISTRELOAD',                            'sortieren');
 define('_CONTACTLISTSORTUNAME',                         'Benutzernamen');
