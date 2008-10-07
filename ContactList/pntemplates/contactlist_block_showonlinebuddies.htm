@@ -2,9 +2,8 @@
 <!--[pnpageaddvar name="stylesheet" value="modules/ContactList/pnstyle/style.css"]-->
 
 <h4><!--[pnml name="_CONTACTLISTMYBUDDIESONLINE"]--></h4>
-<!--[foreach from=$buddies_online item="buddy"]-->
-  <ul class="user"><!--[$buddy.uname|userprofilelink]--></li>
-<!--[foreachelse]-->
+<ul class="cl_onlinebuddies contactlist">
+  <!--[foreach from=$buddies_online item="buddy"]-->
+  <li class="user"><!--[$buddy.uname|userprofilelink]--></li>
   <!--[/foreach]-->
 </ul>
-<br />
