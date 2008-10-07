@@ -218,6 +218,9 @@ function ContactList_userapi_decline($args) {
     $render->assign('uid',	$obj['uid']);
     $body = $render->fetch('contactlist_email_rejected.htm');
     $subject = _CONTACTLISTREQUESTREJECTED;
+    // the counter part - not the one who clicked to accept - should get the email
+    if (pnUserGetVar('uid') == $obj['bid']) $uid = $obj['uid'];
+    else $uid = $obj['bid'];
     pnMail(pnUserGetVar('email',$uid), $subject, $body, array('header' => '\nMIME-Version: 1.0\nContent-type: text/plain'), false);
     return true;
 }
@@ -273,7 +276,9 @@ function ContactList_userapi_suspend($args) {
         $render->assign('uid',	$obj['uid']);
         $body = $render->fetch('contactlist_email_suspended.htm');
         $subject = _CONTACTLISTBUDDYSUSPENDEDYOU;
-        pnMail(pnUserGetVar('email',$obj['bid']), $subject, $body, array('header' => '\nMIME-Version: 1.0\nContent-type: text/plain'), false);
+        if (pnUserGetVar('uid') == $obj['bid']) $uid = $obj['uid'];
+        else $uid = $obj['bid'];
+        pnMail(pnUserGetVar('email',$uid), $subject, $body, array('header' => '\nMIME-Version: 1.0\nContent-type: text/plain'), false);
     }
     return true;
 }
@@ -313,7 +318,10 @@ function ContactList_userapi_confirm($args) {
     $render->assign('uid', $obj['uid']);
     $body = $render->fetch('contactlist_email_accepted.htm');
     $subject = _CONTACTLISTREQUESTACCEPTED;
-    pnMail(pnUserGetVar('email',$obj['uid']), $subject, $body, array('header' => '\nMIME-Version: 1.0\nContent-type: text/plain'), false);
+    // the counter part - not the one who clicked to accept - should get the email
+    if (pnUserGetVar('uid') == $obj['bid']) $uid = $obj['uid'];
+    else $uid = $obj['bid'];
+    pnMail(pnUserGetVar('email',$uid), $subject, $body, array('header' => '\nMIME-Version: 1.0\nContent-type: text/plain'), false);
     return true;
 }
 
