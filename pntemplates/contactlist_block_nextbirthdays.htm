@@ -6,7 +6,7 @@
 <dt><!--[$buddy.uname|userprofilelink]--><span class="<!--[if $buddy.online eq true]-->online<!--[else]-->offline<!--[/if]-->">&nbsp;</span></dt>
   <!--[if $buddy.daystonextbirthday eq 0]-->
   <dd class="birthday">
-  <!--[$buddy.birthday|date_format:"$dateformat"]-->&nbsp;(<!--[pnml name="_CONTACTLISTTODAY"]-->)
+  <!--[$buddy.birthday|date_format:"$dateformat"]-->&nbsp;(<strong><!--[pnml name="_CONTACTLISTTODAY"]--></strong>)
   </dd>
 <!--[elseif $buddy.daystonextbirthday eq 1]-->
   <dd class="date">
