@@ -70,7 +70,7 @@ function ContactList_NextBirthdaysblock_display($blockinfo)
     $res = array();    
     if (!(count($buddies)>0)) return false;
     foreach ($buddies as $buddy) {
-        if ($buddy['daystonextbirthday'] >= 0) {
+        if (($buddy['daystonextbirthday'] >= 0) && ($buddy['daystonextbirthday'] < 60)){
             $res[] = $buddy;
             $c++;
         }
