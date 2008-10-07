@@ -63,7 +63,7 @@ function ContactList_ShowOnlineBuddiesblock_display($blockinfo)
             'sort'      => 'uname'));
     $c=0;
     $buddies_online = array();
-    if (!(count($buddies)>0)) return false;	// if there are no buddies return no content
+    if (!(count($buddies_online)>0)) return false;	// if there are no buddies return no content
     else {
         foreach ($buddies as $buddy) {
             if ($buddy['online'] == true) {
