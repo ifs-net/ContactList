@@ -26,7 +26,7 @@ function ContactList_NextBirthdaysblock_info()
 {
     return array('module'         => 'ContactList',
                  'text_type'      => 'NextBirthdays',
-                 'text_type_long' => 'Show the next birthdays of a user\'s buddy list',
+                 'text_type_long' => 'Show next birthdays of next 60 days of buddy list',
                  'allow_multiple' => true,
                  'form_content'   => false,
                  'form_refresh'   => false,
