@@ -1,10 +1,10 @@
 <!--[* $Id$ *]-->
 <!--[pnpageaddvar name="stylesheet" value="modules/ContactList/pnstyle/style.css"]-->
 
-<ul class="cl_onlinebuddies contactlist">
+<h4><!--[pnml name="_CONTACTLISTMYBUDDIESONLINE"]--></h4>
 <!--[foreach from=$buddies_online item="buddy"]-->
-  <li class="user"><!--[$buddy.uname|userprofilelink]--></li>
+  <ul class="user"><!--[$buddy.uname|userprofilelink]--></li>
 <!--[foreachelse]-->
-  <li><!--[pnml name="_CONTACTLISTNOBUDDYONLINE"]--></li>
   <!--[/foreach]-->
 </ul>
+<br />
