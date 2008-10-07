@@ -58,6 +58,7 @@ function ContactList_NextBirthdaysblock_display($blockinfo)
 
 	// activate rendering for this block
     $render->caching = true;
+    $render->cache_id= pnUserGetVar('uid');
     $render->cache_lifetime = 7200;	// cache block for 2 hours.
 
     $uid = pnUserGetVar('uid');
