@@ -31,7 +31,7 @@ define('_CONTACTLISTPREFSUPDATEERROR',                  'Beim Speichern der Eins
 define('_CONTACTLISTPREFSUPDATED',                      'Einstellungen aktualisiert');
 
 // main
-define('_CONTACTLISTONLINE',							'online');
+define('_CONTACTLISTONLINE',                            'online');
 define('_CONTACTLISTSORTITEMS',                         'Liste nach');
 define('_CONTACTLISTRELOAD',                            'sortieren');
 define('_CONTACTLISTSORTUNAME',                         'Benutzernamen');
@@ -147,3 +147,10 @@ define('_CONTACTLISTTHEUSERHAS',                        'Der Benutzer hat');
 define('_CONTACTLISTBUDDIES',                           'Kontakte');
 define('_CONTACTLISTLISTNOTPUBLIC',                     'Die Liste des Benutzers ist für dich nicht sichtbar');
 
+// Login
+define('_CONTACTLISTLOGIN',                             'Anmeldung');
+define('_CONTACTLISTLOGINFAILED',                       'Login ist fehlgeschlagen!');
+define('_CONTACTLISTLOGINNEEDED',                       'Für den Aufruf dieser Seite ist eine Anmeldung notwendig.');
+define('_CONTACTLISTNICKNAME',                          'Benutzername');
+define('_CONTACTLISTPASSWORD',                          'Passwort');
+define('_CONTACTLISTREMEMBERME',                        'Login speichern');
