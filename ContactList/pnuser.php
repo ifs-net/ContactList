@@ -17,8 +17,15 @@ Loader::requireOnce('modules/ContactList/includes/user_handlers.php');
  */
 function ContactList_user_main()
 {
+    // This is a user only module - redirect everyone else
+    // Check this before Security check - maybe after login user has enough rights
+    if (!pnUserLoggedIn()) {
+      return pnRedirect(pnModURL('ContactList', 'user', 'loginscreen', array('page' => 'main')));
+    }
     // Security check
-    if (!SecurityUtil::checkPermission('ContactList::', '::', ACCESS_COMMENT)) return LogUtil::registerPermissionError();
+    if (!SecurityUtil::checkPermission('ContactList::', '::', ACCESS_COMMENT)) {
+      return LogUtil::registerPermissionError(pnConfigGetVar('entrypoint', 'index.php'));
+    }
 
     // check for action
     $action = FormUtil::getPassedValue('action', '');
@@ -134,8 +141,15 @@ function ContactList_user_main()
  */
 function ContactList_user_preferences()
 {
+    // This is a user only module - redirect everyone else
+    // Check this before Security check - maybe after login user has enough rights
+    if (!pnUserLoggedIn()) {
+      return pnRedirect(pnModURL('ContactList', 'user', 'loginscreen', array('page' => 'preferences')));
+    }
     // Security check
-    if (!SecurityUtil::checkPermission('ContactList::', '::', ACCESS_COMMENT)) return LogUtil::registerPermissionError();
+    if (!SecurityUtil::checkPermission('ContactList::', '::', ACCESS_COMMENT)) {
+      return LogUtil::registerPermissionError(pnConfigGetVar('entrypoint', 'index.php'));
+    }
 
     // Create output
     $render = FormUtil :: newpnForm('ContactList');
@@ -154,14 +168,21 @@ function ContactList_user_preferences()
  */
 function ContactList_user_display()
 {
-
     // check if buddy list is public
     if (pnModGetVar('ContactList','nopublicbuddylist')) return LogUtil::registerPermissionError();
+
+    // This is a user only module - redirect everyone else
+    // Check this before Security check - maybe after login user has enough rights
+    if (!pnUserLoggedIn()) {
+      return pnRedirect(pnModURL('ContactList', 'user', 'loginscreen', array('page' => 'display')));
+    }
+    // Security check
+    if (!SecurityUtil::checkPermission('ContactList::', '::', ACCESS_READ)) {
+      return LogUtil::registerPermissionError(pnConfigGetVar('entrypoint', 'index.php'));
+    }
+
     $viewer_uid = (int) FormUtil::getPassedValue('uid');
     if (!$viewer_uid) return LogUtil::registerError(_GETFAILED);
-
-    // Security Check
-    if (!SecurityUtil::checkPermission('ContactList::', '::', ACCESS_READ)) return LogUtil::registerPermissionError();
 
     $display = false;
     $current_uid = (int) pnUserGetVar('uid');
@@ -222,8 +243,15 @@ function ContactList_user_display()
  */
 function ContactList_user_edit()
 {
+    // This is a user only module - redirect everyone else
+    // Check this before Security check - maybe after login user has enough rights
+    if (!pnUserLoggedIn()) {
+      return pnRedirect(pnModURL('ContactList', 'user', 'loginscreen', array('page' => 'edit')));
+    }
     // Security check
-    if (!SecurityUtil::checkPermission('ContactList::', '::', ACCESS_COMMENT)) return LogUtil::registerPermissionError();
+    if (!SecurityUtil::checkPermission('ContactList::', '::', ACCESS_COMMENT)) {
+      return LogUtil::registerPermissionError(pnConfigGetVar('entrypoint', 'index.php'));
+    }
 
     // Create output
     $render = FormUtil :: newpnForm('ContactList');
@@ -243,8 +271,15 @@ function ContactList_user_edit()
  */
 function ContactList_user_ignore()
 {
+    // This is a user only module - redirect everyone else
+    // Check this before Security check - maybe after login user has enough rights
+    if (!pnUserLoggedIn()) {
+      return pnRedirect(pnModURL('ContactList', 'user', 'loginscreen', array('page' => 'ignore')));
+    }
     // Security check
-    if (!SecurityUtil::checkPermission('ContactList::', '::', ACCESS_COMMENT)) return LogUtil::registerPermissionError();
+    if (!SecurityUtil::checkPermission('ContactList::', '::', ACCESS_COMMENT)) {
+      return LogUtil::registerPermissionError(pnConfigGetVar('entrypoint', 'index.php'));
+    }
 
     // Create output
     $render = FormUtil :: newpnForm('ContactList');
@@ -272,8 +307,15 @@ function ContactList_user_ignore()
  */
 function ContactList_user_create()
 {
+    // This is a user only module - redirect everyone else
+    // Check this before Security check - maybe after login user has enough rights
+    if (!pnUserLoggedIn()) {
+      return pnRedirect(pnModURL('ContactList', 'user', 'loginscreen', array('page' => 'create')));
+    }
     // Security check
-    if (!SecurityUtil::checkPermission('ContactList::', '::', ACCESS_COMMENT)) return LogUtil::registerPermissionError();
+    if (!SecurityUtil::checkPermission('ContactList::', '::', ACCESS_COMMENT)) {
+      return LogUtil::registerPermissionError(pnConfigGetVar('entrypoint', 'index.php'));
+    }
 
     // Create output
     $render = FormUtil :: newpnForm('ContactList');
@@ -282,4 +324,43 @@ function ContactList_user_create()
 
     // return output
     return $render->pnFormExecute('contactlist_user_create.htm', new contactlist_user_createHandler());
+}
+
+/**
+* loginscreen
+* show a login screen to the user and redirect to the previouse page after login by supplying a url
+*
+* @params $args['page'] string  the page to redirect to after a successful login
+* @returns html
+*/
+
+function ContactList_user_loginscreen($args)
+{
+  $page = (isset($args['page']) && !empty($args['page'])) ? $args['page'] : 'main';
+
+  $pnRender = pnRender::getInstance('ContactList', false);
+  $pnRender->assign('url', pnModURL('ContactList', 'user', $page));
+  return $pnRender->fetch('contactlist_user_login.htm');
+}
+
+/**
+* Login for the user with redirect
+*
+* @returns html
+*/
+function ContactList_user_login()
+{
+  $uname      = FormUtil::getPassedValue('uname', '', 'POST');
+  $pass       = FormUtil::getPassedValue('pass', '', 'POST');
+  $url        = FormUtil::getPassedValue('url', pnModURL('ContactList', 'user', 'main'), 'POST');
+  $rememberme = FormUtil::getPassedValue('rememberme', '', 'POST');
+
+  // Do the login
+  if (pnUserLogIn($uname, $pass, $rememberme)) {
+    return pnRedirect($url);
+  } else {
+    LogUtil::registerError(_CONTACTLISTLOGINFAILED);
+    $pnRender = pnRender::getInstance('ContactList');
+    return $pnRender->fetch('contactlist_user_login.htm');
+  }
 }
