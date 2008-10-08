@@ -55,7 +55,6 @@ function ContactList_ShowOnlineBuddiesblock_display($blockinfo)
 	// activate caching manually for 30 seconds
     $pnRender->caching = true;
     $pnRender->cache_lifetime = 30;
-
     $uid = pnUserGetVar('uid');
     $buddies = pnModAPIFunc('ContactList','user','getall',
     array(  'uid'       => $uid,
@@ -63,7 +62,7 @@ function ContactList_ShowOnlineBuddiesblock_display($blockinfo)
             'sort'      => 'uname'));
     $c=0;
     $buddies_online = array();
-    if (!(count($buddies_online)>0)) return false;	// if there are no buddies return no content
+    if (!(count($buddies)>0)) return false;	// if there are no buddies return no content
     else {
         foreach ($buddies as $buddy) {
             if ($buddy['online'] == true) {
@@ -71,10 +70,13 @@ function ContactList_ShowOnlineBuddiesblock_display($blockinfo)
                 $c++;
             }
         }
-        $render->assign('buddies_online', $buddies_online);
-        $render->assign('buddies_online_counter', $c);
-        $blockinfo['content'] = $render->fetch('contactlist_block_showonlinebuddies.htm');
-        return themesideblock($blockinfo);
+	    if (!(count($buddies_online)>0)) return false;	// if there are no buddies return no content
+	    else {
+	        $render->assign('buddies_online', $buddies_online);
+	        $render->assign('buddies_online_counter', $c);
+	        $blockinfo['content'] = $render->fetch('contactlist_block_showonlinebuddies.htm');
+	        return themesideblock($blockinfo);
+	    }
     }
 }
 
