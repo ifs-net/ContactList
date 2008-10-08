@@ -1,12 +1,12 @@
 <!--[* $Id$ *]-->
-
-<!--[include file="contactlist_user_header.htm"]-->
+<!--[pnml name="_CONTACTLISTSHOWBUDDIES" assign=title]-->
+<!--[include file="contactlist_user_header.htm" title=$title]-->
 <!--[pnmodavailable modname="pnMessages" assign="pnMessages"]-->
 <!--[pnvarcleanfrominput name="state" assign="state" ]-->
 <!--[if $state ne '']--><!--[assign var="filterstate" value="&amp;state=`$state`"]--><!--[else]--><!--[assign var="filterstate" value=""]--><!--[/if]-->
 
 <!--[if $buddies_unconfirmed gt 0]-->
-<div id="cl_pending" class="cl_box pn-floatbox">
+<div id="cl_pending" class="cl_box pn-clearfix">
   <h3><!--[pnml name="_CONTACTLISTTOCONFIRM"]--></h3>
   <!--[foreach from=$buddies_unconfirmed item="buddy"]-->
   <!--[pnusergetvar uid=$buddy.uid name="_YOURAVATAR" assign="avatar"]-->
@@ -44,7 +44,7 @@
 </ul>
 
 
-<div id="cl_contacts" class="cl_box pn-floatbox">
+<div id="cl_contacts" class="cl_box pn-clearfix">
 
   <!--[if $state eq ""]-->
   <h3><!--[pnml name="_CONTACTLISTYOURBUDDIES"]--></h3>
@@ -66,12 +66,12 @@
   <!--[if $contacts_all gt 0]-->
 
   <!--[pnform]-->
-    <!--[pnformvalidationsummary]-->
-    <fieldset>
+  <!--[pnformvalidationsummary]-->
+  <fieldset>
     <!--[pnformlabel for="sort" text="_CONTACTLISTSORTITEMS"]-->
     <!--[pnformdropdownlist id="sort" items=$items_sortlist]-->
     <!--[pnformbutton commandName="update" text=_CONTACTLISTRELOAD]-->
-    </fieldset>
+  </fieldset>
   <!--[/pnform]-->
 
   <!--[foreach from=$buddies item="buddy"]-->
@@ -109,9 +109,9 @@
       </li>
       <!--[if $buddy.state eq 0]-->
       <li>
-      <strong><!--[pnml name="_CONTACTLISTREQUESTDATE"]-->:</strong>&nbsp;
+        <strong><!--[pnml name="_CONTACTLISTREQUESTDATE"]-->:</strong>&nbsp;
       <!--[$buddy.date|date_format:"$dateformat"]--></li>
-      <!--[/if]-->        
+      <!--[/if]-->
       <!--[if $buddy.birthday]-->
       <li class="birthday"><strong><!--[pnml name="_CONTACTLISTBIRTHDAY"]-->:</strong>&nbsp;<!--[$buddy.birthday|date_format:"$dateformat"]--></li>
       <!--[/if]-->

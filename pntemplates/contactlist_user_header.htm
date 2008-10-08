@@ -1,27 +1,19 @@
 <!--[* $Id$ *]-->
-
 <!--[pnmodgetvar module="ContactList" name="useignore" assign="ignore"]-->
 <!--[pnmodgetvar module="ContactList" name="nopublicbuddylist" assign="nopublicbuddylist"]-->
+<!--[pnpagesetvar name=title value=$title]-->
 
 <div id="cl_main">
-<h2><!--[pnml name="_CONTACTLISTTITLE"]--></h2>
-<ul class="navigation">
-  <li>
-  <a class="image showbuddies" href="<!--[pnmodurl modname="ContactList" type="user" func="main"]-->"><!--[pnml name="_CONTACTLISTSHOWBUDDIES"]--></a>
-  </li>
-  <li>
-  <a class="image createbuddy" href="<!--[pnmodurl modname="ContactList" type="user" func="create"]-->"><!--[pnml name="_CONTACTLISTCREATEBUDDY"]--></a>
-  </li>
-<!--[if $ignore eq 1]-->  
-  <li>
-  <a class="image ignorelist" href="<!--[pnmodurl modname="ContactList" type="user" func="ignore"]-->"><!--[pnml name="_CONTACTLISTSHOWIGNORELIST"]--></a>
-  </li>
-<!--[/if]-->  
-<!--[if $nopublicbuddylist neq 1]-->  
-  <li>
-  <a class="image preferences" href="<!--[pnmodurl modname="ContactList" type="user" func="preferences"]-->"><!--[pnml name="_CONTACTLISTUSERPREFERENCES"]--></a>
-  </li>
-<!--[/if]-->  
-</ul>
+  <h2><!--[pnml name="_CONTACTLISTTITLE"]--></h2>
+  <ul class="navigation">
+    <li><a class="image showbuddies" href="<!--[pnmodurl modname="ContactList" type="user" func="main"]-->"><!--[pnml name="_CONTACTLISTSHOWBUDDIES"]--></a></li>
+    <li><a class="image createbuddy" href="<!--[pnmodurl modname="ContactList" type="user" func="create"]-->"><!--[pnml name="_CONTACTLISTCREATEBUDDY"]--></a></li>
+    <!--[if $ignore eq 1]-->
+    <li><a class="image ignorelist" href="<!--[pnmodurl modname="ContactList" type="user" func="ignore"]-->"><!--[pnml name="_CONTACTLISTSHOWIGNORELIST"]--></a></li>
+    <!--[/if]-->
+    <!--[if $nopublicbuddylist neq 1]-->
+    <li><a class="image preferences" href="<!--[pnmodurl modname="ContactList" type="user" func="preferences"]-->"><!--[pnml name="_CONTACTLISTUSERPREFERENCES"]--></a></li>
+    <!--[/if]-->
+  </ul>
 
-<!--[insert name="getstatusmsg"]-->
+  <!--[insert name="getstatusmsg"]-->

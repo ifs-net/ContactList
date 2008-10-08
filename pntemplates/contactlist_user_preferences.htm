@@ -1,18 +1,22 @@
 <!--[* $Id$ *]-->
+<!--[pnml name="_CONTACTLISTUSERPREFERENCES" assign=title]-->
+<!--[include file="contactlist_user_header.htm" title=$title]-->
 
-<!--[include file="contactlist_user_header.htm"]-->
-<div id="cl_prefs" class="cl_box pn-floatbox">
-  <h3><!--[pnml name="_CONTACTLISTUSERPREFS"]--></h3>
-  <!--[pnform]-->
+<div id="cl_prefs" class="cl_box pn-clearfix">
+  <!--[pnform cssClass="pn-form"]-->
   <!--[pnformvalidationsummary]-->
-  
-  <dl class="pn-floatbox">
+  <fieldset class="pn-form-fieldset">
+    <legend><!--[pnml name="_CONTACTLISTUSERPREFS"]--></legend>
+    <dl class="pn-clearfix">
+      <dt><!--[pnformlabel for=publicstate text="_CONTACTLISTMYPUBLICSTATE"]--></dt>
+      <dd><!--[pnformdropdownlist id="publicstate" items=$items_publicstate]--></dd>
+    </dl>
+  </fieldset>
 
-  <dt><!--[pnformlabel for=publicstate text="_CONTACTLISTMYPUBLICSTATE"]--></dt>
-  <dd><!--[pnformdropdownlist id="publicstate" items=$items_publicstate]--></dd>
-  
-  </dl>
-  <p><!--[pnformbutton commandName="update" text=_CONTACTLISTUPDATEPREFS]--></p>
+  <div class="pn-formrow pn-formbuttons">
+    <!--[pnformbutton commandName="update" text=_CONTACTLISTUPDATEPREFS]-->
+  </div>
+
   <!--[/pnform]-->
 </div>
 

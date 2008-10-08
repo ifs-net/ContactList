@@ -1,43 +1,46 @@
 <!--[* $Id$ *]-->
-
-<!--[include file="contactlist_user_header.htm"]-->
+<!--[pnml name="_CONTACTLISTSHOWIGNORELIST" assign=title]-->
+<!--[include file="contactlist_user_header.htm" title=$title]-->
 <!--[pnajaxheader modname="Users"]-->
 
-<div id="cl_ignoresearch" class="cl_box pn-floatbox">
-  <h3><!--[pnml name="_CONTACTLISTIGNORELISTMANAGEMENT"]--></h3>
+<div id="cl_ignoresearch" class="cl_box pn-clearfix">
   <div class="pn-informationmsg"><!--[pnml name="_CONTACTLISTIGNOREEXPLAIN"]--></div>
-  <!--[pnform]-->
+  <!--[pnform cssClass="pn-form"]-->
   <!--[pnformvalidationsummary]-->
-  
-  <dl class="pn-floatbox">
-  <dt><!--[pnformlabel for="uname" text=_CONTACTLISTUNAME]--></dt>
-  <dd>
-  <div id="liveusersearch" class="pn-hide">
-  <!--[pnformtextinput mandatory="true" id="uname" maxLength="30"]-->
-    <!--[ pnimg id="ajax_indicator" style="display: none;" modname=core set=icons/extrasmall src="indicator_circle.gif" alt="" ]-->
-    <div id="username_choices" class="autocomplete_user"></div>
-    <script type="text/javascript">
-        Element.removeClassName('liveusersearch', 'pn-hide');
-        new Ajax.Autocompleter("uname", "username_choices", "ajax.php?module=Users&func=getusers",
-                               {paramName: 'fragment',
-                                minChars: 3
-                                }
-                                );
-    </script>
+  <fieldset class="pn-form-fieldset">
+    <legend><!--[pnml name="_CONTACTLISTIGNORELISTMANAGEMENT"]--></legend>
+    <dl class="pn-clearfix">
+      <dt><!--[pnformlabel for="uname" text=_CONTACTLISTUNAME]--></dt>
+      <dd>
+        <div id="liveusersearch" class="pn-hide">
+          <!--[pnformtextinput mandatory="true" id="uname" maxLength="30"]-->
+          <!--[ pnimg id="ajax_indicator" style="display: none;" modname=core set=icons/extrasmall src="indicator_circle.gif" alt="" ]-->
+          <div id="username_choices" class="autocomplete_user"></div>
+          <script type="text/javascript">
+            Element.removeClassName('liveusersearch', 'pn-hide');
+            new Ajax.Autocompleter("uname", "username_choices", "ajax.php?module=Users&func=getusers",
+            {paramName: 'fragment',
+              minChars: 3
+            }
+            );
+          </script>
+        </div>
+      </dd>
+    </dl>
+  </fieldset>
+  <div class="pn-formrow pn-formbuttons">
+    <!--[pnformbutton commandName="update" text="_CONTACTLISTADDUSER"]-->
   </div>
-  </dd>
-  </dl>
-  <!--[pnformbutton commandName="update" text="_CONTACTLISTADDUSER"]-->
   <!--[/pnform]-->
 </div>
 
-<div id="cl_ignorelist" class="cl_box pn-floatbox">
+<div id="cl_ignorelist" class="cl_box pn-clearfix">
   <h3><!--[pnml name="_CONTACTLISTIGNORELIST"]--></h3>
   <ul>
     <!--[foreach from=$ignorelist item="item"]-->
-      <li><!--[$item.iuname|userprofilelink]--> (<a href="<!--[pnmodurl modname="ContactList" type="user" func="ignore" action="delete" iuid=$item.iuid authid=$authid]-->"><!--[pnml name="_CONTACTLISTREMOVEIGNOREDUSER"]--></a>)</li>
-      <!--[foreachelse]-->
-      <li><!--[pnml name="_CONTACTLISTNOIGNOREDUSERS"]--></li>
+    <li><!--[$item.iuname|userprofilelink]--> (<a href="<!--[pnmodurl modname="ContactList" type="user" func="ignore" action="delete" iuid=$item.iuid authid=$authid]-->"><!--[pnml name="_CONTACTLISTREMOVEIGNOREDUSER"]--></a>)</li>
+    <!--[foreachelse]-->
+    <li><!--[pnml name="_CONTACTLISTNOIGNOREDUSERS"]--></li>
     <!--[/foreach]-->
   </ul>
 </div>

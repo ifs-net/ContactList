@@ -1,49 +1,53 @@
 <!--[* $Id$ *]-->
-
-<!--[include file="contactlist_user_header.htm"]-->
+<!--[pnml name="_CONTACTLISTCREATEBUDDY" assign=title]-->
+<!--[include file="contactlist_user_header.htm" title=$title]-->
 <!--[pnajaxheader modname="Users"]-->
 
-<div id="cl_create" class="cl_box pn-floatbox">
-  <h3><!--[pnml name="_CONTACTLISTADDBUDDY"]--></h3>
-  <!--[pnform]-->
+<div id="cl_create" class="cl_box pn-clearfix">
+  <!--[pnform cssClass="pn-form"]-->
   <!--[pnformvalidationsummary]-->
-  
-  <dl class="pn-floatbox">
-    <dt><!--[pnformlabel for="uname" text=_CONTACTLISTUNAME]--></dt>
-    <dd>
-    <div id="liveusersearch" class="pn-hide">
-    <!--[pnformtextinput mandatory="true" id="uname" maxLength="30"]-->
-      <!--[ pnimg id="ajax_indicator" style="display: none;" modname=core set=icons/extrasmall src="indicator_circle.gif" alt="" ]-->
-      <div id="username_choices" class="autocomplete_user"></div>
-      <script type="text/javascript">
-          Element.removeClassName('liveusersearch', 'pn-hide');
-          new Ajax.Autocompleter("uname", "username_choices", "ajax.php?module=Users&func=getusers",
-                                 {paramName: 'fragment',
-                                  minChars: 3
-                                  }
-                                  );
-      </script>
-    </div>      
-    </dd>
-    
-    <!--[if $nopubliccomment ne 1]-->    
-    <dt><!--[pnformlabel for="pub_comment" text="_CONTACTLISTPUBCOMMENT" ]--></dt>
-    <dd><!--[pnformtextinput id="pub_comment" maxLength=160]--></dd>
-    <!--[/if]-->
-  
-    <dt><!--[pnformlabel for=prv_comment text="_CONTACTLISTPRVCOMMENT"]--></dt>
-    <dd><!--[pnformtextinput id=prv_comment textMode=multiline]--></dd>
-  </dl>
-  
-  <!--[if $noconfirm eq 0]-->
-    <div class="pn-informationmsg"><!--[pnml name="_CONTACTLISTCONFIRMREQU"]--></div>
-    <dl class="pn-floatbox">  
-        <dt><!--[pnformlabel for="request_text" text=_CONTACTLISTREQUESTTEXT]--></dt>
-        <dd><!--[pnformtextinput id=request_text textMode=multiline]--></dd>
+  <fieldset class="pn-form-fieldset">
+    <legend><!--[pnml name="_CONTACTLISTADDBUDDY"]--></legend>
+    <dl class="pn-clearfix">
+      <dt><!--[pnformlabel for="uname" text=_CONTACTLISTUNAME]--></dt>
+      <dd>
+        <div id="liveusersearch" class="pn-hide">
+          <!--[pnformtextinput mandatory="true" id="uname" maxLength="30"]-->
+          <!--[ pnimg id="ajax_indicator" style="display: none;" modname=core set=icons/extrasmall src="indicator_circle.gif" alt="" ]-->
+          <div id="username_choices" class="autocomplete_user"></div>
+          <script type="text/javascript">
+            Element.removeClassName('liveusersearch', 'pn-hide');
+            new Ajax.Autocompleter("uname", "username_choices", "ajax.php?module=Users&func=getusers",
+            {paramName: 'fragment',
+              minChars: 3
+            }
+            );
+          </script>
+        </div>
+      </dd>
+
+      <!--[if $nopubliccomment ne 1]-->
+      <dt><!--[pnformlabel for="pub_comment" text="_CONTACTLISTPUBCOMMENT" ]--></dt>
+      <dd><!--[pnformtextinput id="pub_comment" maxLength=160]--></dd>
+      <!--[/if]-->
+
+      <dt><!--[pnformlabel for=prv_comment text="_CONTACTLISTPRVCOMMENT"]--></dt>
+      <dd><!--[pnformtextinput id=prv_comment textMode=multiline]--></dd>
     </dl>
-  <!--[/if]-->
-  
-  <p><!--[pnformbutton commandName="create" text=_CONTACTLISTADD]--></p>
+
+    <!--[if $noconfirm eq 0]-->
+    <div class="pn-informationmsg"><!--[pnml name="_CONTACTLISTCONFIRMREQU"]--></div>
+    <dl class="pn-clearfix">
+      <dt><!--[pnformlabel for="request_text" text=_CONTACTLISTREQUESTTEXT]--></dt>
+      <dd><!--[pnformtextinput id=request_text textMode=multiline]--></dd>
+    </dl>
+    <!--[/if]-->
+  </fieldset>
+
+  <div class="pn-formrow pn-formbuttons">
+    <!--[pnformbutton commandName="create" text=_CONTACTLISTADD]-->
+  </div>
+
   <!--[/pnform]-->
 </div>
 
