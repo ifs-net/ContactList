@@ -1,23 +1,29 @@
 <!--[* $Id$ *]-->
+<!--[pnml name="_CONTACTLISTEDITINFO" assign=title]-->
+<!--[include file="contactlist_user_header.htm" title=$title]-->
 
-<!--[include file="contactlist_user_header.htm"]-->
-
-<div id="cl_edit" class="cl_box pn-floatbox">
-  <h3><!--[pnml name="_CONTACTLISTEDITINFO"]--></h3>
-  <!--[pnform]-->
+<div id="cl_edit" class="cl_box pn-clearfix">
+  <!--[pnform cssClass="pn-form"]-->
   <!--[pnformvalidationsummary]-->
-  
-  <dl class="pn-floatbox">
-  <!--[if $nopubliccomment eq 0]-->
-  <dt><!--[pnformlabel for="pub_comment" text="_CONTACTLISTPUBCOMMENT" ]--></dt>
-  <dd><!--[pnformtextinput id="pub_comment" maxLength=160]--></dd>
-  <!--[/if]-->
+  <fieldset class="pn-form-fieldset">
+    <legend><!--[$title]--></legend>
 
-  <dt><!--[pnformlabel for=prv_comment text="_CONTACTLISTPRVCOMMENT"]--></dt>
-  <dd><!--[pnformtextinput id=prv_comment textMode=multiline]--></dd>
-  
-  </dl>
-  <p><!--[pnformbutton commandName="update" text=_CONTACTLISTUPDATEINFO]--></p>
+    <dl class="pn-clearfix">
+      <!--[if $nopubliccomment eq 0]-->
+      <dt><!--[pnformlabel for="pub_comment" text="_CONTACTLISTPUBCOMMENT" ]--></dt>
+      <dd><!--[pnformtextinput id="pub_comment" maxLength=160]--></dd>
+      <!--[/if]-->
+
+      <dt><!--[pnformlabel for=prv_comment text="_CONTACTLISTPRVCOMMENT"]--></dt>
+      <dd><!--[pnformtextinput id=prv_comment textMode=multiline]--></dd>
+
+    </dl>
+  </fieldset>
+
+  <div class="pn-formrow pn-formbuttons">
+    <!--[pnformbutton commandName="update" text=_CONTACTLISTUPDATEINFO]-->
+  </div>
+
   <!--[/pnform]-->
 </div>
 
