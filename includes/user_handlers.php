@@ -56,7 +56,8 @@ class contactlist_user_ignoreHandler {
             if (!($iuid > 1)) {
                 return LogUtil::registerError(_CONTACTLISTUSERNOTFOUND);
             }
-            // ToDo: check if user is already ignored
+            // is the user a buddy?
+            if (pnModAPIFunc('ContactList','user','isBuddy',array('uid1'=>$iuid, 'uid2'=>$uid))) return LogUtil::registerError(_CONTACTLISTBUDDYNOTIGNORABLE);
 
             // ignore the user from now on...
             if (pnModAPIFunc('ContactList','user','ignoreUser',array('uid' => $uid, 'iuid' => $iuid))) LogUtil::registerStatus(_CONTACTLISTIGNOREDUSERADDED);
@@ -167,6 +168,8 @@ class contactlist_user_createHandler {
             }
             // is the potential buddy ignoring me?
             if (pnModAPIFunc('ContactList','user','isIgnored',array('uid' => $bid, 'iuid' => $uid))) return LogUtil::registerError(_CONTACTLISTUSERIGNORESYOU);
+            // or is the new buddy ignored by myself?
+            if (pnModAPIFunc('ContactList','user','isIgnored',array('iuid' => $bid, 'uid' => $uid))) return LogUtil::registerError(_CONTACTLISTIGNORELISTENTRY);
             // already my buddy?
             $buddies = pnModAPIFunc('ContactList','user','getall',array('bid' => $bid, 'uid' => $uid));
             if (count($buddies)>0) {

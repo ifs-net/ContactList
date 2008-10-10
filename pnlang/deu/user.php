@@ -92,6 +92,7 @@ define('_CONTACTLISTOF',                                'von');
 define('_CONTACTLISTSHOWPROFILE',                       'Profil anzeigen');
 
 // ignore
+define('_CONTACTLISTBUDDYNOTIGNORABLE',					'Einen besättigten Kontakt auf die Ignorierliste setzen? Das passt doch nicht zusammen!');
 define('_CONTACTLISTIGNORELISTMANAGEMENT',              'Ignorierte Kontakte verwalten');
 define('_CONTACTLISTIGNOREEXPLAIN',                     'Hier können Benutzer auf eine Ignorierliste gesetzt werden. Das heisst, dass Du von diesen dann keine E-Mails etc. mehr empfangen wirst.');
 define('_CONTACTLISTADDUSER',                           'Benutzer hinzufügen');
@@ -103,6 +104,7 @@ define('_CONTACTLISTIGNORELIST',                        'Folgende Benutzer werde
 define('_CONTACTLISTREMOVEIGNOREDUSER',                 'Benutzer nicht mehr ignorieren');
 define('_CONTACTLISTUSERUPDATEERROR',                   'Aktualisieren der Ignorierliste fehlgeschlagen');
 define('_CONTACTLISTUSERNOLONGERIGNORED',               'Der Benutzer wird nun nicht mehr ignoriert');
+define('_CONTACTLISTIGNORELISTENTRY',					'Der Benutzer steht auf deiner eigenen Ignorierliste; so fängt aber keine gute Freundschaft an...');
 
 // create
 define('_CONTACTLISTCONFIRMREQU',                       'Nach Abschicken dieses Formulars wird der andere Benutzer eine Nachricht erhalten, dass er die Anfrage bearbeiten soll. Sobald die Kontaktanfrage akzeptiert oder abgelehnt wurde, wirst Du informiert.');
