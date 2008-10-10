@@ -5,21 +5,22 @@
 <!--[pnml name="_CONTACTLISTNOLINKFOUND"]-->
 <!--[else]-->
 
-<div id="cl_myprofile" class="pn-clearfix">
+<div>
   <!--[foreach from=$FOAFList item="buddy" name="friends"]-->
   <!--[pnusergetvar uid=$buddy.uid name="_YOURAVATAR" assign="avatar"]-->
-  <div style="  border:none;
+  <div style="  
+  	border:0px;
     float:left;
-    min-height:50px;
-    text-align:center;
-    width:50px; ">
+    height:50px;
+	padding: 0px;
+	">
     <center>
-      <!--[$buddy.uname|userprofilelink]--><br />
       <!--[if $avatar eq '' or $avatar eq 'blank.gif']-->
-      <dd><!--[pnimg modname=ContactList src="avatar_male.gif" width="25" class="avatar"]--></dd>
+      <!--[pnimg modname=ContactList src="avatar_male.gif" height="30" class="avatar"]-->
       <!--[else]-->
-      <dd><img src="<!--[pngetbaseurl]-->images/avatar/<!--[$avatar|pnvarprepfordisplay]-->" class="avatar" width="50" /></dd>
-      <!--[/if]-->
+      <img src="<!--[pngetbaseurl]-->images/avatar/<!--[$avatar|pnvarprepfordisplay]-->" class="avatar" height="30" />
+      <!--[/if]--><br />
+      <!--[$buddy.uname|userprofilelink]-->
     </center>
   </div>
   <!--[if $smarty.foreach.friends.last ne 1]-->
