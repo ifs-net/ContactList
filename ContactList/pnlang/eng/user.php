@@ -92,6 +92,7 @@ define('_CONTACTLISTOF',                           'of');
 define('_CONTACTLISTSHOWPROFILE',                  'Show Profile');
 
 // ignore
+define('_CONTACTLISTBUDDYNOTIGNORABLE',				'You are funny - a person cannot be added to the ignore list if this person is a confirmed buddy!');
 define('_CONTACTLISTIGNORELISTMANAGEMENT',         'Ignore-list management');
 define('_CONTACTLISTIGNOREEXPLAIN',                'You can add users here you want to ignore. Ignoring means protection from emails etc.');
 define('_CONTACTLISTADDUSER',                      'Add user');
@@ -103,6 +104,7 @@ define('_CONTACTLISTIGNORELIST',                   'The following users are igno
 define('_CONTACTLISTREMOVEIGNOREDUSER',            'Remove from ignore list');
 define('_CONTACTLISTUSERUPDATEERROR',              'Updating user information failed');
 define('_CONTACTLISTUSERNOLONGERIGNORED',          'User removed from ignore list');
+define('_CONTACTLISTIGNORELISTENTRY',				'You are ignoring the potential new buddy... That\'s not a good start of a new friendship...');
 
 // create
 define('_CONTACTLISTCONFIRMREQU',                  'After submitting this form a buddy request will be send to the new buddy. He then can accept or reject your request. You can send some text with the request for the new buddy');
