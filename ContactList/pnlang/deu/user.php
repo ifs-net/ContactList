@@ -25,10 +25,11 @@ define('_CONTACTLISTUSERPREFS',                         'Meine Einstellungen');
 define('_CONTACTLISTMYPUBLICSTATE',                     'Einstellungen zum Datenschutz');
 define('_CONTACTLISTUPDATEPREFS',                       'Einstellungen speichern');
 define('_CONTACTLISTPRIVACYNOBODY',                     'Keiner soll meine Kontaktliste einsehen können');
-define('_CONTACTLISTPRIVACYBUDDIES',                    'Bestätigte Kontakte sollen meine Kontaktliste einsehen können');
-define('_CONTACTLISTPRIVACYMEMBERS',                    'Alle angemeldeten Benutzer sollen meine Kontaktliste einsehen können');
+define('_CONTACTLISTPRIVACYBUDDIES',                    'Bestätigte Kontakte sollen meine Kontaktliste direkt einsehen können');
+define('_CONTACTLISTPRIVACYMEMBERS',                    'Alle angemeldeten Benutzer sollen meine Kontaktliste direkt einsehen können');
 define('_CONTACTLISTPREFSUPDATEERROR',                  'Beim Speichern der Einstellungen ist ein Fehler aufgetreten');
 define('_CONTACTLISTPREFSUPDATED',                      'Einstellungen aktualisiert');
+define('_CONTACTLISTFOAFUSAGE',							'Es gibt z.B. die Möglichkeit, in Profilen oder anderen Modulen einzubinden, ob man einen Kontakt direkt oder über Umwege kennt. Dass heisst, Person A kennt Person B über Person C, Person D und Person E. Ist jemand der in dieser Reihe steht, kein direkter eigener Kontakt, kann er vom direkten Einsehen in die eigene Kontaktliste zwar ausgeschlossen werden - die Verknüpfungskette wird jedoch angezeigt. Ausser, es wird eingestellt, dass niemand die eigene Kontaktliste einsehen darf.');
 
 // main
 define('_CONTACTLISTONLINE',                            'online');
