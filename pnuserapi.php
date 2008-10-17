@@ -511,66 +511,162 @@ function ContactList_userapi_getFOAFLink($args) {
     $res = false;
     $uid1 = (int) $args['uid1'];
     $uid2 = (int) $args['uid2'];
-    // user views his own profile
+
+    // case 1: user views his own profile
     if (($uid1 == $uid2) || (!($uid1 > 1)) || (!($uid2 > 1))) return false;
-    // user views the profile of a friend
-    else if (ContactList_userapi_isBuddy(array('uid1' => $uid1, 'uid2' => $uid2))) {
-        $res = array (
-        array( 'uid' => $uid1,
-               'uname'=>pnUserGetVar('uname',$uid1)),
-        array( 'uid' => $uid2,
-               'uname'=>pnUserGetVar('uname',$uid2))
-        );
+
+    // case 2: user views the profile of a friend
+    // uid1, x1, uid2
+    if (ContactList_userapi_isBuddy(array('uid1' => $uid1, 'uid2' => $uid2))) {
+        $res[] = cl_addToArrayLink($uid1);
+        $res[] = cl_addToArrayLink($uid2);
     }
-    // now we have to check for more connections...
-    else {  // one man is in the middle... perhaps :-)
-        // we will not use the api function because of performance savings
+	// before we continue we habe to check if the "target" user has its buddy list not hidden
+	$preferences = ContactList_userapi_getPreferences(array('uid' => $uid2));
+	if ($preferences['publicstate'] == 1) return false;
 
-        // get left buddies (uid1) for the sql "where in" statement.
-        $leftArray = DBUtil::selectObjectArray('contactlist_buddylist','uid = '.$uid1);
-        foreach ($leftArray as $item) {
-            $in.=$item['bid'].",";
-        }
-        $in.=0;
-
-        // we have now the right user: $uid2
-        // now we have to select everything from the contactlist_buddylist table
-        // where bid = $uid
-        // and uid in (left)
-
-        // get left buddies (uid1)
-        $middleArray = DBUtil::selectObjectArray('contactlist_buddylist','uid in ('.$in.') and bid = '.$uid2);
-        foreach ($middleArray as $item) {
-            // we will collect this data for the next dimension
-            $bid = $item['bid'];
-            $secondBackLink[$bid] = $item['uid'];
-            // check for user's privacy settings.
-            // If the buddy in the linked connection has set privacy to friends he has to be a buddy of the viewer to be displayed!
-            $preferences = ContactList_userapi_getPreferences(array('uid' => $item['uid']));
-            if (($preferences['publicstate'] == 3) ||
-            (($preferences['publicstate'] == 2) &&
-            (ContactList_userapi_isBuddy(array(
-                            'uid1' 	=> pnUserGetVar('uid'), 
-                            'uid2' 	=> $item['uid']))) )) {
-            // check for valid account (no orphan users!)
-            $uname = pnUserGetVar('uname',$item['uid']);
-            if (strlen($uname)>0) {
-                $middle = array('uid'   => $item['uid'],
-                                'uname' => $uname);
-                break;
-            }
-                            }
-        }
-        if (is_array($middle)) {
-            $res = array (
-            array( 'uid' => $uid1,
-                   'uname'=>pnUserGetVar('uname',$uid1)),
-            $middle,
-            array( 'uid' => $uid2,
-                   'uname'=>pnUserGetVar('uname',$uid2))
-            );
-        }
-    }
+  	// get tables and column
+   	pnModDBInfoLoad('objectdata');
+   	$tables 	= pnDBGetTables();
+   	$cltable 	= DBUtil::getLimitedTableName('contactlist_buddylist');
+   	$oatable 	= DBUtil::getLimitedTableName('objectdata_attributes');
+   	$oacolumn = $tables['objectdata_attributes_column'];
+	
+	// case3: user views the profile of a friend's friend
+	// uid1, x1, uid2
+    if (!$res) {
+		$sql = '	SELECT DISTINCT
+						select_1.uid,
+						select_2.uid,
+						select_2.bid
+				 	FROM 
+					 	'.$cltable.' as select_1,
+						'.$cltable.' as select_2,
+						'.$oatable.' as attributes
+					WHERE
+						attributes.'.$oacolumn['value'].' > 1 AND
+						attributes.'.$oacolumn['attribute_name'].' = \'contactlist_publicstate\' AND
+						select_1.bid = select_2.uid AND
+						select_1.uid = '.$uid1.' AND
+						select_2.bid = '.$uid2.'
+						';
+		$results = DBUtil::executeSQL($sql);
+		foreach ($results as $r) $this_results[] = $r;
+		if (count($this_results) > 1) {	// if there is more than one result found we'll shuffle
+		  	$nr = mt_rand(1,count($this_results))-1;
+		  	$one_result = $this_results[$nr];
+		}
+		if (is_array($one_result) && (count($one_result) > 0)) {	// we found a result!
+		  	$res = array();
+		  	foreach ($one_result as $uid) $res[] = cl_addToArrayLink($uid);
+		}
+	}
+	// case3: 
+	// uid1, x1, x2, uid2
+    if (!$res) {
+		$sql = '	SELECT DISTINCT 
+						select_1.uid,
+						select_2.uid,
+						select_3.uid,
+						select_3.bid
+				 	FROM 
+					 	'.$cltable.' as select_1,
+						'.$cltable.' as select_2,
+						'.$cltable.' as select_3,
+						'.$oatable.' as attributes
+					WHERE
+						attributes.'.$oacolumn['value'].' > 1 AND
+						attributes.'.$oacolumn['attribute_name'].' = \'contactlist_publicstate\' AND
+						select_1.bid = select_2.uid AND
+						select_2.bid = select_3.uid AND
+						select_1.uid = '.$uid1.' AND
+						select_3.bid = '.$uid2.'
+						';
+		$results = DBUtil::executeSQL($sql);
+		foreach ($results as $r) $this_results[] = $r;
+		if (count($this_results) > 1) {	// if there is more than one result found we'll shuffle
+		  	$nr = mt_rand(1,count($this_results))-1;
+		  	$one_result = $this_results[$nr];
+		}
+		if (is_array($one_result) && (count($one_result) > 0)) {	// we found a result!
+		  	$res = array();
+		  	foreach ($one_result as $uid) $res[] = cl_addToArrayLink($uid);
+		}
+	}
+	// case4: 
+	// uid1, x1, x2, x3, uid2
+    if (!$res) {
+		$sql = '	SELECT DISTINCT 
+						select_1.uid,
+						select_2.uid,
+						select_3.uid,
+						select_4.uid,
+						select_4.bid
+				 	FROM 
+					 	'.$cltable.' as select_1,
+						'.$cltable.' as select_2,
+						'.$cltable.' as select_3,
+						'.$cltable.' as select_4,
+						'.$oatable.' as attributes
+					WHERE
+						attributes.'.$oacolumn['value'].' > 1 AND
+						attributes.'.$oacolumn['attribute_name'].' = \'contactlist_publicstate\' AND
+						select_1.bid = select_2.uid AND
+						select_2.bid = select_3.uid AND
+						select_3.bid = select_4.uid AND
+						select_1.uid = '.$uid1.' AND
+						select_4.bid = '.$uid2.'
+						';
+		$results = DBUtil::executeSQL($sql);
+		foreach ($results as $r) $this_results[] = $r;
+		if (count($this_results) > 1) {	// if there is more than one result found we'll shuffle
+		  	$nr = mt_rand(1,count($this_results))-1;
+		  	$one_result = $this_results[$nr];
+		}
+		if (is_array($one_result) && (count($one_result) > 0)) {	// we found a result!
+		  	$res = array();
+		  	foreach ($one_result as $uid) $res[] = cl_addToArrayLink($uid);
+		}
+	}
+	// case5: 
+	// uid1, x1, x2, x3, x4, uid2
+    if (!$res) {
+		$sql = '	SELECT DISTINCT 
+						select_1.uid,
+						select_2.uid,
+						select_3.uid,
+						select_4.uid,
+						select_5.uid,
+						select_5.bid
+				 	FROM 
+					 	'.$cltable.' as select_1,
+						'.$cltable.' as select_2,
+						'.$cltable.' as select_3,
+						'.$cltable.' as select_4,
+						'.$cltable.' as select_5,
+						'.$oatable.' as attributes
+					WHERE
+						attributes.'.$oacolumn['value'].' > 1 AND
+						attributes.'.$oacolumn['attribute_name'].' = \'contactlist_publicstate\' AND
+						select_1.bid = select_2.uid AND
+						select_2.bid = select_3.uid AND
+						select_3.bid = select_4.uid AND
+						select_4.bid = select_5.uid AND
+						select_1.uid = '.$uid1.' AND
+						select_5.bid = '.$uid2.'
+						';
+		$results = DBUtil::executeSQL($sql);
+		foreach ($results as $r) $this_results[] = $r;
+		if (count($this_results) > 1) {	// if there is more than one result found we'll shuffle
+		  	$nr = mt_rand(1,count($this_results))-1;
+		  	$one_result = $this_results[$nr];
+		}
+		if (is_array($one_result) && (count($one_result) > 0)) {	// we found a result!
+		  	$res = array();
+		  	foreach ($one_result as $uid) $res[] = cl_addToArrayLink($uid);
+		}
+	}
+	// no more searches now
     $render = pnRender::getInstance('ContactList');
     $render->assign('FOAFList',     $res);
     $render->assign('FOAFLinkDepth',(count($res)-1));
@@ -581,3 +677,9 @@ function ContactList_userapi_getFOAFLink($args) {
     return;
 }
 
+function cl_addToArrayLink($uid) {
+  	return array (
+  		'uid'	=> $uid,
+  		'uname'	=> pnUserGetVar('uname',$uid)
+	  );
+}

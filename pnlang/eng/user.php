@@ -29,6 +29,7 @@ define('_CONTACTLISTPRIVACYBUDDIES',               'My buddies can see my buddy 
 define('_CONTACTLISTPRIVACYMEMBERS',               'All registered users can see my buddy list');
 define('_CONTACTLISTPREFSUPDATEERROR',             'An error occured while updating your user preferences');
 define('_CONTACTLISTPREFSUPDATED',                 'User preferences updated successfully');
+define('_CONTACTLISTFOAFUSAGE',						'Notice: If you select "only buddies should be able to see my buddy list" you will be included in the list if someone wants to see if he knowns another person directly or indirectly - because the person is a contact of a contact of a contact... - but the person will not be able to view the list of all your contacts directly.');
 
 // main
 define('_CONTACTLISTONLINE',                       'online');
