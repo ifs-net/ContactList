@@ -552,7 +552,7 @@ function ContactList_userapi_getFOAFLink($args) {
 						';
 		$results = DBUtil::executeSQL($sql);
 		foreach ($results as $r) $this_results[] = $r;
-		if (count($this_results) > 1) {	// if there is more than one result found we'll shuffle
+		if (count($this_results) > 0) {	// if there is more than one result found we'll shuffle
 		  	$nr = mt_rand(1,count($this_results))-1;
 		  	$one_result = $this_results[$nr];
 		}
@@ -584,7 +584,7 @@ function ContactList_userapi_getFOAFLink($args) {
 						';
 		$results = DBUtil::executeSQL($sql);
 		foreach ($results as $r) $this_results[] = $r;
-		if (count($this_results) > 1) {	// if there is more than one result found we'll shuffle
+		if (count($this_results) > 0) {	// if there is more than one result found we'll shuffle
 		  	$nr = mt_rand(1,count($this_results))-1;
 		  	$one_result = $this_results[$nr];
 		}
@@ -619,7 +619,7 @@ function ContactList_userapi_getFOAFLink($args) {
 						';
 		$results = DBUtil::executeSQL($sql);
 		foreach ($results as $r) $this_results[] = $r;
-		if (count($this_results) > 1) {	// if there is more than one result found we'll shuffle
+		if (count($this_results) > 0) {	// if there is more than one result found we'll shuffle
 		  	$nr = mt_rand(1,count($this_results))-1;
 		  	$one_result = $this_results[$nr];
 		}
@@ -657,7 +657,7 @@ function ContactList_userapi_getFOAFLink($args) {
 						';
 		$results = DBUtil::executeSQL($sql);
 		foreach ($results as $r) $this_results[] = $r;
-		if (count($this_results) > 1) {	// if there is more than one result found we'll shuffle
+		if (count($this_results) > 0) {	// if there is more than one result found we'll shuffle
 		  	$nr = mt_rand(1,count($this_results))-1;
 		  	$one_result = $this_results[$nr];
 		}
