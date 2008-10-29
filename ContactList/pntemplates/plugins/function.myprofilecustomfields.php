@@ -29,8 +29,6 @@ function smarty_function_myprofilecustomfields($params, &$smarty)
 	}
 
 	if (in_array($params['uid'],$cache['myprofile_customfieldlist'][$uid])) $content = _CONTACTLISTINMYPROFILELIST;
-
-  	$uid = $params['uid'];
 	if (isset($content) && (strlen($content) > 0)) return "<li>".$content."</li>";
 	else return;
 }
