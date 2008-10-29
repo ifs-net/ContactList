@@ -93,6 +93,7 @@
       <!--[if $buddy.state eq 0]--><li><a class="image usercancel" href="<!--[pnmodurl modname="ContactList" type="user" func="main" action="suspend" id=$buddy.id authid=$authid]--><!--[$filterstate]-->"><!--[pnml name="_CONTACTLISTCANCEL"]--></a></li><!--[/if]-->
       <!--[if $buddy.state eq 1]--><li><a class="image userdelete" href="<!--[pnmodurl modname="ContactList" type="user" func="main" action="suspend" id=$buddy.id authid=$authid]--><!--[$filterstate]-->" onclick="return confirm('<!--[pnml name="_CONTACTLISTREALLYSUSPEND"]-->')"><!--[pnml name="_CONTACTLISTSUSPEND"]--></a></li><!--[/if]-->
       <!--[if $buddy.state eq 2 or $buddy.state eq 3]--><li><a class="image userdelete" href="<!--[pnmodurl modname="ContactList" type="user" func="main" action="suspend" id=$buddy.id ne="1" authid=$authid]--><!--[$filterstate]-->"><!--[pnml name="_CONTACTLISTDELETE"]--></a></li><!--[/if]-->
+      <!--[myprofilecustomfields uid=$buddy.bid]-->
     </ul>
 
     <ul class="cl_userinfo">

@@ -23,8 +23,9 @@ function smarty_function_myprofilecustomfields($params, &$smarty)
 		// get user's list
 	    $list = pnModAPIFunc('MyProfile','user','getCustomFieldList',array('uid' => pnUserGetVar('uid')));
 	    $settings = pnModAPIFunc('MyProfile','user','getSettings',array('uid' => $uid));
-	    prayer($settings);
-		$cache['myprofile_customfieldlist'][$uid] = $list;
+	    if ($settings['customsettings'] == 3) {
+			$cache['myprofile_customfieldlist'][$uid] = $list;
+		}
 	}
 
 	if (in_array($params['uid'],$cache['myprofile_customfieldlist'][$uid])) $content = _CONTACTLISTINMYPROFILELIST;
