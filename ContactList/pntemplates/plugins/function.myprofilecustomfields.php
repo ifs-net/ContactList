@@ -8,9 +8,28 @@
  * @copyright    Copyright (C) 2008
  * @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
  */
-function smartfy_function_myprofilecustomfields($params, &$smarty) 
+function smarty_function_myprofilecustomfields($params, &$smarty) 
 {
-  echo "test";
-	return "hello world";
+	$uid = pnUserGetVar('uid');
+  	// not interesting if MyProfile is not available
+	if (!pnModAvailable('MyProfile')) return '';
+
+	// init cache
+	static $cache;
+	// write to cache if cache is empty
+	// get settings, init cache
+	if (	!isset($cache['myprofile_customfieldlist'][$uid]) || 
+			(!is_array($cache['myprofile_customfieldlist'][$uid]))	) {
+		// get user's list
+	    $list = pnModAPIFunc('MyProfile','user','getCustomFieldList',array('uid' => pnUserGetVar('uid')));
+	    $settings = pnModAPIFunc('MyProfile','user','getSettings',array('uid' => $uid));
+	    prayer($settings);
+		$cache['myprofile_customfieldlist'][$uid] = $list;
+	}
+
+	if (in_array($params['uid'],$cache['myprofile_customfieldlist'][$uid])) $content = _CONTACTLISTINMYPROFILELIST;
+
+  	$uid = $params['uid'];
+	if (isset($content) && (strlen($content) > 0)) return "<li>".$content."</li>";
+	else return;
 }
-die("..");
