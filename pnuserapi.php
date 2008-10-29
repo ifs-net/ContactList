@@ -35,15 +35,15 @@ function ContactList_userapi_getall($args) {
     if (!isset($where) && isset($args['state'])) $where = 'state = '.(int)$args['state'];
     if (isset($where) && isset($args['state'])) $where.= ' and state = '.(int)$args['state'];
 
-    $sort = (isset($args['sort']) && !empty($args['sort'])) ? $args['sort'] : '';
-    $birthday = isset($args['birthday']) ? $args['birthday'] : false;
+    $sort 		= (isset($args['sort']) && !empty($args['sort'])) ? $args['sort'] : '';
+    $birthday 	= isset($args['birthday']) ? $args['birthday'] : false;
 
     // return objects
     $res = DBUtil::selectObjectArray('contactlist_buddylist',$where);
     if (count($res) >0) {
         if ($birthday) {
-            $myprofile = (pnModGetVar('ContactList','usemyprofilebirthday') && pnModAvailable('MyProfile'));
-            $profile = (pnModGetVar('ContactList','useprofilebirthday') && pnModAvailable('Profile'));
+            $myprofile 	= (pnModGetVar('ContactList','usemyprofilebirthday') && pnModAvailable('MyProfile'));
+            $profile 	= (pnModGetVar('ContactList','useprofilebirthday') && pnModAvailable('Profile'));
 
             // some preparations for the birthday days calculation
             $now = mktime(23, 59, 59, date("m",time()), date("d",time()), date("Y",time()));
@@ -51,9 +51,28 @@ function ContactList_userapi_getall($args) {
 
             if ($myprofile)	{					// if myprofile is activated and used as birthday date provider continue ;-)
                 $myprofilebirthday = pnModGetVar('ContactList','myprofilebirthday');
+                $fields = pnModAPIFunc('MyProfile','admin','getFields');
+                $birthday_restriction = false;
+                foreach ($fields as $field) {
+					if (($field['identifier'] == $myprofilebirthday) && ($field['public_status'] == 9)) $birthday_restriction = true;
+				}
                 foreach ($res as $item) {
                     $data = pnModAPIFunc('MyProfile','user','getUserVars',array('name' => $myprofilebirthday, 'uid' => $item['bid']));
                     $item['birthday'] = $data['value'];
+                    // we will only set a value here if the user is allowed to see the other buddies birthday date (MyProfile 1.1 feature)
+                    // if birthday should be hidden we'll delete its value again
+                    if ($birthday_restriction) {
+					  	$settings 		= pnModAPIFunc('MyProfile','user','getSettings',array('uid' => $item['bid']));
+					  	$customsettings = $settings['customsettings'];
+					  	// customsettings:
+					  	// 0 = everybody, 1 = all members, 2 = confirmed buddies, 3 = only listed users
+					  	// we only have a problem if listed users is set as user settings
+					  	if ($customsettings == 3) {
+						    // get users list
+						    $list = pnModAPIFunc('MyProfile','user','getCustomFieldList',array('uid' => $item['bid']));
+						    if (!in_array(pnUserGetVar('uid'),$list)) unset($item['birthday']);
+						}
+					}
                     $item['nextbirthday'] = $item['birthday'][5].$item['birthday'][6].$item['birthday'][8].$item['birthday'][9];
                     // calculate days to next birthday
                     if ($item['birthday'] != '') {
