@@ -14,6 +14,9 @@ define('_CONTACTLISTTITLE',                             'Kontaktliste');
 define('_CONTACTLISTCONNECTION',                        'Deiner Verbindung hierher');
 define('_CONTACTLISTNOLINKFOUND',                       'Keine Verbindung gefunden');
 
+// costum fields / myprofile - plugin
+define('_CONTACTLISTINMYPROFILELIST',					'Darf alle meine Daten sehen');
+
 // menu
 define('_CONTACTLISTCREATEBUDDY',                       'Kontakt hinzufügen');
 define('_CONTACTLISTSHOWBUDDIES',                       'Kontaktliste');
