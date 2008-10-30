@@ -14,6 +14,9 @@ define('_CONTACTLISTTITLE',                        'Contact List');
 define('_CONTACTLISTCONNECTION',                   'Your connection to this user');
 define('_CONTACTLISTNOLINKFOUND',                  'No link to this user found');
 
+// costum fields / myprofile - plugin
+define('_CONTACTLISTINMYPROFILELIST',				'Allowed to view all data');
+
 // menu
 define('_CONTACTLISTCREATEBUDDY',                  'Add new buddy');
 define('_CONTACTLISTSHOWBUDDIES',                  'Show my buddylist');
