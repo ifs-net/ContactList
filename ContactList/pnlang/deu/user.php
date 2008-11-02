@@ -11,7 +11,7 @@
 define('_CONTACTLISTTITLE',                             'Kontaktliste');
  
 // foaf plugin for contactlist
-define('_CONTACTLISTCONNECTION',                        'Deiner Verbindung hierher');
+define('_CONTACTLISTCONNECTION',                        'Deine Verbindung hierher');
 define('_CONTACTLISTNOLINKFOUND',                       'Keine Verbindung gefunden');
 
 // costum fields / myprofile - plugin
