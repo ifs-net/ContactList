@@ -85,6 +85,7 @@ function ContactList_myprofileapi_tab($args)
     $render->assign('buddies',$assign_buddies);
     // public comments
     $render->assign('nopubliccomment',pnModGetVar('ContactList','nopubliccomment'));
+	$render->assign('viewer_uid',pnUserGetVar('uid'));
     $output = $render->fetch('contactlist_myprofile_tab.htm');
     return $output;
 }
