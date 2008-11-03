@@ -565,6 +565,8 @@ function ContactList_userapi_getFOAFLink($args) {
 					WHERE
 						attributes.'.$oacolumn['value'].' > 1 AND
 						attributes.'.$oacolumn['attribute_name'].' = \'contactlist_publicstate\' AND
+						select_1.state = 1 AND
+						select_2.state = 1 AND
 						select_1.bid = select_2.uid AND
 						select_1.uid = '.$uid1.' AND
 						select_2.bid = '.$uid2.'
@@ -596,6 +598,9 @@ function ContactList_userapi_getFOAFLink($args) {
 					WHERE
 						attributes.'.$oacolumn['value'].' > 1 AND
 						attributes.'.$oacolumn['attribute_name'].' = \'contactlist_publicstate\' AND
+						select_1.state = 1 AND
+						select_2.state = 1 AND
+						select_3.state = 1 AND
 						select_1.bid = select_2.uid AND
 						select_2.bid = select_3.uid AND
 						select_1.uid = '.$uid1.' AND
@@ -630,6 +635,10 @@ function ContactList_userapi_getFOAFLink($args) {
 					WHERE
 						attributes.'.$oacolumn['value'].' > 1 AND
 						attributes.'.$oacolumn['attribute_name'].' = \'contactlist_publicstate\' AND
+						select_1.state = 1 AND
+						select_2.state = 1 AND
+						select_3.state = 1 AND
+						select_4.state = 1 AND
 						select_1.bid = select_2.uid AND
 						select_2.bid = select_3.uid AND
 						select_3.bid = select_4.uid AND
@@ -667,6 +676,11 @@ function ContactList_userapi_getFOAFLink($args) {
 					WHERE
 						attributes.'.$oacolumn['value'].' > 1 AND
 						attributes.'.$oacolumn['attribute_name'].' = \'contactlist_publicstate\' AND
+						select_1.state = 1 AND
+						select_2.state = 1 AND
+						select_3.state = 1 AND
+						select_4.state = 1 AND
+						select_5.state = 1 AND
 						select_1.bid = select_2.uid AND
 						select_2.bid = select_3.uid AND
 						select_3.bid = select_4.uid AND
