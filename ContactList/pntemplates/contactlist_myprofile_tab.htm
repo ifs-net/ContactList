@@ -4,6 +4,9 @@
 <!--[if $viewer_uid gt 1]-->
 	<!--[pnml name="_CONTACTLISTTHEUSERHAS"]--> <!--[$buddies|@count]--> <!--[pnml name="_CONTACTLISTBUDDIES"]-->
 	
+	<!--[* Display a pager to go to the pages   *]-->
+	<!--[pager show="page" rowcount=$contacts_all limit=$cl_limit posvar=cl_startnum shift=1]-->
+
 	<div id="cl_myprofile" class="pn-floatbox">
 	<!--[foreach from=$buddies item="buddy"]-->
 	<!--[pnusergetvar uid=$buddy.bid name="_YOURAVATAR" assign="avatar"]-->
@@ -28,6 +31,7 @@
 	</dl>
 	<!--[/foreach]-->
 	</div>
+
 <!--[else]-->
 	<!--[pnml name="_CONTACTLISTLISTNOTPUBLIC"]-->
 <!--[/if]-->
