@@ -9,6 +9,17 @@
  */
 
 /**
+ * This function returns 1 if Ajax should not be used loading the plugin
+ *
+ * @return string
+ */
+
+function ContactList_myprofileapi_noAjax($args)
+{
+  	return true;
+}
+
+/**
  * This function returns the name of the tab
  *
  * @return string
