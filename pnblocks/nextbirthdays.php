@@ -26,7 +26,7 @@ function ContactList_NextBirthdaysblock_info()
 {
     return array('module'         => 'ContactList',
                  'text_type'      => 'NextBirthdays',
-                 'text_type_long' => 'Show next birthdays of next 60 days of buddy list',
+                 'text_type_long' => 'Show next birthdays of next 14 days of buddy list',
                  'allow_multiple' => true,
                  'form_content'   => false,
                  'form_refresh'   => false,
@@ -71,7 +71,7 @@ function ContactList_NextBirthdaysblock_display($blockinfo)
     $res = array();    
     if (!(count($buddies)>0)) return false;
     foreach ($buddies as $buddy) {
-        if (($buddy['daystonextbirthday'] >= 0) && ($buddy['daystonextbirthday'] < 60)){
+        if (($buddy['daystonextbirthday'] >= 0) && ($buddy['daystonextbirthday'] < 14)){
             $res[] = $buddy;
             $c++;
         }
