@@ -191,15 +191,18 @@ function ContactList_user_display()
         // check for privacy settings
         $prefs = pnModAPIFunc('ContactList','user','getPreferences',array('uid' => $viewer_uid));
         switch ($prefs['publicstate']) {
-            case 1:		$display=false;
-            break;
-            case 2:		$isBuddy = pnModAPIFunc('ContactList','user','isBuddy',array('uid1' => $viewer_uid, 'uid2' => $current_uid));
-            if ($isBuddy > 0) $display = true;
-            break;
-            case 3:		if (pnUserLoggedIn()) $display = true;
-            break;
-            default: 	return LogUtil::registerPermissionError();
-            break;
+            case 1:
+				$display=false;
+            	break;
+            case 2:		
+				$display = pnModAPIFunc('ContactList','user','isBuddy',array('uid1' => $viewer_uid, 'uid2' => $current_uid));
+				break;
+            case 3:	
+				$display = pnUserLoggedIn();
+		        break;
+            default:
+				return LogUtil::registerPermissionError();
+	            break;
         }
     }
     else $display = true;
