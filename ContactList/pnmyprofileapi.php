@@ -54,7 +54,6 @@ function ContactList_myprofileapi_tab($args)
     $prefs = pnModAPIFunc('ContactList','user','getPreferences',array('uid' => $args['uid']));
     $display = false;
     if ($args['uid'] != pnUserGetVar('uid')) {
-      if (pnUserGetVar('uid') == 3230) prayer($prefs);
 		switch ($prefs['publicstate']) {
 	        case 1:
 				$display=false;
