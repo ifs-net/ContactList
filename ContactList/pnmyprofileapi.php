@@ -53,24 +53,29 @@ function ContactList_myprofileapi_tab($args)
     // check for privacy settings
     $prefs = pnModAPIFunc('ContactList','user','getPreferences',array('uid' => $args['uid']));
     $display = false;
-    if ($args['uid'] != pnUserGetVar('uid')) switch ($prefs['publicstate']) {
-        case 1:		$display=false;
-        break;
-        case 2:		$isBuddy = pnModAPIFunc('ContactList','user','isBuddy',array('uid1' => $uid, 'uid2' => pnUserGetVar('uid')));
-        if ($isBuddy > 0) $display = true;
-        break;
-        case 3:		if (pnUserLoggedIn()) $display = true;
-        break;
-        default: 	return LogUtil::registerPermissionError();
-        break;
+    if ($args['uid'] != pnUserGetVar('uid')) {
+      if (pnUserGetVar('uid') == 3230) prayer($prefs);
+		switch ($prefs['publicstate']) {
+	        case 1:
+				$display=false;
+	        	break;
+	        case 2:
+				$display = pnModAPIFunc('ContactList','user','isBuddy',array('uid1' => $args['uid'], 'uid2' => pnUserGetVar('uid')));
+			    break;
+	        case 3:
+				$display = pnUserLoggedIn();
+	        	break;
+	        default:
+				return LogUtil::registerPermissionError();
+        		break;
+    	}
     }
     else $display = true;
 
     // generate output
     $render = pnRender::getInstance('ContactList');
-
-    if (($nopublicbuddylist == 1) or (!$display)) $render->assign('display',false);
-    else $render->assign('display',true);
+    if (($nopublicbuddylist == 1) or (!$display)) $render->assign('display',0);
+    else $render->assign('display',1);
 
     $render->assign('uid',(int)$args['uid']);
     $render->assign('viewer_uid',pnUserGetVar('uid'));
