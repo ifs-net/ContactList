@@ -527,6 +527,13 @@ function ContactList_userapi_getBuddyList($args) {
  * @return  output
  */
 function ContactList_userapi_getFOAFLink($args) {
+  	// get tables and column
+   	pnModDBInfoLoad('objectdata');
+   	$tables 	= pnDBGetTables();
+   	$cltable 	= DBUtil::getLimitedTableName('contactlist_buddylist');
+   	$oatable 	= DBUtil::getLimitedTableName('objectdata_attributes');
+   	$oacolumn = $tables['objectdata_attributes_column'];
+
     $res = false;
     $uid1 = (int) $args['uid1'];
     $uid2 = (int) $args['uid2'];
@@ -539,20 +546,12 @@ function ContactList_userapi_getFOAFLink($args) {
     if (ContactList_userapi_isBuddy(array('uid1' => $uid1, 'uid2' => $uid2))) {
         $res[] = cl_addToArrayLink($uid1);
         $res[] = cl_addToArrayLink($uid2);
+        // there is no privacy check needed because a buddy should be 
+		// allowed to see that he is a buddy :-)
     }
-	// before we continue we habe to check if the "target" user has its buddy list not hidden
-	$preferences = ContactList_userapi_getPreferences(array('uid' => $uid2));
-	if ($preferences['publicstate'] == 1) return false;
 
-  	// get tables and column
-   	pnModDBInfoLoad('objectdata');
-   	$tables 	= pnDBGetTables();
-   	$cltable 	= DBUtil::getLimitedTableName('contactlist_buddylist');
-   	$oatable 	= DBUtil::getLimitedTableName('objectdata_attributes');
-   	$oacolumn = $tables['objectdata_attributes_column'];
-	
 	// case3: user views the profile of a friend's friend
-	// uid1, x1, uid2
+	// uid1, x1, x2, uid2
     if (!$res) {
 		$sql = '	SELECT DISTINCT
 						select_1.uid,
@@ -582,7 +581,7 @@ function ContactList_userapi_getFOAFLink($args) {
 		  	foreach ($one_result as $uid) $res[] = cl_addToArrayLink($uid);
 		}
 	}
-	// case3: 
+	// case4: 
 	// uid1, x1, x2, uid2
     if (!$res) {
 		$sql = '	SELECT DISTINCT 
@@ -617,7 +616,7 @@ function ContactList_userapi_getFOAFLink($args) {
 		  	foreach ($one_result as $uid) $res[] = cl_addToArrayLink($uid);
 		}
 	}
-	// case4: 
+	// case5: 
 	// uid1, x1, x2, x3, uid2
     if (!$res) {
 		$sql = '	SELECT DISTINCT 
@@ -656,7 +655,7 @@ function ContactList_userapi_getFOAFLink($args) {
 		  	foreach ($one_result as $uid) $res[] = cl_addToArrayLink($uid);
 		}
 	}
-	// case5: 
+	// case6: 
 	// uid1, x1, x2, x3, x4, uid2
     if (!$res) {
 		$sql = '	SELECT DISTINCT 
@@ -699,6 +698,7 @@ function ContactList_userapi_getFOAFLink($args) {
 		  	foreach ($one_result as $uid) $res[] = cl_addToArrayLink($uid);
 		}
 	}
+
 	// no more searches now
     $render = pnRender::getInstance('ContactList');
     $render->assign('FOAFList',     $res);
