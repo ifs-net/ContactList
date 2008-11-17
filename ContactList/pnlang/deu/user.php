@@ -60,7 +60,7 @@ define('_CONTACTLISTREQUESTDATE',                       'Datum der Anfrage');
 define('_CONTACTLISTDECLINE',                           'Anfrage zurückweisen');
 define('_CONTACTLISTCONFIRM',                           'Anfrage akzeptieren');
 define('_CONTACTLISTPENDING',                           'Anfrage noch nicht beantwortet');
-define('_CONTACTLISTCANNOTDELETEYET',                   'Eine offene Anfrage kann frühestens nach 30 Tagen wieder gelöscht werden, um unnötig viele Anfragen an einen gleichen Benutzer zu vermeiden');
+define('_CONTACTLISTCANNOTDELETEYET',                   'Eine offene Anfrage kann frühestens nach einem Tag wieder gelöscht werden, um unnötig viele Anfragen an einen gleichen Benutzer zu vermeiden');
 define('_CONTACTLISTCONFIRMED',                         'Kontakt bestätigt');
 define('_CONTACTLISTSUSPENDED',                         'Kontakt aufgehoben');
 define('_CONTACTLISTREQUESTDECLINED',                   'Anfrage zurückgewiesen');

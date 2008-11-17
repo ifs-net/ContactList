@@ -60,7 +60,7 @@ define('_CONTACTLISTREQUESTDATE',                  'Request\'s date');
 define('_CONTACTLISTDECLINE',                      'Reject request');
 define('_CONTACTLISTCONFIRM',                      'Accept request');
 define('_CONTACTLISTPENDING',                      'pending');
-define('_CONTACTLISTCANNOTDELETEYET',              'A open buddy request can only be deleted after 30 days to avoid mltiple requests for the same user in a short time period');
+define('_CONTACTLISTCANNOTDELETEYET',              'A open buddy request can only be deleted after one day to avoid mltiple requests for the same user in a short time period');
 define('_CONTACTLISTCONFIRMED',                    'confirmed');
 define('_CONTACTLISTSUSPENDED',                    'suspended');
 define('_CONTACTLISTREQUESTDECLINED',              'Request rejected');
