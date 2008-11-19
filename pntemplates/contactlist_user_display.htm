@@ -1,7 +1,7 @@
 <!--[* $Id$ *]-->
 <!--[capture assign=title]--><!--[pnml name="_CONTACTLISTMYBUDDIES"]-->&nbsp;<!--[$viewer_uname]--><!--[/capture]-->
 <!--[include file="contactlist_user_header.htm" title=$title]-->
-<!--[pnmodavailable modname="pnMessages" assign="pnMessages"]-->
+<!--[pnmodavailable modname="InterCom" assign="InterCom"]-->
 
 <div id="cl_display" class="cl_box pn-clearfix">
   <h3><!--[$title]--></h3>
@@ -22,7 +22,7 @@
 
     <ul class="options">
       <li><a class="image userprofile" href="<!--[pnmodurl modname="Profile" type="user" func="view" uid=$buddy.bid]-->"><!--[pnml name="_CONTACTLISTSHOWPROFILE"]--></a></li>
-      <!--[if $pnMessages && $current_uid neq $buddy.bid]--><li><a class="image mail" href="<!--[pnmodurl modname="pnMessages" type="user" func="newpm" uname=$buddy.uname]-->"><!--[pnml name="_CONTACTLISTSENDPM"]--></a></li><!--[/if]-->
+      <!--[if $InterCom && $current_uid neq $buddy.bid]--><li><a class="image mail" href="<!--[pnmodurl modname="InterCom" type="user" func="newpm" uname=$buddy.uname]-->"><!--[pnml name="_CONTACTLISTSENDPM"]--></a></li><!--[/if]-->
       <li><a class="image showbuddies" href="<!--[pnmodurl modname="ContactList" type="user" func="display" uid=$buddy.bid]-->"><!--[pnml name="_CONTACTLISTSHOWCONTACTS"]--></a></li>
       <!--[if $current_uid neq $buddy.bid]-->
       <!--[if $isBuddy gt 0]-->

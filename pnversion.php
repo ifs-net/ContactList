@@ -32,8 +32,8 @@ $modversion['admin']          = 1;
 
 // module dependencies
 $modversion['dependencies'] = array(
-array(  'modname'    => 'pnMessages',
-        'minversion' => '2.0', 'maxversion' => '',
+array(  'modname'    => 'InterCom',
+        'minversion' => '2.1', 'maxversion' => '',
         'status'     => PNMODULE_DEPENDENCY_RECOMMENDED),
 array(  'modname'    => 'Avatar',
         'minversion' => '1.0', 'maxversion' => '',
