@@ -1,7 +1,7 @@
 <!--[* $Id$ *]-->
 <!--[pnml name="_CONTACTLISTSHOWBUDDIES" assign=title]-->
 <!--[include file="contactlist_user_header.htm" title=$title]-->
-<!--[pnmodavailable modname="pnMessages" assign="pnMessages"]-->
+<!--[pnmodavailable modname="InterCom" assign="InterCom"]-->
 <!--[pnvarcleanfrominput name="state" assign="state" ]-->
 <!--[if $state ne '']--><!--[assign var="filterstate" value="&amp;state=`$state`"]--><!--[else]--><!--[assign var="filterstate" value=""]--><!--[/if]-->
 
@@ -87,7 +87,7 @@
 
     <ul class="options">
       <li><a class="image userprofile" href="<!--[pnmodurl modname="Profile" type="user" func="view" uid=$buddy.bid]-->"><!--[pnml name="_CONTACTLISTSHOWPROFILE"]--></a></li>
-      <!--[if $pnMessages]--><li><a class="image mail" href="<!--[pnmodurl modname="pnMessages" type="user" func="newpm" uname=$buddy.uname]-->"><!--[pnml name="_CONTACTLISTSENDPM"]--></a></li><!--[/if]-->
+      <!--[if $InterCom]--><li><a class="image mail" href="<!--[pnmodurl modname="InterCom" type="user" func="newpm" uname=$buddy.uname]-->"><!--[pnml name="_CONTACTLISTSENDPM"]--></a></li><!--[/if]-->
       <!--[if $nopublicbuddylist ne 1]--><li><a class="image showbuddies" href="<!--[pnmodurl modname="ContactList" type="user" func="display" uid=$buddy.bid]-->"><!--[pnml name="_CONTACTLISTSHOWCONTACTS"]--></a></li><!--[/if]-->
       <li><a class="image useredit" href="<!--[pnmodurl modname="ContactList" type="user" func="edit" id=$buddy.id]-->"><!--[pnml name="_CONTACTLISTEDIT"]--></a></li>
       <!--[if $buddy.state eq 0]--><li><a class="image usercancel" href="<!--[pnmodurl modname="ContactList" type="user" func="main" action="suspend" id=$buddy.id authid=$authid]--><!--[$filterstate]-->"><!--[pnml name="_CONTACTLISTCANCEL"]--></a></li><!--[/if]-->
