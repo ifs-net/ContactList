@@ -102,7 +102,7 @@ define('_CONTACTLISTIGNOREEXPLAIN',                     'Hier können Benutzer au
 define('_CONTACTLISTADDUSER',                           'Benutzer hinzufügen');
 define('_CONTACTLISTUSERNOTFOUND',                      'Der angegebene Benutzer konnte nicht gefunden weden');
 define('_CONTACTLISTDONOTIGNOREYOURSELF',               'Ich weiß, manche können sich selbst nicht leiden. Aber deswegen kannst Du dich dennoch nicht selbst auf deine eigene Ignorierliste setzen :-)');
-define('_CONTACTLISTIGNOREDUSERADDED',                  'Benutzer wurde als hinzugefügt');
+define('_CONTACTLISTIGNOREDUSERADDED',                  'Benutzer wird nun von Dir ignoriert');
 define('_CONTACTLISTNOIGNOREDUSERS',                    'Es befinden sich noch keine Benutzer auf der Liste');
 define('_CONTACTLISTIGNORELIST',                        'Folgende Benutzer werden aktuell ignoriert');
 define('_CONTACTLISTREMOVEIGNOREDUSER',                 'Benutzer nicht mehr ignorieren');
