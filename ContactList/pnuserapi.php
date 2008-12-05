@@ -520,6 +520,51 @@ function ContactList_userapi_getBuddyList($args) {
 }
 
 /**
+ * get confirmed contacts of first and second grade
+ *
+ * @param   $args['uid']   int
+ * @return  output
+ */
+function ContactList_userapi_getContactsInfo($args) {
+  	// get tables and column
+   	pnModDBInfoLoad('objectdata');
+   	$tables 	= pnDBGetTables();
+   	$cltable 	= DBUtil::getLimitedTableName('contactlist_buddylist');
+   	$oatable 	= DBUtil::getLimitedTableName('objectdata_attributes');
+   	$oacolumn = $tables['objectdata_attributes_column'];
+    $uid = (int) $args['uid'];
+    
+	// direct contacts
+	$sql = "SELECT COUNT(*) AS C FROM ".$cltable." WHERE uid = ".$uid." AND state = 1";
+	$res = DBUtil::executeSql($sql);
+	$first = (int)$res->fields[0];
+	// second grade
+	if ($first > 0) {
+		$sql = '	SELECT COUNT(DISTINCT select_2.bid)
+					 	FROM 
+						 	'.$cltable.' as select_1,
+							'.$cltable.' as select_2,
+							'.$oatable.' as attributes
+						WHERE
+							attributes.'.$oacolumn['value'].' > 1 AND
+							attributes.'.$oacolumn['attribute_name'].' = \'contactlist_publicstate\' AND
+							select_1.state = 1 AND
+							select_2.state = 1 AND
+							select_1.bid = select_2.uid AND
+							select_1.uid = '.$uid.'
+							
+							';
+		$res = DBUtil::executeSQL($sql);
+		$second = (int)$res->fields[0];
+	}
+	else $second = 0;
+	return array(
+		'1st'	=> $first,
+		'2nd'	=> $second
+		);
+}
+  
+/**
  * get nearest foaf-link for two users
  *
  * @param   $args['uid1']   int
