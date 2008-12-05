@@ -35,6 +35,9 @@ define('_CONTACTLISTPREFSUPDATED',                      'Einstellungen aktualisi
 define('_CONTACTLISTFOAFUSAGE',							'Es gibt z.B. die Möglichkeit, in Profilen oder anderen Modulen einzubinden, ob man einen Kontakt direkt oder über Umwege kennt. Dass heisst, Person A kennt Person B über Person C, Person D und Person E. Ist jemand der in dieser Reihe steht, kein direkter eigener Kontakt, kann er vom direkten Einsehen in die eigene Kontaktliste zwar ausgeschlossen werden - die Verknüpfungskette wird jedoch angezeigt. Ausser, es wird eingestellt, dass niemand die eigene Kontaktliste einsehen darf.');
 
 // main
+define('_CONTACTLISTCONTACTS',							'Kontakte');
+define('_CONTACTLIST1STGRADE',							'ersten Grades');
+define('_CONTACTLIST2NDGRADE',							'zweiten Grades');
 define('_CONTACTLISTONLINE',                            'online');
 define('_CONTACTLISTSORTITEMS',                         'Liste nach');
 define('_CONTACTLISTRELOAD',                            'sortieren');

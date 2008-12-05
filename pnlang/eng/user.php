@@ -35,6 +35,9 @@ define('_CONTACTLISTPREFSUPDATED',                 'User preferences updated suc
 define('_CONTACTLISTFOAFUSAGE',						'Notice: If you select "only buddies should be able to see my buddy list" you will be included in the list if someone wants to see if he knowns another person directly or indirectly - because the person is a contact of a contact of a contact... - but the person will not be able to view the list of all your contacts directly.');
 
 // main
+define('_CONTACTLISTCONTACTS',						'Contacts');
+define('_CONTACTLIST1STGRADE',						'1st grade');
+define('_CONTACTLIST2NDGRADE',						'2nd grade');
 define('_CONTACTLISTONLINE',                       'online');
 define('_CONTACTLISTSORTITEMS',                    'Sort list');
 define('_CONTACTLISTRELOAD',                       'reload');

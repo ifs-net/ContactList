@@ -48,21 +48,26 @@
 
   <!--[if $state eq ""]-->
   <h3><!--[pnml name="_CONTACTLISTYOURBUDDIES"]--></h3>
-  <p><!--[pnml name="_CONTACTLISTAMOUNTCONFIRM"]-->:&nbsp;<!--[$contacts]-->&nbsp;<!--[pnml name="_CONTACTLISTOF"]-->&nbsp;<!--[$contacts_all]--></p>
+  <p><!--[pnml name="_CONTACTLISTAMOUNTCONFIRM"]-->:&nbsp;<!--[$contacts]-->&nbsp;<!--[pnml name="_CONTACTLISTOF"]-->&nbsp;<!--[$contacts_all]-->.
   <!--[elseif $state eq 0]-->
   <h3><!--[pnml name="_CONTACTLISTYOURBUDDIESPENDING"]--></h3>
-  <p><!--[pnml name="_CONTACTLISTAMOUNTPENDING"]-->:&nbsp;<!--[$contacts_all]--></p>
+  <p><!--[pnml name="_CONTACTLISTAMOUNTPENDING"]-->:&nbsp;<!--[$contacts_all]-->.
   <!--[elseif $state eq 1]-->
   <h3><!--[pnml name="_CONTACTLISTYOURBUDDIESCONFIRM"]--></h3>
-  <p><!--[pnml name="_CONTACTLISTAMOUNTCONFIRM"]-->:&nbsp;<!--[$contacts_all]--></p>
+  <p><!--[pnml name="_CONTACTLISTAMOUNTCONFIRM"]-->:&nbsp;<!--[$contacts_all]-->.
   <!--[elseif $state eq 2]-->
   <h3><!--[pnml name="_CONTACTLISTYOURBUDDIESREJECT"]--></h3>
-  <p><!--[pnml name="_CONTACTLISTAMOUNTREJECTED"]-->:&nbsp;<!--[$contacts_all]--></p>
+  <p><!--[pnml name="_CONTACTLISTAMOUNTREJECTED"]-->:&nbsp;<!--[$contacts_all]-->.
   <!--[elseif $state eq 3]-->
   <h3><!--[pnml name="_CONTACTLISTYOURBUDDIESSUSPEND"]--></h3>
-  <p><!--[pnml name="_CONTACTLISTAMOUNTSUSPENDED"]-->:&nbsp;<!--[$contacts_all]--></p>
+  <p><!--[pnml name="_CONTACTLISTAMOUNTSUSPENDED"]-->:&nbsp;<!--[$contacts_all]-->.
   <!--[/if]-->
-
+  <br />
+  <!--[if $contactinfo.1st gt 0]-->
+  	<!--[pnml name="_CONTACTLISTCONTACTS"]--> <!--[pnml name="_CONTACTLIST1STGRADE"]-->: <!--[$contactinfo.1st]-->, <!--[pnml name="_CONTACTLIST2NDGRADE"]-->: <!--[$contactinfo.2nd]-->.
+  <!--[/if]-->
+  </p>
+  
   <!--[if $contacts_all gt 0]-->
 
   <!--[pnform]-->

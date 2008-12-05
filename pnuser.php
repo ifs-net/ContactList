@@ -60,7 +60,7 @@ function ContactList_user_main()
     $uid = pnUserGetVar('uid');
     $render->assign('sort',FormUtil::getPassedValue('sort'));
     $render->assign('dateformat',pnModGetVar('ContactList','dateformat'));
-
+	$render->assign('contactinfo',pnModAPIFunc('ContactList','user','getContactsInfo',array('uid' => $uid)));
     // unconfirmed buddies are always assigned
     $render->assign('buddies_unconfirmed',pnModAPIFunc('ContactList','user','getall',
     array('bid' => $uid,
