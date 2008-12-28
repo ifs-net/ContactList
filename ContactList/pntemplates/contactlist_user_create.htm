@@ -32,14 +32,14 @@
       <!--[/if]-->
 
       <dt><!--[pnformlabel for=prv_comment text="_CONTACTLISTPRVCOMMENT"]--></dt>
-      <dd><!--[pnformtextinput id=prv_comment textMode=multiline]--></dd>
+      <dd><!--[pnformtextinput id=prv_comment maxLength=256 textMode=multiline]--></dd>
     </dl>
 
     <!--[if $noconfirm eq 0]-->
     <div class="pn-informationmsg"><!--[pnml name="_CONTACTLISTCONFIRMREQU"]--></div>
     <dl class="pn-clearfix">
       <dt><!--[pnformlabel for="request_text" text=_CONTACTLISTREQUESTTEXT]--></dt>
-      <dd><!--[pnformtextinput id=request_text textMode=multiline]--></dd>
+      <dd><!--[pnformtextinput id=request_text maxLength=160 textMode=multiline]--></dd>
     </dl>
     <!--[/if]-->
   </fieldset>
