@@ -271,9 +271,15 @@ function ContactList_userapi_suspend($args) {
           	// we should send an email to the counterpart because this person will already
           	// have recieved an email containing the request as new buddy. To avoid confused
           	// users this email is neccessary.
-//		    pnMail(pnUserGetVar('email',$uid), $subject, $body, array('header' => '\nMIME-Version: 1.0\nContent-type: text/plain'), false);
-			die(prayer($obj));
-		  	return DBUtil::deleteObject($obj,'contactlist_buddylist');
+		    // send email
+		    $render = pnRender::getInstance('ContactList');
+		    $render->assign('sitename',	pnConfigGetVar('sitename'));
+		    $render->assign('bid',	$obj['bid']);
+		    $render->assign('uid',	$obj['uid']);
+		    $body = $render->fetch('contactlist_email_cancelled.htm');
+		    $subject = _CONTACTLISTREQUESTCANCELLED;
+		    pnMail(pnUserGetVar('email',$obj['bid']), $subject, $body, array('header' => '\nMIME-Version: 1.0\nContent-type: text/plain'), false);
+			return DBUtil::deleteObject($obj,'contactlist_buddylist');
 		}
         else {
             return LogUtil::registerError(_CONTACTLISTCANNOTDELETEYET);
