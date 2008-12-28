@@ -124,6 +124,8 @@ define('_CONTACTLISTBUDDYADDED',                   'Buddy added');
 define('_CONTACTLISTUSERIGNORESYOU',               'Seems as if there is a conflict between you and your potential buddy because you are on the other user\'s ignore list. So, your request could not be sent!');
 
 // emails
+define('_CONTACTLISTREQUESTCANCELLED',				'A buddy request for you was cancelled');
+define('_CONTACTLISTHASCANCELLEDYOURREQUESTAT',		'has cancelled a buddy request for you at');
 define('_CONTACTLISTUNCONFIRMSUBJECT',             'You where added as buddy');
 define('_CONTACTLISTCONFIRMSUBJECT',               'A user wants to add you as a buddy');
 define('_CONTACTLISTBUDDYSUSPENDEDYOU',            'You were suspended as buddy');
