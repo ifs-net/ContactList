@@ -149,6 +149,13 @@ class contactlist_user_createHandler {
     function initialize(& $render) {
         $uname = FormUtil::getPassedValue('uname');
         if (isset($uname) && (pnUserGetIDFromName($uname) > 1)) $render->assign('uname',$uname);
+	    else {
+			$uid = FormUtil::getPassedValue('uid');
+		    if (isset($uid) && !isset($uname)) {
+		        $uname = pnUserGetVar('uname',$uid);
+	    	    if ($uname) $render->assign('uname', $uname);
+	    	}
+	    }
         return true;
     }
     function handleCommand(& $render, & $args) {
