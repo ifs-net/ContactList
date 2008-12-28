@@ -14,7 +14,7 @@ $modversion['name']           = 'ContactList';
 $modversion['description']    = _CONTACTLISTDESCRIPTION;
 $modversion['displayname']    = _CONTACTLISTDISPLAYNAME;
 // the version string must not exceed 10 characters!
-$modversion['version']        = '1.0';
+$modversion['version']        = '1.1';
 
 // The following in formation is used by the credits module
 // to display the correct credits
@@ -39,7 +39,7 @@ array(  'modname'    => 'Avatar',
         'minversion' => '1.0', 'maxversion' => '',
         'status'     => PNMODULE_DEPENDENCY_RECOMMENDED),
 array(  'modname'    => 'MyProfile',
-        'minversion' => '1.0', 'maxversion' => '',
+        'minversion' => '1.1', 'maxversion' => '',
         'status'     => PNMODULE_DEPENDENCY_RECOMMENDED)
 );
 
