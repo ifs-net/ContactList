@@ -1,11 +1,14 @@
 $Id$
 
-svn / next release:
+1.1
 ===================
 - buddies cannot be added to the ignore list 
   any more and also the other way round...
 - some email bugs fixed
 - live update check added
+- email now sent when buddy request is cancelled
+- see for more: http://code.zikula.org/contactlist/query?status=closed&group=resolution&milestone=1.1
+
 1.0:
 ====
 - initial release
