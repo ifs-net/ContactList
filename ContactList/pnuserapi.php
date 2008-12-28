@@ -266,7 +266,7 @@ function ContactList_userapi_suspend($args) {
         // sending and deleting requests in a loop
         $date_now       = time();
         $date_request   = strtotime($obj['date'].' GMT');
-        $date_diff      = $date_now-$date_request+999999999999999999999999999999;
+        $date_diff      = $date_now-$date_request;
         if ($date_diff > (60*60*24*1)) {
           	// we should send an email to the counterpart because this person will already
           	// have recieved an email containing the request as new buddy. To avoid confused
