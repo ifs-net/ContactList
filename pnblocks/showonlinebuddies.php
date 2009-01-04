@@ -62,7 +62,11 @@ function ContactList_ShowOnlineBuddiesblock_display($blockinfo)
             'sort'      => 'uname'));
     $c=0;
     $buddies_online = array();
-    if (!(count($buddies)>0)) return false;	// if there are no buddies return no content
+    if (!(count($buddies)>0)) { 
+	  	// if there are no buddies return invitation offer
+        $blockinfo['content'] = $render->fetch('contactlist_block_showonlinebuddies_invite.htm');
+        return themesideblock($blockinfo);
+	}
     else {
         foreach ($buddies as $buddy) {
             if ($buddy['online'] == true) {
@@ -70,7 +74,11 @@ function ContactList_ShowOnlineBuddiesblock_display($blockinfo)
                 $c++;
             }
         }
-	    if (!(count($buddies_online)>0)) return false;	// if there are no buddies return no content
+	    if (!(count($buddies_online)>0)) {
+		  	// if there are no buddies return invitation offer
+	        $blockinfo['content'] = $render->fetch('contactlist_block_showonlinebuddies_invite2.htm');
+	        return themesideblock($blockinfo);
+		}
 	    else {
 	        $render->assign('buddies_online', $buddies_online);
 	        $render->assign('buddies_online_counter', $c);

@@ -9,3 +9,8 @@
  */
 
 define('_CONTACTLISTMYBUDDIESONLINE',		'Meine Kontakte');
+define('_CONTACTLISTNOBUDDYONLINE',			'Keine Freunde online?');
+define('_CONTACTLISTNOBUDDYYET',			'Noch keine Freunde? ');
+define('_CONTACTLISTINVITEFRIENDS',			'Lade Deine Freunde hierher ein!');
+define('_CONTACTLISTINVITEMOREFRIENDS',		'Lade weitere Freunde hierher ein!');
+define('_CONTACTLISTBUILDYOURSOCIALNETWORK','Baue Dir so mit Deinen Freunden hier ein Netzwerk online auf!');

@@ -8,4 +8,9 @@
  * @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
  */
 
-define('_CONTACTLISTMYBUDDIESONLINE',			'My buddies');
+define('_CONTACTLISTMYBUDDIESONLINE',		'My buddies');
+define('_CONTACTLISTNOBUDDYONLINE',			'No friends online?');
+define('_CONTACTLISTNOBUDDYYET',			'No friends found, yet? ');
+define('_CONTACTLISTINVITEFRIENDS',			'Invite your friends now!');
+define('_CONTACTLISTINVITEMOREFRIENDS',		'Invite more friends now!');
+define('_CONTACTLISTBUILDYOURSOCIALNETWORK','Start to build up your network with your friends now!');
