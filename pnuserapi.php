@@ -447,7 +447,7 @@ function ContactList_userapi_ignoreUser($args) {
  * @param   $args['uid']    int         user id
  * @param   $args['iuid']   int         ignored user id
  * @param   $args['sort']   string      identifier value to sort the list for (iuname,uname)
- * @return  boolean
+ * @return  array
  */
 function ContactList_userapi_getallignorelist($args) {
 
