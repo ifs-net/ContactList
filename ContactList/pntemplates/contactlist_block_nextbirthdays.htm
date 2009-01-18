@@ -1,6 +1,7 @@
 <!--[* $Id$ *]-->
 <!--[pnpageaddvar name="stylesheet" value="modules/ContactList/pnstyle/style.css"]-->
 
+<div style="max-height: 100px; overflow-x: hidden;overflow-y:auto;">
 <dl class="cl_birthdays contactlist">
 <!--[foreach from=$buddies item="buddy"]-->
 <dt><!--[$buddy.uname|userprofilelink]--><span class="<!--[if $buddy.online eq true]-->online<!--[else]-->offline<!--[/if]-->">&nbsp;</span></dt>
@@ -19,3 +20,4 @@
 <!--[/if]-->
 <!--[/foreach]-->
 </dl>
+</div>
