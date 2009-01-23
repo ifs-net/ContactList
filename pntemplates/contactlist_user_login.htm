@@ -13,18 +13,14 @@
 
     <fieldset class="pn-form-fieldset">
       <legend><!--[pnml name="_CONTACTLISTLOGIN"]--></legend>
-      <div class="pn-formrow">
-        <label for="uname"><!--[pnml name="_CONTACTLISTNICKNAME"]-->:</label>
-        <input type="text" name="uname" size="20" maxlength="32" />
-      </div>
-      <div class="pn-formrow">
-        <label for="pass"><!--[pnml name="_CONTACTLISTPASSWORD"]-->:</label>
-        <input type="password" name="pass" size="20" maxlength="32" />
-      </div>
-      <div class="pn-formrow">
-        <input type="checkbox" value="1" name="rememberme" id="rememberme" />&nbsp;
-        <label for="rememberme"><!--[pnml name="_CONTACTLISTREMEMBERME"]--></label>
-      </div>
+      <dl class="configrow">
+        <dt><label for="uname"><!--[pnml name="_CONTACTLISTNICKNAME"]-->:</label></dt>
+        <dd><input type="text" name="uname" size="20" maxlength="32" /></dd>
+        <dt><label for="pass"><!--[pnml name="_CONTACTLISTPASSWORD"]-->:</label></dt>
+        <dd><input type="password" name="pass" size="20" maxlength="32" /></dd>
+        <dt><label for="rememberme"><!--[pnml name="_CONTACTLISTREMEMBERME"]--></label></dt>
+        <dd><input type="checkbox" value="1" name="rememberme" id="rememberme" /></dd>
+      </dl>
     </fieldset>
 
     <div class="pn-formrow pn-formbuttons">

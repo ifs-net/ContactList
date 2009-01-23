@@ -98,9 +98,11 @@ em.cl_online {
 /* General
 /*******************************************************************************/
 
+
 .cl_box {
   margin: 1.5em 0pt;
 }
+/*
 .cl_box dl dt {
   display: block;
   float: left;
@@ -119,6 +121,7 @@ em.cl_online {
   padding: 0 !important;
   line-height: 2em !important;
 }
+*/
 .cl_footer {
   font-size: 0.8em;
   text-align: center;
@@ -313,19 +316,60 @@ dl.contactlist {
   padding:0pt;
 }
 
+/*******************************************************************************/
+/* Administration / Preferences
+/*******************************************************************************/
 
+#cl_main dl.configrow {
+  margin:0.5em;
+  min-height:0;
+}
+#cl_main dl.configrow dt {
+  clear:left;
+  float:left;
+  margin:0;
+  padding:0.5em 0;
+  text-align:right;
+  width:30%;
+}
+#cl_main dl.configrow dd {
+  margin:0 0 0 33%;
+  padding:0.5em 0;
+  text-align:left;
+}
+#cl_main dl.configrow dd:after {
+  content: ".";
+  display:block;
+  clear:left;
+  height:0;
+  visibility:hidden;
+}
+#cl_main dl.configrow dd div.pn-informationmsg {
+  margin-left:0;
+  margin-right:0;
+}
 
-/*---------------------------------------------------------*/
-/* Workaround: Clearfix-Modifikation for all IE-Versions   */
-/*
-** IE7 - x
-*/
-.pn-clearfix { display: inline-block; }
-/*
-** IE5.x/Win - x
-** IE6 - x
-*/
-* html .pn-clearfix { height: 1%; }
-.pn-clearfix { display: block; }
+/*******************************************************************************/
+/* Better Clearfix-Solution
+/*******************************************************************************/
 
-/*--------------------------------------------------------*/
+/* the main clearfix */
+#cl_main .pn-clearfix:after {
+  content: ".";
+  display: block;
+  clear: both;
+  height: 0;
+  visibility: hidden;
+}
+/* IE-Patches for Clearfix */
+#cl_main .pn-clearfix { 
+  display: inline-block; 
+}
+/* Hide for IE5/Mac with commented backslash hack \*/
+* html #cl_main .pn-clearfix {
+  height: 1px; 
+}
+#cl_main .pn-clearfix { 
+  display: block; 
+}
+/* Ende of Hiding for IE5/Mac */

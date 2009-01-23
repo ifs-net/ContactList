@@ -3,12 +3,12 @@
 <!--[include file="contactlist_user_header.htm" title=$title]-->
 <!--[pnajaxheader modname="Users"]-->
 
-<div id="cl_create" class="cl_box pn-clearfix">
+<div id="cl_create" class="cl_box">
   <!--[pnform cssClass="pn-form"]-->
   <!--[pnformvalidationsummary]-->
   <fieldset class="pn-form-fieldset">
     <legend><!--[pnml name="_CONTACTLISTADDBUDDY"]--></legend>
-    <dl class="pn-clearfix">
+    <dl class="configrow">
       <dt><!--[pnformlabel for="uname" text=_CONTACTLISTUNAME]--></dt>
       <dd>
         <div id="liveusersearch" class="pn-hide">
@@ -37,7 +37,7 @@
 
     <!--[if $noconfirm eq 0]-->
     <div class="pn-informationmsg"><!--[pnml name="_CONTACTLISTCONFIRMREQU"]--></div>
-    <dl class="pn-clearfix">
+    <dl class="configrow">
       <dt><!--[pnformlabel for="request_text" text=_CONTACTLISTREQUESTTEXT]--></dt>
       <dd><!--[pnformtextinput id=request_text maxLength=160 textMode=multiline]--></dd>
     </dl>
