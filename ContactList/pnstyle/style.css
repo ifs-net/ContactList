@@ -373,3 +373,46 @@ dl.contactlist {
   display: block; 
 }
 /* Ende of Hiding for IE5/Mac */
+
+/*******************************************************************************/
+/* FOAF-List
+/*******************************************************************************/
+
+ul.foaf_list {
+    list-style-image:none;
+    list-style-position:outside;
+    list-style-type:none;
+    margin:1em 0;
+    padding:0;
+}
+ul.foaf_list li {
+    background:transparent url(/modules/ContactList/pnimages/arrow.gif) no-repeat scroll 102px 32px;
+    display:inline-block;
+    margin:0;
+    overflow:hidden;
+    padding:0 25px 0 0;
+    text-align:center;
+    vertical-align:top;
+    width:100px;
+}
+ul.foaf_list li:last-child {
+    background-image:none;
+    padding-right:0;
+}
+ul.foaf_list .foaf_avatar {
+    display:table-cell;
+    height:81px;
+    vertical-align:middle;
+    width:95px;
+}
+ul.foaf_list .foaf_avatar img {
+    border:1px solid #CCCCCC;
+    display:block;
+    margin:auto;
+    padding:1px;
+}
+ul.foaf_list .foaf_user {
+    font-size:0.9em;
+    margin-bottom:10px;
+}
+
