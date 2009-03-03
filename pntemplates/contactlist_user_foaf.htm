@@ -1,38 +1,23 @@
 <!--[* $Id$ *]-->
+<!--[pnpageaddvar name="stylesheet" value="modules/ContactList/pnstyle/style.css"]-->
 
-<!--[pnml name="_CONTACTLISTCONNECTION"]-->:<br />
+<strong><!--[pnml name="_CONTACTLISTCONNECTION"]-->:</strong>
 <!--[if $FOAFLinkDepth eq 0]-->
-<!--[pnml name="_CONTACTLISTNOLINKFOUND"]-->
+<em><!--[pnml name="_CONTACTLISTNOLINKFOUND"]--></em>
 <!--[else]-->
-
-<div>
-  <!--[foreach from=$FOAFList item="buddy" name="friends"]-->
-  <!--[pnusergetvar uid=$buddy.uid name="_YOURAVATAR" assign="avatar"]-->
-  <div style="  
-  	border:0px;
-    float:left;
-    height:50px;
-	padding: 0px;
-	">
-    <center>
-      <!--[if $avatar eq '' or $avatar eq 'blank.gif']-->
-      <!--[pnimg modname=ContactList src="avatar_male.gif" height="30" class="avatar"]-->
-      <!--[else]-->
-      <img src="<!--[pngetbaseurl]-->images/avatar/<!--[$avatar|pnvarprepfordisplay]-->" class="avatar" height="30" />
-      <!--[/if]--><br />
-      <!--[$buddy.uname|userprofilelink]-->
-    </center>
-  </div>
-  <!--[if $smarty.foreach.friends.last ne 1]-->
-  <div style="  border:none;
-    float:left;
-    margin-top:20px;
-    min-height:50px;
-    text-align:center;
-    width:40px; ">
-    <!--[pnimg modname="ContactList" src="arrow.gif"]-->
-  </div>
-  <!--[/if]-->
-  <!--[/foreach]-->
-</div>
+<ul class="foaf_list">
+    <!--[foreach from=$FOAFList item="buddy" name="friends"]-->
+    <!--[pnusergetvar uid=$buddy.uid name="_YOURAVATAR" assign="avatar"]-->
+    <li>
+        <div class="foaf_avatar">
+            <!--[if $avatar eq '' or $avatar eq 'blank.gif']-->
+            <!--[pnimg modname=ContactList src="avatar_male.gif" height="50" class="avatar"]-->
+            <!--[else]-->
+            <img src="<!--[pngetbaseurl]-->images/avatar/<!--[$avatar|pnvarprepfordisplay]-->" class="avatar" height="50" />
+            <!--[/if]-->
+        </div>
+        <div class="foaf_user"><!--[$buddy.uname|userprofilelink]--></div>
+    </li>
+    <!--[/foreach]-->
+</ul>
 <!--[/if]-->
