@@ -134,7 +134,7 @@ em.cl_online {
 /* Autocomplete
 /*******************************************************************************/
 
-div.autocomplete_user {
+.cl_autocomplete_user {
   position: absolute;
   width: 25em;
   background-color: white;
@@ -143,24 +143,24 @@ div.autocomplete_user {
   padding: 0;
 }
 
-div.autocomplete_user ul {
+.cl_autocomplete_user ul {
   list-style-image: url("../../../images/icons/extrasmall/edit_user.gif");
   margin: 0;
   padding: 0;
 }
 
-div.autocomplete_user ul li.selected {
+.cl_autocomplete_user ul li.selected {
   background-color: #ffb;
 }
 
-div.autocomplete_user ul li {
+.cl_autocomplete_user ul li {
   margin: 0;
   padding: 0.1em 0 0.1em 0;
   line-height: 1.4em;
   cursor: pointer;
 }
 
-#liveusersearch {
+#cl_liveusersearch {
 
 }
 
