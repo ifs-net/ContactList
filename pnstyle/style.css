@@ -395,6 +395,14 @@ ul.foaf_list li {
     vertical-align:top;
     width:100px;
 }
+/* IE 6 */
+* html ul.foaf_list li {
+    display: inline;
+}
+/* IE 7 */
+*:first-child+html ul.foaf_list li {
+    display: inline;
+}
 ul.foaf_list li:last-child {
     background-image:none;
     padding-right:0;
