@@ -1,7 +1,12 @@
 $Id$
 
-1.1
-===================
+1.2:
+====
+- optional api parameter for buddy creation (invitation module will later be able to automatically create a link between invited user and invitor)
+- fixed some typos
+
+1.1:
+====
 - buddies cannot be added to the ignore list 
   any more and also the other way round...
 - some email bugs fixed

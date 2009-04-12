@@ -123,6 +123,7 @@ function ContactList_userapi_getall($args) {
  * @param   $args['prv_comment']    string      private comment
  * @param   $args['pub_comment']    string      public comment
  * @param   $args['request_text']   string      request text
+ * @param	$args['force']			int			optional (==1 create without asking and sending emails)
  * @return  boolean
  */
 function ContactList_userapi_create($args) {
@@ -132,6 +133,7 @@ function ContactList_userapi_create($args) {
     $prv_comment        = $args['prv_comment'];
     $pub_comment        = $args['pub_comment'];
     $request_text       = $args['request_text'];
+    $force				= (int)$args['force'];
     if (!($uid > 1) || !($bid > 1)) return false;
 
     // is there an old rejected or suspended connection?
@@ -147,7 +149,7 @@ function ContactList_userapi_create($args) {
     }
 
     // now add or create the request
-    $noconfirm = pnModGetVar('ContactList','noconfirm');
+    $noconfirm = (pnModGetVar('ContactList','noconfirm') || ($force == 1));
     if ($noconfirm) {
         $obj[] = array (
             'bid'           => $bid,
@@ -168,13 +170,15 @@ function ContactList_userapi_create($args) {
         if (DBUtil::insertObjectArray($obj,'contactlist_buddylist')) {
             LogUtil::registerStatus(_CONTACTLISTBUDDYADDED);
             // send email
-            $render = pnRender::getInstance('ContactList');
-            $render->assign('sitename',	pnConfigGetVar('sitename'));
-            $render->assign('bid',	$bid);
-            $render->assign('uid',	$uid);
-            $body = $render->fetch('contactlist_email_add_noconfirm.htm');
-            $subject = _CONTACTLISTUNCONFIRMSUBJECT;
-            pnMail(pnUserGetVar('email',$bid), $subject, $body, array('header' => '\nMIME-Version: 1.0\nContent-type: text/plain'), false);
+            if ($force != 1) {
+	            $render = pnRender::getInstance('ContactList');
+	            $render->assign('sitename',	pnConfigGetVar('sitename'));
+	            $render->assign('bid',	$bid);
+	            $render->assign('uid',	$uid);
+	            $body = $render->fetch('contactlist_email_add_noconfirm.htm');
+	            $subject = _CONTACTLISTUNCONFIRMSUBJECT;
+	            pnMail(pnUserGetVar('email',$bid), $subject, $body, array('header' => '\nMIME-Version: 1.0\nContent-type: text/plain'), false);
+	        }
             return true;
         }
         else return false;
