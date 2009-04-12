@@ -62,6 +62,7 @@ function ContactList_upgrade($oldVersion)
 	// Upgrade dependent on old version number
 	switch($oldVersion)
 		{
+	    case '1.1':
 	    case '1.0':
 	    	// table structure changed!
 	    	if (!DBUtil::changeTable('contactlist_buddylist')) return false;
