@@ -112,6 +112,7 @@ define('_CONTACTLISTREMOVEIGNOREDUSER',                 'Benutzer nicht mehr ign
 define('_CONTACTLISTUSERUPDATEERROR',                   'Aktualisieren der Ignorierliste fehlgeschlagen');
 define('_CONTACTLISTUSERNOLONGERIGNORED',               'Der Benutzer wird nun nicht mehr ignoriert');
 define('_CONTACTLISTIGNORELISTENTRY',					'Der Benutzer steht auf deiner eigenen Ignorierliste; so fängt aber keine gute Freundschaft an...');
+define('_CONTACTLISTDISALLOWEDGROUPMEMEBRSHIP',			'Der Benutzer ist Mitglied einer Gruppe, welche vom Administrator so eingestellt wurde, dass deren Mitglieder nicht ignoriert werden können.');
 
 // create
 define('_CONTACTLISTCONFIRMREQU',                       'Nach Abschicken dieses Formulars wird der andere Benutzer eine Nachricht erhalten, dass er die Anfrage bearbeiten soll. Sobald die Kontaktanfrage akzeptiert oder abgelehnt wurde, wirst Du informiert.');

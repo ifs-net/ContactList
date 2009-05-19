@@ -112,6 +112,7 @@ define('_CONTACTLISTREMOVEIGNOREDUSER',            'Remove from ignore list');
 define('_CONTACTLISTUSERUPDATEERROR',              'Updating user information failed');
 define('_CONTACTLISTUSERNOLONGERIGNORED',          'User removed from ignore list');
 define('_CONTACTLISTIGNORELISTENTRY',				'You are ignoring the potential new buddy... That\'s not a good start of a new friendship...');
+define('_CONTACTLISTDISALLOWEDGROUPMEMEBRSHIP',		'The user is member of a group that was marked by the site admin that the members of this group canot be ignored by anyone');
 
 // create
 define('_CONTACTLISTCONFIRMREQU',                  'After submitting this form a buddy request will be send to the new buddy. He then can accept or reject your request. You can send some text with the request for the new buddy');

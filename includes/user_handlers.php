@@ -56,11 +56,27 @@ class contactlist_user_ignoreHandler {
             if (!($iuid > 1)) {
                 return LogUtil::registerError(_CONTACTLISTUSERNOTFOUND);
             }
+			// is the user forbidden to be added?
+			$disabledgroups = pnModGetVar('ContactList','disabledgroups');
+			$usergroups 	= pnModAPIFunc('Groups','user','getusergroups',array('uid' => $iuid));
+			$disallowed 	= 0;
+			foreach ($usergroups as $groups) {
+				$gid = $groups['gid'];
+				if (in_array($gid,$disabledgroups)) {
+				  	$disallowed = 1;
+				}
+			}
+			if ($disallowed) {
+				return LogUtil::registerError(_CONTACTLISTDISALLOWEDGROUPMEMEBRSHIP);
+			}
             // is the user a buddy?
-            if (pnModAPIFunc('ContactList','user','isBuddy',array('uid1'=>$iuid, 'uid2'=>$uid))) return LogUtil::registerError(_CONTACTLISTBUDDYNOTIGNORABLE);
-
+            if (pnModAPIFunc('ContactList','user','isBuddy',array('uid1'=>$iuid, 'uid2'=>$uid))) {
+				return LogUtil::registerError(_CONTACTLISTBUDDYNOTIGNORABLE);
+			}
             // ignore the user from now on...
-            if (pnModAPIFunc('ContactList','user','ignoreUser',array('uid' => $uid, 'iuid' => $iuid))) LogUtil::registerStatus(_CONTACTLISTIGNOREDUSERADDED);
+            if (pnModAPIFunc('ContactList','user','ignoreUser',array('uid' => $uid, 'iuid' => $iuid))) {
+			  	LogUtil::registerStatus(_CONTACTLISTIGNOREDUSERADDED);
+			}
             else return false;
             return pnRedirect(pnModURL('ContactList','user','ignore'));
         }

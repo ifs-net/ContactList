@@ -66,6 +66,7 @@ function ContactList_upgrade($oldVersion)
 	    case '1.0':
 	    	// table structure changed!
 	    	if (!DBUtil::changeTable('contactlist_buddylist')) return false;
+	    case '1.2':
 	}
     // Update successful
 	return true;
