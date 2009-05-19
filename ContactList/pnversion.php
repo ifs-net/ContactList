@@ -14,7 +14,7 @@ $modversion['name']           = 'ContactList';
 $modversion['description']    = _CONTACTLISTDESCRIPTION;
 $modversion['displayname']    = _CONTACTLISTDISPLAYNAME;
 // the version string must not exceed 10 characters!
-$modversion['version']        = '1.2';
+$modversion['version']        = '1.3';
 
 // The following in formation is used by the credits module
 // to display the correct credits

@@ -26,6 +26,13 @@ class ContactList_admin_editConfigHandler
         $render->assign('profilebirthday',      pnModGetVar('ContactList','profilebirthday'));
         $render->assign('useprofilebirthday',   pnModGetVar('ContactList','useprofilebirthday'));
 
+	  	$groups	= pnModAPIFunc('ContactList','admin','getGroupsConfiguration');
+	  	$groups_list = array();
+	  	foreach ($groups as $g) $groups_list[] = array('text' => $g['name'], 'value' => $g['gid']);
+		$data['groups'] = $groups_list;
+		$data['disabledgroups'] = pnModGetVar('ContactList','disabledgroups');
+		$render->assign($data);
+
         $render->assign('profile',      pnModAvailable('Profile'));
         $render->assign('myprofile',    pnModAvailable('MyProfile'));
         if (pnModAvailable('MyProfile')) {
@@ -48,7 +55,32 @@ class ContactList_admin_editConfigHandler
             if ($obj['useprofilebirthday'] && (($obj['profilebirthday'] == '') || (!isset($obj['profilebirthday'])))) {
                 return LogUtil::registerError(_CONTACTLISTPROFILEBIRTHDAYNOENTRY);
             }
+            // Delete old values
             pnModDelVar('ContactList');
+            // Store new values
+			$todelete = array();
+			foreach ($obj['disabledgroups'] as $gid) {
+					$group = pnModAPIFunc('Groups','user','get',array('gid' => $gid));
+					$members = $group['members'];
+					foreach ($members as $user) {
+						$todelete[] = $user['uid'];
+					}
+			}
+			if (count($todelete) > 0) {
+				// get number of obejcts that should be deleted
+				$tables = pnDBGetTables();
+				$column = $tables['contactlist_ignorelist_column'];
+				$in = implode(',',$todelete);
+				$where  = $column['iuid']." IN (".$in.")";
+				$count = DBUtil::selectObjectCount('contactlist_ignorelist',$where);
+				if ($count > 0) {
+					$result = DBUtil::deleteWhere('contactlist_ignorelist',$where);
+					if ($result) {
+						LogUtil::registerStatus(_CONTACTLISTDELETEIGNORELISTENTRIES.': '.$count);
+					}
+				}
+			}
+            pnModSetVar('ContactList','disabledgroups',         $obj['disabledgroups']);
             pnModSetVar('ContactList','nopubliccomment',        $obj['nopubliccomment']);
             pnModSetVar('ContactList','noconfirm',              $obj['noconfirm']);
             pnModSetVar('ContactList','useignore',              $obj['useignore']);
@@ -60,7 +92,7 @@ class ContactList_admin_editConfigHandler
             pnModSetVar('ContactList','profilebirthday',        $obj['profilebirthday']);
             pnModSetVar('ContactList','useprofilebirthday',     $obj['useprofilebirthday']);
             LogUtil::registerStatus(_CONTACTLISTCONFIGUPDATED);
-            return pnRedirect(pnModURL('ContactList','admin','main'));
+//            return pnRedirect(pnModURL('ContactList','admin','main'));
         }
         return true;
     }

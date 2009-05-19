@@ -28,6 +28,9 @@ define('_CONTACTLISTOR',                    'oder');
 define('_CONTACTLISTNOPUBLICBUDDYLIST',     'Öffentliche Anzeige von fremden Kontaktlisten global deaktivieren. Dies deaktiviert auch die FOAF (friend of a friend)-Funktion.');
 define('_CONTACTLISTNOPUBLICBUDDYLISTHINT', 'Ist die öffentliche Anzeige der Kontaktlisten aktiviert, kann jeder Benutzer selbst regeln, wer seine Kontaktliste einsehen darf: Registrierte Benutzer, seine bestätigten Kontakte oder niemand.');
 define('_CONTACTLISTITEMSPERPAGE',          'Anzahl der Kontakte pro Seite in der Hauptansicht');
+define('_CONTACTLISTGROUPSNOIGNORE',		'Mitglieder folgender Gruppen vor dem Ignorieren bewahren');
+define('_CONTACTLISTGROUPSIGNORETEXT',		'Achtung: Wird eine Gruppe ausgewählt, dass sie nicht ignoriert werden darf, werden ohne Nachfrage alle Einträge aus der Ignorierliste unwiderruflich gelöscht, welche Mitglieder der ausgewählten Gruppen betreffen!');
+define('_CONTACTLISTDELETEIGNORELISTENTRIES','Durch geänderte Gruppen-Einstellungen gelöschte Ignorierlisten-Einträge aus den Datenbanken');
 
 // admin, donation
 define('_CONTACTLISTSUPPORTCONTACTLIST',    'Unterstütze die Entwicklung dieses Modul');

@@ -28,6 +28,10 @@ define('_CONTACTLISTOR',					'or');
 define('_CONTACTLISTNOPUBLICBUDDYLIST',		'Disable public buddy lists. This will also disable the FOAF (friend of a friend) function');
 define('_CONTACTLISTNOPUBLICBUDDYLISTHINT',		'If not disabled, every user can choose who should be allowed to view his buddy list');
 define('_CONTACTLISTITEMSPERPAGE',			'Number of buddies to be showed on one page in the main buddy list');
+define('_CONTACTLISTGROUPSNOIGNORE',		'Members of these groups cannot be ignored');
+define('_CONTACTLISTGROUPSIGNORETEXT',		'Attention: If you mark groups here, all existing ignorelist entries that have users of the marked groups as ignored users will be deleted with storing these settings!');
+define('_CONTACTLISTDELETEIGNORELISTENTRIES','Deleted ignorelist entries due to your group changes');
+
 // admin, donation
 define('_CONTACTLISTSUPPORTCONTACTLIST',	'Support the ContactList module');
 define('_CONTACTLISTDONATETHIS',			'Donate with PayPal!');
