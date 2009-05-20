@@ -531,8 +531,8 @@ function ContactList_userapi_getBuddyList($args) {
         'uid'       => (int)$args['uid'],
         'state'     => '1'));
     if (count($buddies)==0) return false;
+    $res = array();
     foreach ($buddies as $buddy) $res[] = array('uid' => $buddy['bid'], 'uname' => pnUserGetVar('uname',$buddy['bid']));
-
     return $res;
 }
 
