@@ -27,7 +27,23 @@ function ContactList_myprofileapi_noAjax($args)
 function ContactList_myprofileapi_getTitle($args)
 {
     pnModLangLoad('ContactList');
-    return _CONTACTLISTTABTITLE;
+    $uid = (int)FormUtil::getPassedValue('uid');
+    $contacts = pnModAPIFunc('ContactList','user','getBuddyList',array('uid' =>$uid));
+	// Count number of contacts
+    $count = count($contacts);
+    // Sometimes count gives 1 as value even if there is no buddy...
+    if ($count == 1) {
+	  	if ($contacts[0]['uid'] == '') {
+			$count = 0;
+		}
+	}
+    if ($count == 0) {
+      	// If there is no buddy the tab is not needed!
+	  	return false;
+	} else {
+		return _CONTACTLISTTABTITLE." (".$count.")";
+	}
+    
 }
 
 /**
