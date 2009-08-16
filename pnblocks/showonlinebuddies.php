@@ -52,9 +52,6 @@ function ContactList_ShowOnlineBuddiesblock_display($blockinfo)
 
     $render = pnRender::getInstance('ContactList', false);
 
-	// activate caching manually for 30 seconds
-    $pnRender->caching = true;
-    $pnRender->cache_lifetime = 30;
     $uid = pnUserGetVar('uid');
     $buddies = pnModAPIFunc('ContactList','user','getall',
     array(  'uid'       => $uid,
