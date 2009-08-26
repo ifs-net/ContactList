@@ -1,7 +1,7 @@
 <?php
 /**
  * @package      ContactList
- * @version      $Id: version.php 95 2008-04-12 19:06:51Z herr_vorragend $ 
+ * @version      $Id$ 
  * @author       Florian Schießl, Carsten Volmer
  * @link         http://www.ifs-net.de, http://www.carsten-volmer.de
  * @copyright    Copyright (C) 2008
