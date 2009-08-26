@@ -50,6 +50,14 @@ function ContactList_NextBirthdaysblock_display($blockinfo)
         return false;
     }
 
+	// Use ifs caching method
+	$cache = pnModAPIFunc('ifs','cache','get',array('modname' => 'ContactList', 'cid' => 'birthdays_'.pnUserGetVar('uid')));
+	if ($cache) {
+	  	// return cached output
+		$blockinfo['content'] = $cache;
+		return themesideblock($blockinfo);
+	}
+
     $vars = pnBlockVarsFromContent($blockinfo['content']);
 
     if (empty($vars['numitems'])) $vars['numitems'] = 5;
@@ -79,6 +87,14 @@ function ContactList_NextBirthdaysblock_display($blockinfo)
     $render->assign('dateformat',   $vars['dateformat']);
 
     $blockinfo['content'] = $render->fetch('contactlist_block_nextbirthdays.htm');
+    
+
+	// Cache now
+	// Cache should be active from now on to the next day
+	$to = strtotime(date("Y-m-d 00:00:00", (time()+(60*24*24)) ));
+	$diff = $to - time();
+    pnModAPIFunc('ifs','cache','set',array('modname' => 'ContactList', 'cid' => 'birthdays_'.pnUserGetVar('uid'), 'content' => $blockinfo['content'],'sec' => $diff));
+    
     return themesideblock($blockinfo);
 }
 
