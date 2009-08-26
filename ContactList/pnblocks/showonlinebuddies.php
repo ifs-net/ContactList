@@ -50,6 +50,14 @@ function ContactList_ShowOnlineBuddiesblock_display($blockinfo)
         return false;
     }
 
+	// Use ifs caching method
+	$cache = pnModAPIFunc('ifs','cache','get',array('modname' => 'ContactList', 'cid' => 'buddies_'.pnUserGetVar('uid')));
+	if ($cache) {
+	  	// return cached output
+		$blockinfo['content'] = $cache;
+		return themesideblock($blockinfo);
+	}
+
     $render = pnRender::getInstance('ContactList', false);
 
     $uid = pnUserGetVar('uid');
@@ -74,15 +82,16 @@ function ContactList_ShowOnlineBuddiesblock_display($blockinfo)
 	    if (!(count($buddies_online)>0)) {
 		  	// if there are no buddies return invitation offer
 	        $blockinfo['content'] = $render->fetch('contactlist_block_showonlinebuddies_invite2.htm');
-	        return themesideblock($blockinfo);
-		}
-	    else {
+		} else {
 	        $render->assign('buddies_online', $buddies_online);
 	        $render->assign('buddies_online_counter', $c);
 	        $blockinfo['content'] = $render->fetch('contactlist_block_showonlinebuddies.htm');
-	        return themesideblock($blockinfo);
 	    }
     }
+	// Cache now
+    pnModAPIFunc('ifs','cache','set',array('modname' => 'ContactList', 'cid' => 'buddies_'.pnUserGetVar('uid'), 'content' => $blockinfo['content'],'sec' => 60));
+    return themesideblock($blockinfo);
+    
 }
 
 /**
