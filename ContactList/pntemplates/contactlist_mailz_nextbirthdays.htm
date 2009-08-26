@@ -4,7 +4,7 @@
 <!--[foreach from=$items item="item"]-->
     <li><!--[$item.uname|userprofilelink]--> <!--[pnml name="_CONTACTLIST_DAYS_TO_BIRTHDAY"]--> <!--[$item.daystonextbirthday]--> <!--[pnml name="_CONTACTLIST_DAYS"]--></li>
 <!--[foreachelse]-->
-    <li><!--[pnml name="_CONTACTLIST_NO_BIRTHDAYS_FOUND"]--></li>
+    <li><strong><!--[pnml name="_CONTACTLIST_NO_BIRTHDAYS_FOUND"]--></strong>. <!--[pnml name="_CONTACTLIST_INVITE_YOUR_FRIENDS"]--></li>
 <!--[/foreach]-->
 </ul>
 
