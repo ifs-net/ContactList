@@ -14,4 +14,4 @@ define('_CONTACTLIST_NO_BIRTHDAYS_FOUND', 'Es wurden keine kommenden Geburtstage
 define('_CONTACTLIST_DAYS_TO_BIRTHDAY', 'hat Geburtstag in');
 define('_CONTACTLIST_DAYS', 'Tagen');
 define('_MAILZ_CONTACTLIST_LINK', 'Zur Verwaltung der Kontaktliste');
-
+define('_CONTACTLIST_INVITE_YOUR_FRIENDS', 'Am besten alle Bekannten und Freunde hierher einladen, dann wirst Du auch immer an die Geburtstage erinnert!');
