@@ -1,0 +1,11 @@
+<!--[* $Id: $ *]-->
+
+<ul>
+<!--[foreach from=$items item="item"]-->
+    <li><!--[$item.uname|userprofilelink]--> <!--[pnml name="_CONTACTLIST_DAYS_TO_BIRTHDAY"]--> <!--[$item.daystonextbirthday]--> <!--[pnml name="_CONTACTLIST_DAYS"]--></li>
+<!--[foreachelse]-->
+    <li><!--[pnml name="_CONTACTLIST_NO_BIRTHDAYS_FOUND"]--></li>
+<!--[/foreach]-->
+</ul>
+
+<a href="<!--[pnmodurl modname="ContactList" fqurl="true"]-->"><!--[pnml name="_MAILZ_CONTACTLIST_LINK"]--></a>
