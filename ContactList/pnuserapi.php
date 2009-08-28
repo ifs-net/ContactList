@@ -772,6 +772,47 @@ function ContactList_userapi_getFOAFLink($args) {
     return;
 }
 
+/**
+ * return all user ids that have a buddy at least 
+ * who celebrates birthday today
+ * @return array
+ */
+function ContactList_userapi_getBirthdayBuddies($args)
+{
+    $myprofilebirthday = pnModGetVar('ContactList','myprofilebirthday');
+    if ($myprofilebirthday != '') {
+        $tables = pnDBGetTables();
+        $cl_table = $tables['contactlist_buddylist'];
+        $cl_column = $tables['contactlist_buddylist_column'];
+        $mp_table = $tables['myprofile'];
+        $mp_column = $tables['myprofile_column'];
+        $sql = "
+            SELECT DISTINCT ".$cl_table.".".$cl_column['bid']."
+            FROM ".$cl_table.", ".$mp_table."
+            WHERE ".$cl_table.".".$cl_column['state']." = 1 
+            and ".$mp_table.".".$mp_column['id']." = ".$cl_table.".".$cl_column['uid']." 
+            and ".$mp_table.".".$mp_column[$myprofilebirthday]." like '".date("%-m-d",time())."'";
+        $result = DBUtil::executeSql($sql);
+        if (!$result) {
+            return false;
+        } else {
+            foreach ($result as $item) {
+                $email = pnUserGetVar('email',$item[0]);
+                if ($email != '') {
+                    $res[$item[0]] = $item[0];
+                }
+            }
+            return $res;
+        }
+    } else  if ($profilebirthday != '') {
+        // ToDo later...
+      
+    } else {
+        return false;
+    }
+}
+
+
 function cl_addToArrayLink($uid) {
   	return array (
   		'uid'	=> $uid,

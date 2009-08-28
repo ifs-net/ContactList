@@ -19,6 +19,12 @@ function ContactList_mailzapi_getPlugins($args)
         'description'   => _CONTACTLIST_BUDDIES_BIRTHDAYS_DESCRIPTION,
         'module'        => 'ContactList'
     );
+    $plugins[] = array(
+        'pluginid'      => 2,   // internal id for this module
+        'title'         => _CONTACTLIST_BUDDIES_BIRTHDAYS_TODAY,
+        'description'   => _CONTACTLIST_BUDDIES_BIRTHDAYS_TODAY_DESCRIPTION,
+        'module'        => 'ContactList'
+    );
     return $plugins;
 }
 
@@ -37,7 +43,6 @@ function ContactList_mailzapi_getContent($args)
     pnModLangLoad('ContactList','mailz');
     switch($args['pluginid']) {
         case 1:
-            if (empty($args['params']['dateformat'])) $vars['dateformat'] = '%d.%m.';
             $uid = $args['uid'];
             $buddies = pnModAPIFunc('ContactList','user','getall',
             array(  'uid'       => $uid,
@@ -68,6 +73,38 @@ function ContactList_mailzapi_getContent($args)
             // return if no buddy is out there
             if ($c==0) return _CONTACTLIST_NO_BIRTHDAYS_FOUND;
             return $output;
+        case 2:
+            $uid = $args['uid'];
+            $buddies = pnModAPIFunc('ContactList','user','getall',
+            array(  'uid'       => $uid,
+                    'state'     => 1,
+                    'birthday'  => true,
+                    'sort'      => 'daystonextbirthday'));
+            $c=0;
+            $res = array();    
+            if (!(count($buddies)>0)) {
+                return _CONTACTLIST_NO_BIRTHDAYS_FOUND;
+            };
+            foreach ($buddies as $buddy) {
+                if ($buddy['daystonextbirthday'] == 0){
+                    $res[] = $buddy;
+                    $c++;
+                }
+                if ($c==500) break;
+            }
+            if ($args['contenttype'] == 't') {
+                foreach ($res as $item) {
+                    $output.="\n".$item['uname']." "._CONTACTLIST_CELEBRATES_BIRTHDAY_TODAY."\n";
+                }
+            } else {
+                $render = pnRender::getInstance('ContactList');
+                $render->assign('items', $res);
+                $output = $render->fetch('contactlist_mailz_todaybirthdays.htm');
+            }
+            // return if no buddy is out there
+            if ($c==0) return _CONTACTLIST_NO_BIRTHDAYS_FOUND;
+            return $output;
+            
     }
     return '';
 }
