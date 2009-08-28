@@ -15,3 +15,7 @@ define('_CONTACTLIST_DAYS_TO_BIRTHDAY', 'hat Geburtstag in');
 define('_CONTACTLIST_DAYS', 'Tagen');
 define('_MAILZ_CONTACTLIST_LINK', 'Zur Verwaltung der Kontaktliste');
 define('_CONTACTLIST_INVITE_YOUR_FRIENDS', 'Am besten alle Bekannten und Freunde hierher einladen, dann wirst Du auch immer an die Geburtstage erinnert!');
+
+define('_CONTACTLIST_BUDDIES_BIRTHDAYS_TODAY', 'Heutige Geburtstage von Freunden');
+define('_CONTACTLIST_BUDDIES_BIRTHDAYS_TODAY_DESCRIPTION', 'Dieses Plugin erinnert im Newsletter eingesetzt Personen an Geburtstage von Kontakten, welche heute Geburtstag haben.');
+define('_CONTACTLIST_CELEBRATES_BIRTHDAY_TODAY', 'feiert heute Geburtstag');
