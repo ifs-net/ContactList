@@ -43,7 +43,10 @@ array(  'modname'    => 'Invitation',
         'status'     => PNMODULE_DEPENDENCY_RECOMMENDED),
 array(  'modname'    => 'MyProfile',
         'minversion' => '1.1', 'maxversion' => '',
-        'status'     => PNMODULE_DEPENDENCY_RECOMMENDED)
+        'status'     => PNMODULE_DEPENDENCY_RECOMMENDED),
+array(  'modname'    => 'ifs',
+        'minversion' => '1.0', 'maxversion' => '',
+        'status'     => PNMODULE_DEPENDENCY_REQUIRED)
 );
 
 // This one adds the info to the DB, so that users can click on the
