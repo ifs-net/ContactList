@@ -30,7 +30,7 @@ function smarty_function_versioncheck($params, &$smarty)
     // get newest version number
     require_once('Snoopy.class.php');
     $snoopy = new Snoopy;
-    $snoopy->fetchtext("http://updates.ifs-net.de/zikula/".$params['module'].".txt");
+    $snoopy->fetchtext("http://updates.zksoft.de/zikula/".$params['module'].".txt");
 
     $newestversion = $snoopy->results;
     $newestversion = trim($newestversion);   
@@ -42,7 +42,7 @@ function smarty_function_versioncheck($params, &$smarty)
     
     if ($currentversion != $newestversion) {
       // generate info link if new version is available
-      $output .= " (<strong><a href=\"http://www.ifs-net.de/\">Please update! Update available! Latest release: ".$newestversion."</a></strong>)</p>";
+      $output .= " (<strong><a href=\"http://www.zksoft.de/\">Please update! Update available! Latest release: ".$newestversion."</a></strong>)</p>";
     }   
     echo($output);
     return; 
