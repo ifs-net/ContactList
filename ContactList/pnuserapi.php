@@ -378,7 +378,9 @@ function ContactList_userapi_getPreferences($args) {
     if (!is_array($user)) return false; // no user data?
     if (!isset($user['__ATTRIBUTES__']) || (!isset($user['__ATTRIBUTES__']['contactlist_publicstate']))) {
         // userprefs for this user do not exist, create them with defaults
-        $user['__ATTRIBUTES__']['contactlist_publicstate'] = 2;
+        $defaultvalue = (int)pnModGetVar('ContactList','defaultprivacystatus');
+        if ($defaultvalue == 0) $defaultvalue = 3;
+        $user['__ATTRIBUTES__']['contactlist_publicstate'] = $defaultvalue;
         // store attributes
         DBUtil::updateObject($user, 'users', '', 'uid');
     }
