@@ -115,6 +115,30 @@ function ContactList_userapi_getall($args) {
     return _cl_sortList(_cl_addOnlineStatusAndUsername($result,$args),$sort);
 }
 
+function ContactList_userapi_getWatchList($args)
+{
+    $uid = (int)$args['uid'];
+    if (!($uid > 1)) {
+        return false;
+    } else {
+        $where = 'uid = '.$uid;
+    }
+	$joinInfo[] = array (	'join_table'          =>  'users',			// table for the join
+							'join_field'          =>  'uname',			// field in the join table that should be in the result with
+                         	'object_field_name'   =>  'uname',			// ...this name for the new column
+                         	'compare_field_table' =>  'wuid',			// regular table column that should be equal to
+                         	'compare_field_join'  =>  'uid');			// ...the table in join_table
+
+    // get and return result
+    if ($args['countonly']) {
+        $res = DBUtil::selectExpandedObjectCount('contactlist_watchlist',$joinInfo,$where);
+        return $res; 
+    } else {
+        $res = DBUtil::selectExpandedObjectArray('contactlist_watchlist',$joinInfo,$where,'uname');
+        return $res;
+    }
+}
+
 /**
  * create a new buddy request or add a new buddy
  *
@@ -246,6 +270,29 @@ function ContactList_userapi_decline($args) {
     else $uid = $obj['bid'];
     pnMail(pnUserGetVar('email',$uid), $subject, $body, array('header' => '\nMIME-Version: 1.0\nContent-type: text/plain'), false);
     return true;
+}
+
+/**
+ * suspend watchlist entry
+ *
+ * @param   $args['id']     int     id of entry
+ * @return  bool
+ */
+function ContactList_userapi_suspendWatchList($args)
+{
+    $id = (int)$args['id'];
+    if (!($id > 0)) {
+        return false;
+    } else {
+        // get entry
+        $obj = DBUtil::selectObjectByID('contactlist_watchlist',$id);
+        if (!$obj || ($obj['uid'] != pnUserGetVar('uid'))) {
+            return false;
+        } else {
+            $deleteAction = DBUtil::deleteObject($obj,'contactlist_watchlist');
+            return $deleteAction;
+        }
+    }
 }
 
 /**

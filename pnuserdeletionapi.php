@@ -36,6 +36,11 @@ function ContactList_userdeletionapi_delUser($args)
 		foreach ($objArray as $obj) DBUtil::deleteObject($obj,'contactlist_ignorelist');
 		$result.= count($objArray)." "._CONTACTLISTIGNORELISTENTRIESDELETEDFOR." ";
 		$result.= pnUserGetVar('uname',$uid);
+
+	    $watchcolumn 		= &$tables['contactlist_watchlist_column'];
+		$where 				= $watchcolumn['uid']." = ".$uid." OR ".$watchcolumn['wuid']." = ".$uid;
+		$objArray 			= DBUtil::selectObjectArray('contactlist_watchlist',$where);
+		foreach ($objArray as $obj) DBUtil::deleteObject($obj,'contactlist_watchlist');
 	}
 	return array(
 			'title' 	=> _CONTACTLISTMODULETITLE,

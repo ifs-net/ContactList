@@ -1,7 +1,7 @@
 <!--[* $Id$ *]-->
 <!--[pnml name="_CONTACTLISTCREATEBUDDY" assign=title]-->
 <!--[include file="contactlist_user_header.htm" title=$title]-->
-<!--[pnajaxheader modname="Users"]-->
+<!--[pnajaxheader modname="Users" prototype=true scriptaculous=true]-->
 
 <div id="cl_create" class="cl_box">
   <!--[pnform cssClass="pn-form"]-->
@@ -33,15 +33,26 @@
 
       <dt><!--[pnformlabel for=prv_comment text="_CONTACTLISTPRVCOMMENT"]--></dt>
       <dd><!--[pnformtextinput id=prv_comment maxLength=256 textMode=multiline]--></dd>
+
+      <dt><!--[pnformlabel for=watchlist text="_CONTACTLISTPUTONWATCHLISTONLY"]--></dt>
+      <dd><!--[pnformcheckbox id="watchlist" checked="0"]--></dd>
+
     </dl>
 
-    <!--[if $noconfirm eq 0]-->
-    <div class="pn-informationmsg"><!--[pnml name="_CONTACTLISTCONFIRMREQU"]--></div>
-    <dl class="configrow">
-      <dt><!--[pnformlabel for="request_text" text=_CONTACTLISTREQUESTTEXT]--></dt>
-      <dd><!--[pnformtextinput id=request_text maxLength=160 textMode=multiline]--></dd>
-    </dl>
-    <!--[/if]-->
+    <div id="cl_watchlistcontact">
+        <div class="pn-informationmsg"><!--[pnml name="_CONTACTLISTWATCHLISTTEXT"]--></div>
+    </div>
+
+    <div id="cl_realcontact">
+        <!--[if $noconfirm eq 0]-->
+        <div class="pn-informationmsg"><!--[pnml name="_CONTACTLISTCONFIRMREQU"]--></div>
+        <dl class="configrow">
+          <dt><!--[pnformlabel for="request_text" text=_CONTACTLISTREQUESTTEXT]--></dt>
+          <dd><!--[pnformtextinput id=request_text maxLength=160 textMode=multiline]--></dd>
+        </dl>
+        <!--[/if]-->
+    </div>
+    
   </fieldset>
 
   <div class="pn-formrow pn-formbuttons">
@@ -50,5 +61,23 @@
 
   <!--[/pnform]-->
 </div>
+
+
+        <script>
+            $('watchlist').observe('click', clCheckWatchlistEntry, false);
+            $('watchlist').observe('keyup', clCheckWatchlistEntry, false);
+            $('cl_watchlistcontact').hide();
+
+            function clCheckWatchlistEntry() {
+                var mycheckbox = $('watchlist');
+                if (mycheckbox.checked == true) {
+                    Effect.BlindUp('cl_realcontact');
+                    Effect.BlindDown('cl_watchlistcontact');
+                } else {
+                    Effect.BlindDown('cl_realcontact');
+                    Effect.BlindUp('cl_watchlistcontact');
+                }
+            }
+        </script>
 
 <!--[include file="contactlist_user_footer.htm"]-->

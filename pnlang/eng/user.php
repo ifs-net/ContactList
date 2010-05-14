@@ -166,3 +166,17 @@ define('_CONTACTLISTLOGINNEEDED',                  'To view the page you have to
 define('_CONTACTLISTNICKNAME',                     'Username');
 define('_CONTACTLISTPASSWORD',                     'Password');
 define('_CONTACTLISTREMEMBERME',                   'Save login');
+
+// watchlist
+define('_CONTACTLISTADDDATE',                           'Date of storage');
+define('_CONTACTLISTYOURWATCHLIST',                     'Your watchlist');
+define('_CONTACTLISTMAKEFRIEND',                        'start buddy request');
+define('_CONTACTLISTPUTONWATCHLISTONLY',                'No buddy request - just store in watchlist');
+define('_CONTACTLISTWATCHLISTTEXT',                     'You can store users in your watchlist. Using this feature does not enable features like online buddy list, buddy birthday reminder etc. Use buddy contacts to use all features.');
+define('_CONTACTLISTUSERISBUDDY',                       'The user is already in your buddy list and cannot be stored for the watchlist, too');
+define('_CONTACTLISTUSERALREADYWATCHLISTED',            'User was already added to your watchlist and cannot be added twice.');
+define('_CONTACTLISTUSERWATCHLISTED',                   'The user was added to your watchlist.');
+define('_CONTACTLISTUSERADDERROR',                      'Adding user to watchlist failed.');
+define('_CONTACTLISTWATCHLISTSUSPENDED',                'User was removed from your watchlist.');
+define('_CONTACTLISTWATCHLIST',                         'Watchlist');
+define('_CONTACTLISTWATCHLISTEMPTY',                    'No users were added to your watchlist yet.');
