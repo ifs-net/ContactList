@@ -31,6 +31,10 @@ define('_CONTACTLISTITEMSPERPAGE',			'Number of buddies to be showed on one page
 define('_CONTACTLISTGROUPSNOIGNORE',		'Members of these groups cannot be ignored');
 define('_CONTACTLISTGROUPSIGNORETEXT',		'Attention: If you mark groups here, all existing ignorelist entries that have users of the marked groups as ignored users will be deleted with storing these settings!');
 define('_CONTACTLISTDELETEIGNORELISTENTRIES','Deleted ignorelist entries due to your group changes');
+define('_CONTACTLISTDEFAULTPUBLICSTATE',    'Default value for user\'s buddylist settings');
+define('_CONTACTLISTPRIVACYNOBODY',         'Nobody should be able to view buddy list');
+define('_CONTACTLISTPRIVACYBUDDIES',        'Buddies should be able to view buddy list');
+define('_CONTACTLISTPRIVACYMEMBERS',        'All users should be able to view buddy list');
 
 // admin, donation
 define('_CONTACTLISTSUPPORTCONTACTLIST',	'Support the ContactList module');
