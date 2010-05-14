@@ -74,6 +74,7 @@ function ContactList_upgrade($oldVersion)
 	    case '1.4':
 	    case '1.5':
 	        // new table has to be created!
+            pnModSetVar('ContactList','defaultprivacystatus',3); // inital value: all buddy lists should be viewable by every user
             if (!DBUtil::createTable('contactlist_watchlist')) return false;
 	    
 	}
