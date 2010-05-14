@@ -25,6 +25,14 @@ class ContactList_admin_editConfigHandler
         $render->assign('usemyprofilebirthday', pnModGetVar('ContactList','usemyprofilebirthday'));
         $render->assign('profilebirthday',      pnModGetVar('ContactList','profilebirthday'));
         $render->assign('useprofilebirthday',   pnModGetVar('ContactList','useprofilebirthday'));
+        $render->assign('publicstate',          pnModGetVar('ContactList','defaultprivacystatus'));
+
+        $items_publicstate = array (
+        array('text' => _CONTACTLISTPRIVACYNOBODY, 	'value' => 1),
+        array('text' => _CONTACTLISTPRIVACYBUDDIES,	'value' => 2),
+        array('text' => _CONTACTLISTPRIVACYMEMBERS,	'value' => 3)
+        );
+        $render->assign('items_publicstate', $items_publicstate);
 
 	  	$groups	= pnModAPIFunc('ContactList','admin','getGroupsConfiguration');
 	  	$groups_list = array();
@@ -91,6 +99,7 @@ class ContactList_admin_editConfigHandler
             pnModSetVar('ContactList','usemyprofilebirthday',   $obj['usemyprofilebirthday']);
             pnModSetVar('ContactList','profilebirthday',        $obj['profilebirthday']);
             pnModSetVar('ContactList','useprofilebirthday',     $obj['useprofilebirthday']);
+            pnModSetVar('ContactList','defaultprivacystatus',   $obj['publicstate']);
             LogUtil::registerStatus(_CONTACTLISTCONFIGUPDATED);
 //            return pnRedirect(pnModURL('ContactList','admin','main'));
         }

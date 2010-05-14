@@ -31,6 +31,12 @@ define('_CONTACTLISTITEMSPERPAGE',          'Anzahl der Kontakte pro Seite in de
 define('_CONTACTLISTGROUPSNOIGNORE',		'Mitglieder folgender Gruppen vor dem Ignorieren bewahren');
 define('_CONTACTLISTGROUPSIGNORETEXT',		'Achtung: Wird eine Gruppe ausgewählt, dass sie nicht ignoriert werden darf, werden ohne Nachfrage alle Einträge aus der Ignorierliste unwiderruflich gelöscht, welche Mitglieder der ausgewählten Gruppen betreffen!');
 define('_CONTACTLISTDELETEIGNORELISTENTRIES','Durch geänderte Gruppen-Einstellungen gelöschte Ignorierlisten-Einträge aus den Datenbanken');
+define('_CONTACTLISTDEFAULTPUBLICSTATE',    'Standardeinstellung für neue Benutzer für deren Kontaktlisten');
+define('_CONTACTLISTPRIVACYNOBODY',         'Kontaktlisten der Nutzer für kein andres Mitglied einsehbar');
+define('_CONTACTLISTPRIVACYBUDDIES',        'Kontaktlisten von Nutzern für deren Kontakte einsehbar');
+define('_CONTACTLISTPRIVACYMEMBERS',        'Kontaktlisten von Nutzern für alle registrierte Mitglieder einsehbar');
+
+
 
 // admin, donation
 define('_CONTACTLISTSUPPORTCONTACTLIST',    'Unterstütze die Entwicklung dieses Modul');

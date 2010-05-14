@@ -30,6 +30,7 @@ function ContactList_init()
     pnModSetVar('ContactList','nopubliccomment',0);
     pnModSetVar('ContactList','dateformat','%d.%m.%Y');
     pnModSetVar('ContactList','nopublicbuddylist',0);
+    pnModSetVar('ContactList','defaultprivacystatus',3); // inital value: all buddy lists should be viewable by every user
 
     // Initialisation successful
     return true;
@@ -69,7 +70,7 @@ function ContactList_upgrade($oldVersion)
 	    case '1.2':
 	    case '1.3':
 	    case '1.4':
-	    case '1.3':
+	    case '1.5':
 	}
     // Update successful
 	return true;
