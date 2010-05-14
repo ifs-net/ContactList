@@ -60,7 +60,7 @@ function _cl_sortList($list,$criteria) {
             $second[$key]  = $row['uname'];
         }
         else if ($criteria == 'uname') {
-            $first[$key]  = $row['uname'];
+            $first[$key]  = strtolower($row['uname']);
             $second[$key]  = $row['state'];
         }
     }
