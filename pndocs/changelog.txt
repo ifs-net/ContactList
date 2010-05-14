@@ -1,5 +1,16 @@
 $Id$
 
+1.6:
+> http://code.zikula.org/contactlist/query?group=status&milestone=1.6
+
+1.5:
+====
+- N/A
+
+1.4:
+====
+> http://code.zikula.org/contactlist/query?group=status&milestone=1.4
+
 1.3:
 ====
 - layout changes and fixes
