@@ -18,6 +18,7 @@ function ContactList_init()
 
     if (!DBUtil::createTable('contactlist_ignorelist')) return false;
     if (!DBUtil::createTable('contactlist_buddylist')) return false;
+    if (!DBUtil::createTable('contactlist_watchlist')) return false;
 
     // Set some default values for module variables
     pnModSetVar('ContactList','usemyprofilebirthday','');
@@ -50,6 +51,7 @@ function ContactList_delete()
     // Delete the table
     if (!DBUtil::dropTable('contactlist_ignorelist')) return false;
     if (!DBUtil::dropTable('contactlist_buddylist')) return false;
+    if (!DBUtil::dropTable('contactlist_watchlist')) return false;
 
     // Delete all module variables
     pnModDelVar('ContactList');
@@ -71,6 +73,9 @@ function ContactList_upgrade($oldVersion)
 	    case '1.3':
 	    case '1.4':
 	    case '1.5':
+	        // new table has to be created!
+            if (!DBUtil::createTable('contactlist_watchlist')) return false;
+	    
 	}
     // Update successful
 	return true;

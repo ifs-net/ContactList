@@ -139,6 +139,60 @@ function ContactList_user_main()
  *
  * @return       output
  */
+function ContactList_user_watchlist()
+{
+    // This is a user only module - redirect everyone else
+    // Check this before Security check - maybe after login user has enough rights
+    if (!pnUserLoggedIn()) {
+      return pnRedirect(pnModURL('ContactList', 'user', 'loginscreen', array('page' => 'main')));
+    }
+    // Security check
+    if (!SecurityUtil::checkPermission('ContactList::', '::', ACCESS_COMMENT)) {
+      return LogUtil::registerPermissionError(pnConfigGetVar('entrypoint', 'index.php'));
+    }
+
+    // check for action
+    $action = FormUtil::getPassedValue('action', '');
+    if (!empty($action) && !(SecurityUtil::confirmAuthKey())) return Logutil::registerAuthIDError();
+    if ($action == "suspend") {
+        if (pnModAPIFunc('ContactList','user','suspendWatchList',array('id'=>(int)FormUtil::getPassedValue('id')))) LogUtil::registerStatus(_CONTACTLISTWATCHLISTSUSPENDED);
+        else LogUtil::registerError(_CONTACTLISTSUSPENDERROR);
+    }
+
+    // redirect after any action to avoid auth-id problems
+    if (!empty($action)) return pnRedirect(pnModURL('ContactList','user','watchlist'));
+
+    // Create output
+    $render = pnrender::getInstance('ContactList');
+
+    // assign data
+    $uid = pnUserGetVar('uid');
+	$render->assign('contactinfo',pnModAPIFunc('ContactList','user','getContactsInfo',array('uid' => $uid)));
+    $render->assign('dateformat',pnModGetVar('ContactList','dateformat'));
+    // pagination
+    $cl_limit       = pnModGetVar('ContactList','itemsperpage');
+    $cl_startnum    = (int)FormUtil::getPassedValue('cl_startnum',1);
+    $render->assign('cl_limit',		$cl_limit);
+    $render->assign('cl_startnum',	$cl_startnum);
+    // get watchlist
+    $buddies_count = pnModAPIFunc('ContactList','user','getWatchList',
+        array(  'bid' => $uid,
+                'countonly' => true ));
+    $buddies = pnModAPIFunc('ContactList','user','getWatchList',
+        array(  'uid' => pnUserGetVar('uid') ));
+    // and assign them to the template
+    $render->assign('buddies',$buddies);
+    $render->assign('authid',SecurityUtil::generateAuthKey());
+
+    // return output
+    return $render->fetch('contactlist_user_watchlist.htm');
+}
+
+/**
+ * the main user function
+ *
+ * @return       output
+ */
 function ContactList_user_preferences()
 {
     // This is a user only module - redirect everyone else

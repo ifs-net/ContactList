@@ -21,6 +21,7 @@ function ContactList_pntables()
     // Set the table name
     $pntable['contactlist_ignorelist'] = DBUtil::getLimitedTablename('contactlist_ignorelist');
     $pntable['contactlist_buddylist'] = DBUtil::getLimitedTablename('contactlist_buddylist');
+    $pntable['contactlist_watchlist'] = DBUtil::getLimitedTablename('contactlist_watchlist');
 
     // Set the column names.  Note that the array has been formatted
     // on-screen to be very easy to read by a user.
@@ -30,13 +31,29 @@ function ContactList_pntables()
                         'iuid'			=> 'iuid'
                         );
 
-                        $pntable['contactlist_ignorelist_column_def'] = array (
+    $pntable['contactlist_ignorelist_column_def'] = array (
                         'id'			=>	"I NOTNULL AUTO PRIMARY",
                         'uid'			=> 	"I NOTNULL DEFAULT 0",
                         'iuid'			=> 	"I NOTNULL DEFAULT 0"
                         );
 
-                        $pntable['contactlist_buddylist_column'] = array(
+    $pntable['contactlist_watchlist_column'] = array(
+                        'id'			=> 'id',
+                        'uid'			=> 'uid',
+                        'wuid'			=> 'wuid',
+                        'date'			=> 'date',
+                        'prv_comment'	=> 'prv_comment'
+                        );
+
+    $pntable['contactlist_watchlist_column_def'] = array (
+                        'id'			=>	"I NOTNULL AUTO PRIMARY",
+                        'uid'			=> 	"I NOTNULL DEFAULT 0",
+                        'wuid'			=> 	"I NOTNULL DEFAULT 0",
+                        'date'			=>	"T",
+                        'prv_comment'	=>	"C(255) NOTNULL"
+                        );
+
+    $pntable['contactlist_buddylist_column'] = array(
                         'id'			=> 'id',
                         'uid'			=> 'uid',
                         'bid'			=> 'bid',
@@ -50,7 +67,7 @@ function ContactList_pntables()
                         // 3 = suspended	(one way!)
                         );
 
-                        $pntable['contactlist_buddylist_column_def'] = array (
+    $pntable['contactlist_buddylist_column_def'] = array (
                         'id'			=>	"I NOTNULL AUTO PRIMARY",
                         'uid'			=> 	"I NOTNULL DEFAULT 0",
                         'bid'			=> 	"I NOTNULL DEFAULT 0",
@@ -61,6 +78,6 @@ function ContactList_pntables()
                         'state'			=>	"I(1) NOTNULL DEFAULT 0"
                         );
 
-                        // Return the table information
-                        return $pntable;
+    // Return the table information
+    return $pntable;
 }

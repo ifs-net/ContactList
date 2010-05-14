@@ -166,3 +166,17 @@ define('_CONTACTLISTLOGINNEEDED',                       'Für den Aufruf dieser S
 define('_CONTACTLISTNICKNAME',                          'Benutzername');
 define('_CONTACTLISTPASSWORD',                          'Passwort');
 define('_CONTACTLISTREMEMBERME',                        'Login speichern');
+
+// watchlist
+define('_CONTACTLISTADDDATE',                           'Datum der Speicherung');
+define('_CONTACTLISTYOURWATCHLIST',                     'Deine Merk-Liste');
+define('_CONTACTLISTMAKEFRIEND',                        'Kontaktanfrage starten');
+define('_CONTACTLISTPUTONWATCHLISTONLY',                'Keine Kontaktanfrage - nur auf Merkliste setzen');
+define('_CONTACTLISTWATCHLISTTEXT',                     'Wird ein Kontakt nur auf die Merkliste gesetzt, erfährt dieser nichts davon. Allerdings sind viele Funktionen (Geburtstagserinnerungen, Online-Statusanzeige uvm.) nur bei bestätigten Kontakten nutzbar.');
+define('_CONTACTLISTUSERISBUDDY',                       'Der Benutzer ist schon ein bestätigter Kontakt und wurde daher nicht auf die Merkliste gesetzt.');
+define('_CONTACTLISTUSERALREADYWATCHLISTED',            'Der Benuzter ist bereits in deiner Merkliste aufgeführt und kann nicht mehrfach hinzugefügt werden.');
+define('_CONTACTLISTUSERWATCHLISTED',                   'Der Benutzer wurde der Merkliste hinzugefügt.');
+define('_CONTACTLISTUSERADDERROR',                      'Fehler beim Hinzufügen des Benutzers aufgetreten.');
+define('_CONTACTLISTWATCHLISTSUSPENDED',                'Der Benutzer wurde von der Merkliste gelöscht');
+define('_CONTACTLISTWATCHLIST',                         'Merkliste');
+define('_CONTACTLISTWATCHLISTEMPTY',                    'Die Merk-Liste ist im Moment noch leer.');

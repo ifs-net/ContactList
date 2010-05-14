@@ -189,6 +189,34 @@ class contactlist_user_createHandler {
             if (!($bid > 1)) {
                 return LogUtil::registerError(_CONTACTLISTUNAMEINVALID);
             }
+            // for watchlist handling
+            
+            if ($data['watchlist'] == 1) {
+                // check if user is already a buddy
+                if (pnModAPIFunc('ContactList','user','isBuddy',array('uid1' => $uid, 'uid2' => $bid))) {
+                    return LogUtil::registerError(_CONTACTLISTUSERISBUDDY);
+                }
+                $alreadyWatchListed = DBUtil::selectObjectCount('contactlist_watchlist','wuid = '.$bid.' and uid = '.$uid);
+                if ($alreadyWatchListed) {
+                    return LogUtil::registerError(_CONTACTLISTUSERALREADYWATCHLISTED);
+                }
+                $obj = array(
+                        'uid'   => $uid,
+                        'wuid'  => $bid,
+                        'prv_comment'   => $data['prv_comment'],
+                        'date'  => date("Y-m-d H:i:s",time())
+                    );
+                $insertAction = DBUtil::insertObject($obj,'contactlist_watchlist');
+                if ($insertAction) {
+                    LogUtil::registerStatus(_CONTACTLISTUSERWATCHLISTED);
+                    return pnRedirect(pnModURL('ContactList','user','watchlist'));
+                    // redirect
+                } else {
+                    return LogUtil::registerError(_CONTACTLISTUSERADDERROR);
+                }
+            }
+            
+            // for real contact handling
             // is the potential buddy ignoring me?
             if (pnModAPIFunc('ContactList','user','isIgnored',array('uid' => $bid, 'iuid' => $uid))) return LogUtil::registerError(_CONTACTLISTUSERIGNORESYOU);
             // or is the new buddy ignored by myself?
