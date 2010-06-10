@@ -50,8 +50,6 @@ function ContactList_showrandomblock_display($blockinfo)
         return false;
     }
 
-    if (pnusergetvar('uid') != 3230) return false;
-
     $vars = pnBlockVarsFromContent($blockinfo['content']);
 
     if (empty($vars['numitems'])) $vars['numitems'] = 5;
@@ -74,7 +72,7 @@ function ContactList_showrandomblock_display($blockinfo)
     $render->assign('buddies', $buddies);
 
     $blockinfo['content'] = $render->fetch('contactlist_block_showrandom.htm');
-    
+
     return themesideblock($blockinfo);
 }
 
