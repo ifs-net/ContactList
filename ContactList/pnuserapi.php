@@ -22,7 +22,7 @@ Loader::requireOnce('modules/ContactList/includes/common.php');
  *                                          3 = suspended
  * @param   $args['birthday']   boolean     default: false; include birthday in result
  * @param   $args['sort']       string      default: no sort order.
- *                                          options: birthday, nextbirthday, daystonextbirthday, state
+ *                                          options: birthday, nextbirthday, daystonextbirthday, state, random
  * @return	array
  */
 function ContactList_userapi_getall($args) {

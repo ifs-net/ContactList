@@ -49,6 +49,11 @@ function _cl_addOnlineStatusAndUsername($list,$args)
  */
 function _cl_sortList($list,$criteria) {
     if ((!isset($list)) || (!is_array($list))) return;
+    // just shuiffle?
+    if ($criteria == 'random') {
+        shuffle($list);
+        return $list;
+    }
     // shoud we apply an "order by"?
     if (!isset($criteria) || ($criteria == '')) return $list;
     foreach ($list as $key => $row) {
