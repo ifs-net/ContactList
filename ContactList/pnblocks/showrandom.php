@@ -26,7 +26,7 @@ function ContactList_showrandomblock_info()
 {
     return array('module'         => 'ContactList',
                  'text_type'      => 'showrandom',
-                 'text_type_long' => 'Show next birthdays of next 14 days of buddy list',
+                 'text_type_long' => 'Show random buddies',
                  'allow_multiple' => true,
                  'form_content'   => false,
                  'form_refresh'   => false,
