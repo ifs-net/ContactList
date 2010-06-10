@@ -1,7 +1,7 @@
 <?php
 /**
  * @package      ContactList
- * @version      $Id: showmyprofileuserrandom.php 301 2010-06-10 16:30:59Z quan $
+ * @version      $Id$
  * @author       Florian Schießl, Carsten Volmer
  * @link         http://www.ifs-net.de, http://www.carsten-volmer.de
  * @copyright    Copyright (C) 2008
