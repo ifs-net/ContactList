@@ -79,6 +79,8 @@
   </fieldset>
   <!--[/pnform]-->
 
+  <!--[pnconfiggetvar name='profilemodule' assign='profilemodule']-->
+
   <!--[foreach from=$buddies item="buddy"]-->
   <!--[pnusergetvar uid=$buddy.bid name="_YOURAVATAR" assign="avatar"]-->
   <div class="buddybox pn-clearfix">
@@ -91,7 +93,7 @@
     <h4><!--[$buddy.uname|userprofilelink]--><!--[if $buddy.online eq true]-->&nbsp;<em class="cl_online">(<!--[pnml name="_ONLINE"]-->)</em><!--[/if]--></h4>
 
     <ul class="options">
-      <li><a class="image userprofile" href="<!--[pnmodurl modname="Profile" type="user" func="view" uid=$buddy.bid]-->"><!--[pnml name="_CONTACTLISTSHOWPROFILE"]--></a></li>
+      <li><a class="image userprofile" href="<!--[pnmodurl modname=$profilemodule type="user" func="view" uid=$buddy.bid]-->"><!--[pnml name="_CONTACTLISTSHOWPROFILE"]--></a></li>
       <!--[if $InterCom]--><li><a class="image mail" href="<!--[pnmodurl modname="InterCom" type="user" func="newpm" uid=$buddy.bid]-->"><!--[pnml name="_CONTACTLISTSENDPM"]--></a></li><!--[/if]-->
       <!--[if $nopublicbuddylist ne 1]--><li><a class="image showbuddies" href="<!--[pnmodurl modname="ContactList" type="user" func="display" uid=$buddy.bid]-->"><!--[pnml name="_CONTACTLISTSHOWCONTACTS"]--></a></li><!--[/if]-->
       <li><a class="image useredit" href="<!--[pnmodurl modname="ContactList" type="user" func="edit" id=$buddy.id]-->"><!--[pnml name="_CONTACTLISTEDIT"]--></a></li>
