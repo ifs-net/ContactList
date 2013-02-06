@@ -1,0 +1,12 @@
+<p>
+<ul>
+{foreach from=$items item="item"}
+    <li>{$item.uname|userprofilelink} {gt text="_CONTACTLIST_CELEBRATES_BIRTHDAYToDAY"}</li>
+{foreachelse}
+    <li><strong>{gt text="_CONTACTLISTNo_BIRTHDAYS_FOUND"}</strong>. {gt text="_CONTACTLIST_INVITE_YOUR_FRIENDS"}</li>
+{/foreach}
+</ul>
+</p>
+<p>
+<a href="{pnmodurl modname="ContactList" fqurl="true"}">{gt text="_MAILZ_CONTACTLIST_LINK"}</a>
+</p>

@@ -1,0 +1,20 @@
+<?php
+
+
+
+
+class MyModule_Version extends Zikula_AbstractVersion {
+
+    public function getMetaData() {
+
+        $meta = array();
+        $meta['displayname'] = $this->__('ContactList'); 
+        $meta['description'] = $this->__("Supports buddy management and user ignore lists"); 
+        //! module name that appears in URL 
+        $meta['url'] = $this->__('contactlist'); 
+        $meta['version'] = '2.0.0'; 
+        $meta['capabilities'] = array('ifs' => array('version' => '2.0.0')); 
+        $meta['securityschema'] = array('ContactList::' => '::'); 
+        return $meta;
+    }
+}

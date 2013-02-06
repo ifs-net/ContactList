@@ -1,0 +1,38 @@
+{gt text="Edit contact information" assign=title}
+{include file="user/header.htm" title=$title}
+
+<div class="z-frontendcontainer">
+    <h2>{$templateTitle}</h2>
+{form cssClass='z-form'}
+    {* add validation summary and a <div> element for styling the form *}
+    {*formsetinitialfocus inputId='title'*}
+
+  {formvalidationsummary}
+
+  <fieldset class="pn-form-fieldset">
+    <legend>{$title}</legend>
+
+    {if $nopubliccomment eq 0}
+    <div class="z-formrow">
+      {formlabel for="pub_comment" __text="Public comment"}
+      {formtextinput id="pub_comment" maxLength='160'}
+    </div>
+    {/if}
+
+    <div class="z-formrow">
+      {formlabel for='prv_comment' __text="Private comment"}
+      {formtextinput id='prv_comment' textMode='multiline'}
+    </div>
+
+  </fieldset>
+
+    {* include possible submit actions *}
+    <div class="z-buttons z-formbuttons">
+        {formbutton id='btnUpdate' commandName='update' __text='Update information and return to buddy list' class='z-bt-ok'}
+        {formbutton id='btnCancel' commandName='cancel' __text='Cancel' class='z-bt-cancel'}
+    </div>
+  {/form}
+
+</div>
+
+{include file="user/footer.htm"}

@@ -1,0 +1,7 @@
+<p>{gt text="There is at least one request from another user who wants to add you as a buddy"}</p>
+<ul class="cl_unconfirm contactlist">
+  {foreach from=$buddies_unconfirmed item="buddy"}
+  <li class="pending">{$buddy.uname|userprofilelink}</li>
+  {/foreach}
+  <li class="edit"><a href="{modurl modname="ContactList" type="user" func="main"}">{gt text="Responde to request(s)"}</a></li>
+</ul>

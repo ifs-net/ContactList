@@ -1,0 +1,50 @@
+{capture assign=title}{gt text="User's buddy list"}&nbsp;{$viewer_uname}{/capture}
+{include file="user/header.htm" title=$title}
+{modavailable modname="InterCom" assign="InterCom"}
+
+<div id="cl_display" class="cl_box">
+  <h3>{$title}</h3>
+  <p>{gt text="The user has"} {$contacts_all} {gt text="Buddies"}</p>
+
+  {foreach from=$buddies item="buddy"}
+  {usergetvar uid=$buddy.bid name="_YOURAVATAR" assign="avatar"}
+  {modapifunc modname="ContactList" type="user" func="isBuddy" uid1=$current_uid uid2=$buddy.bid assign="isBuddy"}
+
+  <div class="buddybox z-clearfix">
+    {if $avatar eq '' or $avatar eq 'blank.gif'}
+    {img modname='ContactList' src='avatar_male.gif' class="avatar"}
+    {else}
+    <img src="images/avatar/{$avatar|safetext}" class="avatar" />
+    {/if}
+
+    <h4>{$buddy.uname|userprofilelink}{if $buddy.online eq true}&nbsp;<em class="cl_online">({gt text="online"})</em>{/if}</h4>
+
+    <ul class="options">
+      <li><a class="image userprofile" href="{modurl modname="Profile" type="user" func="view" uid=$buddy.bid}">{gt text="Show Profile"}</a></li>
+      {if $InterCom && $current_uid neq $buddy.bid}<li><a class="image mail" href="{modurl modname="InterCom" type="user" func="newpm" uname=$buddy.uname}">{gt text="Send message"}</a></li>{/if}
+      <li><a class="image showbuddies" href="{modurl modname="ContactList" type="user" func="display" uid=$buddy.bid}">{gt text="Show user's buddies"}</a></li>
+      {if $current_uid neq $buddy.bid}
+      {if $isBuddy gt 0}
+      <li><a class="image useredit" href="{modurl modname="ContactList" type="user" func="edit" id=$isBuddy}">{gt text="Edit contact"}</a></li>
+      {else}
+      <li><a class="image createbuddy" href="{modurl modname="ContactList" type="user" func="create" uname=$buddy.uname}">{gt text="Add new buddy"}</a></li>
+      {/if}
+      {/if}
+    </ul>
+
+    <ul class="cl_userinfo">
+      {if $nopubliccomment ne 1 and $buddy.pub_comment ne ""}
+      <li><strong>{gt text="Public comment"}:</strong>&nbsp;<em>{$buddy.pub_comment|safetext}</em></li>
+      {/if}
+    </ul>
+
+  </div>
+
+  {/foreach}
+
+  {* Display a pager to go to the pages   *}
+  {pager show="page" rowcount=$contacts_all limit=$cl_limit posvar=cl_startnum shift=1}
+
+</div>
+
+{include file="user/footer.htm"}

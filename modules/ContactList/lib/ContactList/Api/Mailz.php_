@@ -1,0 +1,124 @@
+<?php
+/**
+ * ContactList
+ *
+ * @copyright Florian Schießl, Carsten Volmer
+ * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License
+ * @package ContactList
+ * @author Florian Schießl <info@ifs-net.de>.
+ * @link http://www.ifs-net.de
+ */
+
+/**
+ * This class provides an API for the Mailz newsletter module
+ */
+
+class ContactList_Api_Mailz extends Zikula_AbstractApi
+{
+
+    /*
+     * get plugins with type / title
+     * 
+     * @param   int $args['id']
+     * @return  array
+     */
+    public function getPlugins()
+    {
+        $plugins = array();
+        // Add first plugin.. You can add more using more arrays
+        $plugins[] = array(
+            'pluginid'      => 1,   // internal id for this module
+            'title'         => $this->__('Next birthdays of your buddies'),
+            'description'   => $this->__('This plugin shows the birthdays of the next weeks'),
+            'module'        => 'ContactList'
+        );
+        $plugins[] = array(
+            'pluginid'      => 2,   // internal id for this module
+            'title'         => $this->__('Buddies that celebrate their birthday today'),
+            'description'   => $this->__('This plugin shows the buddies that celebrate birthday today'),
+            'module'        => 'ContactList'
+        );
+        return $plugins;
+    }
+
+    
+    /*
+     * This function returns the content for plugins
+     *
+     * @param   int         $args['pluginid']       id number of plugin (internal id for this module, see getPlugins method)
+     * @param   string      $args['params']         optional, show specific one or all otherwise
+     * @param   int         $args['uid']            optional, user id for user specific content
+     * @param   string      $args['contenttype']    h or t for html or text
+     * @param   datetime    $args['last']           timtestamp of last newsletter
+     * @return  array
+     */
+    public function getContent($args)
+    {
+        switch($args['pluginid']) {
+            case 1:
+                $uid = $args['uid'];
+                $buddies = ModUtil::apiFunc('ContactList','user','getall',
+                array(  'uid'       => $uid,
+                        'state'     => 1,
+                        'birthday'  => true,
+                        'sort'      => 'daystonextbirthday'));
+                $c=0;
+                $res = array();    
+                if (!(count($buddies)>0)) {
+                    return $this->__('No birthdays found');
+                };
+                foreach ($buddies as $buddy) {
+                    if (($buddy['daystonextbirthday'] >= 0) && ($buddy['daystonextbirthday'] < 60)){
+                        $res[] = $buddy;
+                        $c++;
+                    }
+                    if ($c==50) break;
+                }
+                if ($args['contenttype'] == 't') {
+                    foreach ($res as $item) {
+                        $output.="\n".$item['uname']." ".$this->__('celebrates birthday in')." ".$item['daystonextbirthday']." ".$this->__('days')."\n";
+                    }
+                } else {
+                    $render = pnRender::getInstance('ContactList');
+                    $render->assign('items', $res);
+                    $output = $render->fetch('contactlist_mailz_nextbirthdays.htm');
+                }
+                // return if no buddy is out there
+                if ($c==0) return $this->__('No birthdays found');
+                return $output;
+            case 2:
+                $uid = $args['uid'];
+                $buddies = ModUtil::apiFunc('ContactList','user','getall',
+                array(  'uid'       => $uid,
+                        'state'     => 1,
+                        'birthday'  => true,
+                        'sort'      => 'daystonextbirthday'));
+                $c=0;
+                $res = array();    
+                if (!(count($buddies)>0)) {
+                    return $this->__('No birthdays found');
+                };
+                foreach ($buddies as $buddy) {
+                    if ($buddy['daystonextbirthday'] == 0){
+                        $res[] = $buddy;
+                        $c++;
+                    }
+                    if ($c==500) break;
+                }
+                if ($args['contenttype'] == 't') {
+                    foreach ($res as $item) {
+                        $output.="\n".$item['uname']." ".$this->__('celebrates birthday today')."\n";
+                    }
+                } else {
+                    $render = pnRender::getInstance('ContactList');
+                    $render->assign('items', $res);
+                    $output = $render->fetch('contactlist_mailz_todaybirthdays.htm');
+                }
+                // return if no buddy is out there
+                if ($c==0) return $this->__('No birthdays found');
+                return $output;
+                
+        }
+        return '';
+    }
+}

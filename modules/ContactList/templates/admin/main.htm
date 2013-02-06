@@ -1,0 +1,117 @@
+{if !isset($smarty.get.theme) || $smarty.get.theme ne 'Printer'}
+{adminheader}
+{/if}
+
+<div class="z-admin-content-pagetitle">
+    {icon type='config' size='small' __alt='Settings'}
+    <h3>{gt text="ContactList Configuration Page"}</h3>
+</div>
+
+
+{form cssClass='z-form'}
+
+<div id="cl_main" class="z-admincontainer">
+  <h3>{gt text="ContactList Backend"}</h3>
+
+  {formvalidationsummary}
+
+  <fieldset>
+    <legend>{gt text="Main configuration"}</legend>
+
+    <div class="z-formrow">
+        {formcheckbox id="useignore" checked="0"}
+        {formlabel for="useignore" __text="Allow users to add other users to an ignore list. This feature has to be supported by other modules."}
+    </div>
+    <div class="z-formrow">
+        {formlabel for="disabledgroups" __text="Users should not be able to add users that are assigned to one of these groups to the ignore list."}
+        {formcheckboxlist id="disabledgroups" items=$groups}
+    </div>
+    <div class="z-formrow">
+        {formlabel for='publicstate' __text="Default settings for a user's buddy list"}
+        {formdropdownlist id="publicstate" items=$items_publicstate}
+    </div>
+    <div class="z-formrow">
+        {formcheckbox id="noconfirm" checked="0"}
+        {formlabel for="noconfirm" __text="Users should be added automatically, contact requests do not have to be confirmed by the user that was added."}
+    </div>
+    <div class="z-formrow">
+        {formcheckbox id="nopubliccomment" checked="0"}
+        {formlabel for="nopubliccomment" __text="Disable public comments"}
+    </div>
+    <div class="z-formrow">
+        {formcheckbox id="nopublicbuddylist" checked="0"}
+        {formlabel for="nopublicbuddylist" __text="Disable public buddy lists. This will also disable the FOAF (friend of a friend) function."}
+    </div>
+    <div class="z-informationmsg">
+        {gt text="If not disabled, every user can choose who should be allowed to view his buddy list"}
+    </div>
+    <div class="z-formrow">
+        {formintinput id="itemsperpage" minValue="1" maxValue="100" size="2" mandatory="1"}
+        {formlabel for="itemsperpage" __text="Number of buddies to be showed on one page in the main buddy list"}
+    </div>
+  </fieldset>
+  <fieldset>
+    <legend>{gt text="Configure buddy's birthday integration"}</legend>
+    <div class="z-informationmsg">{gt text="You can define the name of a user variable that contains the user's birthday. If you specify this, your users will see the next birthdays of their buddies"}</div>
+    {if $myprofile eq 1 and $items_myprofile|@count gt 0}
+    <div class="z-formrow">
+      {formcheckbox id="usemyprofilebirthday" checked="0"}
+      {formlabel for="usemyprofilebirthday" __text="use the following MyProfile date field"}
+      {formdropdownlist id="myprofilebirthday" items=$items_myprofile}
+      {formlabel for="emyprofilebirthday" __text="Select the profile field that should be used as birthday date"}
+    </div>
+    {/if}
+    {if $profile eq 1 and $myprofile eq 1}
+    <div class="z-formrow">
+      <dt>&nbsp;</dt>
+      <dd>{gt text="or"}</dd>
+    </div>
+    {/if}
+    {if $profile eq 1}
+    <div class="z-formrow">
+        {formcheckbox id="useprofilebirthday" checked="0"}
+        {formlabel for="useprofilebirthday" __text="use the default profile module and a user variable as birthday date: Enter the variable's name"}
+        {formtextinput id="profilebirthday" maxLength="80"}
+        {formlabel for="profilebirthday" __text="Select the profile field that should be used as birthday date"}
+    </div>
+    {/if}
+    <div class="z-formrow">
+      {formlabel for="dateformat" __text="Specify the date format"}
+      {formtextinput id="dateformat" maxLength="20"}
+    </div>
+  </fieldset>
+
+  <div class="z-buttons z-formbuttons">
+    {formbutton commandName="update" __text="Update Settings" class='z-bt-ok'}
+  </div>
+  {/form}
+
+  <fieldset>
+    <legend>{gt text="Support the ContactList module"}</legend>
+    <div class="z-informationmsg">{gt text="The module can be used for free. Feel free to donate some money for the developers!"}</div>
+    <form name="_xclick" action="https://www.paypal.com/de/cgi-bin/webscr" method="post">
+      <input type="hidden" name="cmd" value="_xclick" />
+      <input type="hidden" name="business" value="florian.schiessl@ifs-net.de" />
+      <input type="hidden" name="item_name" value="Donation for the CONTACTLISTs module" />
+      <dl class="z-formrow">
+        <dt>
+          <select name="amount">
+            <option value="5">5&nbsp;</option>
+            <option value="10" selected="selected">10&nbsp;</option>
+            <option value="15">15&nbsp;</option>
+            <option value="20">20&nbsp;</option>
+            <option value="25">25&nbsp;</option>
+            <option value="50">50&nbsp;</option>
+            <option value="100">100&nbsp;</option>
+          </select>
+          <select name="currency_code">
+            <option value="EUR" selected="selected">EUR&nbsp;</option>
+            <option value="USD">USD&nbsp;</option>
+          </select>
+          <input type="submit" name="submit" value="{gt text="Thank you for your donation!"}"/>
+        </dd>
+      </dl>
+    </form>
+  </fieldset>
+
+</div>

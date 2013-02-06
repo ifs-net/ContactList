@@ -1,0 +1,9 @@
+{pnpageaddvar name="stylesheet" value="modules/ContactList/pnstyle/style.css"}
+
+<div>
+<ul class="cl_onlinebuddies contactlist">
+  {foreach from=$buddies item="buddy"}
+  <li class="user">{$buddy.uname|userprofilelink}</li>
+  {/foreach}
+</ul>
+</div>

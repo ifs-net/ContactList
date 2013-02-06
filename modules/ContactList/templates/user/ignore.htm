@@ -1,0 +1,45 @@
+{gt text="Show my ignore list" assign=title}
+{include file="user/header.htm" title=$title}
+{ajaxheader modname="Users"}
+
+<div class="z-frontendcontainer">
+    <h2>{$templateTitle}</h2>
+{form cssClass='z-form'}
+    {* add validation summary and a <div> element for styling the form *}
+    {*formsetinitialfocus inputId='title'*}
+
+  {formvalidationsummary}
+
+    <fieldset>
+        <legend>{gt text='Add user to ignore list'}</legend>
+        <div class="z-formrow">
+
+            <div class="z-informationmsg">
+                {gt text="You can add users here you want to ignore. Ignoring means protection from emails etc."}
+            </div>
+            {formlabel for="uname" __text='Username' mandatorysym='1'}
+            {formtextinput id='uname' maxLength='256' textMode='singleline' mandatory='1'}
+        </div>
+    </fieldset>
+
+    <div class="z-buttons z-formbuttons">
+        {formbutton id='btnUpdate' commandName='update' __text='Add User' class='z-bt-ok'}
+    </div>
+
+    <fieldset>
+        <legend>{gt text='Users I am ignoring'}</legend>
+        <div class="z-formrow">
+            <ul>
+                {foreach from=$ignorelist item="item"}
+                <li>{$item.iuname|userprofilelink} (<a href="{pnmodurl modname="ContactList" type="user" func="ignore" action="delete" iuid=$item.iuid authid=$authid}">{gt text="Remove from ignore list"}</a>)</li>
+                {foreachelse}
+                <li>{gt text="You do not have any ignored users on your ignore list"}</li>
+                {/foreach}
+              </ul>
+        </div>
+    </fieldset>
+  {/form}
+
+</div>
+    
+{include file="user/footer.htm"}

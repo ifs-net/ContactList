@@ -1,0 +1,20 @@
+{modgetvar module="ContactList" name="useignore" assign="ignore"}
+{modgetvar module="ContactList" name="nopublicbuddylist" assign="nopublicbuddylist"}
+{pageaddvar name='title' value=$title}
+
+
+<div id="cl_main">
+  <h2>{gt text="Contact List"}</h2>
+  <ul class="navigation">
+    <li><a class="image createbuddy" href="{modurl modname="ContactList" type="user" func="create"}">{gt text="Add user"}</a></li>
+    <li><a class="image showbuddies" href="{modurl modname="ContactList" type="user" func="main"}">{gt text="Show my contacts"}</a></li>
+    <li><a class="image showbuddies" href="{modurl modname="ContactList" type="user" func="watchlist"}">{gt text="Show my watchlist"}</a></li>
+    {if $ignore eq 1}
+    <li><a class="image ignorelist" href="{modurl modname="ContactList" type="user" func="ignore"}">{gt text="Show my ignorelist"}</a></li>
+    {/if}
+    {if $nopublicbuddylist neq 1}
+    <li><a class="image preferences" href="{modurl modname="ContactList" type="user" func="preferences"}">{gt text="My preferences"}</a></li>
+    {/if}
+  </ul>
+
+  {insert name="getstatusmsg"}

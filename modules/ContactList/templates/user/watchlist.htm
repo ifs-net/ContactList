@@ -1,0 +1,50 @@
+{gt text="Show my watchlist" assign=title}
+{include file="user/header.htm" title=$title}
+{modavailable modname="InterCom" assign="InterCom"}
+
+
+<div id="cl_contacts" class="cl_box">
+
+  <h3>{gt text="Your watchlist"}</h3>
+
+  {configgetvar name='profilemodule' assign='profilemodule'}
+  
+  {foreach from=$buddies item="buddy"}
+  {usergetvar uid=$buddy.wuid name="_YOURAVATAR" assign="avatar"}
+  <div class="buddybox z-clearfix">
+    {if $avatar eq '' or $avatar eq 'blank.gif'}
+    {img modname='ContactList' src='avatar_male.gif' class="avatar"}
+    {else}
+    <img src="images/avatar/{$avatar|safetext}" class="avatar" alt="{$buddy.uname}" />
+    {/if}
+
+    <h4>{$buddy.uname|profilelinkbyuname}{if $buddy.online eq true}&nbsp;<em class="cl_online">({gt text="online"})</em>{/if}</h4>
+
+    <ul class="options">
+      <li><a class="image userprofile" href="{modurl modname=$profilemodule type="user" func="view" uid=$buddy.wuid}">{gt text="Show Profile"}</a></li>
+      {if $InterCom}<li><a class="image mail" href="{modurl modname="InterCom" type="user" func="newpm" uid=$buddy.wuid}">{gt text="Send message"}</a></li>{/if}
+      <li><a class="image showbuddies" href="{modurl modname="ContactList" type="user" func="create" uid=$buddy.wuid}">{gt text="Send contact request"}</a></li>
+      <li><a class="image userdelete" href="{modurl modname="ContactList" type="user" func="watchlist" action="suspend" id=$buddy.id ne="1" authid=$authid}{$filterstate}">{gt text="Delete"}</a></li>
+      {myprofilecustomfields wuid=$buddy.wuid}
+    </ul>
+
+    <ul class="cl_userinfo">
+      <li>
+        <strong>{gt text="Date of storage"}:</strong>&nbsp;
+      {$buddy.date|date_format:"$dateformat"}</li>
+      {if $buddy.prv_comment}
+      <li><strong>{gt text="Private comment"}:</strong><br /><em>{$buddy.prv_comment|safetext|nl2br}</em></li>
+      {/if}
+    </ul>
+  </div>
+  {foreachelse}
+    <p>{gt text="No users were added to your watchlist yet."}
+    </p>
+  {/foreach}
+
+  {* Display a pager to go to the pages   *}
+  {pager show="page" rowcount=$contacts_all limit=$cl_limit posvar=cl_startnum shift=1}
+
+</div>
+
+{include file="user/footer.htm"}

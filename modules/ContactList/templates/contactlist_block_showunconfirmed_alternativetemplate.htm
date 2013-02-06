@@ -1,0 +1,8 @@
+{pnpageaddvar name="stylesheet" value="modules/ContactList/pnstyle/style.css"}
+
+<h4>{gt text="There is at least one request from another user who wants to add you as a buddy"}</h4>
+{foreach from=$buddies_unconfirmed item="buddy"}
+	&#187; {$buddy.uname|userprofilelink}<br />
+{/foreach}
+<a href="{pnmodurl modname="ContactList" type="user" func="main"}">{gt text="Responde to request(s)"}</a><br />
+<br />

@@ -1,0 +1,33 @@
+{gt text="My preferences" assign=title}
+{include file="user/header.htm" title=$title}
+
+<div class="z-frontendcontainer">
+    <h2>{$templateTitle}</h2>
+{form cssClass='z-form'}
+    {* add validation summary and a <div> element for styling the form *}
+    {*formsetinitialfocus inputId='title'*}
+
+  {formvalidationsummary}
+
+    <fieldset>
+        <legend>{gt text='My Preferences'}</legend>
+        <div class="z-formrow">
+            <div class="z-informationmsg">
+                {gt text='Notice: If you select "only buddies should be able to see my buddy list" you will be included in the list if someone wants to see if he knowns another person directly or indirectly - because the person is a contact of a contact of a contact... - but the person will not be able to view the list of all your contacts directly.'}
+            </div>
+            {formlabel for='publicstate' __text="Buddy list privacy settings"}
+            {formdropdownlist id="publicstate" items=$items_publicstate}
+        </div>
+    </fieldset>
+
+
+    {* include possible submit actions *}
+    <div class="z-buttons z-formbuttons">
+        {formbutton id='btnUpdate' commandName='update' __text='Update my preferences' class='z-bt-ok'}
+        {formbutton id='btnCancel' commandName='cancel' __text='Cancel' class='z-bt-cancel'}
+    </div>
+  {/form}
+
+</div>
+    
+{include file="user/footer.htm"}

@@ -1,0 +1,58 @@
+Plans for the next release:
+---------------------------
++ hide form field request_text when checkbox (watchlist) is active
++ add MyProfile support again (after MyProfile is ready to use for 1.3)
++ add dependency to ifs module again (needed for caching methods / performance improvements)
++ add Mailz support again (after mailz is ready to use for 1.3)
++ add UserDeletion support again (after UserDeletion is ready to use for 1.3)
++ add FOAF Support again
+
+2.0.0:
+======
+- refactoring for zikula 1.3.X and really much code cleanup
+- added support for plain text and html formaetd email notification
+- removed notification if contacts are suspended
+- removed notification if contact requests are cancelled
+- removed notification if contact requests are rejected
+- removed block: "show random buddies"
+- removed (temporarly) MyProfile support. MyProfile is not 1.3-ready yet
+- removed (temporarly) UserDeletion support. UserDeletion is not 1.3-ready yet
+- removed (temporarly) Mailz support. Mailz is not 1.3-ready yet
+- removed (temporarly) dependency of module "ifs" - this will be later required for the blocks that support myprofile (caching methods)
+- removed own login page - redirecting to Users/user/login with returnpage paremeter now
+- live update check removed from administration interface
+
+1.6:
+====
+> http://code.zikula.org/contactlist/query?group=status&milestone=1.6
+
+1.5:
+====
+- N/A
+
+1.4:
+====
+> http://code.zikula.org/contactlist/query?group=status&milestone=1.4
+
+1.3:
+====
+- layout changes and fixes
+- groups can be excluded from getting ignored now in admin interface
+
+1.2:
+====
+- optional api parameter for buddy creation (invitation module will later be able to automatically create a link between invited user and invitor)
+- fixed some typos
+
+1.1:
+====
+- buddies cannot be added to the ignore list 
+  any more and also the other way round...
+- some email bugs fixed
+- live update check added
+- email now sent when buddy request is cancelled
+- see for more: http://code.zikula.org/contactlist/query?status=closed&group=resolution&milestone=1.1
+
+1.0:
+====
+- initial release

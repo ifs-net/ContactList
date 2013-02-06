@@ -1,0 +1,138 @@
+<?php
+/**
+ * ContactList
+ *
+ * @copyright Florian Schießl, Carsten Volmer
+ * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License
+ * @package ContactList
+ * @author Florian Schießl <info@ifs-net.de>.
+ * @link http://www.ifs-net.de
+ */
+
+/**
+ * initialise block
+ *
+ */
+function ContactList_NextBirthdaysblock_init()
+{
+    pnSecAddSchema('ContactList:NextBirthdaysblock:', 'Block title::');
+}
+
+/**
+ * get information on block
+ *
+ * @return       array       The block information
+ */
+function ContactList_NextBirthdaysblock_info()
+{
+    return array('module'         => 'ContactList',
+                 'text_type'      => 'NextBirthdays',
+                 'text_type_long' => 'Show next birthdays of next 14 days of buddy list',
+                 'allow_multiple' => true,
+                 'form_content'   => false,
+                 'form_refresh'   => false,
+                 'show_preview'   => false,
+                 'admin_tableless' => true);
+}
+
+/**
+ * display block
+ *
+ * @param        array       $blockinfo     a blockinfo structure
+ * @return       output      the rendered bock
+ */
+function ContactList_NextBirthdaysblock_display($blockinfo)
+{
+    if (!SecurityUtil::checkPermission('ContactList:NextBirthdaysblock:', "$blockinfo[title]::", ACCESS_READ)) {
+        return false;
+    }
+
+    if (!pnModAvailable('ContactList') || !pnUserLoggedIn() ) {
+        return false;
+    }
+
+	// Use ifs caching method
+	$cache = pnModAPIFunc('ifs','cache','get',array('modname' => 'ContactList', 'cid' => 'birthdays_'.pnUserGetVar('uid')));
+	if ($cache) {
+	  	// return cached output
+		$blockinfo['content'] = $cache;
+		return themesideblock($blockinfo);
+	}
+
+    $vars = pnBlockVarsFromContent($blockinfo['content']);
+
+    if (empty($vars['numitems'])) $vars['numitems'] = 5;
+    if (empty($vars['dateformat'])) $vars['dateformat'] = '%d.%m.';
+    $render = pnRender::getInstance('ContactList', false);
+
+    $uid = pnUserGetVar('uid');
+    $buddies = pnModAPIFunc('ContactList','user','getall',
+    array(  'uid'       => $uid,
+            'state'     => 1,
+            'birthday'  => true,
+            'sort'      => 'daystonextbirthday'));
+    $c=0;
+    $res = array();    
+    if (!(count($buddies)>0)) return false;
+    foreach ($buddies as $buddy) {
+        if (($buddy['daystonextbirthday'] >= 0) && ($buddy['daystonextbirthday'] < 14)){
+            $res[] = $buddy;
+            $c++;
+        }
+        if ($c==$vars['numitems']) break;
+    }
+    // return if no buddy is out there
+    if ($c==0) return false;
+
+    $render->assign('buddies',      $res);
+    $render->assign('dateformat',   $vars['dateformat']);
+
+    $blockinfo['content'] = $render->fetch('contactlist_block_nextbirthdays.htm');
+    
+
+	// Cache now
+	// Cache should be active from now on to the next day
+	$to = strtotime(date("Y-m-d 00:00:00", (time()+(60*24*24)) ));
+	$diff = $to - time();
+    pnModAPIFunc('ifs','cache','set',array('modname' => 'ContactList', 'cid' => 'birthdays_'.pnUserGetVar('uid'), 'content' => $blockinfo['content'],'sec' => $diff));
+    
+    return themesideblock($blockinfo);
+}
+
+/**
+ * modify block settings
+ *
+ * @param        array       $blockinfo     a blockinfo structure
+ * @return       output      the bock form
+ */
+function ContactList_NextBirthdaysblock_modify($blockinfo)
+{
+    $vars = pnBlockVarsFromContent($blockinfo['content']);
+
+    if (empty($vars['numitems'])) $vars['numitems'] = 5;
+    if (empty($vars['dateformat'])) $vars['dateformat'] = '%d.%m.';
+
+    $render = pnRender::getInstance('ContactList', false);
+    $render->assign('numitems', $vars['numitems']);
+    $render->assign('dateformat', $vars['dateformat']);
+    return $render->fetch('contactlist_block_nextbirthdays_modify.htm');
+}
+
+/**
+ * update block settings
+ *
+ * @param        array       $blockinfo     a blockinfo structure
+ * @return       $blockinfo  the modified blockinfo structure
+ */
+function ContactList_NextBirthdaysblock_update($blockinfo)
+{
+    $vars = pnBlockVarsFromContent($blockinfo['content']);
+    $vars['numitems']   = (int) FormUtil::getPassedValue('numitems', 5, 'POST');
+    $vars['dateformat'] = FormUtil::getPassedValue('dateformat', '%d.%m.', 'POST');
+
+    $blockinfo['content'] = pnBlockVarsToContent($vars);
+
+    $render = pnRender::getInstance('ContactList', false);
+    $render->clear_cache('contactlist_block_nextbirthdays.htm');
+    return $blockinfo;
+}

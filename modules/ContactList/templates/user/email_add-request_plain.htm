@@ -1,0 +1,13 @@
+{gt text='Dear user \'%1$s\'' tag1=$buname},
+
+{gt text='the user \'%1$s\' wants to add you as a buddy at \'%2$s\'' tag1=$uname tag2=$sitename}.
+
+{if $request_text ne ""}{gt text="The user has added some text for you"}: {$request_text}{/if}
+
+{gt text="To access your buddy management visit the url"}:
+{$url}
+
+{if $nocounterconnection}
+{gt text="Attention"}:
+{gt text="This request was automatically accepted because some times ago you wanted the other person to be your buddy"}.
+{/if}

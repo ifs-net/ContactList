@@ -1,0 +1,54 @@
+<?php
+/**
+ * ContactList
+ *
+ * @copyright Florian Schießl, Carsten Volmer
+ * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License
+ * @package ContactList
+ * @author Florian Schießl <info@ifs-net.de>.
+ * @link http://www.ifs-net.de
+ */
+
+class ContactList_Api_UserDeletion extends Zikula_AbstractApi
+{
+ 
+    /**
+    * Delete a user
+    * 
+    * @param	$args['uid']	int		user id
+    * @return	array   
+    */
+    public function delUser($args)
+    {
+        $uid = $args['uid'];
+        if (!pnModAPIFunc('UserDeletion','user','SecurityCheck',array('uid' => $uid))) {
+            $result 	= $this->__('Nothing was deleted, permission check failed');
+        }
+        else {
+            $tables 			=& pnDBGetTables();
+            // Delete all ignore list entries
+            $buddycolumn 		= &$tables['contactlist_buddylist_column'];
+            $where 				= $buddycolumn['uid']." = ".$uid." OR ".$buddycolumn['bid']." = ".$uid;
+            $objArray 			= DBUtil::selectObjectArray('contactlist_buddylist',$where);
+            foreach ($objArray as $obj) DBUtil::deleteObject($obj,'contactlist_buddylist');
+            $result.= (count($objArray)/2)." ".$this->__('buddy and')." ";
+
+            $ignorecolumn 		= &$tables['contactlist_ignorelist_column'];
+            $where 				= $ignorecolumn['uid']." = ".$uid." OR ".$ignorecolumn['iuid']." = ".$uid;
+            $objArray 			= DBUtil::selectObjectArray('contactlist_ignorelist',$where);
+            foreach ($objArray as $obj) DBUtil::deleteObject($obj,'contactlist_ignorelist');
+            $result.= count($objArray)." ".$this->__('ignore list entries deleted for user')." ";
+            $result.= pnUserGetVar('uname',$uid);
+
+            $watchcolumn 		= &$tables['contactlist_watchlist_column'];
+            $where 				= $watchcolumn['uid']." = ".$uid." OR ".$watchcolumn['wuid']." = ".$uid;
+            $objArray 			= DBUtil::selectObjectArray('contactlist_watchlist',$where);
+            foreach ($objArray as $obj) DBUtil::deleteObject($obj,'contactlist_watchlist');
+        }
+        return array(
+                'title' 	=> $this->__('Buddy and ignore list'),
+                'result'	=> $result
+
+            );
+    }
+}

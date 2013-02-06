@@ -1,0 +1,54 @@
+{gt text="Add new buddy" assign=title}
+{include file="user/header.htm" title=$title}
+{ajaxheader modname="Users" prototype=true scriptaculous=true}
+
+<div class="z-frontendcontainer">
+    <h2>{$templateTitle}</h2>
+{form cssClass='z-form'}
+    {* add validation summary and a <div> element for styling the form *}
+    {*formsetinitialfocus inputId='title'*}
+
+  {formvalidationsummary}
+
+    <fieldset>
+        <legend>{gt text='Add new buddy'}</legend>
+        <div class="z-formrow">
+
+            {formlabel for="uname" __text='Username' mandatorysym='1'}
+            {formtextinput id='uname' maxLength='256' textMode='singleline' mandatory='1'}
+       </div>
+        {if $nopubliccomment ne 1}
+            <div class="z-formrow">
+                {formlabel for="pub_comment" __text="Public comment (will be posted next to the contact in your buddy list)"}
+                {formtextinput id="pub_comment" maxLength='160'}
+            </div>
+        {/if}
+        <div class="z-formrow">
+            {formlabel for='prv_comment' __text="Private comment (will only be visible for you)"}
+            {formtextinput id='prv_comment' maxLength='256' textMode='multiline'}
+
+        </div>
+        <div class="z-formrow">
+            {formlabel for='request_text' __text="Personalize your request and add some text that will be sent to the other user"}
+            {formtextinput id='request_text' maxLength='256' textMode='multiline'}
+
+        </div>
+        <div class="z-informationmsg">
+            {gt text="You can store users in your watchlist. There will not be any notification sent to users that are only added to your watchlist. Using this feature does not enable features like online buddy list, buddy birthday reminder etc. Add the user as a buddy if you want to use all these features"}.
+        </div>
+        <div class="z-formrow">
+            {formlabel for='watchlist' __text="Add user to watchlist only and do not send a contact request"}
+            {formcheckbox id="watchlist" checked="0"}
+
+        </div>
+    </fieldset>
+
+    <div class="z-buttons z-formbuttons">
+        {formbutton id='btnUpdate' commandName='update' __text='Add User' class='z-bt-ok'}
+    </div>
+
+  {/form}
+
+</div>
+
+{include file="user/footer.htm"}

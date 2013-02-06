@@ -1,0 +1,125 @@
+<?php
+/**
+ * ContactList
+ *
+ * @copyright Florian Schießl, Carsten Volmer
+ * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License
+ * @package ContactList
+ * @author Florian Schießl <info@ifs-net.de>.
+ * @link http://www.ifs-net.de
+ */
+
+class ContactList_Api_MyProfile extends Zikula_AbstractApi
+{
+
+    /**
+     * This function returns 1 if Ajax should not be used loading the plugin
+     *
+     * @return string
+     */
+    public function noAjax()
+    {
+        return true;
+    }
+
+    /**
+     * This function returns the name of the tab
+     *
+     * @return string
+     */
+    public function getTitle($args)
+    {
+        $uid = (int)FormUtil::getPassedValue('uid');
+        $contacts = ModUtil::apiFunc('ContactList','user','getBuddyList',array('uid' =>$uid));
+        // Count number of contacts
+        $count = count($contacts);
+        // Sometimes count gives 1 as value even if there is no buddy...
+        if ($count == 1) {
+            if ($contacts[0]['uid'] == '') {
+                $count = 0;
+            }
+        }
+        if ($count == 0) {
+            // If there is no buddy the tab is not needed!
+            return false;
+        } else {
+            return $this->__('User's buddies')." (".$count.")";
+        }
+    }
+
+    /**
+     * This function returns additional options that should be added to the plugin url
+     *
+     * @return string
+     */
+    public function getURLAddOn($args)
+    {
+        return '';
+    }
+
+    /**
+     * This function shows the content of the main MyProfile tab
+     *
+     * @return output
+     */
+    public function tab($args)
+    {
+        // check if list should be shown
+        $nopublicbuddylist = (int)pnModGetVar('ContactList','nopublicbuddylist');
+        // check for privacy settings
+        $prefs = ModUtil::apiFunc('ContactList','user','getPreferences',array('uid' => $args['uid']));
+        $display = false;
+        if ($args['uid'] != pnUserGetVar('uid')) {
+            switch ($prefs['publicstate']) {
+                case 1:
+                    $display=false;
+                    break;
+                case 2:
+                    $display = ModUtil::apiFunc('ContactList','user','isBuddy',array('uid1' => $args['uid'], 'uid2' => pnUserGetVar('uid')));
+                    break;
+                case 3:
+                    $display = pnUserLoggedIn();
+                    break;
+                default:
+                    return LogUtil::registerPermissionError();
+                    break;
+            }
+        }
+        else {
+            $display = true;
+        }
+
+        // generate output
+        $render = pnRender::getInstance('ContactList');
+        if (($nopublicbuddylist == 1) or (!$display)) $render->assign('display',0);
+        else $render->assign('display',1);
+
+        $render->assign('uid',(int)$args['uid']);
+        $render->assign('viewer_uid',pnUserGetVar('uid'));
+        $buddies = ModUtil::apiFunc('ContactList','user','getall', array('uid' => $args['uid'], 'state' => 1 ) );
+        $render->assign('contacts_all',count($buddies));
+        $render->assign('contactlistavailable',	pnModAvailable('ContactList'));
+        if (pnModAvailable('ContactList')) $render->assign('contactlist_nopublicbuddylist',	pnModGetVar('ContactList','nopublicbuddylist'));
+        // pagination
+        $cl_limit 		= pnModGetVar('ContactList','itemsperpage');
+        $cl_startnum	= (int)FormUtil::getPassedValue('cl_startnum',1);
+        $render->assign('cl_limit',		$cl_limit);
+        $render->assign('cl_startnum',	$cl_startnum);
+        // now just give back the buddy list we need for this page
+        // I know this is not really very performant - but there is no other way to do this because
+        // of the data and the sort criterias, that are included in the result list
+        $c = 1;
+        $c_start = $cl_startnum;
+        $c_stop = $cl_startnum + $cl_limit;
+        foreach ($buddies as $buddy) {
+            if (($c>=$c_start) && ($c < $c_stop)) $assign_buddies[]=$buddy;
+            $c++;
+        }
+        $render->assign('buddies',$assign_buddies);
+        // public comments
+        $render->assign('nopubliccomment',pnModGetVar('ContactList','nopubliccomment'));
+        $render->assign('viewer_uid',pnUserGetVar('uid'));
+        $output = $render->fetch('contactlist_myprofile_tab.htm');
+        return $output;
+    }
+
