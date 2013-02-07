@@ -1,12 +1,3 @@
-Plans for the next release:
----------------------------
-+ hide form field request_text when checkbox (watchlist) is active
-+ add MyProfile support again (after MyProfile is ready to use for 1.3)
-+ add dependency to ifs module again (needed for caching methods / performance improvements)
-+ add Mailz support again (after mailz is ready to use for 1.3)
-+ add UserDeletion support again (after UserDeletion is ready to use for 1.3)
-+ add FOAF Support again
-
 2.0.0:
 ======
 - refactoring for zikula 1.3.X and really much code cleanup
