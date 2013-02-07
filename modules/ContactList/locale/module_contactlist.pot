@@ -1,0 +1,906 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Zikula 1.x\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-02-06 18:23-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: templates/plugins/function.myprofilecustomfields.php:34
+msgid "Allowed to view all data"
+msgstr ""
+
+#: lib/ContactList/Api/Account.php:35
+msgid "My contacts"
+msgstr ""
+
+#: lib/ContactList/Api/User.php:227
+msgid "Buddy was added successfully"
+msgstr ""
+
+#: lib/ContactList/Api/User.php:247
+#, php-format
+msgid "%s added you as buddy"
+msgstr ""
+
+#: lib/ContactList/Api/User.php:253 lib/ContactList/Api/User.php:304
+#: lib/ContactList/Api/User.php:364 lib/ContactList/Api/User.php:489
+msgid "Error! Unable to send e-mail message."
+msgstr ""
+
+#: lib/ContactList/Api/User.php:275
+msgid "Buddy request sent. You will be noticed when your request was accepted."
+msgstr ""
+
+#: lib/ContactList/Api/User.php:298
+#, php-format
+msgid "%s wants to add you as buddy"
+msgstr ""
+
+#: lib/ContactList/Api/User.php:358
+#, php-format
+msgid "%s has rejected your buddy request"
+msgstr ""
+
+#: lib/ContactList/Api/User.php:427
+msgid "error updating buddy object"
+msgstr ""
+
+#: lib/ContactList/Api/User.php:483
+#, php-format
+msgid "The user '%s' has accepted your contact request"
+msgstr ""
+
+#: lib/ContactList/Controller/User.php:135
+msgid "User was removed from your watchlist."
+msgstr ""
+
+#: lib/ContactList/Controller/User.php:137
+#: lib/ContactList/Form/Handler/User/Main.php:63
+msgid "An error occurred while trying to suspend the buddy"
+msgstr ""
+
+#: lib/ContactList/Controller/User.php:220
+msgid "Error! Could not load items."
+msgstr ""
+
+#: lib/ContactList/Version.php:20
+msgid "ContactList"
+msgstr ""
+
+#: lib/ContactList/Version.php:21
+msgid "Supports buddy management and user ignore lists"
+msgstr ""
+
+#. ! module name that appears in URL
+#: lib/ContactList/Version.php:23
+msgid "contactlist"
+msgstr ""
+
+#: lib/ContactList/Block/ShowUnconfirmed.php:45
+msgid "ShowUnconfirmed"
+msgstr ""
+
+#: lib/ContactList/Block/ShowUnconfirmed.php:46
+msgid "Show new buddies awaiting your acception"
+msgstr ""
+
+#: lib/ContactList/Block/ShowUnconfirmed.php:78
+msgid "Contact requests"
+msgstr ""
+
+#: lib/ContactList/Form/Handler/Admin/Main.php:29
+msgid "Nobody should be able to view my buddy list"
+msgstr ""
+
+#: lib/ContactList/Form/Handler/Admin/Main.php:33
+msgid "My buddies should be able to view my buddy list"
+msgstr ""
+
+#: lib/ContactList/Form/Handler/Admin/Main.php:37
+msgid "All users should be able to view my buddy list"
+msgstr ""
+
+#: lib/ContactList/Form/Handler/Admin/Main.php:88
+msgid ""
+"Please choose just one profile module from which you want to get the "
+"birthday date of a user"
+msgstr ""
+
+#: lib/ContactList/Form/Handler/Admin/Main.php:91
+msgid ""
+"You have to enter a user variables name if you want to use the regular user "
+"profile module as birthay date provider"
+msgstr ""
+
+#: lib/ContactList/Form/Handler/Admin/Main.php:114
+msgid "Deleted ignorelist entries due to your group changes"
+msgstr ""
+
+#: lib/ContactList/Form/Handler/Admin/Main.php:130
+msgid "Configuration updated successfully"
+msgstr ""
+
+#: lib/ContactList/Form/Handler/User/Ignore.php:25
+msgid "User was removed from ignore list"
+msgstr ""
+
+#: lib/ContactList/Form/Handler/User/Ignore.php:27
+msgid "Updating user information failed"
+msgstr ""
+
+#: lib/ContactList/Form/Handler/User/Ignore.php:61
+msgid ""
+"I know, some people do not like themself - but you really cannot ignore you "
+"own username :-)"
+msgstr ""
+
+#: lib/ContactList/Form/Handler/User/Ignore.php:65
+msgid "User could not be found"
+msgstr ""
+
+#: lib/ContactList/Form/Handler/User/Ignore.php:78
+msgid ""
+"The user is member of a group that was marked by the site admin that the "
+"members of this group canot be ignored by anyone"
+msgstr ""
+
+#: lib/ContactList/Form/Handler/User/Ignore.php:82
+msgid ""
+"You are funny - a person cannot be added to the ignore list if this person "
+"is a confirmed buddy!"
+msgstr ""
+
+#: lib/ContactList/Form/Handler/User/Ignore.php:86
+msgid "User was set to your ignore list successfully"
+msgstr ""
+
+#: lib/ContactList/Form/Handler/User/Edit.php:23
+msgid "You can only edit your own buddies! Go out and find own friends :-)"
+msgstr ""
+
+#: lib/ContactList/Form/Handler/User/Edit.php:52
+msgid "Buddy information was updated successfully"
+msgstr ""
+
+#: lib/ContactList/Form/Handler/User/Edit.php:54
+msgid "Updating buddy information failed"
+msgstr ""
+
+#: lib/ContactList/Form/Handler/User/Main.php:18
+msgid "username"
+msgstr ""
+
+#: lib/ContactList/Form/Handler/User/Main.php:22
+msgid "state"
+msgstr ""
+
+#: lib/ContactList/Form/Handler/User/Main.php:26
+msgid "next birthday"
+msgstr ""
+
+#: lib/ContactList/Form/Handler/User/Main.php:30
+msgid "birthday"
+msgstr ""
+
+#: lib/ContactList/Form/Handler/User/Main.php:47 templates/user/main.htm:118
+msgid "Request rejected"
+msgstr ""
+
+#: lib/ContactList/Form/Handler/User/Main.php:49
+msgid "Error rejecting request"
+msgstr ""
+
+#: lib/ContactList/Form/Handler/User/Main.php:54
+msgid "Buddy accepted"
+msgstr ""
+
+#: lib/ContactList/Form/Handler/User/Main.php:56
+msgid "Error accepting request"
+msgstr ""
+
+#: lib/ContactList/Form/Handler/User/Main.php:61
+msgid "The connection to this buddy was suspended successfully"
+msgstr ""
+
+#: lib/ContactList/Form/Handler/User/Preferences.php:23
+msgid "Nobody should be able to view buddy list"
+msgstr ""
+
+#: lib/ContactList/Form/Handler/User/Preferences.php:27
+msgid "Buddies should be able to view buddy list"
+msgstr ""
+
+#: lib/ContactList/Form/Handler/User/Preferences.php:31
+msgid "All users should be able to view buddy list"
+msgstr ""
+
+#: lib/ContactList/Form/Handler/User/Preferences.php:59
+msgid "User preferences updated successfully"
+msgstr ""
+
+#: lib/ContactList/Form/Handler/User/Preferences.php:61
+msgid "An error occured while updating your user preferences"
+msgstr ""
+
+#: lib/ContactList/Form/Handler/User/Create.php:54
+msgid "You can not add yourself as buddy. Go out and find some friends :-)"
+msgstr ""
+
+#: lib/ContactList/Form/Handler/User/Create.php:58
+msgid "You have to submit a valid username"
+msgstr ""
+
+#: lib/ContactList/Form/Handler/User/Create.php:65
+msgid ""
+"The user is already in your buddy list and cannot be stored for the "
+"watchlist, too"
+msgstr ""
+
+#: lib/ContactList/Form/Handler/User/Create.php:69
+msgid "User was already added to your watchlist and cannot be added twice."
+msgstr ""
+
+#: lib/ContactList/Form/Handler/User/Create.php:79
+msgid "The user was added to your watchlist."
+msgstr ""
+
+#: lib/ContactList/Form/Handler/User/Create.php:83
+msgid "Adding user to watchlist failed."
+msgstr ""
+
+#: lib/ContactList/Form/Handler/User/Create.php:90
+msgid ""
+"Seems as if there is a conflict between you and your potential buddy because "
+"you are on the other user's ignore list. So, your request could not be sent!"
+msgstr ""
+
+#: lib/ContactList/Form/Handler/User/Create.php:94
+msgid ""
+"You are ignoring the potential new buddy... That's not a good start of a new "
+"friendship..."
+msgstr ""
+
+#: lib/ContactList/Form/Handler/User/Create.php:99
+msgid ""
+"You can not make multiple requests. The user is your buddy or has already "
+"recieved a buddy request from you."
+msgstr ""
+
+#: templates/contactlist_mailz_todaybirthdays.htm:4
+msgid "_CONTACTLIST_CELEBRATES_BIRTHDAYToDAY"
+msgstr ""
+
+#: templates/contactlist_mailz_todaybirthdays.htm:6
+#: templates/contactlist_mailz_nextbirthdays.htm:5
+msgid "_CONTACTLISTNo_BIRTHDAYS_FOUND"
+msgstr ""
+
+#: templates/contactlist_mailz_todaybirthdays.htm:6
+#: templates/contactlist_mailz_nextbirthdays.htm:5
+msgid "_CONTACTLIST_INVITE_YOUR_FRIENDS"
+msgstr ""
+
+#: templates/contactlist_mailz_todaybirthdays.htm:11
+#: templates/contactlist_mailz_nextbirthdays.htm:9
+msgid "_MAILZ_CONTACTLIST_LINK"
+msgstr ""
+
+#: templates/contactlist_block_showonlinebuddies.htm:3
+#: templates/contactlist_block_showonlinebuddies_invite2.htm:3
+#: templates/contactlist_block_showonlinebuddies_invite.htm:3
+msgid "My buddies"
+msgstr ""
+
+#: templates/contactlist_block_nextbirthdays.htm:9
+msgid "today"
+msgstr ""
+
+#: templates/contactlist_block_nextbirthdays.htm:13
+msgid "tomorrow"
+msgstr ""
+
+#: templates/contactlist_block_nextbirthdays.htm:17
+msgid "days"
+msgstr ""
+
+#: templates/admin/main.htm:6
+msgid "Settings"
+msgstr ""
+
+#: templates/admin/main.htm:7
+msgid "ContactList Configuration Page"
+msgstr ""
+
+#: templates/admin/main.htm:14
+msgid "ContactList Backend"
+msgstr ""
+
+#: templates/admin/main.htm:19
+msgid "Main configuration"
+msgstr ""
+
+#: templates/admin/main.htm:23
+msgid ""
+"Allow users to add other users to an ignore list. This feature has to be "
+"supported by other modules."
+msgstr ""
+
+#: templates/admin/main.htm:26
+msgid ""
+"Users should not be able to add users that are assigned to one of these "
+"groups to the ignore list."
+msgstr ""
+
+#: templates/admin/main.htm:30
+msgid "Default settings for a user's buddy list"
+msgstr ""
+
+#: templates/admin/main.htm:35
+msgid ""
+"Users should be added automatically, contact requests do not have to be "
+"confirmed by the user that was added."
+msgstr ""
+
+#: templates/admin/main.htm:39
+msgid "Disable public comments"
+msgstr ""
+
+#: templates/admin/main.htm:43
+msgid ""
+"Disable public buddy lists. This will also disable the FOAF (friend of a "
+"friend) function."
+msgstr ""
+
+#: templates/admin/main.htm:46
+msgid ""
+"If not disabled, every user can choose who should be allowed to view his "
+"buddy list"
+msgstr ""
+
+#: templates/admin/main.htm:50
+msgid "Number of buddies to be showed on one page in the main buddy list"
+msgstr ""
+
+#: templates/admin/main.htm:54
+msgid "Configure buddy's birthday integration"
+msgstr ""
+
+#: templates/admin/main.htm:55
+msgid ""
+"You can define the name of a user variable that contains the user's "
+"birthday. If you specify this, your users will see the next birthdays of "
+"their buddies"
+msgstr ""
+
+#: templates/admin/main.htm:59
+msgid "use the following MyProfile date field"
+msgstr ""
+
+#: templates/admin/main.htm:61 templates/admin/main.htm:75
+msgid "Select the profile field that should be used as birthday date"
+msgstr ""
+
+#: templates/admin/main.htm:67
+msgid "or"
+msgstr ""
+
+#: templates/admin/main.htm:73
+msgid ""
+"use the default profile module and a user variable as birthday date: Enter "
+"the variable's name"
+msgstr ""
+
+#: templates/admin/main.htm:79
+msgid "Specify the date format"
+msgstr ""
+
+#: templates/admin/main.htm:85
+msgid "Update Settings"
+msgstr ""
+
+#: templates/admin/main.htm:90
+msgid "Support the ContactList module"
+msgstr ""
+
+#: templates/admin/main.htm:91
+msgid ""
+"The module can be used for free. Feel free to donate some money for the "
+"developers!"
+msgstr ""
+
+#: templates/admin/main.htm:111
+msgid "Thank you for your donation!"
+msgstr ""
+
+#: templates/contactlist_block_showonlinebuddies_invite2.htm:5
+msgid "No friends online?"
+msgstr ""
+
+#: templates/contactlist_block_showonlinebuddies_invite2.htm:6
+msgid "Invite more friends now!"
+msgstr ""
+
+#: templates/contactlist_block_showmyprofileuserrandom_modify.htm:2
+msgid "_CONTACTLISTUSERSTOSHOW"
+msgstr ""
+
+#: templates/user/preferences.htm:1 templates/user/header.htm:16
+msgid "My preferences"
+msgstr ""
+
+#: templates/user/preferences.htm:13
+msgid "My Preferences"
+msgstr ""
+
+#: templates/user/preferences.htm:16
+msgid ""
+"Notice: If you select \"only buddies should be able to see my buddy list\" "
+"you will be included in the list if someone wants to see if he knowns "
+"another person directly or indirectly - because the person is a contact of a "
+"contact of a contact... - but the person will not be able to view the list "
+"of all your contacts directly."
+msgstr ""
+
+#: templates/user/preferences.htm:18
+msgid "Buddy list privacy settings"
+msgstr ""
+
+#: templates/user/preferences.htm:26
+msgid "Update my preferences"
+msgstr ""
+
+#: templates/user/preferences.htm:27 templates/user/edit.htm:32
+msgid "Cancel"
+msgstr ""
+
+#: templates/user/email_request-accepted_html.htm:2
+#: templates/user/email_decline-request_plain.htm:1
+#: templates/user/email_request-accepted_plain.htm:1
+#: templates/user/email_added-noconfirm_plain.htm:1
+#: templates/user/email_add-request_plain.htm:1
+#: templates/user/email_decline-request_html.htm:2
+#: templates/user/email_add-request_html.htm:2
+#: templates/user/email_added-noconfirm_html.htm:2
+#, php-format
+msgid "Dear user '%1$s'"
+msgstr ""
+
+#: templates/user/email_request-accepted_html.htm:5
+#: templates/user/email_request-accepted_plain.htm:3
+#, php-format
+msgid ""
+"the user '%1$s' has confirmed your contact request at '%2$s'. This means you "
+"are friends now and your accounts got linked on the website."
+msgstr ""
+
+#: templates/user/email_request-accepted_html.htm:8
+#: templates/user/email_decline-request_plain.htm:5
+#: templates/user/email_request-accepted_plain.htm:5
+#: templates/user/email_added-noconfirm_plain.htm:5
+#: templates/user/email_add-request_plain.htm:7
+#: templates/user/email_decline-request_html.htm:8
+#: templates/user/email_add-request_html.htm:14
+#: templates/user/email_added-noconfirm_html.htm:8
+msgid "To access your buddy management visit the url"
+msgstr ""
+
+#: templates/user/edit.htm:1
+msgid "Edit contact information"
+msgstr ""
+
+#: templates/user/edit.htm:17 templates/user/main.htm:132
+#: templates/user/display.htm:37 templates/contactlist_myprofile_tab.htm:26
+msgid "Public comment"
+msgstr ""
+
+#: templates/user/edit.htm:23 templates/user/watchlist.htm:36
+#: templates/user/main.htm:135
+msgid "Private comment"
+msgstr ""
+
+#: templates/user/edit.htm:31
+msgid "Update information and return to buddy list"
+msgstr ""
+
+#: templates/user/email_decline-request_plain.htm:3
+#: templates/user/email_decline-request_html.htm:5
+#, php-format
+msgid ""
+"we are sorry to tell you that the user '%1$s' has rejected your buddy "
+"request at '%2$s'"
+msgstr ""
+
+#: templates/user/create.htm:1 templates/user/create.htm:14
+#: templates/user/display.htm:30
+msgid "Add new buddy"
+msgstr ""
+
+#: templates/user/create.htm:17 templates/user/ignore.htm:20
+msgid "Username"
+msgstr ""
+
+#: templates/user/create.htm:22
+msgid "Public comment (will be posted next to the contact in your buddy list)"
+msgstr ""
+
+#: templates/user/create.htm:27
+msgid "Private comment (will only be visible for you)"
+msgstr ""
+
+#: templates/user/create.htm:32
+msgid ""
+"Personalize your request and add some text that will be sent to the other "
+"user"
+msgstr ""
+
+#: templates/user/create.htm:37
+msgid ""
+"You can store users in your watchlist. There will not be any notification "
+"sent to users that are only added to your watchlist. Using this feature does "
+"not enable features like online buddy list, buddy birthday reminder etc. Add "
+"the user as a buddy if you want to use all these features"
+msgstr ""
+
+#: templates/user/create.htm:40
+msgid "Add user to watchlist only and do not send a contact request"
+msgstr ""
+
+#: templates/user/create.htm:47 templates/user/ignore.htm:26
+msgid "Add User"
+msgstr ""
+
+#: templates/user/footer.htm:3
+msgid "Programming"
+msgstr ""
+
+#: templates/user/footer.htm:3
+msgid "Design"
+msgstr ""
+
+#: templates/user/email_added-noconfirm_plain.htm:3
+#: templates/user/email_added-noconfirm_html.htm:5
+#, php-format
+msgid ""
+"the user '%1$s' has added you as a buddy at '%2$s'. This means you are "
+"friends now and your accounts got linked on the website."
+msgstr ""
+
+#: templates/user/ignore.htm:1
+msgid "Show my ignore list"
+msgstr ""
+
+#: templates/user/ignore.htm:14
+msgid "Add user to ignore list"
+msgstr ""
+
+#: templates/user/ignore.htm:18
+msgid ""
+"You can add users here you want to ignore. Ignoring means protection from "
+"emails etc."
+msgstr ""
+
+#: templates/user/ignore.htm:30
+msgid "Users I am ignoring"
+msgstr ""
+
+#: templates/user/ignore.htm:34
+msgid "Remove from ignore list"
+msgstr ""
+
+#: templates/user/ignore.htm:36
+msgid "You do not have any ignored users on your ignore list"
+msgstr ""
+
+#: templates/user/email_add-request_plain.htm:3
+#: templates/user/email_add-request_html.htm:5
+#, php-format
+msgid "the user '%1$s' wants to add you as a buddy at '%2$s'"
+msgstr ""
+
+#: templates/user/email_add-request_plain.htm:5
+#: templates/user/email_add-request_html.htm:9
+msgid "The user has added some text for you"
+msgstr ""
+
+#: templates/user/email_add-request_plain.htm:11
+#: templates/user/email_add-request_html.htm:20
+msgid "Attention"
+msgstr ""
+
+#: templates/user/email_add-request_plain.htm:12
+#: templates/user/email_add-request_html.htm:21
+msgid ""
+"This request was automatically accepted because some times ago you wanted "
+"the other person to be your buddy"
+msgstr ""
+
+#: templates/user/watchlist.htm:1 templates/user/header.htm:11
+msgid "Show my watchlist"
+msgstr ""
+
+#: templates/user/watchlist.htm:8
+msgid "Your watchlist"
+msgstr ""
+
+#: templates/user/watchlist.htm:21 templates/user/main.htm:98
+#: templates/user/display.htm:20 templates/contactlist_myprofile_tab.htm:19
+msgid "online"
+msgstr ""
+
+#: templates/user/watchlist.htm:24 templates/user/main.htm:101
+#: templates/user/display.htm:23
+msgid "Show Profile"
+msgstr ""
+
+#: templates/user/watchlist.htm:25 templates/user/main.htm:102
+#: templates/user/display.htm:24
+msgid "Send message"
+msgstr ""
+
+#: templates/user/watchlist.htm:26
+msgid "Send contact request"
+msgstr ""
+
+#: templates/user/watchlist.htm:27 templates/user/main.htm:107
+msgid "Delete"
+msgstr ""
+
+#: templates/user/watchlist.htm:33
+msgid "Date of storage"
+msgstr ""
+
+#: templates/user/watchlist.htm:41
+msgid "No users were added to your watchlist yet."
+msgstr ""
+
+#: templates/user/main.htm:1
+msgid "Show my buddylist"
+msgstr ""
+
+#: templates/user/main.htm:8
+msgid "These request are awaiting your confirmation"
+msgstr ""
+
+#: templates/user/main.htm:22 templates/user/main.htm:125
+msgid "Request's date"
+msgstr ""
+
+#: templates/user/main.htm:23
+msgid "Additional contact request text"
+msgstr ""
+
+#: templates/user/main.htm:25
+msgid "Action"
+msgstr ""
+
+#: templates/user/main.htm:26
+msgid "accept"
+msgstr ""
+
+#: templates/user/main.htm:28
+msgid "reject"
+msgstr ""
+
+#: templates/user/main.htm:30
+#, php-format
+msgid "reject (without notification for '%1$s')"
+msgstr ""
+
+#: templates/user/main.htm:40
+msgid "All"
+msgstr ""
+
+#: templates/user/main.htm:41
+msgid "Unconfirmed"
+msgstr ""
+
+#: templates/user/main.htm:42
+msgid "Confirmed"
+msgstr ""
+
+#: templates/user/main.htm:43
+msgid "Rejected"
+msgstr ""
+
+#: templates/user/main.htm:44
+msgid "Suspended"
+msgstr ""
+
+#: templates/user/main.htm:51
+msgid "Your contacts"
+msgstr ""
+
+#: templates/user/main.htm:52 templates/user/main.htm:58
+msgid "Number of confirmed contacts"
+msgstr ""
+
+#: templates/user/main.htm:52
+msgid "of"
+msgstr ""
+
+#: templates/user/main.htm:54
+msgid "Your pending contacts"
+msgstr ""
+
+#: templates/user/main.htm:55
+msgid "Number of pending contacts"
+msgstr ""
+
+#: templates/user/main.htm:57
+msgid "Your confirmed buddies"
+msgstr ""
+
+#: templates/user/main.htm:60
+msgid "Your rejected contacts"
+msgstr ""
+
+#: templates/user/main.htm:61
+msgid "Number of rejected contacts"
+msgstr ""
+
+#: templates/user/main.htm:63
+msgid "Your suspended contacts"
+msgstr ""
+
+#: templates/user/main.htm:64
+msgid "Number of suspended contacts"
+msgstr ""
+
+#: templates/user/main.htm:68
+msgid "Contacts"
+msgstr ""
+
+#: templates/user/main.htm:68
+msgid "1st grade"
+msgstr ""
+
+#: templates/user/main.htm:68
+msgid "2nd grade"
+msgstr ""
+
+#: templates/user/main.htm:78
+msgid "Sort list"
+msgstr ""
+
+#: templates/user/main.htm:82
+msgid "reload"
+msgstr ""
+
+#: templates/user/main.htm:103 templates/user/display.htm:25
+msgid "Show user's buddies"
+msgstr ""
+
+#: templates/user/main.htm:104 templates/user/display.htm:28
+msgid "Edit contact"
+msgstr ""
+
+#: templates/user/main.htm:105
+msgid "Cancel request"
+msgstr ""
+
+#: templates/user/main.htm:106
+msgid "Should the connection between you and this buddy really be suspended?"
+msgstr ""
+
+#: templates/user/main.htm:106
+msgid "Suspend"
+msgstr ""
+
+#: templates/user/main.htm:112
+msgid "State"
+msgstr ""
+
+#: templates/user/main.htm:114
+msgid "pending"
+msgstr ""
+
+#: templates/user/main.htm:116
+msgid "confirmed"
+msgstr ""
+
+#: templates/user/main.htm:120
+msgid "suspended"
+msgstr ""
+
+#: templates/user/main.htm:129
+msgid "Birthday"
+msgstr ""
+
+#: templates/user/display.htm:1 templates/contactlist_myprofile_tab.htm:1
+msgid "User's buddy list"
+msgstr ""
+
+#: templates/user/display.htm:7 templates/contactlist_myprofile_tab.htm:3
+msgid "The user has"
+msgstr ""
+
+#: templates/user/display.htm:7 templates/contactlist_myprofile_tab.htm:3
+msgid "Buddies"
+msgstr ""
+
+#: templates/user/nodisplay.htm:5 templates/contactlist_myprofile_tab.htm:34
+msgid "The user's buddy list is not visible for you"
+msgstr ""
+
+#: templates/user/header.htm:7
+msgid "Contact List"
+msgstr ""
+
+#: templates/user/header.htm:9
+msgid "Add user"
+msgstr ""
+
+#: templates/user/header.htm:10
+msgid "Show my contacts"
+msgstr ""
+
+#: templates/user/header.htm:13
+msgid "Show my ignorelist"
+msgstr ""
+
+#: templates/contactlist_user_foaf.htm:3
+msgid "Your connection to this user"
+msgstr ""
+
+#: templates/contactlist_user_foaf.htm:5
+msgid "No link to this user found"
+msgstr ""
+
+#: templates/block/showunconfirmed.htm:1
+#: templates/contactlist_block_showunconfirmed_alternativetemplate.htm:3
+msgid ""
+"There is at least one request from another user who wants to add you as a "
+"buddy"
+msgstr ""
+
+#: templates/block/showunconfirmed.htm:6
+#: templates/contactlist_block_showunconfirmed_alternativetemplate.htm:7
+msgid "Responde to request(s)"
+msgstr ""
+
+#: templates/contactlist_myprofile_tab.htm:21
+msgid "offline"
+msgstr ""
+
+#: templates/contactlist_block_showrandom_modify.htm:2
+msgid "Number of users to show"
+msgstr ""
+
+#: templates/contactlist_mailz_nextbirthdays.htm:3
+msgid "_CONTACTLISTdaysTo_BIRTHDAY"
+msgstr ""
+
+#: templates/contactlist_mailz_nextbirthdays.htm:3
+msgid "_CONTACTLISTdays"
+msgstr ""
+
+#: templates/contactlist_block_nextbirthdays_modify.htm:2
+msgid "How many "
+msgstr ""
+
+#: templates/contactlist_block_nextbirthdays_modify.htm:6
+msgid "Date format to display month and day in this block"
+msgstr ""
+
+#: templates/contactlist_block_showonlinebuddies_invite.htm:5
+msgid "No friends found, yet? "
+msgstr ""
+
+#: templates/contactlist_block_showonlinebuddies_invite.htm:6
+msgid "Invite your friends now!"
+msgstr ""
+
+#: templates/contactlist_block_showonlinebuddies_invite.htm:7
+msgid "Start to build up your network with your friends now!"
+msgstr ""
