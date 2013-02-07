@@ -3,8 +3,10 @@ ContactList
 
 ## About the module
 
-ContactList is a zikula module that allows the management of buddy lists and ignore lists and provides a visualisation of a friend-of-a-friend (FOAF) function.
+ContactList (initial release was published in 2008) is a zikula module that allows the management of buddy lists and ignore lists and provides a visualisation of a friend-of-a-friend (FOAF) function.
 It is customizable and can be combined with other social network modules.
+
+The module is very reliable and is run by many communities that handle the buddy and ignore functions for thousands of users.
 
 ## Module ready for Zikula 1.3.x
 
@@ -39,3 +41,8 @@ At the moment these modules support ContactList
 - InterCom (Messaging module)
 - MyProfile (Profile module)
 - maybe more modules will follow...
+
+## Changelog
+
+Please take a look at the following file:
+modules/ContactList/docs/changelog.txt
