@@ -1,4 +1,4 @@
-{pnpageaddvar name="stylesheet" value="modules/ContactList/pnstyle/style.css"}
+{pageaddvar name="stylesheet" value="modules/ContactList/pnstyle/style.css"}
 
 <strong>{gt text="Your connection to this user"}:</strong>
 {if $FOAFLinkDepth eq 0}
@@ -6,13 +6,13 @@
 {else}
 <ul class="foaf_list">
     {foreach from=$FOAFList item="buddy" name="friends"}
-    {pnusergetvar uid=$buddy.uid name="_YOURAVATAR" assign="avatar"}
+    {usergetvar uid=$buddy.uid name="_YOURAVATAR" assign="avatar"}
     <li>
         <div class="foaf_avatar">
             {if $avatar eq '' or $avatar eq 'blank.gif'}
-            {pnimg modname='ContactList' src="avatar_male.gif" height="50" class="avatar"}
+            {img modname='ContactList' src="avatar_male.gif" height="50" class="avatar"}
             {else}
-            <img src="{pngetbaseurl}images/avatar/{$avatar|pnvarprepfordisplay}" class="avatar" height="50" />
+            <img src="{getbaseurl}images/avatar/{$avatar|safetext}" class="avatar" height="50" />
             {/if}
         </div>
         <div class="foaf_user">{$buddy.uname|userprofilelink}</div>
