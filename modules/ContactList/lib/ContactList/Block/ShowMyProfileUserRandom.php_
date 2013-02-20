@@ -49,7 +49,7 @@ function ContactList_showmyprofileuserrandomblock_display($blockinfo)
 
     $actmodule = strtolower(FormUtil::getPassedValue('module'));
 
-    if (!pnModAvailable('MyProfile') || ($actmodule != 'myprofile')) {
+    if (!ModUtil::available('MyProfile') || ($actmodule != 'myprofile')) {
         return false;
     }
 

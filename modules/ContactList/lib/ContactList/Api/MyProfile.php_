@@ -43,7 +43,7 @@ class ContactList_Api_MyProfile extends Zikula_AbstractApi
             // If there is no buddy the tab is not needed!
             return false;
         } else {
-            return $this->__('User's buddies')." (".$count.")";
+            return $this->__('User\'s buddies')." (".$count.")";
         }
     }
 
@@ -98,8 +98,8 @@ class ContactList_Api_MyProfile extends Zikula_AbstractApi
         $render->assign('viewer_uid',pnUserGetVar('uid'));
         $buddies = ModUtil::apiFunc('ContactList','user','getall', array('uid' => $args['uid'], 'state' => 1 ) );
         $render->assign('contacts_all',count($buddies));
-        $render->assign('contactlistavailable',	pnModAvailable('ContactList'));
-        if (pnModAvailable('ContactList')) $render->assign('contactlist_nopublicbuddylist',	pnModGetVar('ContactList','nopublicbuddylist'));
+        $render->assign('contactlistavailable',	ModUtil::available('ContactList'));
+        if (ModUtil::available('ContactList')) $render->assign('contactlist_nopublicbuddylist',	pnModGetVar('ContactList','nopublicbuddylist'));
         // pagination
         $cl_limit 		= pnModGetVar('ContactList','itemsperpage');
         $cl_startnum	= (int)FormUtil::getPassedValue('cl_startnum',1);
