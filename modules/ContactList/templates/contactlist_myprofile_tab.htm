@@ -24,7 +24,7 @@
 	  <dt>{$buddy.uname|userprofilelink}</dt>
 	  {if $nopubliccomment ne 1 and $buddy.pub_comment ne ""}
 	  <dt>{gt text="Public comment"}:</dt>
-	  <dd><em>{$buddy.pub_comment|pnvarprepfordisplay|pnmodcallhooks}</em></dd>
+	  <dd><em>{$buddy.pub_comment|pnvarprepfordisplay}</em></dd>
 	  {/if}
 	</dl>
 	{/foreach}
