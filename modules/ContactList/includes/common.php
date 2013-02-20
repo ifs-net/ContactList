@@ -19,7 +19,7 @@
 function _cl_addOnlineStatusAndUsername($list,$args)
 {
     // get the time for inactive users and get a list of active users
-    $timestamp = time() - (pnConfigGetVar('secinactivemins') * 60);
+    $timestamp = time() - (System::getVar('secinactivemins') * 60);
     $pntable =& pnDBGetTables();
     $column = $pntable['session_info_column']['lastused'];
     $where =  $column." > '".date("Y-m-d H:i:s",$timestamp)."'";
