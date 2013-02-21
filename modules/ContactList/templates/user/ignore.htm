@@ -31,7 +31,7 @@
         <div class="z-formrow">
             <ul>
                 {foreach from=$ignorelist item="item"}
-                <li>{$item.iuname|userprofilelink} (<a href="{pnmodurl modname="ContactList" type="user" func="ignore" action="delete" iuid=$item.iuid authid=$authid}">{gt text="Remove from ignore list"}</a>)</li>
+                <li>{$item.iuname|userprofilelink} (<a href="{modurl modname="ContactList" type="user" func="ignore" action="delete" iuid=$item.iuid authid=$authid}">{gt text="Remove from ignore list"}</a>)</li>
                 {foreachelse}
                 <li>{gt text="You do not have any ignored users on your ignore list"}</li>
                 {/foreach}
