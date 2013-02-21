@@ -30,7 +30,7 @@ function smarty_function_myprofilecustomfields($params, &$smarty)
             }
 	}
 	if (in_array($params['bid'],$cache['myprofile_customfieldlist'][$uid])) {
-	  	$content = '<a href="' . pnmodurl('MyProfile','user','confirmedusers',null,null,null,true) . '">';
+	  	$content = '<a href="'.ModUtil::url('MyProfile', 'user', 'confirmedusers', null, null, null, true).'">';
 	  	$content.= $this->__('Allowed to view all data');
 	  	$content.='</a>';
 	}
