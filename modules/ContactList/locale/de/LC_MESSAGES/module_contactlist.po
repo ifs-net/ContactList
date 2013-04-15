@@ -731,7 +731,7 @@ msgstr "Datum des Speicherns"
 
 #: templates/user/watchlist.htm:41
 msgid "No users were added to your watchlist yet."
-msgstr "KeinBbenutzer wurde bisher zur Beobachtungsliste hinzugefügt"
+msgstr "Es wurde bisher kein Benutzer zur Beobachtungsliste hinzugefügt"
 
 #: templates/user/main.htm:1
 msgid "Show my buddylist"
